@@ -37,6 +37,7 @@ updater:
 discovery:
   ignore:
     - apple_tv
+    - belkin_wemo
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
