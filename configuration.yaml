@@ -62,6 +62,10 @@ tts:
 # Cloud
 # cloud:
 
+mqtt:
+  broker: 192.168.1.162
+  port: 1883
+  
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include includes/scripts.yaml
