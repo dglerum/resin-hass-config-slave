@@ -13,11 +13,11 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
-introduction:
-
 # Enables the frontend
 frontend:
 
+http:
+  api_password: !secret http_password
 # Enables configuration UI
 config:
 
@@ -65,4 +65,4 @@ cloud:
 
 group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
+script: !include includes/scripts.yaml
