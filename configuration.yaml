@@ -81,7 +81,7 @@ hue:
       allow_hue_groups: false
 
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
 input_select: !include includes/input_selects.yaml
