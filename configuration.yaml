@@ -25,7 +25,7 @@ logger:
   logs:
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
-    
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
@@ -84,3 +84,4 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
+input_select: !include includes/input_selects.yaml
