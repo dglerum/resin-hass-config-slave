@@ -74,12 +74,6 @@ mqtt:
   broker: 192.168.1.162
   port: 1883
 
-hue:
-  bridges:
-    - host: !secret philips_hub
-      allow_unreachable: true
-      allow_hue_groups: false
-
 group: !include groups.yaml
 automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
