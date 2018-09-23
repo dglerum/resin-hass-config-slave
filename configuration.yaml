@@ -18,7 +18,7 @@ frontend:
 
 http:
   api_password: !secret http_password
-# Enables configuration UI
+
 config:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
