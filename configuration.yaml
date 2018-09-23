@@ -65,7 +65,13 @@ tts:
 mqtt:
   broker: 192.168.1.162
   port: 1883
-  
+
+media_player:
+  - platform: apple_tv
+    name: Apple TV
+    host: 192.168.1.3
+    start_off: True
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include includes/scripts.yaml
