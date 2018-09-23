@@ -1,6 +1,6 @@
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Slave
+  name: HASS Slave Device
   # Location required to calculate the time the sun rises and sets
   latitude: 0
   longitude: 0
