@@ -70,7 +70,7 @@ mqtt:
 
 hue:
   bridges:
-    - host: 192.168.1.2
+    - host: !secret philips_hub
       allow_unreachable: true
       allow_hue_groups: false
 
