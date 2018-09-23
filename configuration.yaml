@@ -17,7 +17,7 @@ homeassistant:
 frontend:
 
 http:
-  api_password: !secret http_password
+  api_password: !secret api_password
 
 config:
 
