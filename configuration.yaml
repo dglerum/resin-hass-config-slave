@@ -21,8 +21,8 @@ http:
 config:
 
 panel_iframe:
-  grafana:
-    title: Grafana-UI
+  grafana-ui:
+    title: Grafana
     icon: mdi:wrench
     url: hhttps://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/grafana/
   nodered:
