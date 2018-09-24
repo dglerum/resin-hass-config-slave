@@ -24,11 +24,11 @@ panel_iframe:
   grafana:
     title: Grafana
     icon: mdi:wrench
-    url: https://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/grafana
+    url: /grafana
   nodered:
     title: Node-Red
     icon: mdi:shuffle-variant
-    url: https://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/red
+    url: /red
 
 logger:
   default: warning
