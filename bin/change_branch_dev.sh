@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd "/data/config/"
-git checkout $1
+git checkout dev
