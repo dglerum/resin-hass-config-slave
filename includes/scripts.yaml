@@ -1,5 +1,5 @@
-get_latest_config:
-  alias: "Get Master Config"
+get_latest_prd_config:
+  alias: "Get Production Config"
   sequence:
     - service: shell_command.update_new_commits_sensor
       data:
@@ -13,7 +13,7 @@ get_latest_config:
     - service: shell_command.update_config_from_github
     - service: homeassistant.restart
 
-get_latest_config:
+get_latest_dev_config:
   alias: "Get Development Config"
   sequence:
     - service: shell_command.update_new_commits_sensor
