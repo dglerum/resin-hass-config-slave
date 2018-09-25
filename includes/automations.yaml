@@ -6,3 +6,19 @@
   trigger:
   - platform: state
     entity_id: input_select.log_level
+
+- action:
+  - service: shell_command.checkout_{{ trigger.to_state.state }}_branch_from_github
+  alias: Checkout GIT Branch
+  trigger:
+  - platform: state
+    entity_id: input_select.git_branch
+
+- action:
+  - service: shell_command.update_new_commits_sensor
+    data:
+      api_password: !secret http_password
+  alias: 'Get Branch and Commits info'
+  trigger:
+    platform: homeassistant
+    event: start
