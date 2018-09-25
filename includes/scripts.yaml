@@ -5,7 +5,7 @@ get_latest_prd_config:
       data:
         api_password: !secret http_password
     - condition: numeric_state
-      entity_id: sensor.new_commits
+      entity_id: sensor.new_prd_commits
       above: 0
     - service: shell_command.checkout_master_branch_from_github
       data:
