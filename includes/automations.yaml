@@ -9,6 +9,9 @@
 
 - action:
   - service: shell_command.checkout_{{ trigger.to_state.state }}_branch_from_github
+  - service: shell_command.update_new_commits_sensor
+    data:
+      api_password: !secret http_password
   alias: Checkout GIT Branch
   trigger:
   - platform: state
