@@ -20,4 +20,4 @@ git_branch:
   options:
     - dev
     - master
-  # initial: master
+  initial: master
