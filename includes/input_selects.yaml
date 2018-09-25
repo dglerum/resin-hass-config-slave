@@ -18,7 +18,7 @@ log_level:
 git_branch:
   name: GIT Branch
   options:
-    - select branch
+    - select
     - dev
     - master
-  initial: select branch
+  initial: select
