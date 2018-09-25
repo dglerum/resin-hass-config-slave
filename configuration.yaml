@@ -48,10 +48,6 @@ updater:
 #   ignore:
 #     - apple_tv
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-# conversation:
-
-# Enables support for tracking state changes over time
 history:
 
 # View all events in a logbook
