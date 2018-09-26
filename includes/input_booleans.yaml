@@ -13,3 +13,7 @@
   last_message:
     name: Last Message
     initial: off
+
+  home_stats:
+    name: Homestats
+    initial: off
