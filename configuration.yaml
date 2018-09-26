@@ -6,6 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Brussels
   customize: !include customize.yaml
+  packages: !include_dir_named packages
 
 frontend:
 
@@ -53,6 +54,10 @@ sensor:
 tts:
   - platform: google
 
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+
 mqtt:
   broker: 192.168.1.162
   port: 1883
@@ -62,3 +67,4 @@ automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
 input_select: !include includes/input_selects.yaml
+input_boolean: !include includes/input_booleans.yaml
