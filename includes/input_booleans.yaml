@@ -1,0 +1,15 @@
+  guest_mode:
+    name: Guest Mode
+    initial: off
+
+  alert_mode:
+    name: Alert Mode
+    initial: off
+
+  speech_notifications:
+    name: Speech Notifications
+    initial: off
+
+  last_message:
+    name: Last Message
+    initial: off
