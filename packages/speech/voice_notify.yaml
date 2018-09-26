@@ -1,11 +1,13 @@
 group:
   speech_engine:
+    name: Speech Engine
     control: hidden
     entities:
       - input_boolean.guest_mode
       - input_boolean.alert_mode
       - input_boolean.speech_notifications
       - input_boolean.last_message
+      - input_boolean.home_stats
       - script.voice_notify
 
 automation:
