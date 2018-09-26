@@ -6,6 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Brussels
   customize: !include customize.yaml
+  packages: !include_dir_named packages
 
 frontend:
 
@@ -34,14 +35,8 @@ logger:
 # http:
 #   base_url: example.duckdns.org:8123
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
+
 
 # Discover some devices automatically
 # discovery:
@@ -49,26 +44,19 @@ updater:
 #     - apple_tv
 
 history:
-
-# View all events in a logbook
 logbook:
-
-# Enables a map showing the location of tracked devices
 map:
-
-# Track the sun
 sun:
 
-# Weather prediction
 sensor:
   - platform: yr
 
-# Text to speech
 tts:
   - platform: google
 
-# Cloud
-# cloud:
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
 
 mqtt:
   broker: 192.168.1.162
@@ -79,3 +67,4 @@ automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
 input_select: !include includes/input_selects.yaml
+input_boolean: !include includes/input_booleans.yaml
