@@ -1,0 +1,30 @@
+####################################################
+#                    Time/Date                     #
+####################################################
+
+- platform: time_date
+  display_options:
+    - time
+    - date
+    - date_time
+    - time_date
+    - time_utc
+    - beat
+
+####################################################
+#               Philips Hue (custom)               #
+####################################################
+
+# - platform: hue
+#   ip_address: 192.168.1.2
+#   token: 8VM3ATZhZME37TuvWiMjxMP5wHrRkKikX78w25SF
+
+####################################################
+#               Certificate Expiry                 #
+####################################################
+
+- platform: cert_expiry
+  host: dglerum.noip.me
+
+- platform: uptime
+  unit_of_measurement: days
