@@ -50,7 +50,7 @@ mqtt:
   broker: 192.168.1.162
   port: 1883
 
-history: !include config/history.yaml
+history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
 sensor: !include includes/sensors.yaml
 group: !include groups.yaml
