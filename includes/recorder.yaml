@@ -1,34 +1,33 @@
-  purge_keep_days: 7
-  db_url: mysql://hass:HaSs2018!@core-mariadb/homeassistant
-  include:
-    domains:
-      # - light
-      # - switch
-      - media_player
-      - device_tracker
-    #   - sensor
-    entities:
-      - sensor.harmony_online
-      - sensor.hue_bridge_online
-      - sensor.camera_online
-      - sensor.doorbell_online
-      - sensor.laserprinter_online
-      - sensor.glerums_iphone_x_battery_level
-      - sensor.memory_use_percent
-      - sensor.processor_use
-      - sensor.disk_use_percent_
-      - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
-      - sensor.wc_downstairs_temp
-      - sensor.wc_upstairs_temp
-      - sensor.dark_sky_temperature
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
-      - sensor.speedtest_ping
-      - light.hue_desk
-      - light.hue_lightstrip
-      - light.hue_livingroom
-      - light.fibaro_kitchen_dimmer_level
-      - light.fibaro_table_dimmer_level
-      - light.fibaro_hallway_dimmer_level
-      - light.fibaro_stair_dimmer_level
-      - switch.wemo_livingroom
+  purge_keep_days: 3
+  # include:
+  #   domains:
+  #     # - light
+  #     # - switch
+  #     - media_player
+  #     - device_tracker
+  #   #   - sensor
+  #   entities:
+      # - sensor.harmony_online
+      # - sensor.hue_bridge_online
+      # - sensor.camera_online
+      # - sensor.doorbell_online
+      # - sensor.laserprinter_online
+      # - sensor.glerums_iphone_x_battery_level
+      # - sensor.memory_use_percent
+      # - sensor.processor_use
+      # - sensor.disk_use_percent_
+      # - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
+      # - sensor.wc_downstairs_temp
+      # - sensor.wc_upstairs_temp
+      # - sensor.dark_sky_temperature
+      # - sensor.speedtest_download
+      # - sensor.speedtest_upload
+      # - sensor.speedtest_ping
+      # - light.hue_desk
+      # - light.hue_lightstrip
+      # - light.hue_livingroom
+      # - light.fibaro_kitchen_dimmer_level
+      # - light.fibaro_table_dimmer_level
+      # - light.fibaro_hallway_dimmer_level
+      # - light.fibaro_stair_dimmer_level
+      # - switch.wemo_livingroom
