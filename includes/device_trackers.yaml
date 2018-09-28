@@ -8,7 +8,7 @@
 
   - platform: tile
     username: dglerum@gmail.com
-    password: !secret api_password
+    password: !secret http_password
 
   - platform: owntracks_http
 
