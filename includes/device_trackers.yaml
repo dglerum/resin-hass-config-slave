@@ -11,8 +11,3 @@
     password: !secret http_password
 
   - platform: owntracks_http
-
-  - platform: ping
-    hosts:
-      proxmox: 144.76.43.51
-  # - platform: bluetooth_tracker

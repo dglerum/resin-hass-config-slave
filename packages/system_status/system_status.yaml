@@ -87,11 +87,11 @@ device_tracker:
       tv_kodi: !secret tv_kodi
       philips_hub: !secret philips_hub
 
-  - platform: nmap_tracker
-    hosts:
-      - 10.0.3.1
-      - 10.0.20.2
-      - 10.0.20.4
+  # - platform: nmap_tracker
+  #   hosts:
+  #     - 10.0.3.1
+  #     - 10.0.20.2
+  #     - 10.0.20.4
 
 #################################################################
 #                           Sensors                             #
@@ -99,11 +99,6 @@ device_tracker:
 
 sensor:
   - platform: speedtest
-    hour:
-    - 8
-    - 12
-    - 16
-    - 20
     monitored_conditions:
       - ping
       - download
