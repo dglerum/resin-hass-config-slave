@@ -1,0 +1,70 @@
+#################################################################
+#                                                               #
+#                      Packages/Firmware   OK                   #
+#                                                               #
+#################################################################
+
+#################################################################
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    binary_sensor.ha_update_available:
+      icon: mdi:cloud-download
+
+#################################################################
+#                           Group                               #
+#################################################################
+
+group:
+  firmware:
+    name: Firmware Status
+    view: no
+    entities:
+      - binary_sensor.ha_update_available
+
+#################################################################
+#                            HA Update                          #
+#################################################################
+
+sensor:
+## Check Latest HA Version
+  - platform: scrape
+    resource: https://www.home-assistant.io
+    name: Latest HA Version
+    select: ".current-version h1"
+    value_template: '{{ value.split(":")[1] }}'
+
+## Check HA Version Installed
+  - platform: template
+    sensors:
+      installed_ha_version:
+        value_template: '{% if is_state("device_tracker.rpi", "home") %}0.72.0{% else %}On{% endif %}'
+        friendly_name: 'HA Installed Version'
+
+binary_sensor:
+  - platform: template
+    sensors:
+      ha_update_available:
+        value_template: >-
+          {{ states.sensor.latest_ha_version.state != states.sensor.installed_ha_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
+        friendly_name: HA Update Available
+
+#################################################################
+#                         Automations                           #
+#################################################################
+
+automation:
+## Notify of New HA Update Available
+  - alias: HA Update Available Notification
+    trigger:
+      platform: state
+      entity_id: binary_sensor.ha_update_available
+      to: 'on'
+    action:
+      - service: notify.pushover
+        data:
+          message: 'New Update Available for HA'
+          data:
+            url: https://www.home-assistant.io

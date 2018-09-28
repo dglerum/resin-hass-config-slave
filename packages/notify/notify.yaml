@@ -1,0 +1,100 @@
+#################################################################
+#                                                               #
+#                       Packages/Notify                         #
+#                                                               #
+#################################################################
+
+#################################################################
+#                           Notify                              #
+#################################################################
+
+notify:
+  - name: Pushover
+    platform: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
+
+#  - name: Galaxy_Tab_A_(2016)
+#    platform: lannouncer
+#    host: 10.0.6.3
+
+  - platform: kodi
+    host: 192.168.1.61
+    port: 8080
+    name: TTS_Kodi
+
+#################################################################
+#                             TTS                               #
+#################################################################
+
+tts:
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1
+    text_type: ssml
+    cache: True
+
+#################################################################
+#                       Speech Scripts                          #
+#################################################################
+
+script:
+  davy_briefing:
+    alias: Davy Briefing
+    sequence:
+      - service: tts.google_say
+        data_template:
+          entity_id: media_player.tts_kodi
+          message: >
+            {% if now().strftime("%H")|int < 12 %}
+            Good morning Davy.
+            {% elif now().strftime("%H")|int < 18 %}
+            Good afternoon Davy.
+            {% else %}
+            Good evening Davy.
+            {% endif %}
+            It's currently {{states.sensor.pws_temp_c.state|round}} degrees in Bornem but feels like {{states.sensor.pws_feelslike_c.state|round}} degrees. Today will be {{states.sensor.pws_weather_1d_metric.state|replace(".", "")}}.
+            {% if now().strftime("%H")|int < 9 and now().strftime("%w")|int > 0and now().strftime("%w")|int < 6 %}
+            The current drive to Powertec in traffic is {{states.sensor.commute_to_work.state}}
+            {% endif %}
+
+  isabel_briefing:
+    alias: Isabel Briefing
+    sequence:
+      - service: tts.google_say
+        data_template:
+          entity_id: media_player.tts_kodi
+          message: >
+            {% if now().strftime("%H")|int < 12 %}
+            Good morning Isabel.
+            {% elif now().strftime("%H")|int < 18 %}
+            Good afternoon Isabel.
+            {% else %}
+            Good evening Isabel.
+            {% endif %}
+            It's currently {{states.sensor.pws_temp_c.state|round}} degrees in Bornem but feels like {{states.sensor.pws_feelslike_c.state|round}} degrees. Today will be {{states.sensor.pws_weather_1d_metric.state|replace(".", "")}}.
+            {% if now().strftime("%H")|int < 9 and now().strftime("%w")|int > 0and now().strftime("%w")|int < 4 %}
+            Jackson has kindy today
+            {% endif %}
+
+  overnight_briefing:
+    alias: Overnight Briefing
+    sequence:
+      - service: tts.google_say
+        data_template:
+          entity_id: media_player.tts_kodi
+          message: >
+            {% if now().strftime("%H")|int < 12 %}
+            Good morning.
+            {% elif now().strftime("%H")|int < 18 %}
+            Good afternoon.
+            {% else %}
+            Good evening.
+            {% endif %}
+            It's currently {{states.sensor.pws_temp_c.state|round}} degrees in Burleigh but feels like {{states.sensor.pws_feelslike_c.state|round}} degrees. Overnight the temperature is expected to drop to {{states.sensor.pws_temp_low_2d_c.state|round}} degrees.
