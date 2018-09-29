@@ -2,7 +2,7 @@
   - service: mqtt.publish
     data:
       topic: flic/black
-      payload: "{{ trigger.to_state.attributes.click_type }}"
+      payload: "single"
   alias: Black Flic - Single
   trigger:
   - platform: event
