@@ -58,6 +58,5 @@ automation:
     condition: []
     id: '1111111111111'
     trigger:
-    - payload: single
-      platform: mqtt
-      topic: flic/flic_80e4da720d43
+    - platform: mqtt
+      topic: flic/*
