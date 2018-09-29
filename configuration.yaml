@@ -1,7 +1,7 @@
 homeassistant:
   name: HASS @ Resin.io
   latitude: !secret latitude
-  longitude: !secret longtitude
+  longitude: !secret longitude
   elevation: 17
   unit_system: metric
   time_zone: Europe/Brussels
