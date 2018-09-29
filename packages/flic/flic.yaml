@@ -48,3 +48,16 @@ automation:
     trigger:
     - platform: event
       event_type: flic_click
+
+  - action:
+    - service: persistent_notification.create
+      data_template:
+        message: "Button event: {{ trigger.payload }}"
+        title: "{{ trigger.topic }}"
+    alias: Flic Event Test
+    condition: []
+    id: '1111111111111'
+    trigger:
+    - payload: single
+      platform: mqtt
+      topic: flic/flic_80e4da720d43
