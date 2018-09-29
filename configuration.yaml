@@ -42,6 +42,13 @@ discovery:
   ignore:
     - apple_tv
 
+## Philips Hue bridge config
+hue:
+  bridges:
+    - host: 192.168.1.2
+      allow_unreachable: true
+      allow_hue_groups: false
+
 logbook:
 map:
 sun:
