@@ -1,12 +1,3 @@
-  - platform: nmap_tracker
-    # scan_options: " --privileged -sP "
-    hosts: 192.168.1.0/24
-    home_interval: 10
-    interval_seconds: 60
-    new_device_defaults:
-      track_new_devices: False
-      hide_if_away: False
-
   - platform: tile
     username: dglerum@gmail.com
     password: !secret http_password
