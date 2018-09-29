@@ -1,9 +1,9 @@
 homeassistant:
   customize:
     binary_sensor.flic_80e4da720d43:
-      friendly_name: black
+      friendly_name: Black
     binary_sensor.flic_80e4da721754:
-      friendly_name: white
+      friendly_name: White
 
 group:
   flic:
@@ -26,71 +26,4 @@ automation:
     trigger:
     - platform: event
       event_type: flic_click
-      # event_data:
-      #   button_name: flic_80e4da720d43
-      #   click_type: single
-
-  # - action:
-  #   - service: mqtt.publish
-  #     data:
-  #       topic: flic/black
-  #       payload: "double"
-  #   alias: Black Flic - Double
-  #   trigger:
-  #   - platform: event
-  #     event_type: flic_click
-  #     event_data:
-  #       button_name: flic_80e4da720d43
-  #       click_type: double
-  #
-  # - action:
-  #   - service: mqtt.publish
-  #     data:
-  #       topic: flic/black
-  #       payload: "hold"
-  #   alias: Black Flic - Hold
-  #   trigger:
-  #   - platform: event
-  #     event_type: flic_click
-  #     event_data:
-  #       button_name: flic_80e4da720d43
-  #       click_type: hold
-  #
-  # - action:
-  #   - service: mqtt.publish
-  #     data:
-  #       topic: flic/white
-  #       payload: "single"
-  #   alias: White Flic - Single
-  #   trigger:
-  #   - platform: event
-  #     event_type: flic_click
-  #     event_data:
-  #       button_name: flic_80e4da721754
-  #       click_type: single
-  #
-  # - action:
-  #   - service: mqtt.publish
-  #     data:
-  #       topic: flic/white
-  #       payload: "double"
-  #   alias: White Flic - Double
-  #   trigger:
-  #   - platform: event
-  #     event_type: flic_click
-  #     event_data:
-  #       button_name: flic_80e4da721754
-  #       click_type: double
-  #
-  # - action:
-  #   - service: mqtt.publish
-  #     data:
-  #       topic: flic/white
-  #       payload: "hold"
-  #   alias: White Flic - Hold
-  #   trigger:
-  #   - platform: event
-  #     event_type: flic_click
-  #     event_data:
-  #       button_name: flic_80e4da721754
-  #       click_type: hold
+  
