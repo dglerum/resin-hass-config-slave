@@ -50,15 +50,15 @@ mqtt:
   broker: 192.168.1.162
   port: 1883
 
-mqtt_statestream:
-  base_topic: homeassistant
-  publish_attributes: true
-  publish_timestamps: true
-  include:
-    entities:
-      - binary_sensor.flic_80e4da720d43
-      - binary_sensor.flic_80e4da721754
-      
+# mqtt_statestream:
+#   base_topic: homeassistant
+#   publish_attributes: true
+#   publish_timestamps: true
+#   include:
+#     entities:
+#       - binary_sensor.flic_80e4da720d43
+#       - binary_sensor.flic_80e4da721754
+
 camera: !include includes/cameras.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
