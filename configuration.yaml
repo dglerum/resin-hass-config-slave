@@ -50,6 +50,9 @@ mqtt:
   broker: 192.168.1.162
   port: 1883
 
+binary_sensor:
+  - platform: flic
+  
 camera: !include includes/cameras.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
