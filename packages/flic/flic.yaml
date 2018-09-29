@@ -21,7 +21,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: flic/black
-        payload: "{{ trigger.event_data.click_type }}"
+        payload: "{{ trigger.event.data.click_type }}"
     alias: Black Flic - Single
     trigger:
     - platform: event
