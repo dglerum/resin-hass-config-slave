@@ -1,0 +1,6 @@
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longtitude
+  radius: 150
+  icon: mdi:home
+  track_ios: true
