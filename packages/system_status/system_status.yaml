@@ -87,16 +87,6 @@ device_tracker:
       tv_kodi: !secret tv_kodi
       philips_hub: !secret philips_hub
 
-  # - platform: nmap_tracker
-  #   # scan_options: " --privileged -sP "
-  #   hosts: 192.168.1.0/24
-  #   home_interval: 10
-  #   interval_seconds: 60
-  #   new_device_defaults:
-  #     track_new_devices: False
-  #     hide_if_away: False
-  #   exclude:
-  #     - 192.168.1.1
   - platform: nmap_tracker
     hosts:
       - 10.0.3.1
@@ -256,8 +246,8 @@ automation:
     trigger:
       platform: numeric_state
       entity_id: sensor.speedtest_download
-      below: 85
+      below: 35
     action:
       - service: notify.pushover
         data:
-          message: 'Warning - ISP Download Speed is lower then 85Mbps'
+          message: 'Warning - ISP Download Speed is lower then 35Mbps'
