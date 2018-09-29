@@ -139,10 +139,10 @@ binary_sensor:
       orbi_router:
         friendly_name: Orbi Router
         device_class: connectivity
-        entity_id: device_tracker.orbi_router
-        value_template: "{{ is_state('device_tracker.orbi_router', 'home') }}"
+        entity_id: device_tracker.rbr50lan
+        value_template: "{{ is_state('device_tracker.rbr50lan', 'home') }}"
         icon_template: >-
-          {% if is_state('device_tracker.orbi_router', 'home') %}
+          {% if is_state('device_tracker.rbr50lan', 'home') %}
             mdi:access-point
           {% else %}
             mdi:alert
@@ -150,10 +150,10 @@ binary_sensor:
       orbi_sattelite:
         friendly_name: Orbi Sattelite
         device_class: connectivity
-        entity_id: device_tracker.orbi_sattelite
-        value_template: "{{ is_state('device_tracker.orbi_sattelite', 'home') }}"
+        entity_id: device_tracker.rbs50lan
+        value_template: "{{ is_state('device_tracker.rbs50lan', 'home') }}"
         icon_template: >-
-          {% if is_state('device_tracker.orbi_sattelite', 'home') %}
+          {% if is_state('device_tracker.rbs50lan', 'home') %}
             mdi:access-point
           {% else %}
             mdi:alert
@@ -161,7 +161,7 @@ binary_sensor:
       philips_hub:
         friendly_name: Philips Hub
         device_class: connectivity
-        entity_id: device_tracker.philips_hub
+        entity_id: device_tracker.philips_bridge
         value_template: "{{ is_state('device_tracker.philips_bridge', 'home') }}"
         icon_template: >-
           {% if is_state('device_tracker.philips_bridge', 'home') %}
