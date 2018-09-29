@@ -49,14 +49,14 @@ automation:
     - platform: event
       event_type: flic_click
 
-  - action:
-    - service: persistent_notification.create
-      data_template:
-        message: "Button event: {{ trigger.payload }}"
-        title: "{{ trigger.topic }}"
-    alias: Flic Event Test
-    condition: []
-    id: '1111111111111'
-    trigger:
-    - platform: mqtt
-      topic: flic/#
+  # - action:
+  #   - service: persistent_notification.create
+  #     data_template:
+  #       message: "Button event: {{ trigger.payload }}"
+  #       title: "{{ trigger.topic }}"
+  #   alias: Flic Event Test
+  #   condition: []
+  #   id: '1111111111111'
+  #   trigger:
+  #   - platform: mqtt
+  #     topic: flic/#
