@@ -20,7 +20,7 @@ automation:
   - action:
     - service: mqtt.publish
       data_template:
-        topic: "flic/{{ trigger.entity_id }}"
+        topic: "flic/{{ trigger.entity_id.attributes.friendly_name }}"
         payload: "{{ trigger.event.data.click_type }}"
     alias: Black Flic - Single
     trigger:
