@@ -1,43 +1,43 @@
-  include:
-    entities:
-      # - sensor.colorprinter_online
-      # - sensor.router_online
-      # - sensor.satelite_online
-      # - sensor.glerums_iphone_x_battery_level
-      # - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
-      # - sensor.dark_sky_temperature
-      # - sensor.wc_downstairs_temp
-      # - sensor.wc_upstairs_temp
-      - sensor.memory_use_percent
-      - sensor.processor_use
-      - sensor.disk_use_percent_
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
-      - sensor.speedtest_ping
-      # - device_tracker.davy_bayesian
-      # - device_tracker.glerums_iphone
-      # - device_tracker.davy_iphone_owntracks
-      # - device_tracker.davy_nodered
-      # - light.hue_desk
-      # - light.hue_lightstrip
-      # - light.hue_livingroom
-      # - light.fibaro_kitchen_dimmer_level
-      # - light.fibaro_table_dimmer_level
-      # - light.fibaro_hallway_dimmer_level
-      # - light.fibaro_stair_dimmer_level
-      # - switch.wemo_livingroom
-
-    domains:
-      - light
-      - sensor
-      - switch
-      - binary_sensor
-      - device_tracker
-  exclude:
-    entities:
-     - sensor.time
-     - sensor.date
-     - sensor.date__time
-     - sensor.time__date
-     - sensor.internet_time
-     - sensor.time_utc
+  # include:
+  #   entities:
+  #     - sensor.colorprinter_online
+  #     - sensor.router_online
+  #     - sensor.satelite_online
+  #     - sensor.glerums_iphone_x_battery_level
+  #     - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
+  #     - sensor.dark_sky_temperature
+  #     - sensor.wc_downstairs_temp
+  #     - sensor.wc_upstairs_temp
+  #     - sensor.memory_use_percent
+  #     - sensor.processor_use
+  #     - sensor.disk_use_percent_
+  #     - sensor.speedtest_download
+  #     - sensor.speedtest_upload
+  #     - sensor.speedtest_ping
+  #     - device_tracker.davy_bayesian
+  #     - device_tracker.glerums_iphone
+  #     - device_tracker.davy_iphone_owntracks
+  #     - device_tracker.davy_nodered
+  #     - light.hue_desk
+  #     - light.hue_lightstrip
+  #     - light.hue_livingroom
+  #     - light.fibaro_kitchen_dimmer_level
+  #     - light.fibaro_table_dimmer_level
+  #     - light.fibaro_hallway_dimmer_level
+  #     - light.fibaro_stair_dimmer_level
+  #     - switch.wemo_livingroom
+  #
+  #   domains:
+  #     - light
+  #     - sensor
+  #     - switch
+  #     - binary_sensor
+  #     - device_tracker
+  # exclude:
+  #   entities:
+  #    - sensor.time
+  #    - sensor.date
+  #    - sensor.date__time
+  #    - sensor.time__date
+  #    - sensor.internet_time
+  #    - sensor.time_utc
