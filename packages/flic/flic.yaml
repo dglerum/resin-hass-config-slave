@@ -20,15 +20,15 @@ automation:
   - action:
     - service: mqtt.publish
       data_template:
-        topic: "flic/{{ trigger.entity_id }}"
+        topic: "flic/{{ trigger.event.data.button_name }}"
         payload: "{{ trigger.event.data.click_type }}"
     alias: Flic button event
     trigger:
     - platform: event
       event_type: flic_click
-      event_data:
-        button_name: flic_80e4da720d43
-        click_type: single
+      # event_data:
+      #   button_name: flic_80e4da720d43
+      #   click_type: single
 
   # - action:
   #   - service: mqtt.publish
