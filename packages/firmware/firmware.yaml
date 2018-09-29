@@ -44,7 +44,7 @@ sensor:
 
   - platform: command_line
     name: 'HA Installed Version'
-    command: "cat .HA_VERSION"
+    command: "cat /data/config/.HA_VERSION"
 
 binary_sensor:
   - platform: template
