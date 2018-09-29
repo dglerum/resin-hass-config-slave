@@ -37,11 +37,10 @@ sensor:
     value_template: '{{ value.split(":")[1] }}'
 
 ## Check HA Version Installed
-  - platform: template
-    sensors:
-      installed_ha_version:
-        value_template: '{% if is_state("device_tracker.rpi", "home") %}0.72.0{% else %}On{% endif %}'
-        friendly_name: 'HA Installed Version'
+  - platform: rest
+    resource: !secret config_url
+    name: 'HA Installed Version'
+    value_template: '{{ value_json.version }}'
 
 binary_sensor:
   - platform: template
