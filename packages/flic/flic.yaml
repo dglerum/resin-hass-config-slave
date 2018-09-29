@@ -1,3 +1,10 @@
+homeassistant:
+  customize:
+    binary_sensor.flic_80e4da720d4:
+      friendly_name: Black Button
+    binary_sensor.flic_80e4da721754:
+      friendly_name: White Button
+
 group:
   flic:
     name: Flic Buttons
