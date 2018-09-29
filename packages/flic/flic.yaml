@@ -10,7 +10,6 @@ group:
     name: Flic Buttons
     view: no
     entities:
-      - automation.flic_button_event
       - binary_sensor.flic_80e4da720d43
       - binary_sensor.flic_80e4da721754
 
