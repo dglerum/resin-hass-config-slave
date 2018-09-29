@@ -1,0 +1,253 @@
+#################################################################
+#                                                               #
+#                    Packages/Core Network                      #
+#                                                               #
+#################################################################
+
+#################################################################
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    sensor.disk_use_:
+      friendly_name: Disk Use
+    sensor.speedtest_ping:
+      friendly_name: Ping
+      icon: mdi:pulse
+    sensor.speedtest_download:
+      friendly_name: Download
+      icon: mdi:arrow-down-bold
+    sensor.speedtest_upload:
+      friendly_name: Upload
+      icon: mdi:arrow-up-bold
+
+#################################################################
+#                           Group                               #
+#################################################################
+
+group:
+  core network:
+    name: Core Network
+    view: no
+    entities:
+      - binary_sensor.core_router
+      - binary_sensor.orbi_router
+      - binary_sensor.orbi_sattelite
+
+  core devices:
+    name: Core Devices
+    view: no
+    entities:
+      - binary_sensor.philips_hub
+      - binary_sensor.printer
+
+  ha devices:
+    name: HA Devices
+    view: no
+    entities:
+      - binary_sensor.rpi
+
+  media devices:
+    name: Media Devices
+    view: no
+    entities:
+      - binary_sensor.tv_kodi
+
+  internet:
+    name: Internet
+    view: no
+    entities:
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+
+  rpi resources:
+    name: RPi Resources
+    view: no
+    entities:
+      - sensor.disk_use_
+      - sensor.memory_use_percent
+      - sensor.processor_use
+      - sensor.cpu_temperature
+      - sensor.last_boot
+
+#################################################################
+#                       Device Tracker                          #
+#################################################################
+
+device_tracker:
+  - platform: ping
+    hosts:
+      core_router: !secret core_router
+      rPi: !secret rPi
+      orbi_router: !secret orbi_router
+      orbi_sattelite: !secret orbi_sattelite
+      printer: !secret printer
+      tv_kodi: !secret tv_kodi
+      philips_hub: !secret philips_hub
+
+  - platform: nmap_tracker
+    hosts:
+      - 10.0.3.1
+      - 10.0.20.2
+      - 10.0.20.4
+
+#################################################################
+#                           Sensors                             #
+#################################################################
+
+sensor:
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+
+  - platform: systemmonitor
+    resources:
+    - type: disk_use
+      arg: /
+    - type: memory_use_percent
+    - type: processor_use
+    - type: last_boot
+
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ (value | multiply(0.001)) | round(1) }}'
+
+#################################################################
+#                       Binary Sensors                          #
+#################################################################
+
+binary_sensor:
+  - platform: template
+    sensors:
+      core_router:
+        friendly_name: Core Router
+        device_class: connectivity
+        entity_id: device_tracker.core_router
+        value_template: "{{ is_state('device_tracker.core_router', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.core_router', 'home') %}
+            mdi:router-wireless
+          {% else %}
+            mdi:alert
+          {% endif %}
+      orbi_router:
+        friendly_name: Orbi Router
+        device_class: connectivity
+        entity_id: device_tracker.orbi_router
+        value_template: "{{ is_state('device_tracker.orbi_router', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.orbi_router', 'home') %}
+            mdi:access-point
+          {% else %}
+            mdi:alert
+          {% endif %}
+      orbi_sattelite:
+        friendly_name: Orbi Sattelite
+        device_class: connectivity
+        entity_id: device_tracker.orbi_sattelite
+        value_template: "{{ is_state('device_tracker.orbi_sattelite', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.orbi_sattelite', 'home') %}
+            mdi:access-point
+          {% else %}
+            mdi:alert
+          {% endif %}
+      philips_hub:
+        friendly_name: Philips Hub
+        device_class: connectivity
+        entity_id: device_tracker.philips_hub
+        value_template: "{{ is_state('device_tracker.philips_hub', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.philips_hub', 'home') %}
+            mdi:checkbox-blank-circle-outline
+          {% else %}
+            mdi:alert
+          {% endif %}
+      printer:
+        friendly_name: Printer
+        device_class: connectivity
+        entity_id: device_tracker.printer
+        value_template: "{{ is_state('device_tracker.printer', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.printer', 'home') %}
+            mdi:printer
+          {% else %}
+            mdi:alert
+          {% endif %}
+      rpi:
+        friendly_name: HA Server
+        device_class: connectivity
+        entity_id: device_tracker.rpi
+        value_template: "{{ is_state('device_tracker.rpi', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.rpi', 'home') %}
+            mdi:home-assistant
+          {% else %}
+            mdi:alert
+          {% endif %}
+      tv_kodi:
+        friendly_name: TV Kodi
+        device_class: connectivity
+        entity_id: device_tracker.tv_kodi
+        value_template: "{{ is_state('device_tracker.tv_kodi', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tv_kodi', 'home') %}
+            mdi:kodi
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+#################################################################
+#                          Automations                          #
+#################################################################
+
+automation:
+## Notify of High Disk Use
+  - alias: Disk Use Alarm
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.disk_use_
+      above: 12
+    action:
+      - service: notify.pushbullet
+        data:
+          message: 'Warning - HA Server Disk Use is above 12Gb'
+
+## Notify of High CPU Usage
+  - alias: CPU Use Alarm
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.processor_use
+      above: 85
+    action:
+      - service: notify.pushover
+        data:
+          message: 'Warning - HA Server Processor above 85%'
+
+## Notify if CPU Temperature is High
+  - alias: CPU Temp Alarm
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.cpu_temperature
+      above: 75
+    action:
+      - service: notify.pushover
+        data:
+          message: 'Warning - HA Server CPU Temp Above 75c'
+
+## Notify if ISP Download Speed has dropped
+  - alias: Internet Download Speed Drop
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.speedtest_download
+      below: 35
+    action:
+      - service: notify.pushover
+        data:
+          message: 'Warning - ISP Download Speed is lower then 35Mbps'

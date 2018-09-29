@@ -1,8 +1,8 @@
 homeassistant:
   name: HASS @ Resin.io
-  latitude: 0
-  longitude: 0
-  elevation: 0
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 17
   unit_system: metric
   time_zone: Europe/Brussels
   customize: !include customize.yaml
@@ -37,34 +37,29 @@ logger:
 
 updater:
 
-
 # Discover some devices automatically
 # discovery:
 #   ignore:
 #     - apple_tv
 
-history:
 logbook:
 map:
 sun:
-
-sensor:
-  - platform: yr
-
-tts:
-  - platform: google
-
-  - platform: amazon_polly
-    aws_access_key_id: !secret aws_access_key_id
-    aws_secret_access_key: !secret aws_secret_access_key
 
 mqtt:
   broker: 192.168.1.162
   port: 1883
 
+camera: !include includes/cameras.yaml
+history: !include includes/history.yaml
+recorder: !include includes/recorder.yaml
+sensor: !include includes/sensors.yaml
 group: !include groups.yaml
 automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
 input_select: !include includes/input_selects.yaml
 input_boolean: !include includes/input_booleans.yaml
+device_tracker: !include includes/device_trackers.yaml
+ios: !include includes/ios.yaml
+zone: !include includes/zones.yaml

@@ -1,0 +1,5 @@
+  - platform: tile
+    username: dglerum@gmail.com
+    password: !secret tile_password
+
+  - platform: owntracks_http
