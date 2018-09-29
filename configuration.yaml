@@ -30,6 +30,7 @@ logger:
   logs:
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
+    homeassistant.components.device_tracker.ping: debug
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
