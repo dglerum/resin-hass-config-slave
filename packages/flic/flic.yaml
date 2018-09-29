@@ -1,9 +1,9 @@
 homeassistant:
   customize:
     binary_sensor.flic_80e4da720d43:
-      friendly_name: Black
+      friendly_name: black
     binary_sensor.flic_80e4da721754:
-      friendly_name: White
+      friendly_name: white
 
 group:
   flic:
