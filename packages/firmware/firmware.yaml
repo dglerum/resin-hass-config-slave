@@ -51,7 +51,7 @@ binary_sensor:
     sensors:
       ha_update_available:
         value_template: >-
-          {{ states.sensor.latest_ha_version.state != states.sensor.installed_ha_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
+          {{ states.sensor.latest_ha_version.state != states.sensor.ha_installed_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
         friendly_name: HA Update Available
 
 #################################################################
