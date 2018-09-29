@@ -49,6 +49,11 @@ hue:
       allow_unreachable: true
       allow_hue_groups: false
 
+remote:
+  - platform: harmony
+    name: Logitech Harmony
+    host: !secret harmony_hub_ip
+    
 logbook:
 map:
 sun:
