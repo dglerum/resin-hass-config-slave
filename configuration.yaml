@@ -83,4 +83,4 @@ input_select: !include includes/input_selects.yaml
 input_boolean: !include includes/input_booleans.yaml
 device_tracker: !include includes/device_trackers.yaml
 ios: !include includes/ios.yaml
-zone: !include includes/zones.yaml
+#zone: !include includes/zones.yaml
