@@ -59,4 +59,4 @@ automation:
     id: '1111111111111'
     trigger:
     - platform: mqtt
-      topic: flic/*
+      topic: flic/#
