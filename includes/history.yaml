@@ -35,6 +35,7 @@
       - device_tracker
   exclude:
     entities:
+     - sensor.time
      - sensor.date
      - sensor.date__time
      - sensor.time__date
