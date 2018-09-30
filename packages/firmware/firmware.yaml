@@ -27,23 +27,6 @@ group:
       - sensor.ha_installed_version
 
 #################################################################
-#                            Input Select                       #
-#################################################################
-
-input_select:
-  log_level:
-    name: Log Level
-    options:
-      - critical
-      - fatal
-      - error
-      - warning
-      - info
-      - debug
-      - notset
-    initial: warning
-
-#################################################################
 #                            HA Update                          #
 #################################################################
 
