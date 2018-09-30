@@ -12,9 +12,12 @@ homeassistant:
   customize:
     input_select.git_branch:
       friendly_name: Select Branch
-      icon: mdi:github-box
     sensor.current_branch:
       friendly_name: Current Branch
+      icon: mdi:github-box
+    script.get_latest_dev_config:
+      icon: mdi:github-box
+    script.get_latest_prd_config:
       icon: mdi:github-box
 
 #################################################################
