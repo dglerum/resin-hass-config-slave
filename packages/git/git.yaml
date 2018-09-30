@@ -12,12 +12,16 @@ homeassistant:
   customize:
     input_select.git_branch:
       friendly_name: Select Branch
+      icon: mdi:github-box
     sensor.current_branch:
       friendly_name: Current Branch
+      icon: mdi:source-branch
     sensor.new_prd_commits:
       friendly_name: Commits in DEV
+      icon: mdi:source-commit
     sensor.new_dev_commits:
       friendly_name: Commits in Master
+      icon: mdi:source-commit
 
 #################################################################
 #                           Group                               #
