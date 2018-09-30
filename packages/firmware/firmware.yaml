@@ -12,6 +12,10 @@ homeassistant:
   customize:
     binary_sensor.ha_update_available:
       icon: mdi:cloud-download
+    sensor.latest_ha_version:
+      icon: mdi:home-assistant
+    sensor.ha_installed_version:
+      icon: mdi:home-assistant
 
 #################################################################
 #                           Group                               #
