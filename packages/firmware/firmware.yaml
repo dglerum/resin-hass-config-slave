@@ -76,7 +76,7 @@ binary_sensor:
 #################################################################
 #                         Automations                           #
 #################################################################
-
+automation:
 ## Notify of New HA Update Available
   - alias: HA Update Available Notification
     trigger:
