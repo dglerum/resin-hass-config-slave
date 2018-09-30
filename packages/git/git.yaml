@@ -15,13 +15,7 @@ homeassistant:
       icon: mdi:github-box
     sensor.current_branch:
       friendly_name: Current Branch
-      icon: mdi:source-branch
-    sensor.new_prd_commits:
-      friendly_name: Commits in DEV
-      icon: mdi:source-commit
-    sensor.new_dev_commits:
-      friendly_name: Commits in Master
-      icon: mdi:source-commit
+      icon: mdi:github-box
 
 #################################################################
 #                           Group                               #
@@ -33,12 +27,10 @@ group:
     view: no
     control: hidden
     entities:
+      - sensor.current_branch
       - input_select.git_branch
       - script.get_latest_dev_config
       - script.get_latest_prd_config
-      - sensor.current_branch
-      - sensor.new_prd_commits
-      - sensor.new_dev_commits
 
 #################################################################
 #                           Input Select                        #
