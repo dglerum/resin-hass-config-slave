@@ -1,0 +1,62 @@
+#################################################################
+#                                                               #
+#                      Packages/Flic   OK                       #
+#                                                               #
+#################################################################
+
+#################################################################
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    binary_sensor.flic_80e4da720d43:
+      friendly_name: Black
+    binary_sensor.flic_80e4da721754:
+      friendly_name: White
+
+#################################################################
+#                           Group                               #
+#################################################################
+
+group:
+  flic:
+    name: Flic Buttons
+    view: no
+    entities:
+      - binary_sensor.flic_80e4da720d43
+      - binary_sensor.flic_80e4da721754
+
+#################################################################
+#                          Flic Component                       #
+#################################################################
+
+binary_sensor:
+  - platform: flic
+
+#################################################################
+#                         Automations                           #
+#################################################################
+
+automation:
+  - action:
+    - service: mqtt.publish
+      data_template:
+        topic: "flic/{{ trigger.event.data.button_name }}"
+        payload: "{{ trigger.event.data.click_type }}"
+    alias: Flic button event
+    trigger:
+    - platform: event
+      event_type: flic_click
+
+  # - action:
+  #   - service: persistent_notification.create
+  #     data_template:
+  #       message: "Button event: {{ trigger.payload }}"
+  #       title: "{{ trigger.topic }}"
+  #   alias: Flic Event Test
+  #   condition: []
+  #   id: '1111111111111'
+  #   trigger:
+  #   - platform: mqtt
+  #     topic: flic/#

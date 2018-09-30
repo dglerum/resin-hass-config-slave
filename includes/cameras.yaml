@@ -5,13 +5,13 @@
 ####################################################
 
 # Webcams
-- platform: mjpeg
-  name: "Ultimaker3"
-  mjpeg_url: http://192.168.1.25:8080/?action=stream
-
-- platform: mjpeg
-  name: "Octo"
-  mjpeg_url: http://192.168.1.26:8080/?action=stream
+# - platform: mjpeg
+#   name: "Ultimaker3"
+#   mjpeg_url: http://192.168.1.25:8080/?action=stream
+#
+# - platform: mjpeg
+#   name: "Octo"
+#   mjpeg_url: http://192.168.1.26:8080/?action=stream
 
 
 # - platform: ring
@@ -20,7 +20,7 @@
 # - platform: mjpeg
 #   name: Storage
 #   mjpeg_url: !secret camera_url
-# 
+#
 # - platform: mjpeg
 #   name: StorageCam
 #   mjpeg_url: http://dglerum.noip.me/api/camera_proxy/camera.storagecam?token=613c6c7bdb87b4fea2a6b0effa57010e5db62867dafdf3b7e84d29ece85f8369
