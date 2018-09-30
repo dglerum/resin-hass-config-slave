@@ -5,7 +5,38 @@
 #################################################################
 
 #################################################################
-#                           Input Selects                       #
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    input_select.git_branch:
+      friendly_name: Select Branch
+    sensor.current_branch:
+      friendly_name: Current Branch
+    sensor.new_prd_commits:
+      friendly_name: Commits in DEV
+    sensor.new_dev_commits:
+      friendly_name: Commits in Master
+
+#################################################################
+#                           Group                               #
+#################################################################
+
+group:
+  git:
+    name: Git Repository
+    view: no
+    entities:
+      - input_select.git_branch
+      - sensor.current_branch
+      - sensor.new_prd_commits
+      - sensor.new_dev_commits
+      - script.get_latest_dev_config
+      - script.get_latest_prd_config
+
+#################################################################
+#                           Input Select                        #
 #################################################################
 
 input_select:
@@ -18,12 +49,12 @@ input_select:
     initial: select branch
 
 #################################################################
-#                           Scripts                             #
+#                           Script                              #
 #################################################################
 
 script:
   get_latest_prd_config:
-    alias: "Get Production Config"
+    alias: "Get Master Config"
     sequence:
       - service: shell_command.update_new_commits_sensor
         data:
@@ -38,7 +69,7 @@ script:
       - service: homeassistant.restart
 
   get_latest_dev_config:
-    alias: "Get Development Config"
+    alias: "Get Dev Config"
     sequence:
       - service: shell_command.update_new_commits_sensor
         data:
@@ -53,7 +84,7 @@ script:
       - service: homeassistant.restart
 
 #################################################################
-#                           Shell Commands                      #
+#                           Shell Command                       #
 #################################################################
 
 shell_command:
@@ -63,7 +94,7 @@ shell_command:
   checkout_master_branch_from_github: bash /data/config/bin/change_branch_master.sh "{{ branch }}"
 
 #################################################################
-#                           Automations                         #
+#                           Automation                          #
 #################################################################
 
 automation:
