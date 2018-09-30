@@ -34,11 +34,11 @@ group:
     control: hidden
     entities:
       - input_select.git_branch
+      - script.get_latest_dev_config
+      - script.get_latest_prd_config
       - sensor.current_branch
       - sensor.new_prd_commits
       - sensor.new_dev_commits
-      - script.get_latest_dev_config
-      - script.get_latest_prd_config
 
 #################################################################
 #                           Input Select                        #
