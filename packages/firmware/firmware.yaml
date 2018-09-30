@@ -17,14 +17,14 @@ homeassistant:
 #                           Group                               #
 #################################################################
 
-# group:
-#   firmware:
-#     name: Firmware Status
-#     view: no
-#     entities:
-#       - binary_sensor.ha_update_available
-#       - sensor.latest_ha_version.state
-#       - sensor.ha_installed_version
+group:
+  firmware:
+    name: Firmware Status
+    view: no
+    entities:
+      - binary_sensor.ha_update_available
+      - sensor.latest_ha_version.state
+      - sensor.ha_installed_version
 
 #################################################################
 #                            HA Update                          #
