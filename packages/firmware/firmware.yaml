@@ -60,15 +60,6 @@ binary_sensor:
 #                         Automations                           #
 #################################################################
 automation:
-  - alias: Log Level
-    trigger:
-      platform: state
-      entity_id: input_select.log_level
-    action:
-      - service: logger.set_level
-        data_template:
-          homeassistant.components: "{{ trigger.to_state.state }}"
-
 ## Notify of New HA Update Available
   - alias: HA Update Available Notification
     trigger:
