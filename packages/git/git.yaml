@@ -1,3 +1,13 @@
+input_select:
+  git_branch:
+    name: GIT Branch
+    options:
+      - select branch
+      - dev
+      - master
+    initial: select branch
+
+
 automation:
   - action:
     - service: shell_command.checkout_dev_branch_from_github

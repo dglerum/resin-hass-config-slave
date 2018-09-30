@@ -14,11 +14,3 @@ log_level:
     - debug
     - notset
   initial: warning
-
-git_branch:
-  name: GIT Branch
-  options:
-    - select branch
-    - dev
-    - master
-  initial: select branch
