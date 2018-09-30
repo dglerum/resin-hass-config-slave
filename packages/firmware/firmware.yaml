@@ -23,6 +23,24 @@ group:
     view: no
     entities:
       - binary_sensor.ha_update_available
+      - sensor.latest_ha_version.state
+      - sensor.ha_installed_version
+
+#################################################################
+#                            Input Select                       #
+#################################################################
+
+log_level:
+  name: Log Level
+  options:
+    - critical
+    - fatal
+    - error
+    - warning
+    - info
+    - debug
+    - notset
+  initial: warning
 
 #################################################################
 #                            HA Update                          #
@@ -59,6 +77,14 @@ binary_sensor:
 #################################################################
 
 automation:
+  - action:
+    - service: logger.set_level
+      data_template:
+        homeassistant.components: "{{ trigger.to_state.state }}"
+    alias: Log Level
+    trigger:
+    - platform: state
+      entity_id: input_select.log_level
 ## Notify of New HA Update Available
   - alias: HA Update Available Notification
     trigger:

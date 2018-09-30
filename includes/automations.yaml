@@ -1,8 +1,1 @@
-- action:
-  - service: logger.set_level
-    data_template:
-      homeassistant.components: "{{ trigger.to_state.state }}"
-  alias: Log Level
-  trigger:
-  - platform: state
-    entity_id: input_select.log_level
+[]
