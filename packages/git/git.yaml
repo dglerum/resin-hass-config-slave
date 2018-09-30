@@ -1,0 +1,139 @@
+#################################################################
+#                                                               #
+#                      Packages/Git   OK                        #
+#                                                               #
+#################################################################
+
+#################################################################
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    input_select.git_branch:
+      friendly_name: Select Branch
+      icon: mdi:github-box
+    sensor.current_branch:
+      friendly_name: Current Branch
+      icon: mdi:source-branch
+    sensor.new_prd_commits:
+      friendly_name: Commits in DEV
+      icon: mdi:source-commit
+    sensor.new_dev_commits:
+      friendly_name: Commits in Master
+      icon: mdi:source-commit
+
+#################################################################
+#                           Group                               #
+#################################################################
+
+group:
+  git:
+    name: Git Repository
+    view: no
+    control: hidden
+    entities:
+      - input_select.git_branch
+      - sensor.current_branch
+      - sensor.new_prd_commits
+      - sensor.new_dev_commits
+      - script.get_latest_dev_config
+      - script.get_latest_prd_config
+
+#################################################################
+#                           Input Select                        #
+#################################################################
+
+input_select:
+  git_branch:
+    name: GIT Branch
+    options:
+      - select branch
+      - dev
+      - master
+    initial: select branch
+
+#################################################################
+#                           Script                              #
+#################################################################
+
+script:
+  get_latest_prd_config:
+    alias: "Get Master Config"
+    sequence:
+      - service: shell_command.update_new_commits_sensor
+        data:
+          api_password: !secret http_password
+      - condition: numeric_state
+        entity_id: sensor.new_prd_commits
+        above: 0
+      - service: shell_command.checkout_master_branch_from_github
+        data:
+          branch: "{{ trigger.to_state.state }}"
+      - service: shell_command.update_config_from_github
+      - service: homeassistant.restart
+
+  get_latest_dev_config:
+    alias: "Get Dev Config"
+    sequence:
+      - service: shell_command.update_new_commits_sensor
+        data:
+          api_password: !secret http_password
+      - condition: numeric_state
+        entity_id: sensor.new_dev_commits
+        above: 0
+      - service: shell_command.checkout_dev_branch_from_github
+        data:
+          branch: "{{ trigger.to_state.state }}"
+      - service: shell_command.update_config_from_github
+      - service: homeassistant.restart
+
+#################################################################
+#                           Shell Command                       #
+#################################################################
+
+shell_command:
+  update_new_commits_sensor: bash /data/config/bin/update_new_commits_sensor.sh "{{ api_password }}"
+  update_config_from_github: bash /data/config/bin/update_config_from_github.sh
+  checkout_dev_branch_from_github: bash /data/config/bin/change_branch_dev.sh "{{ branch }}"
+  checkout_master_branch_from_github: bash /data/config/bin/change_branch_master.sh "{{ branch }}"
+
+#################################################################
+#                           Automation                          #
+#################################################################
+
+automation:
+  - action:
+    - service: shell_command.checkout_dev_branch_from_github
+      data:
+        branch: "{{ trigger.to_state.state }}"
+    - service: shell_command.update_new_commits_sensor
+      data:
+        api_password: !secret http_password
+    alias: Checkout GIT Dev Branch
+    trigger:
+    - platform: state
+      entity_id: input_select.git_branch
+      to: dev
+
+  - action:
+    - service: shell_command.checkout_master_branch_from_github
+      data:
+        branch: "{{ trigger.to_state.state }}"
+    - service: shell_command.update_new_commits_sensor
+      data:
+        api_password: !secret http_password
+    alias: Checkout GIT Master Branch
+    trigger:
+    - platform: state
+      entity_id: input_select.git_branch
+      to: master
+
+  - action:
+    - service: shell_command.update_new_commits_sensor
+      data:
+        api_password: !secret http_password
+    alias: 'Get Branch and Commits info'
+    trigger:
+      platform: homeassistant
+      event: start
