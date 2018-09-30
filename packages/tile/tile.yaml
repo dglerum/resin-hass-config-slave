@@ -1,0 +1,39 @@
+#################################################################
+#                                                               #
+#                      Packages/Tile                            #
+#                                                               #
+#################################################################
+
+#################################################################
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    device_tracker.tile_glerums_iphone_x:
+      friendly_name: iPhone X
+      icon: mdi:radar
+    device_tracker.tile_laptop_bag:
+      friendly_name: Laptop Bag
+      icon: mdi:radar
+    device_tracker.tile_volvo_xc60:
+      friendly_name: Volvo XC60
+      icon: mdi:radar
+    device_tracker.tile_work_keys:
+      friendly_name: Work Keys
+      icon: mdi:radar
+
+#################################################################
+#                           Group                               #
+#################################################################
+
+group:
+  tile:
+    name: Tile Trackers
+    view: no
+    control: hidden
+    entities:
+      - device_tracker.tile_glerums_iphone_x
+      - device_tracker.tile_laptop_bag
+      - device_tracker.tile_volvo_xc60
+      - device_tracker.tile_work_keys
