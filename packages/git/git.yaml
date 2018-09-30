@@ -31,6 +31,7 @@ group:
   git:
     name: Git Repository
     view: no
+    control: hidden
     entities:
       - input_select.git_branch
       - sensor.current_branch
