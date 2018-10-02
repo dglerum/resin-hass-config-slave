@@ -2,8 +2,8 @@
 *
 !*.yaml
 !.gitignore
-!includes/*.yaml
-!packages/*/*.yaml
+!packages/**
+!includes/*
 !bin/*
 secrets.yaml
 known_devices.yaml
