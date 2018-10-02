@@ -31,7 +31,7 @@ logger:
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
 
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# Uncomment if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
 
@@ -53,7 +53,7 @@ remote:
   - platform: harmony
     name: Logitech Harmony
     host: !secret harmony_hub_ip
-    
+
 logbook:
 map:
 sun:
