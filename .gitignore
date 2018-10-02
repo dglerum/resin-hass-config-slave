@@ -2,6 +2,7 @@
 *
 !*.yaml
 !.gitignore
+!/includes/*
 !packages/
 !packages/*/
 secrets.yaml
