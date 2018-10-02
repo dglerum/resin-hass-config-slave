@@ -2,9 +2,6 @@
 *
 !*.yaml
 !.gitignore
-!packages/*
-!includes/*
-!bin/*
 secrets.yaml
 known_devices.yaml
 entity_registry.yaml
