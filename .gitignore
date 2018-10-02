@@ -1,8 +1,7 @@
 # Example .gitignore file for your config dir
 *
-!*.yaml
+!**.yaml
 !.gitignore
-!packages/**
 secrets.yaml
 known_devices.yaml
 entity_registry.yaml
