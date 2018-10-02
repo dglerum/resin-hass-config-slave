@@ -2,7 +2,7 @@
 *
 !*.yaml
 !.gitignore
-!packages/**
+!packages/*/*.yaml
 !includes
 !bin
 secrets.yaml
