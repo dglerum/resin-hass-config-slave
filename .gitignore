@@ -2,6 +2,8 @@
 *
 !*.yaml
 !.gitignore
+!packages/
+!packages/*/
 secrets.yaml
 known_devices.yaml
 entity_registry.yaml
