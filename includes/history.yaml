@@ -1,4 +1,3 @@
-# this is another test
   # include:
   #   entities:
   #     - sensor.colorprinter_online
