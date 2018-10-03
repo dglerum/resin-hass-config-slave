@@ -40,8 +40,7 @@ history_graph:
       - sensor.cpu_temperature
     hours_to_show: 240
     refresh: 300
-  downstairs:
-    name: Lights Usage
+  lights:
     entities:
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
@@ -101,15 +100,13 @@ history_graph:
   #   hours_to_show: 240
   #   refresh: 300
   internet:
-    name: Internet Stats
     entities:
       - sensor.speedtest_ping
       - sensor.speedtest_download
       - sensor.speedtest_upload
     hours_to_show: 240
     refresh: 300
-  power_consumption:
-    name: Power Consumption
+  power:
     entities:
       - sensor.fibaro_hallway_energy
       - sensor.fibaro_kitchen_energy

@@ -67,7 +67,7 @@
   light.hue_lightstrip:
     friendly_name: "LED Strip"
   light.hue_livingroom:
-    friendly_name: "Standing Lamp"
+    friendly_name: "Floorlamp"
   light.hue_desk:
     friendly_name: "Desk Light"
   switch.wemo_livingroom:

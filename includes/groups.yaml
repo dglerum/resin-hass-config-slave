@@ -91,7 +91,7 @@ internet_graph:
 power_graph:
   view: no
   entities:
-    - history_graph.power_consumption
+    - history_graph.power
 
 lights_graph:
   view: no
