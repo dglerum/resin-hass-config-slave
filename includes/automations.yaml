@@ -7,7 +7,6 @@ action:
     data_template:
       homeassistant.components: "{{ trigger.to_state.state }}"
 
-
 alias: 'Set theme at startup'
 initial_state: 'on'
 trigger:
