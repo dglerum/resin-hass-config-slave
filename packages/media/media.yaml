@@ -1,0 +1,7 @@
+media_player:
+  - platform: kodi
+    host: 192.168.1.61
+    name: Kodi Player
+
+  - platform: itunes
+    host: 192.168.1.152
