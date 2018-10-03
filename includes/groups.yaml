@@ -14,11 +14,10 @@ default_view:
     - group.people
     - group.date_and_time
     - group.weather_overview
-    - group.sun
     - group.daily_forecast
     - group.speech_engine
-    - group.stats
-    - group.battery_graph
+    - group.sun
+    # - group.battery_graph
 
 date and time:
   name: Date & Time
