@@ -6,3 +6,14 @@ action:
   - service: logger.set_level
     data_template:
       homeassistant.components: "{{ trigger.to_state.state }}"
+
+
+alias: 'Set theme at startup'
+initial_state: 'on'
+trigger:
+ - platform: homeassistant
+   event: start
+action:
+  service: frontend.set_theme
+  data:
+    name: midnight

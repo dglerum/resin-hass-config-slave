@@ -9,6 +9,7 @@ homeassistant:
   packages: !include_dir_named packages
 
 frontend:
+  themes: !include themes/theme_midnight.yaml
 
 http:
   api_password: !secret http_password

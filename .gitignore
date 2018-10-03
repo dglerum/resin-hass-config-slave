@@ -4,6 +4,7 @@
 !*.sh
 !.gitignore
 !/scenes/
+!/themes/
 !/includes/
 !/bin/
 !packages/
