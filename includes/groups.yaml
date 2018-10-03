@@ -10,10 +10,10 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
+    - weather.dark_sky
     - group.people
     - group.date_and_time
     - group.weather_overview
-    - weather.dark_sky
     - group.sun
     - group.daily_forecast
     - group.tile

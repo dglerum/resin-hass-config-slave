@@ -12,6 +12,9 @@ frontend:
 
 http:
   api_password: !secret http_password
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.1.0/24
 
 config:
 
@@ -64,6 +67,35 @@ sun:
 mqtt:
   broker: 192.168.1.162
   port: 1883
+
+homekit:
+  auto_start: false
+  ip_address: 192.168.1.161
+  filter:
+    include_entities:
+      ## Media Players
+      - media_player.kodi_player
+      ## Lights
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+      - light.fibaro_hallway_level
+      - light.fibaro_stair_level
+      ## Switches
+      - switch.wemo_livingroom
+      - switch.wemo_bedroom
+      ## Sensors
+      - sensor.fibaro_smoke_sensor_temperature
+      ## Device Tracker
+      # - device_tracker.davy_bayesian
+  entity_config:
+    media_player.kodi_player:
+      feature_list:
+        - feature: on_off
+        - feature: play_pause
+        - feature: play_stop
+        - feature: toggle_mute
+    switch.wemo_bedroom:
+      type: outlet
 
 # mqtt_statestream:
 #   base_topic: homeassistant

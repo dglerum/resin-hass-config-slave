@@ -16,3 +16,11 @@
     service: frontend.set_theme
     data:
       name: midnight
+
+- alias: 'Start HomeKit'
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay: 00:05  # Waits 5 minutes
+    - service: homekit.start
