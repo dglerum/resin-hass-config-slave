@@ -9,6 +9,7 @@ homeassistant:
   packages: !include_dir_named packages
 
 frontend:
+  themes: !include themes/theme_midnight.yaml
 
 http:
   api_password: !secret http_password
@@ -55,6 +56,13 @@ remote:
     host: !secret harmony_hub_ip
 
 logbook:
+  include:
+    domains:
+      - script
+      - sensor
+      - switch
+      - device_trackers
+      
 map:
 sun:
 
@@ -83,4 +91,8 @@ input_select: !include includes/input_selects.yaml
 input_boolean: !include includes/input_booleans.yaml
 device_tracker: !include includes/device_trackers.yaml
 ios: !include includes/ios.yaml
+scene: !include_dir_merge_list scenes
+media_player: !include includes/media_players.yaml
+zwave: !include zwave.yaml
+
 #zone: !include includes/zones.yaml

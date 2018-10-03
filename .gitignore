@@ -1,7 +1,10 @@
-# Example .gitignore file for your config dir
+# .gitignore file for the config dir
 *
 !*.yaml
+!*.sh
 !.gitignore
+!/scenes/
+!/themes/
 !/includes/
 !/bin/
 !packages/
