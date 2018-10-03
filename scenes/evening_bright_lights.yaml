@@ -1,0 +1,24 @@
+#
+# Night Time Dim Lights
+#
+- name: Evening Bright Lights
+  entities:
+    light.fibaro_table_dimmer_level:
+      state: on
+      brightness: 170
+    light.fibaro_kitchen_dimmer_level:
+      state: on
+      brightness: 220
+    switch.wemo_livingroom: on
+    light.hue_desk:
+      state: on
+      brightness: 200
+      xy_color: [0.4909, 0.4149]
+    light.hue_livingroom:
+      state: on
+      brightness: 220
+      xy_color: [0.4452,0.4068]
+    light.hue_lightstrip:
+      state: on
+      brightness: 200
+      xy_color: [0.4914,0.415]
