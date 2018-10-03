@@ -1,3 +1,11 @@
+  include:
+    domains:
+      - light
+      - switch
+      - media_player
+      - device_tracker
+
+
   # include:
   #   entities:
   #     - sensor.colorprinter_online

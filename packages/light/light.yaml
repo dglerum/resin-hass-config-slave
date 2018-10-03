@@ -1,6 +1,33 @@
 #################################################################
 #                          Script                               #
 #################################################################
+#
+homeassistant:
+  customize:
+    light.fibaro_kitchen_level:
+      friendly_name: Kitchen Dimmer
+    light.fibaro_table_level:
+      friendly_name: Table Dimmer
+    light.fibaro_hallway_level:
+      friendly_name: Hallway Dimmer
+    light.fibaro_stair_level:
+      friendly_name: Stair Dimmer
+
+group:
+  lights:
+    name: Lights
+    view: no
+    control: hidden
+    entities:
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+      - light.fibaro_hallway_level
+      - light.fibaro_stair_level
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - light.hue_wc_downstairs
+      - light.hue_wc_upstairs
 
 script:
   # Master script for ALL LIGHTS OFF

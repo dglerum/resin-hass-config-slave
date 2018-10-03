@@ -1,13 +1,13 @@
   purge_interval: 2
   purge_keep_days: 5
-  # include:
-  #   domains:
-  #     - light
-  #     - switch
-  #     - media_player
-  #     - device_tracker
+  include:
+    domains:
+      - light
+      - switch
+      - media_player
+      - device_tracker
       # - sensor
-  #   entities:
+    # entities:
       # - sensor.harmony_online
       # - sensor.hue_bridge_online
       # - sensor.camera_online
