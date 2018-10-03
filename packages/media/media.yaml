@@ -1,25 +1,63 @@
+#################################################################
+#                                                               #
+#                      Packages/Media                           #
+#                                                               #
+#################################################################
+
+#################################################################
+#                          Customize                            #
+#################################################################
+
+homeassistant:
+  customize:
+    input_number.itunes_volume:
+      icon: mdi:volume-high
+    input_select.itunes_playlist:
+      friendly_name: "Playlist:"
+      icon: mdi:itunes
+    input_select.itunes_source:
+      friendly_name: "Source:"
+      icon: mdi:speaker-wireless
+    sensor.itunes_volume:
+      friendly_name: "iTunes Volume"
+    sensor.itunes_shuffle:
+      friendly_name: "iTunes Shuffle"
+    sensor.itunes_source:
+      friendly_name: "iTunes Source"
+    script.itunes_music:
+      friendly_name: 'Play'
+      icon: mdi:play
+
+#################################################################
+#                          Group                                #
+#################################################################
+
 group:
   iTunes:
-    name: ' '
+    name: 'Music Player'
     entities:
       - input_select.itunes_playlist
       - input_select.itunes_source
       - script.itunes_music
       - input_number.itunes_volume
-      - media_player.itunes
+
+#################################################################
+#                          Input Number                         #
+#################################################################
 
 input_number:
   itunes_volume:
     name: Volume
-    icon: mdi:volume-high
     min: 0
     max: 100
     step: 1
 
+#################################################################
+#                          Input Select                         #
+#################################################################
+
 input_select:
   itunes_playlist:
-    icon: mdi:itunes
-    name: 'Playlist:'
     options:
       - "StuBru"
       - "Album 500"
@@ -30,12 +68,28 @@ input_select:
       - "Rumours"
 
   itunes_source:
-    name: 'Source:'
     options:
       - iMac
       - Kodi
     initial: iMac
-    icon: mdi:speaker-wireless
+
+#################################################################
+#                          Sensor                               #
+#################################################################
+
+sensor:
+  - platform: template
+    sensors:
+      itunes_volume:
+        value_template: "{{ states.media_player.itunes.attributes.volume_level }}"
+      itunes_shuffle:
+        value_template: "{{ states.media_player.itunes.attributes.shuffle }}"
+      itunes_source:
+        value_template: "{{ states.media_player.itunes.attributes.source }}"
+
+#################################################################
+#                          Script                               #
+#################################################################
 
 script:
   # https://community.home-assistant.io/t/spotify-playlist-player/22491/4
@@ -177,6 +231,10 @@ script:
                 {{ n - 0.05 | round(2) }}
               {% endif %}
             {% endif %}
+
+#################################################################
+#                          Automation                           #
+#################################################################
 
 automation:
   - alias: 'Set iTunes Volume'
