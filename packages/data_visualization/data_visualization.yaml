@@ -14,7 +14,7 @@ panel_iframe:
   grafanaui:
     title: Grafana
     icon: mdi:wrench
-    url: http://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/grafana/
+    url: !secret grafana_url
 
 #################################################################
 #                                                               #
@@ -23,7 +23,7 @@ panel_iframe:
 #################################################################
 
 influxdb:
-  host: 192.168.1.162
+  host: !secret influx_host
   username: home-assistant
   password: geronimo
   database: hass_161

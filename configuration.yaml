@@ -1,5 +1,5 @@
 homeassistant:
-  name: HASS @ Resin.io
+  name: !secret name
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: 17
@@ -22,7 +22,7 @@ panel_iframe:
   nodered:
     title: Node-Red
     icon: mdi:shuffle-variant
-    url: http://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/red/
+    url: !secret nodered_url
 
 logger:
   default: warning
@@ -44,7 +44,7 @@ discovery:
 ## Philips Hue bridge config
 hue:
   bridges:
-    - host: 192.168.1.2
+    - host: !secret philips_hub
       allow_unreachable: true
       allow_hue_groups: false
 
@@ -65,12 +65,12 @@ map:
 sun:
 
 mqtt:
-  broker: 192.168.1.162
+  broker: !secret mqtt_broker
   port: 1883
 
 homekit:
   auto_start: false
-  ip_address: 192.168.1.161
+  ip_address: !secret rPi
   filter:
     include_entities:
       ## Media Players
