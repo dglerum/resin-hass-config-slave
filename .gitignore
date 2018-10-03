@@ -3,6 +3,7 @@
 !*.yaml
 !*.sh
 !.gitignore
+!/scenes/
 !/includes/
 !/bin/
 !packages/
