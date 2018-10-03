@@ -1,27 +1,3 @@
-# light.fibaro_hallway_level:
-#   ignored: false
-#   polling_intensity: 0
-# light.fibaro_hallway_level_2:
-#   ignored: true
-#   polling_intensity: 1
-# light.fibaro_kitchen_level:
-#   ignored: false
-#   polling_intensity: 0
-# light.fibaro_kitchen_level_2:
-#   ignored: true
-#   polling_intensity: 1
-# light.fibaro_table_level:
-#   ignored: false
-#   polling_intensity: 0
-# light.fibaro_table_level_2:
-#   ignored: true
-#   polling_intensity: 1
-#light.fibaro_stair_level:
-#  ignored: true
-#  polling_intensity: 0
-# light.fibaro_stair_level_2:
-#   ignored: true
-#   polling_intensity: 1
 sensor.fibaro_kitchen_alarm_level:
   ignored: true
   polling_intensity: 0
@@ -140,5 +116,38 @@ sensor.fibaro_stair_sourcenodeid:
   ignored: true
   polling_intensity: 0
 sensor.fibaro_stair_system:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_general:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_heat_2:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_power_management:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_smoke:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_smoke_2:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_smoke_sensor_system:
   ignored: true
   polling_intensity: 0

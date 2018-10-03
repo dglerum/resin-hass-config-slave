@@ -5,11 +5,10 @@ homeassistant:
   elevation: 17
   unit_system: metric
   time_zone: Europe/Brussels
-  customize: !include customize.yaml
+  customize: !include includes/customize.yaml
   packages: !include_dir_named packages
 
 frontend:
-  themes: !include themes/theme_midnight.yaml
 
 http:
   api_password: !secret http_password
@@ -17,10 +16,6 @@ http:
 config:
 
 panel_iframe:
-  grafanaui:
-    title: Grafana
-    icon: mdi:wrench
-    url: http://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/grafana/
   nodered:
     title: Node-Red
     icon: mdi:shuffle-variant
@@ -62,7 +57,7 @@ logbook:
       - sensor
       - switch
       - device_trackers
-      
+
 map:
 sun:
 
@@ -83,7 +78,7 @@ camera: !include includes/cameras.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
 sensor: !include includes/sensors.yaml
-group: !include groups.yaml
+group: !include includes/groups.yaml
 automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
@@ -94,5 +89,4 @@ ios: !include includes/ios.yaml
 scene: !include_dir_merge_list scenes
 media_player: !include includes/media_players.yaml
 zwave: !include zwave.yaml
-
-#zone: !include includes/zones.yaml
+zone: !include includes/zones.yaml

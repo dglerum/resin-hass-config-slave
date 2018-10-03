@@ -1,0 +1,158 @@
+
+####################################################
+#                                                  #
+#                      Home                        #
+#                                                  #
+####################################################
+
+#home:
+default_view:
+  view: yes
+  icon: mdi:castle
+  entities:
+    - group.people
+    - group.date_and_time
+    - group.weather_overview
+    - weather.dark_sky
+    - group.sun
+    - group.daily_forecast
+    - group.tile
+    - group.speech_engine
+    - group.stats
+    - group.battery_graph
+
+date and time:
+  name: Date & Time
+  view: no
+  entities:
+    - sensor.date
+    - sensor.time
+    - sensor.claire_time
+    - sensor.mum_time
+
+####################################################
+#                                                  #
+#                   Downstairs                     #
+#                                                  #
+####################################################
+
+downstairs:
+  name: Downstairs
+  icon: mdi:sofa
+  view: yes
+  entities:
+    - group.itunes
+    - group.tv
+    - group.lights
+    - media_player.itunes
+
+tv:
+  name: Scenes
+  view: no
+  entities:
+    - script.1521695976118
+    - script.1521694771100
+    - script.1521696758169
+    - switch.tvpower
+    - light.gateway_light_7811dcfd812f
+    - light.gateway_light_7811dce13ad6
+    - scene.story_time
+    - scene.livingroom_bright
+    - light.hall_bulb
+    - switch.goodnight
+  control: hidden
+
+####################################################
+#                                                  #
+#                    History Graphs                #
+#                                                  #
+####################################################
+
+graphs:
+  name: History Graphs
+  icon: mdi:chart-areaspline
+  view: yes
+  entities:
+    - group.internet_graph
+    - group.power_graph
+    - group.lights_graph
+    - group.temperature_graph
+
+battery_graph:
+  view: no
+  entities:
+    - history_graph.battery_use
+
+internet_graph:
+  view: no
+  entities:
+    - history_graph.internet_graph
+
+power_graph:
+  view: no
+  entities:
+    - history_graph.power_consumption_graph
+
+lights_graph:
+  view: no
+  entities:
+    - history_graph.lights_usage_graph
+
+temperature_graph:
+  view: no
+  entities:
+    - history_graph.temperature_graph
+
+####################################################
+#                                                  #
+#                  System Status                   #
+#                                                  #
+####################################################
+
+system status:
+  name: System Status
+  icon: mdi:settings
+  view: yes
+  entities:
+    - group.firmware
+    - group.git
+    - group.internet
+    - group.core_network
+    - group.core_devices
+    - group.ha_devices
+    - group.media_devices
+    - group.rpi_resources
+    - group.zwave
+    - switch.wemo_bedroom
+
+zwave:
+  name: Z-Wave
+  view: no
+  entities:
+    - zwave.aeotec_zw090_zstick_gen5_eu
+    - zwave.fibaro_hallway
+    - zwave.fibaro_kitchen
+    - zwave.fibaro_stair
+    - zwave.fibaro_table
+    - zwave.fibaro_smoke_sensor
+
+####################################################
+#                                                  #
+#                     Garden                       #
+#                                                  #
+####################################################
+
+# garden:
+#   view: yes
+#   icon: mdi:flower
+#   entities:
+#     - group.bougainvillea
+#     - group.chilli
+#     - group.citrus
+#     - group.herb
+#     - group.maple
+#     - group.mertyl
+#     - group.jasmine
+#     - group.strawberry
+#     - group.top_bed
+#     - group.veggie_patch

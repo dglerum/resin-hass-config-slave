@@ -1,0 +1,138 @@
+#################################################################
+#                                                               #
+#                   Packages/History Graphs                     #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                          Customize                            #
+#                                                               #
+#################################################################
+
+homeassistant:
+  customize:
+
+#################################################################
+#                                                               #
+#                       History Graphs                          #
+#                                                               #
+#################################################################
+
+history_graph:
+  presence:
+    name: Presence
+    entities:
+      - device_tracker.glerums_iphone
+    hours_to_show: 240
+    refresh: 300
+  battery:
+    name: Battery Use
+    entities:
+      - sensor.glerums_iphone_x_battery_level
+    hours_to_show: 240
+    refresh: 300
+  temperature:
+    name: Temperature
+    entities:
+      - sensor.fibaro_smoke_sensor_temperature
+      - sensor.pws_temp_c
+      - sensor.cpu_temperature
+    hours_to_show: 240
+    refresh: 300
+  downstairs:
+    name: Lights Usage
+    entities:
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+      - light.fibaro_hallway_level
+      - light.fibaro_stair_level
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - switch.wemo_livingroom
+    hours_to_show: 240
+    refresh: 300
+  # playroom_temperature:
+  #   name: Play Room Climate Graph
+  #   entities:
+  #     - sensor.temperature_158d0001f56682
+  #     - sensor.humidity_158d0001f56682
+  #   hours_to_show: 240
+  #   refresh: 300
+  # patio_temperature:
+  #   name: Patio Climate Graph
+  #   entities:
+  #     - sensor.temperature_158d0001f56350
+  #     - sensor.humidity_158d0001f56350
+  #     - sensor.illumination_158d000200ea5b
+  #   hours_to_show: 240
+  #   refresh: 300
+  # bedroom_temperature:
+  #   name: Bedroom Climate Graph
+  #   entities:
+  #     - sensor.temperature_158d0001f53de9
+  #     - sensor.humidity_158d0001f53de9
+  #     - sensor.illumination_158d0001e63803
+  #   hours_to_show: 240
+  #   refresh: 300
+  # jackson_temperature:
+  #   name: Jackson Climate Graph
+  #   entities:
+  #     - sensor.temperature_158d0001f534e1
+  #     - sensor.humidity_158d0001f534e1
+  #     - sensor.illumination_158d000201351c
+  #   hours_to_show: 240
+  #   refresh: 300
+  # hudson_temperature:
+  #   name: Hudson Climate Graph
+  #   entities:
+  #     - sensor.temperature_158d0001f54df3
+  #     - sensor.humidity_158d0001f54df3
+  #     - sensor.illumination_158d0002006d46
+  #   hours_to_show: 240
+  #   refresh: 300
+  # bathroom_temperature:
+  #   name: Bathroom Climate Graph
+  #   entities:
+  #     - sensor.temperature_158d00022c7248
+  #     - sensor.humidity_158d00022c7248
+  #     - sensor.illumination_158d000200e4ab
+  #   hours_to_show: 240
+  #   refresh: 300
+  internet:
+    name: Internet Stats
+    entities:
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+    hours_to_show: 240
+    refresh: 300
+  power_consumption:
+    name: Power Consumption
+    entities:
+      - sensor.fibaro_hallway_energy
+      - sensor.fibaro_kitchen_energy
+      - sensor.fibaro_stair_energy
+      - sensor.fibaro_table_energy
+    hours_to_show: 240
+    refresh: 300
+
+  # bougainvillea:
+  #   name: Bougainvillea Moisture
+  #   entities:
+  #     - sensor.bougainvillea_moisture
+  #   hours_to_show: 240
+  #   refresh: 300
+  # chilli:
+  #   name: Purple Mumba Chilli Moisture
+  #   entities:
+  #     - sensor.chilli_moisture
+  #   hours_to_show: 240
+  #   refresh: 300
+  # citrus:
+  #   name: Citrus Bed Moisture
+  #   entities:
+  #     - sensor.citrus_moisture
+  #   hours_to_show: 240
+  #   refresh: 300

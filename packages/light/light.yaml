@@ -5,13 +5,15 @@
 homeassistant:
   customize:
     light.fibaro_kitchen_level:
-      friendly_name: Kitchen Dimmer
+      friendly_name: Kitchen
     light.fibaro_table_level:
-      friendly_name: Table Dimmer
+      friendly_name: Table
     light.fibaro_hallway_level:
-      friendly_name: Hallway Dimmer
+      friendly_name: Hallway
     light.fibaro_stair_level:
-      friendly_name: Stair Dimmer
+      friendly_name: Stair
+    switch.wemo_livingroom:
+      friendly_name: TV Lights
 
 group:
   lights:
@@ -19,15 +21,14 @@ group:
     view: no
     control: hidden
     entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - switch.wemo_livingroom
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
-      - light.hue_desk
-      - light.hue_lightstrip
-      - light.hue_livingroom
-      - light.hue_wc_downstairs
-      - light.hue_wc_upstairs
 
 script:
   # Master script for ALL LIGHTS OFF

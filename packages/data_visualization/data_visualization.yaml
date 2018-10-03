@@ -1,0 +1,47 @@
+#################################################################
+#                                                               #
+#                 Packages/Data Visualization                   #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                         Panel iFrame                          #
+#                                                               #
+#################################################################
+
+panel_iframe:
+  grafanaui:
+    title: Grafana
+    icon: mdi:wrench
+    url: http://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/grafana/
+
+#################################################################
+#                                                               #
+#                           InfluxDB                            #
+#                                                               #
+#################################################################
+
+influxdb:
+  host: 192.168.1.162
+  username: home-assistant
+  password: geronimo
+  database: hass_161
+  default_measurement: state
+  tags:
+    instance: prod
+    source: hass
+  tags_attributes:
+    - friendly_name
+  exclude:
+    entities:
+       - sensor.time
+       - sensor.time__date
+       - sensor.time_utc
+       - sensor.date__time
+       - sensor.internet_time
+    domains:
+       - automation
+       - zwave
+       - light
+       - script
