@@ -81,27 +81,27 @@ graphs:
 battery_graph:
   view: no
   entities:
-    - history_graph.battery_use
+    - history_graph.battery
 
 internet_graph:
   view: no
   entities:
-    - history_graph.internet_graph
+    - history_graph.internet
 
 power_graph:
   view: no
   entities:
-    - history_graph.power_consumption_graph
+    - history_graph.power_consumption
 
 lights_graph:
   view: no
   entities:
-    - history_graph.lights_usage_graph
+    - history_graph.lights_usage
 
 temperature_graph:
   view: no
   entities:
-    - history_graph.temperature_graph
+    - history_graph.temperature
 
 ####################################################
 #                                                  #
