@@ -21,7 +21,7 @@ homeassistant:
 
 history_graph:
   presence:
-    name: Presence
+    name: Presence Graph
     entities:
       - device_tracker.glerums_iphone
     hours_to_show: 240
@@ -33,14 +33,15 @@ history_graph:
     hours_to_show: 240
     refresh: 300
   temperature:
-    name: Temperature
+    name: Temperature Graph
     entities:
       - sensor.fibaro_smoke_sensor_temperature
       - sensor.pws_temp_c
       - sensor.cpu_temperature
     hours_to_show: 240
     refresh: 300
-  lights:
+  downstairs:
+    name: Lights Usage Graph
     entities:
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
@@ -49,7 +50,7 @@ history_graph:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
-      - switch.wemo_livingroom
+      - switch.wemo
     hours_to_show: 240
     refresh: 300
   # playroom_temperature:
@@ -100,13 +101,15 @@ history_graph:
   #   hours_to_show: 240
   #   refresh: 300
   internet:
+    name: Internet Graph
     entities:
       - sensor.speedtest_ping
       - sensor.speedtest_download
       - sensor.speedtest_upload
     hours_to_show: 240
     refresh: 300
-  power:
+  power_consumption:
+    name: Power Consumption Graph
     entities:
       - sensor.fibaro_hallway_energy
       - sensor.fibaro_kitchen_energy
