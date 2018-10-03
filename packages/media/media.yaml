@@ -1,7 +1,206 @@
-media_player:
-  - platform: kodi
-    host: 192.168.1.61
-    name: Kodi Player
+group:
+  iTunes:
+    name: ' '
+    entities:
+      - input_select.itunes_playlist
+      - input_select.itunes_source
+      - script.itunes_music
+      - input_number.itunes_volume
+      - media_player.itunes
 
-  - platform: itunes
-    host: 192.168.1.152
+input_number:
+  itunes_volume:
+    name: Volume
+    icon: mdi:volume-high
+    min: 0
+    max: 100
+    step: 1
+
+input_select:
+  itunes_playlist:
+    icon: mdi:itunes
+    name: 'Playlist:'
+    options:
+      - "StuBru"
+      - "Album 500"
+      - "Rock Gods"
+      - "Tijdloze"
+      - "New Music"
+      - "Greatest Blues"
+      - "Rumours"
+
+  itunes_source:
+    name: 'Source:'
+    options:
+      - iMac
+      - Kodi
+    initial: iMac
+    icon: mdi:speaker-wireless
+
+script:
+  # https://community.home-assistant.io/t/spotify-playlist-player/22491/4
+  itunes_music:
+    alias: Play selected itunes playlist
+    sequence:
+      # - service: media_player.volume_set
+      #   data:
+      #     entity_id: media_player.itunes
+      #     volume_level: '0.40'
+      # -  service: media_player.select_source
+      #    data_template:
+      #      entity_id: media_player.itunes
+      #      source: >
+      #       {% if is_state("input_select.itunes_source", "iMac") %} iMac
+      #       {% elif is_state("input_select.itunes_source", "Køkken") %} Køkken
+      #       {% elif is_state("input_select.itunes_source", "Lejligheden") %} Lejligheden
+      #       {% elif is_state("input_select.itunes_source", "iPad") %} iPad
+      #       {% endif %}
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.itunes
+          volume_level: '0.25'
+
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.kitchen_airtunes_speaker
+
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.kitchen_airtunes_speaker
+          volume_level: '0.20'
+
+
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.computer_airtunes_speaker
+
+      - service_template: >
+          {%- if is_state("input_select.itunes_playlist", "StuBru") -%}
+            switch.turn_off
+          {%- else -%}
+            switch.turn_on
+          {%- endif -%}
+        entity_id: switch.shuffle_itunes
+
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.itunes
+          media_content_type: playlist
+          media_content_id: >
+            {% if is_state("input_select.itunes_playlist", "StuBru") %} studio-brussel
+            {% elif is_state("input_select.itunes_playlist", "Album 500") %} album-500
+            {% elif is_state("input_select.itunes_playlist", "Rock Gods") %} rock-gods
+            {% elif is_state("input_select.itunes_playlist", "Tijdloze") %} stubru-de-tijdloze-2013
+            {% elif is_state("input_select.itunes_playlist", "New Music") %} new-music-mix
+            {% elif is_state("input_select.itunes_playlist", "Greatest Blues") %} 50-greatest-blues
+            {% elif is_state("input_select.itunes_playlist", "Rumours") %} fleetwood-mac-rumours
+            {% endif %}
+
+
+  radio_music:
+    alias: Play StuBru on Apple Homepod
+    sequence:
+
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.itunes
+          volume_level: '0.25'
+
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.kitchen_airtunes_speaker
+
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.kitchen_airtunes_speaker
+          volume_level: '0.20'
+
+      # {% if is_state('media_player.computer_airtunes_speaker', 'off') %}
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.computer_airtunes_speaker
+      # {% endif %}
+
+      - service: switch.turn_off
+        entity_id: switch.shuffle_itunes
+
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.itunes
+          media_content_type: playlist
+          media_content_id: studio-brussel
+
+      - service: input_select.select_option
+        entity_id: input_select.itunes_playlist
+        data:
+          option: 'StuBru'
+
+  media_off:
+    alias: Stop Radio Player
+    sequence:
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.itunes
+
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.kitchen_airtunes_speaker
+
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.computer_airtunes_speaker
+
+  volume_up:
+    alias: Volume UP
+    sequence:
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.kitchen_airtunes_speaker
+          volume_level: >
+            {% if is_state('media_player.kitchen_airtunes_speaker', 'on')  %}
+              {% set n = states.media_player.kitchen_airtunes_speaker.attributes.volume_level | float %}
+              {% if n <= 0.85 %}
+                {{ n + 0.05 | round(2) }}
+              {% endif %}
+            {% endif %}
+
+  volume_down:
+    alias: Volume DOWN
+    sequence:
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.kitchen_airtunes_speaker
+          volume_level: >
+            {% if is_state('media_player.kitchen_airtunes_speaker', 'on')  %}
+              {% set n = states.media_player.kitchen_airtunes_speaker.attributes.volume_level | float %}
+              {% if n >= 0.05 %}
+                {{ n - 0.05 | round(2) }}
+              {% endif %}
+            {% endif %}
+
+automation:
+  - alias: 'Set iTunes Volume'
+    trigger:
+      platform: state
+      entity_id: input_number.itunes_volume
+    action:
+      service: media_player.volume_set
+      data_template:
+        entity_id: media_player.itunes
+        volume_level: '{{ states.input_number.itunes_volume.state  | int / 100 }}'
+
+  - alias: 'Sync iTunes Volume'
+    trigger:
+      - platform: homeassistant
+        event: start
+      - platform: state
+        entity_id: sensor.itunes_volume
+    action:
+      # 10 second delay to prevent input_number jumping to "original" value
+      # before it is updated from itunes
+      - delay:
+          seconds: 5
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.itunes_volume
+          value: "{{ states.sensor.itunes_volume.state | float | round(2) * 100 }}"
