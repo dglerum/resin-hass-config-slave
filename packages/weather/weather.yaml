@@ -86,9 +86,6 @@ sensor:
 #                     Weather                      #
 #                                                  #
 ####################################################
-
-sun:
-
 weather:
   - platform: darksky
     api_key: !secret darksky_api_key
@@ -112,3 +109,5 @@ weather:
       - temperature_high
       - temperature_low
       - apparent_temperature
+      
+sun:
