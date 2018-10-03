@@ -37,7 +37,7 @@ group:
     name: 'Music Player'
     entities:
       - input_select.itunes_playlist
-      - input_select.itunes_source
+      # - input_select.itunes_source
       - script.itunes_music
       - input_number.itunes_volume
 
@@ -86,6 +86,17 @@ sensor:
         value_template: "{{ states.media_player.itunes.attributes.shuffle }}"
       itunes_source:
         value_template: "{{ states.media_player.itunes.attributes.source }}"
+
+#################################################################
+#                          Switch                               #
+#################################################################
+
+switch:
+  - platform: command_line
+    switches:
+      shuffle_itunes:
+        command_on: "curl -X PUT http://192.168.1.152:8181/shuffle -d mode=songs"
+        command_off: "curl -X PUT http://192.168.1.152:8181/shuffle -d mode=off"
 
 #################################################################
 #                          Script                               #
