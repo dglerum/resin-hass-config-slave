@@ -43,10 +43,12 @@ downstairs:
     - group.tv
     - group.lights
     - media_player.itunes
+    - group.all_scenes
 
 tv:
-  name: Scenes
+  name: TV Scenes
   view: no
+  control: hidden
   entities:
     - script.1521695976118
     - script.1521694771100
@@ -58,7 +60,30 @@ tv:
     - scene.livingroom_bright
     - light.hall_bulb
     - switch.goodnight
+
+
+all_scenes:
+  name: All Scenes
+  view: no
   control: hidden
+  entities:
+    - scene.all_lights_on
+    - scene.day_dim_lights
+    - scene.desk_off
+    - scene.desk_on
+    - scene.dinner_off
+    - scene.dinner_on
+    - scene.evening_bright_lights
+    - scene.kitchen_off
+    - scene.kitchen_on
+    - scene.livingroom_off
+    - scene.livingroom_on
+    - scene.movie_paused
+    - scene.movie_resumed
+    - scene.night_dim_lights
+    - scene.night_light
+    - scene.table_off
+    - scene.table_on
 
 ####################################################
 #                                                  #
