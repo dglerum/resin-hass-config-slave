@@ -1,0 +1,71 @@
+#################################################################
+#                                                               #
+#                       Packages/Presence                       #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                          Customize                            #
+#                                                               #
+#################################################################
+homeassistant:
+  customize:
+    device_tracker.glerums_iphone:
+      friendly_name: 'Davy'
+
+#################################################################
+#                                                               #
+#                           Group                               #
+#                                                               #
+#################################################################
+
+group:
+  people:
+    name: People
+    view: no
+    entities:
+      - device_tracker.glerums_iphone
+      - sensor.glerums_iphone_x_battery_level
+#       - sensor.commute_to_work
+#       - sensor.commute_from_work
+#       - sensor.james_to_home
+#
+#   family:
+#     name: Family
+#     view: no
+#     entities:
+#       - sensor.james
+#       - sensor.tina
+#
+#   ble_tracker_james:
+#     name: BLE Tracker James
+#     view: no
+#     entities:
+#       - sensor.ble_james_downstairs
+#       - sensor.ble_james_upstairs
+#       - sensor.ble_james_patio
+#
+#   ble_tracker_tina:
+#     name: BLE Tracker Tina
+#     view: no
+#     entities:
+#       - sensor.ble_tina_downstairs
+#       - sensor.ble_tina_upstairs
+#       - sensor.ble_tina_patio
+
+#################################################################
+#                                                               #
+#                      Device Trackers                          #
+#                                                               #
+#################################################################
+
+device_tracker:
+  - platform: ping
+    hosts:
+      glerums_iphone: 192.168.1.6
+  # - platform: owntracks
+  #   max_gps_accuracy: 200
+
+  # - platform: bluetooth_tracker
+  #   request_rssi: true

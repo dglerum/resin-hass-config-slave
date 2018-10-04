@@ -1,0 +1,41 @@
+- name: Desk On
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+
+- name: Desk Off
+  entities:
+    light.hue_desk:
+      state: off
+
+- name: Livingroom On
+  entities:
+    switch.wemo_livingroom: on
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 150
+      xy_color: [0.4452,0.4068]
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 130
+      xy_color: [0.4914,0.415]
+      transition: 3
+
+- name: Livingroom Off
+  entities:
+    switch.wemo_livingroom: off
+    light.hue_livingroom:
+      state: off
+      transition: 3
+    light.hue_lightstrip:
+      state: off
+      transition: 3

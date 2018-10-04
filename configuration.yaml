@@ -1,29 +1,28 @@
 homeassistant:
-  name: HASS @ Resin.io
+  name: !secret name
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: 17
   unit_system: metric
   time_zone: Europe/Brussels
-  customize: !include customize.yaml
+  customize: !include includes/customize.yaml
   packages: !include_dir_named packages
 
 frontend:
 
 http:
   api_password: !secret http_password
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.1.0/24
 
 config:
 
 panel_iframe:
-  grafanaui:
-    title: Grafana
-    icon: mdi:wrench
-    url: http://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/grafana/
   nodered:
     title: Node-Red
     icon: mdi:shuffle-variant
-    url: http://4303f7f4270653c54e7fecfc398dbaa5.resindevice.io/red/
+    url: !secret nodered_url
 
 logger:
   default: warning
@@ -45,7 +44,7 @@ discovery:
 ## Philips Hue bridge config
 hue:
   bridges:
-    - host: 192.168.1.2
+    - host: !secret philips_hub
       allow_unreachable: true
       allow_hue_groups: false
 
@@ -55,12 +54,47 @@ remote:
     host: !secret harmony_hub_ip
 
 logbook:
+  include:
+    domains:
+      - script
+      - sensor
+      - switch
+      - device_trackers
+
 map:
 sun:
 
 mqtt:
-  broker: 192.168.1.162
+  broker: !secret mqtt_broker
   port: 1883
+
+homekit:
+  auto_start: false
+  ip_address: !secret rPi
+  filter:
+    include_entities:
+      ## Media Players
+      - media_player.kodi_player
+      ## Lights
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+      - light.fibaro_hallway_level
+      - light.fibaro_stair_level
+      ## Switches
+      - switch.wemo_livingroom
+      - switch.wemo_bedroom
+      ## Sensors
+      - sensor.fibaro_smoke_sensor_temperature
+      ## Device Tracker
+      # - device_tracker.davy_bayesian
+  entity_config:
+    media_player.kodi_player:
+      feature_list:
+        - feature: play_pause
+        - feature: play_stop
+        - feature: toggle_mute
+    switch.wemo_bedroom:
+      type: outlet
 
 # mqtt_statestream:
 #   base_topic: homeassistant
@@ -75,7 +109,7 @@ camera: !include includes/cameras.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
 sensor: !include includes/sensors.yaml
-group: !include groups.yaml
+group: !include includes/groups.yaml
 automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml
 shell_command: !include includes/shell_commands.yaml
@@ -83,4 +117,7 @@ input_select: !include includes/input_selects.yaml
 input_boolean: !include includes/input_booleans.yaml
 device_tracker: !include includes/device_trackers.yaml
 ios: !include includes/ios.yaml
-#zone: !include includes/zones.yaml
+scene: !include_dir_merge_list scenes
+media_player: !include includes/media_players.yaml
+zwave: !include zwave.yaml
+zone: !include includes/zones.yaml

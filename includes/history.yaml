@@ -1,3 +1,25 @@
+  include:
+    domains:
+      - light
+      - switch
+      - media_player
+      - device_tracker
+    entities:
+      - sensor.disk_use_
+      - sensor.memory_use_percent
+      - sensor.processor_use
+      - sensor.cpu_temperature
+      - sensor.total_tv_time
+      - sensor.glerums_iphone_x_battery_level
+      - sensor.fibaro_smoke_sensor_temperature
+      - sensor.pws_temp_c
+      - sensor.fibaro_hallway_energy
+      - sensor.fibaro_kitchen_energy
+      - sensor.fibaro_stair_energy
+      - sensor.fibaro_table_energy
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
   # include:
   #   entities:
   #     - sensor.colorprinter_online
