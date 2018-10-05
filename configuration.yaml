@@ -9,7 +9,8 @@ homeassistant:
   packages: !include_dir_named packages
 
 frontend:
-
+  javascript_version: latest
+  
 http:
   api_password: !secret http_password
   trusted_networks:
