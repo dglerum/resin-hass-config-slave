@@ -66,11 +66,6 @@ mqtt:
   broker: !secret mqtt_broker
   port: 1883
 
-wemo:
-  static:
-    - 192.168.1.47
-    - 192.168.1.48
-
 homekit:
   auto_start: false
   ip_address: !secret rPi
