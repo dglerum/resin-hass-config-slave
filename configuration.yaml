@@ -10,7 +10,7 @@ homeassistant:
 
 frontend:
   javascript_version: latest
-  
+
 http:
   api_password: !secret http_password
   trusted_networks:
@@ -30,10 +30,6 @@ logger:
   logs:
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
 
 updater:
 
