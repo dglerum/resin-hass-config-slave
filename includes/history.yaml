@@ -20,6 +20,9 @@
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping
+      - sensor.total_tv_time
+      - binary_sensor.ring_front_door_ding
+      - binary_sensor.ring_front_door_motion
   # include:
   #   entities:
   #     - sensor.colorprinter_online

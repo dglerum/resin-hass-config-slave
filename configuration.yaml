@@ -19,11 +19,11 @@ http:
 
 config:
 
-panel_iframe:
-  nodered:
-    title: Node-Red
-    icon: mdi:shuffle-variant
-    url: !secret nodered_url
+# panel_iframe:
+#   nodered:
+#     title: Node-Red
+#     icon: mdi:shuffle-variant
+#     url: !secret nodered_url
 
 logger:
   default: warning
@@ -66,6 +66,11 @@ mqtt:
   broker: !secret mqtt_broker
   port: 1883
 
+wemo:
+  static:
+    - 192.168.1.47
+    - 192.168.1.48
+
 homekit:
   auto_start: false
   ip_address: !secret rPi
@@ -93,6 +98,18 @@ homekit:
         - feature: toggle_mute
     switch.wemo_bedroom:
       type: outlet
+
+weblink:
+  entities:
+    - name: Router
+      icon: mdi:router-wireless
+      url: http://192.168.1.1/
+    - name: Node-Red
+      icon: mdi:nodejs
+      url: /red
+    - name: Grafana
+      icon: mdi:wrench
+      url: /grafana
 
 # mqtt_statestream:
 #   base_topic: homeassistant

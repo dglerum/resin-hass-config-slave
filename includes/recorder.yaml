@@ -22,6 +22,9 @@
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping
+      - sensor.total_tv_time
+      - binary_sensor.ring_front_door_ding
+      - binary_sensor.ring_front_door_motion
       # - light.hue_desk
       # - light.hue_lightstrip
       # - light.hue_livingroom

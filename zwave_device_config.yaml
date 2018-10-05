@@ -1,3 +1,23 @@
+# light.fibaro_kitchen_level:
+#   delay: 5
+#   refresh_value: true
+#   ignored: false
+#   polling_intensity: 1
+# light.fibaro_table_level:
+#   delay: 5
+#   refresh_value: true
+#   ignored: false
+#   polling_intensity: 1
+# light.fibaro_hallway_level:
+#   delay: 5
+#   refresh_value: true
+#   ignored: false
+#   polling_intensity: 1
+# light.fibaro_stair_level:
+#   delay: 5
+#   refresh_value: true
+#   ignored: false
+#   polling_intensity: 1
 sensor.fibaro_kitchen_alarm_level:
   ignored: true
   polling_intensity: 0

@@ -13,7 +13,7 @@
 panel_iframe:
   grafanaui:
     title: Grafana
-    icon: mdi:wrench
+    icon: mdi:chart-areaspline
     url: !secret grafana_url
 
 #################################################################

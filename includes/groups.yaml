@@ -10,14 +10,13 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
-    - weather.dark_sky
     - group.people
     - group.date_and_time
     - group.weather_overview
     - group.daily_forecast
     - group.speech_engine
     - group.sun
-    # - group.battery_graph
+    - group.ring_doorbell
 
 date and time:
   name: Date & Time
@@ -44,6 +43,21 @@ downstairs:
     - group.lights
     - media_player.itunes
     - group.all_scenes
+    - group.available_switches
+
+available_switches:
+  name: Switches
+  view: no
+  control: hidden
+  entities:
+    - switch.desk_light
+    - switch.dinner_lights
+    - switch.goodnight
+    - switch.kitchen_lights
+    - switch.tv_lights
+    - switch.table_lights
+    - switch.tv
+    - switch.shuffle_itunes
 
 tv:
   name: TV Scenes
@@ -93,13 +107,14 @@ all_scenes:
 
 graphs:
   name: History Graphs
-  icon: mdi:chart-areaspline
+  icon: mdi:history
   view: yes
   entities:
     - group.internet_graph
     - group.power_graph
     - group.lights_graph
     - group.temperature_graph
+    - group.tv_time
 
 battery_graph:
   view: no
@@ -126,6 +141,10 @@ temperature_graph:
   entities:
     - history_graph.temperature_graph
 
+tv_time:
+  view: no
+  entities:
+    - history_graph.total_tv_time
 ####################################################
 #                                                  #
 #                  System Status                   #
@@ -137,6 +156,7 @@ system status:
   icon: mdi:settings
   view: yes
   entities:
+    - group.shortcuts
     - group.firmware
     - group.git
     - group.internet
@@ -148,8 +168,16 @@ system status:
     - group.zwave
     - group.emergency
 
+shortcuts:
+  name: Shortcuts
+  view: no
+  entities:
+    - weblink.router
+    - weblink.grafana
+    - weblink.nodered
+
 emergency:
-  name: emergency
+  name: Emergency
   view: no
   control: hidden
   entities:

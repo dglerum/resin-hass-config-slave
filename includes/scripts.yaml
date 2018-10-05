@@ -1,1 +1,17 @@
-[]
+'1523505263098':
+  alias: Goodnight
+  sequence:
+  - data:
+      entity_id: switch.wemo_livingroom
+    service: switch.turn_off
+  - data:
+      entity_id: light.fibaro_table_dimmer_level, light.hue_livingroom, light.hue_lightstrip, light.hue_desk
+    service: light.turn_off
+  - delay: 00:00:10
+  - data:
+      entity_id: light.fibaro_kitchen_dimmer_level
+      transition: 5
+    service: light.turn_off
+  - data:
+      entity_id: input_boolean.morning_script_run
+    service: input_boolean.turn_on

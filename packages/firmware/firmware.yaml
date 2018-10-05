@@ -29,6 +29,7 @@ group:
       - sensor.latest_ha_version
       - sensor.ha_installed_version
       - binary_sensor.ha_update_available
+      - sensor.ssl_certificate_expiry
 
 #################################################################
 #                            HA Update                          #

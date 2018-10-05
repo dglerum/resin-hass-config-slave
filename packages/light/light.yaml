@@ -30,6 +30,60 @@ group:
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
 
+switch:
+
+  - platform: template
+    switches:
+      dinner_lights:
+        friendly_name: Dinner Lights
+        value_template: "{{ is_state('light.fibaro_kitchen_dimmer_level', 'on') and is_state('light.fibaro_table_dimmer_level', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          entity_id: scene.dinner_on
+        turn_off:
+          service: scene.turn_on
+          entity_id: scene.dinner_off
+
+      kitchen_lights:
+        friendly_name: Kitchen Lights
+        value_template: "{{ is_state('light.fibaro_kitchen_dimmer_level', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          entity_id: scene.kitchen_on
+        turn_off:
+          service: scene.turn_on
+          entity_id: scene.kitchen_off
+
+      table_lights:
+        friendly_name: Table Lights
+        value_template: "{{ is_state('light.fibaro_table_dimmer_level', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          entity_id: scene.table_on
+        turn_off:
+          service: scene.turn_on
+          entity_id: scene.table_off
+
+      desk_light:
+        friendly_name: Desk Light
+        value_template: "{{ is_state('light.hue_desk', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          entity_id: scene.desk_on
+        turn_off:
+          service: scene.turn_on
+          entity_id: scene.desk_off
+
+      tv_lights:
+        friendly_name: TV Lights
+        value_template: "{{ is_state('group.Livingroom', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          entity_id: scene.livingroom_on
+        turn_off:
+          service: scene.turn_on
+          entity_id: scene.livingroom_off
+
 script:
   # Master script for ALL LIGHTS OFF
   # Turns off all with clean up for milight

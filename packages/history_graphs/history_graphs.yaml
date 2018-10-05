@@ -20,6 +20,12 @@ homeassistant:
 #################################################################
 
 history_graph:
+  total_tv_time:
+    name: Total TV Time
+    entities:
+      - sensor.total_tv_time
+    hours_to_show: 240
+    refresh: 300
   presence:
     name: Presence Graph
     entities:

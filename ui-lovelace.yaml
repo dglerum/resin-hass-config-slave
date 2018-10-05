@@ -1,10 +1,8 @@
 title: My Awesome Home
 # Include external resources
 resources:
-  - url: /local/my-custom-card.js
+  - url: /local/custom-lovelace/monster-card/monster-card.js?v=1
     type: js
-  - url: /local/my-webfont.css
-    type: css
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
@@ -76,5 +74,13 @@ views:
     cards:
         # The filter card will filter entities for their state
       - type: iframe
-        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?from=1538604000000&to=1538678207500&orgId=1&panelId=11&fullscreen&kiosk
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=11&fullscreen&kiosk
+        aspect_ratio: 75%
+
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=8&fullscreen&kiosk
+        aspect_ratio: 75%
+
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=9&fullscreen&kiosk
         aspect_ratio: 75%
