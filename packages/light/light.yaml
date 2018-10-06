@@ -102,7 +102,7 @@ script:
       - condition: state
         entity_id: light.hue_desk
         data:
-          state: '{{ message }}'
+          state: '"{{ message }}"'
 
       # - service_template: >
       #     {%- if {{ message }} == 'on' -%}
