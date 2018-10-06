@@ -30,6 +30,15 @@ group:
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
 
+  lr_lights:
+    name: Livingroom Lights
+    view: no
+    control: hidden
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+
 switch:
 
   - platform: template
@@ -50,11 +59,11 @@ switch:
         turn_on:
           service: script.kitchen_lighting
           data_template:
-            message: 'on'
+            desire: 'on'
         turn_off:
           service: script.kitchen_lighting
           data_template:
-            message: 'off'
+            desire: 'off'
 
       table_lights:
         friendly_name: Table Lights
@@ -98,16 +107,21 @@ script:
     alias: Kitchen Lighting
     sequence:
       - service_template: >
-          light.turn_{{ message }}
+          light.turn_{{ desire }}
         entity_id: light.fibaro_kitchen_dimmer_level
 
-      # - service_template: >
-      #     {%- if {{ message }} == 'on' -%}
-      #       light.turn_on
-      #     {%- else -%}
-      #       light.turn_off
-      #     {%- endif -%}
-      #   entity_id: light.hue_desk
+  downtairs_lights_on:
+    alias: Downstairs Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.downstairs_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
 
   everything_off:
     alias: Good Night
