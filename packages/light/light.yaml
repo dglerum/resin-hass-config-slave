@@ -105,7 +105,7 @@ script:
           {%- else -%}
             light.turn_off
           {%- endif -%}
-        entity_id: light.fibaro_kitchen_level
+        entity_id: light.hue_desk
 
 
   everything_off:
