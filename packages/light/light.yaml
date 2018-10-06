@@ -46,7 +46,7 @@ switch:
 
       kitchen_lights:
         friendly_name: Kitchen Lights
-        value_template: "{{ is_state('light.hue_desk', 'on') }}"
+        value_template: "{{ is_state('light.fibaro_kitchen_dimmer_level', 'on') }}"
         turn_on:
           service: script.kitchen_lighting
           data_template:
@@ -99,7 +99,7 @@ script:
     sequence:
       - service_template: >
           light.turn_{{ message }}
-        entity_id: light.hue_desk
+        entity_id: light.fibaro_kitchen_dimmer_level
 
       # - service_template: >
       #     {%- if {{ message }} == 'on' -%}
