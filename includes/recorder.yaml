@@ -6,6 +6,7 @@
       - switch
       - media_player
       - device_tracker
+      - remote
     entities:
       - sensor.disk_use_
       - sensor.memory_use_percent
