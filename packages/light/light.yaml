@@ -98,7 +98,7 @@ script:
     alias: Kitchen Lighting
     sequence:
       - service_template: >
-          'light.turn_{{ message }}'
+          light.turn_{{ message }}
         entity_id: light.hue_desk
 
       # - service_template: >
