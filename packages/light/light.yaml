@@ -53,7 +53,7 @@ switch:
             message: 'on'
         turn_off:
           service: script.kitchen_lighting
-          data_template::
+          data_template:
             message: 'off'
 
       table_lights:
