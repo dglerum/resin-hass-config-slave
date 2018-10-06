@@ -48,15 +48,13 @@ switch:
         friendly_name: Kitchen Lights
         value_template: "{{ is_state('light.hue_desk', 'on') }}"
         turn_on:
-          service: script.lighting_script
+          service: script.kitchen_lighting
           data_template:
-            - message: 'on'
-            - light: 'light.hue_desk'
+            message: 'on'
         turn_off:
-          service: script.lighting_script
+          service: script.kitchen_lighting
           data_template:
-            - message: 'off'
-            - light: 'light.hue_desk'
+            message: 'off'
 
       table_lights:
         friendly_name: Table Lights
@@ -96,12 +94,12 @@ script:
   #    * turn off Alexa, bathroom fan, bandwidth throttling
   #  * roku = playing
   #    * turn off grow light, aquarium, bathroom_fan
-  lighting_script:
-    alias: Lighting Script
+  kitchen_lighting:
+    alias: Kitchen Lighting
     sequence:
       - service_template: >
           light.turn_{{ message }}
-        entity_id: {{ light }}
+        entity_id: light.hue_desk
 
       # - service_template: >
       #     {%- if {{ message }} == 'on' -%}
