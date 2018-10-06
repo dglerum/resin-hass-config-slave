@@ -49,11 +49,11 @@ switch:
         value_template: "{{ is_state('light.hue_desk', 'on') }}"
         turn_on:
           service: script.kitchen_lighting
-          data_template:
+          data:
             message: 'on'
         turn_off:
           service: script.kitchen_lighting
-          data_template:
+          data:
             message: 'off'
 
       table_lights:
