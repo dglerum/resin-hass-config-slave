@@ -51,7 +51,7 @@ discovery:
   ignore:
     - apple_tv
     - philips_hue
-    - welking_wemo
+    - belkin_wemo
 
 remote:
   - platform: harmony
