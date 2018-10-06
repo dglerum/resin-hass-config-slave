@@ -58,6 +58,7 @@ logbook:
       - sensor
       - switch
       - device_trackers
+      - scene
 
 map:
 sun:
