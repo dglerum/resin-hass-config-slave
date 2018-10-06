@@ -34,9 +34,9 @@ logger:
 updater:
 
 # Discover some devices automatically
-discovery:
-  ignore:
-    - apple_tv
+# discovery:
+#   ignore:
+#     - apple_tv
 
 ## Philips Hue bridge config
 hue:
