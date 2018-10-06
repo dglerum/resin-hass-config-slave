@@ -34,17 +34,11 @@ logger:
 updater:
 
 # Discover some devices automatically
-# discovery:
-#   ignore:
-#     - apple_tv
-
-## Philips Hue bridge config
-hue:
-  bridges:
-    - host: !secret philips_hub
-      filename: phue.conf
-      allow_unreachable: true
-      allow_hue_groups: false
+discovery:
+  ignore:
+    - apple_tv
+    - philips_hue
+    - harmony
 
 remote:
   - platform: harmony
