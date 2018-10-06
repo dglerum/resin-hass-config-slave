@@ -49,9 +49,10 @@ switch:
         value_template: "{{ is_state('light.fibaro_kitchen_dimmer_level', 'on') }}"
         turn_on:
           service: script.turn_on
+          entity_id: script.kitchen_lighting
           data:
-            entity_id: script.kitchen_lighting
-            message: 'on'
+            variables:
+              message: 'on'
         turn_off:
           service: script.turn_on
           data:
@@ -100,13 +101,12 @@ script:
     alias: Kitchen Lighting
     sequence:
       - service_template: >
-          {%- if [message] == 'on' -%}
+          {%- if {{ message }} == 'on' -%}
             light.turn_on
           {%- else -%}
             light.turn_off
           {%- endif -%}
         entity_id: light.hue_desk
-
 
   everything_off:
     alias: Good Night
