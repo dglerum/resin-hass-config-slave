@@ -51,12 +51,12 @@ switch:
           service: script.lighting_script
           data_template:
             message: 'on'
-            light: light.hue_desk
+            light: 'light.hue_desk'
         turn_off:
           service: script.lighting_script
           data_template:
             message: 'off'
-            light: light.hue_desk
+            light: 'light.hue_desk'
 
       table_lights:
         friendly_name: Table Lights
