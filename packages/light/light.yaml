@@ -50,11 +50,11 @@ switch:
         turn_on:
           service: script.kitchen_lighting
           data_template:
-            message: on
+            message: 'on'
         turn_off:
           service: script.kitchen_lighting
           data_template:
-            message: off
+            message: 'off'
 
       table_lights:
         friendly_name: Table Lights
