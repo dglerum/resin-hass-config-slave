@@ -51,12 +51,12 @@ switch:
           service: script.lighting_script
           data_template:
             message: 'on'
-            entity_id: light.hue_desk
+            light: light.hue_desk
         turn_off:
           service: script.lighting_script
           data_template:
             message: 'off'
-            entity_id: light.hue_desk
+            light: light.hue_desk
 
       table_lights:
         friendly_name: Table Lights
@@ -97,11 +97,11 @@ script:
   #  * roku = playing
   #    * turn off grow light, aquarium, bathroom_fan
   lighting_script:
-    alias: Lightning Script
+    alias: Lighting Script
     sequence:
       - service_template: >
           light.turn_{{ message }}
-        entity_id: {{ entity_id }}
+        entity_id: {{ light }}
 
       # - service_template: >
       #     {%- if {{ message }} == 'on' -%}
