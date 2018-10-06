@@ -9,17 +9,17 @@
     switch.wemo_livingroom: on
     light.hue_desk:
       state: on
-      brightness: 130
+      brightness: 80
       xy_color: [0.4909, 0.4149]
       transition: 3
     light.hue_livingroom:
       state: on
-      brightness: 150
+      brightness: 110
       xy_color: [0.4452,0.4068]
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 130
+      brightness: 80
       xy_color: [0.4914,0.415]
       transition: 3
 
@@ -59,17 +59,17 @@
     switch.wemo_livingroom: on
     light.hue_desk:
       state: on
-      brightness: 130
+      brightness: 100
       xy_color: [0.4909, 0.4149]
       transition: 3
     light.hue_livingroom:
       state: on
-      brightness: 150
+      brightness: 120
       xy_color: [0.4452,0.4068]
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 130
+      brightness: 100
       xy_color: [0.4914,0.415]
       transition: 3
 
