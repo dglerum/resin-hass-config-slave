@@ -100,13 +100,18 @@ script:
   kitchen_lighting:
     alias: Kitchen Lighting
     sequence:
-      - service_template: >
-          {%- if {{ message }} == 'on' -%}
-            light.turn_on
-          {%- else -%}
-            light.turn_off
-          {%- endif -%}
+      - condition: state
         entity_id: light.hue_desk
+        data_template:
+          state: "{{ message }}"
+
+      # - service_template: >
+      #     {%- if {{ message }} == 'on' -%}
+      #       light.turn_on
+      #     {%- else -%}
+      #       light.turn_off
+      #     {%- endif -%}
+      #   entity_id: light.hue_desk
 
   everything_off:
     alias: Good Night
