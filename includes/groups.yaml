@@ -98,6 +98,9 @@ all_scenes:
     - scene.night_light
     - scene.table_off
     - scene.table_on
+    - scene.downstairs_night
+    - scene.downstairs_evening
+    - scene.downstairs_daylight
 
 ####################################################
 #                                                  #
