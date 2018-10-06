@@ -3,10 +3,10 @@
 #
 - name: Evening Bright Lights
   entities:
-    light.fibaro_table_dimmer_level:
+    light.fibaro_table_level:
       state: on
       brightness: 170
-    light.fibaro_kitchen_dimmer_level:
+    light.fibaro_kitchen_level:
       state: on
       brightness: 220
     switch.wemo_livingroom: on
