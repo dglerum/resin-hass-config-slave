@@ -49,14 +49,12 @@ switch:
         value_template: "{{ is_state('light.hue_desk', 'on') }}"
         turn_on:
           service: script.kitchen_lighting
-          data:
-            variables:
-              message: 'on'
+          data_template:
+            message: 'on'
         turn_off:
           service: script.kitchen_lighting
-          data:
-            variables:
-              message: 'off'
+          data_template::
+            message: 'off'
 
       table_lights:
         friendly_name: Table Lights
@@ -99,10 +97,9 @@ script:
   kitchen_lighting:
     alias: Kitchen Lighting
     sequence:
-      - platform: state
-        data:
-          entity_id: light.hue_desk
-          state: "{{ message }}"
+      - service: "{% {{ message }} == 'on' %}light.turn_on{% else %}light.turn_off{% endif %}"
+        entity_id: light.hue_desk
+
         # data_template:
         #   state: '{{ message }}'
 
