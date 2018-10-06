@@ -16,7 +16,7 @@ default_view:
     - group.daily_forecast
     - group.speech_engine
     - group.sun
-    - group.ring_doorbell
+    # - group.ring_doorbell
 
 date and time:
   name: Date & Time
