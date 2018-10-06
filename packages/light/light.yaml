@@ -97,7 +97,8 @@ script:
   kitchen_lighting:
     alias: Kitchen Lighting
     sequence:
-      - condition: state
+    - condition:
+        condition: state
         entity_id: light.hue_desk
         data_template:
           state: "{{ message }}"
