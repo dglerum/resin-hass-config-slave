@@ -39,6 +39,7 @@ discovery:
     - apple_tv
     - philips_hue
     - harmony
+    - belkin_wemo
 
 remote:
   - platform: harmony
@@ -56,6 +57,11 @@ logbook:
 
 map:
 sun:
+
+wemo:
+  static:
+    - 192.168.1.47
+    - 192.168.1.48
 
 mqtt:
   broker: !secret mqtt_broker
