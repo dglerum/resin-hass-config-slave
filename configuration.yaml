@@ -41,10 +41,10 @@ hue:
       allow_unreachable: true
       allow_hue_groups: false
 
-wemo:
-  static:
-    - 192.168.1.47
-    - 192.168.1.48
+# wemo:
+#   static:
+#     - 192.168.1.47
+#     - 192.168.1.48
 
 # Discover some devices automatically
 discovery:
