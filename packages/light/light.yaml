@@ -50,13 +50,13 @@ switch:
         turn_on:
           service: script.turn_on
           entity_id: script.kitchen_lighting
-          data:
-              message: 'on'
+            data:
+              message: on
         turn_off:
           service: script.turn_on
           entity_id: script.kitchen_lighting
-          data:
-              message: 'off'
+            data:
+              message: off
 
       table_lights:
         friendly_name: Table Lights
