@@ -36,8 +36,8 @@ updater:
 ## Philips Hue bridge config
 hue:
   bridges:
-    - host: !secret philips_hub
-      filename: phue.conf
+    - host: 192.168.1.2
+      # filename: phue.conf
       allow_unreachable: true
       allow_hue_groups: false
 
