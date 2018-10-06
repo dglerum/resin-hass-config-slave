@@ -100,8 +100,9 @@ script:
     alias: Kitchen Lighting
     sequence:
       - condition: state
-        entity_id: light.hue_desk
-        state: 'on'
+        data:
+          entity_id: light.hue_desk
+          state: "{{ message }}"
         # data_template:
         #   state: '{{ message }}'
 
