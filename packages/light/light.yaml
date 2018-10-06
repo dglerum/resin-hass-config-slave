@@ -51,13 +51,11 @@ switch:
           service: script.turn_on
           entity_id: script.kitchen_lighting
           data:
-            variable:
               message: 'on'
         turn_off:
           service: script.turn_on
           entity_id: script.kitchen_lighting
           data:
-            variable:
               message: 'off'
 
       table_lights:
