@@ -110,7 +110,7 @@ script:
           light.turn_{{ desire }}
         entity_id: light.fibaro_kitchen_level
 
-  downtairs_lights_on:
+  downstairs_lights_on:
     alias: Downstairs Lights On
     sequence:
       - service: scene.turn_on
