@@ -34,24 +34,24 @@ logger:
 updater:
 
 ## Philips Hue bridge config
-# hue:
-#   bridges:
-#     - host: 192.168.1.2
-#       # filename: phue.conf
-#       allow_unreachable: true
-#       allow_hue_groups: false
+hue:
+  bridges:
+    - host: 192.168.1.2
+      # filename: phue.conf
+      allow_unreachable: true
+      allow_hue_groups: false
 
-# wemo:
-#   static:
-#     - 192.168.1.47
-#     - 192.168.1.48
+wemo:
+  static:
+    - 192.168.1.47
+    - 192.168.1.48
 
 # Discover some devices automatically
-discovery:
-  ignore:
-    - apple_tv
-    - philips_hue
-    - belkin_wemo
+# discovery:
+#   ignore:
+#     - apple_tv
+#     - philips_hue
+#     - belkin_wemo
 
 remote:
   - platform: harmony
