@@ -33,13 +33,25 @@ logger:
 
 updater:
 
+## Philips Hue bridge config
+hue:
+  bridges:
+    - host: !secret philips_hub
+      filename: phue.conf
+      allow_unreachable: true
+      allow_hue_groups: false
+
+wemo:
+  static:
+    - 192.168.1.47
+    - 192.168.1.48
+
 # Discover some devices automatically
 discovery:
   ignore:
     - apple_tv
     - philips_hue
-    - harmony
-    - belkin_wemo
+    - welking_wemo
 
 remote:
   - platform: harmony
@@ -53,15 +65,9 @@ logbook:
       - sensor
       - switch
       - device_trackers
-      - scene
 
 map:
 sun:
-
-wemo:
-  static:
-    - 192.168.1.47
-    - 192.168.1.48
 
 mqtt:
   broker: !secret mqtt_broker
