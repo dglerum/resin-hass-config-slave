@@ -1,9 +1,9 @@
 - name: downstairs_night
   entities:
-    light.fibaro_kitchen_dimmer_level:
+    light.fibaro_kitchen_level:
       state: on
       transition: 2
-    light.fibaro_table_dimmer_level:
+    light.fibaro_table_level:
       state: on
       transition: 3
     switch.wemo_livingroom: on
@@ -25,10 +25,10 @@
 
 - name: downstairs_daylight
   entities:
-    light.fibaro_kitchen_dimmer_level:
+    light.fibaro_kitchen_level:
       state: on
       transition: 2
-    light.fibaro_table_dimmer_level:
+    light.fibaro_table_level:
       state: on
       transition: 3
     switch.wemo_livingroom: off
@@ -50,10 +50,10 @@
 
 - name: downstairs_evening
   entities:
-    light.fibaro_kitchen_dimmer_level:
+    light.fibaro_kitchen_level:
       state: on
       transition: 2
-    light.fibaro_table_dimmer_level:
+    light.fibaro_table_level:
       state: on
       transition: 3
     switch.wemo_livingroom: on
