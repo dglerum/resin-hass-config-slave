@@ -49,13 +49,13 @@ switch:
         value_template: "{{ is_state('light.fibaro_kitchen_dimmer_level', 'on') }}"
         turn_on:
           service: scipt.turn_on
-          entity_id: script.kitchen_lighting
           data_template:
+            entity_id: script.kitchen_lighting
             message: 'on'
         turn_off:
           service: scipt.turn_on
-          entity_id: script.kitchen_lighting
           data_template:
+            entity_id: script.kitchen_lighting
             message: 'off'
 
       table_lights:
