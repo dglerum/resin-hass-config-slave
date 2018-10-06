@@ -99,22 +99,9 @@ script:
   kitchen_lighting:
     alias: Kitchen Lighting
     sequence:
-      value_tamplate:
-      {% if {{value_json.data} == 'on' %}
-
-      - service: light.turn_on
+      - service: light.turn_{% if {{value_json.data} == 'on' %}{% else %}off{% endif %}
         data:
           entity_id: light.fibaro_kitchen_dimmer_level
-
-      {% if {{value_json.data} == 'off' %}
-
-      - service: light.turn_off
-        data:
-          entity_id: light.fibaro_kitchen_dimmer_level
-
-      {% endif %}
-
-
 
   everything_off:
     alias: Good Night
