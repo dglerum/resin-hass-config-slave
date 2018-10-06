@@ -114,7 +114,6 @@ graphs:
     - group.power_graph
     - group.lights_graph
     - group.temperature_graph
-    - group.tv_time
 
 battery_graph:
   view: no
@@ -141,10 +140,6 @@ temperature_graph:
   entities:
     - history_graph.temperature_graph
 
-tv_time:
-  view: no
-  entities:
-    - history_graph.total_tv_time
 ####################################################
 #                                                  #
 #                  System Status                   #
