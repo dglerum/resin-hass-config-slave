@@ -101,8 +101,9 @@ script:
     sequence:
       - condition: state
         entity_id: light.hue_desk
-        data:
-          state: '"{{ message }}"'
+        state: 'on'
+        # data_template:
+        #   state: '{{ message }}'
 
       # - service_template: >
       #     {%- if {{ message }} == 'on' -%}
