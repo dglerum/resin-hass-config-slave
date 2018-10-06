@@ -100,7 +100,7 @@ script:
     alias: Kitchen Lighting
     sequence:
       - service_template: >
-          {%- if {{value_json.data} == 'on' -%}
+          {%- if {{value_json.data}} == 'on' -%}
             light.turn_on
           {%- else -%}
             light.turn_off
