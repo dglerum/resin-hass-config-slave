@@ -3,6 +3,7 @@
 !*.yaml
 !*.sh
 !.gitignore
+!/nodered-flows/
 !/scenes/
 !/themes/
 !/includes/
