@@ -20,15 +20,15 @@
     #   polling_intensity: 1
     light.fibaro_kitchen_level:
       ignored: false
-      # polling_intensity: 1
+      polling_intensity: 1
       refresh_value: true
-      delay: 2
+      delay: 3
 
     light.fibaro_table_level:
       ignored: false
-      # polling_intensity: 1
+      polling_intensity: 1
       refresh_value: true
-      delay: 2
+      delay: 3
 
     sensor.fibaro_kitchen_alarm_level:
       ignored: true
