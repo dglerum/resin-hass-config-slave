@@ -14,7 +14,20 @@ homeassistant:
       friendly_name: Stair
     switch.wemo_livingroom:
       friendly_name: TV Lights
-
+    sensor.fibaro_hallway_energy:
+      friendly_name: "Hallway Use"
+    sensor.fibaro_kitchen_energy:
+      friendly_name: "Kitchen Use"
+    sensor.fibaro_stair_energy:
+      friendly_name: "Stair Use"
+    sensor.fibaro_table_energy:
+      friendly_name: "Table Use"
+    light.hue_lightstrip:
+      friendly_name: "LED Strip"
+    light.hue_livingroom:
+      friendly_name: "Floorlamp"
+    light.hue_desk:
+      friendly_name: "Desk"
 group:
   lights:
     name: Lights
