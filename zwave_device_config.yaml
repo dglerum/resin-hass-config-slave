@@ -20,7 +20,7 @@
 #   polling_intensity: 1
 light.fibaro_kitchen_level:
   ignored: false
-  refresh_value: True
+  refresh_value: true
 
 light.fibaro_table_level:
   ignored: false
