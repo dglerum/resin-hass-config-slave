@@ -1,6 +1,6 @@
 #################################################################
 #                                                               #
-#                      Packages/Firmware   OK                   #
+#                      Packages/Firmware                        #
 #                                                               #
 #################################################################
 
@@ -44,11 +44,6 @@ sensor:
     value_template: '{{ value.split(":")[1] }}'
 
 ## Check HA Version Installed
-  # - platform: rest
-  #   resource: !secret config_url
-  #   name: 'HA Installed Version'
-  #   value_template: '{{ value_json.version }}'
-
   - platform: command_line
     name: 'HA Installed Version'
     command: "cat /data/config/.HA_VERSION"
@@ -61,9 +56,6 @@ binary_sensor:
           {{ states.sensor.latest_ha_version.state != states.sensor.ha_installed_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
         friendly_name: HA Update Available
 
-#################################################################
-#                         Automations                           #
-#################################################################
 automation:
 ## Notify of New HA Update Available
   - alias: HA Update Available Notification
