@@ -22,13 +22,13 @@
       ignored: false
       polling_intensity: 1
       refresh_value: true
-      # delay: 2
+      delay: 2
 
     light.fibaro_table_level:
       ignored: false
       polling_intensity: 1
       refresh_value: true
-      # delay: 5
+      delay: 2
 
     sensor.fibaro_kitchen_alarm_level:
       ignored: true
