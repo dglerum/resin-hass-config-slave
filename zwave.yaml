@@ -10,10 +10,10 @@
       ignored: false
       polling_intensity: 1
       refresh_value: true
-      # delay: 5
+      delay: 5
 
     light.fibaro_table_level:
       ignored: false
       polling_intensity: 1
       refresh_value: true
-      # delay: 5
+      delay: 5
