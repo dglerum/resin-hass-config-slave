@@ -46,15 +46,6 @@ downstairs:
     - group.available_switches
     - group.motion_sensors
 
-motion_sensors:
-  name: Motion Sensors
-  icon: mdi:motion
-  view: no
-  entities:
-    - binary_sensor.hallway_motion
-    - binary_sensor.wc_upstairs_motion
-    - binary_sensor.wc_downstairs_motion
-
 available_switches:
   name: Switches
   view: no

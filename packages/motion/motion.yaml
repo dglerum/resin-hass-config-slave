@@ -7,6 +7,16 @@ homeassistant:
     binary_sensor.wc_upstairs_motion:
       friendly_name: WC Upstairs
 
+group:
+  motion_sensors:
+    name: Motion Sensors
+    icon: mdi:motion
+    view: no
+    entities:
+      - binary_sensor.hallway_motion
+      - binary_sensor.wc_upstairs_motion
+      - binary_sensor.wc_downstairs_motion
+      
 binary_sensor:
   - platform: mqtt
     name: Hallway Motion
