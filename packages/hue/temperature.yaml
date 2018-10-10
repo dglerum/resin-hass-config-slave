@@ -2,13 +2,13 @@ homeassistant:
   customize:
     sensor.hallway_temperature:
       friendly_name: Hallway
-      icon: mdi:temperature-celsius
+      icon: mdi:thermometer
     sensor.toilet_downstairs_temperature:
       friendly_name: Toilet Downstairs
-      icon: mdi:temperature-celsius
+      icon: mdi:thermometer
     sensor.toilet_upstairs_temperature:
       friendly_name: Toilet Upstairs
-      icon: mdi:temperature-celsius
+      icon: mdi:thermometer
 
 group:
   hue_temperature_sensors:
