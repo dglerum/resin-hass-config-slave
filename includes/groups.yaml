@@ -61,7 +61,7 @@ available_switches:
     - switch.table_lights
     - switch.tv
     - switch.shuffle_itunes
-    - switch.television_lights
+    - switch.wemo_livingroom
 
 tv:
   name: TV Scenes
