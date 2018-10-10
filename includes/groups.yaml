@@ -44,6 +44,7 @@ downstairs:
     # - media_player.itunes
     - group.all_scenes
     - group.available_switches
+    - group.binary_sensor
 
 available_switches:
   name: Switches

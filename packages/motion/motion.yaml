@@ -6,24 +6,25 @@ homeassistant:
       friendly_name: WC Downstairs
     binary_sensor.wc_upstairs_motion:
       friendly_name: WC Upstairs
+
 binary_sensor:
   - platform: mqtt
     name: Hallway Motion
     state_topic: "hass/binary_sensor/hallway_motion"
-    payload_on: "on"
-    payload_off: "off"
+    payload_on: "true"
+    payload_off: "false"
 
   - platform: mqtt
     name: WC Downstairs Motion
     state_topic: "hass/binary_sensor/wc_downstairs_motion"
-    payload_on: "on"
-    payload_off: "off"
+    payload_on: "true"
+    payload_off: "false"
 
   - platform: mqtt
     name: WC Upstairs Motion
     state_topic: "hass/binary_sensor/wc_upstairs_motion"
-    payload_on: "on"
-    payload_off: "off"
+    payload_on: "true"
+    payload_off: "false"
 
 automation:
   - alias: Motion Detected
