@@ -44,7 +44,16 @@ downstairs:
     # - media_player.itunes
     - group.all_scenes
     - group.available_switches
-    - group.binary_sensor
+    - group.motion_sensors
+
+motion_sensors:
+  name: Downstairs
+  icon: mdi:sofa
+  view: yes
+  entities:
+    - binary_sensor.hallway_motion
+    - binary_sensor.wc_upstairs_motion
+    - binary_sensor.wc_downstairs_motion
 
 available_switches:
   name: Switches
