@@ -36,6 +36,6 @@ automation:
       - service: notify.pushover
         data_template:
           message: >
-            'Motion detected in {{ trigger.entity_id.attributes.friendly_name }}'
+            '{{ trigger.entity_id.attributes.friendly_name }} motion detected!'
           data:
             url: https://dglerum.noip.me
