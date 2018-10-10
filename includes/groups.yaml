@@ -44,7 +44,8 @@ downstairs:
     # - media_player.itunes
     - group.all_scenes
     - group.available_switches
-    - group.motion_sensors
+    - group.hue_motion_sensors
+    - group.hue_temperature_sensors
 
 available_switches:
   name: Switches

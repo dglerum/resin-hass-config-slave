@@ -8,7 +8,7 @@ homeassistant:
       friendly_name: Toilet Upstairs
 
 group:
-  motion_sensors:
+  hue_motion_sensors:
     name: Motion Sensors
     icon: mdi:motion
     view: no
