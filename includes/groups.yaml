@@ -46,6 +46,7 @@ downstairs:
     - group.available_switches
     - group.hue_motion_sensors
     - group.hue_temperature_sensors
+    - group.hue_lux_sensors
 
 available_switches:
   name: Switches

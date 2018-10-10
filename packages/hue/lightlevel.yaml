@@ -1,0 +1,47 @@
+homeassistant:
+  customize:
+    sensor.hallway_lux:
+      friendly_name: Hallway
+      icon: mdi:white-balance-sunny
+    sensor.toilet_downstairs_lux:
+      friendly_name: Toilet Downstairs
+      icon: mdi:white-balance-sunny
+    sensor.toilet_upstairs_lux:
+      friendly_name: Toilet Upstairs
+      icon: mdi:white-balance-sunny
+
+group:
+  hue_lux_sensors:
+    name: Lightlevel
+    view: no
+    entities:
+      - sensor.hallway_lux
+      - sensor.toilet_upstairs_lux
+      - sensor.toilet_downstairs_lux
+
+sensor:
+  - platform: mqtt
+    name: Hallway Lux
+    state_topic: "hass/sensor/hallway_lux"
+
+  - platform: mqtt
+    name: Toilet Downstairs Lux
+    state_topic: "hass/sensor/toilet_downstairs_lux"
+
+  - platform: mqtt
+    name: Toilet Upstairs Lux
+    state_topic: "hass/sensor/toilet_upstairs_lux"
+
+# automation:
+#   - alias: Motion Detected
+#     trigger:
+#       platform: state
+#       entity_id: binary_sensor.hallway_motion, binary_sensor.wc_downstairs_motion, binary_sensor.wc_upstairs_motion
+#       to: 'on'
+#     action:
+#       - service: notify.pushover
+#         data_template:
+#           message: >
+#             '{{ trigger.to_state.attributes.friendly_name }} motion detected!'
+#           data:
+#             url: https://dglerum.noip.me
