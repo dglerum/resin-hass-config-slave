@@ -9,7 +9,7 @@ homeassistant:
 
 group:
   hue_motion_sensors:
-    name: Motion Sensors
+    name: Motion
     icon: mdi:motion
     view: no
     entities:

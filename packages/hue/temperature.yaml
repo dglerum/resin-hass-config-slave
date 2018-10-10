@@ -12,7 +12,7 @@ homeassistant:
 
 group:
   hue_temperature_sensors:
-    name: Temperature Sensors
+    name: Temperature
     view: no
     entities:
       - sensor.hallway_temperature
