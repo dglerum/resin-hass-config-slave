@@ -13,7 +13,6 @@ homeassistant:
 group:
   hue_temperature_sensors:
     name: Temperature Sensors
-    icon: mdi:temperature
     view: no
     entities:
       - sensor.hallway_temperature
