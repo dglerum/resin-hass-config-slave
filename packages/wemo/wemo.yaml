@@ -3,4 +3,6 @@ switch:
     name: Television Lights
     command_topic: "hass/binary_sensor/wemo_livingroom"
     retain: true
-    # optimistic: true
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
