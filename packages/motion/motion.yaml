@@ -1,0 +1,25 @@
+homeassistant:
+  customize:
+    binary_sensor.hallway_motion:
+      friendly_name: Hallway
+
+binary_sensor:
+  - platform: mqtt
+    name: Hallwat Motion
+    state_topic: "hass/binary_sensor/hallway_motion"
+    payload_on: "on"
+    payload_off: "off"
+
+automation:
+  - alias: Motion Detected
+    trigger:
+      platform: state
+      entity_id: binary_sensor.hallway_motion
+      to: 'on'
+    action:
+      - service: notify.pushover
+        data_template:
+          message: >
+            'Motion detected in {{ trigger.entity_id.attributes.friendly_name }}'
+          data:
+            url: https://dglerum.noip.me
