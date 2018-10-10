@@ -47,9 +47,9 @@ downstairs:
     - group.motion_sensors
 
 motion_sensors:
-  name: Downstairs
-  icon: mdi:sofa
-  view: yes
+  name: Motion Sensors
+  icon: mdi:motion
+  view: no
   entities:
     - binary_sensor.hallway_motion
     - binary_sensor.wc_upstairs_motion
