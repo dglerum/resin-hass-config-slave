@@ -26,6 +26,12 @@
       - sensor.total_tv_time
       - binary_sensor.ring_front_door_ding
       - binary_sensor.ring_front_door_motion
+      - binary_sensor.hallway_motion
+      - sensor.hallway_temperature
+      - binary_sensor.toilet_downstairs_motion
+      - sensor.toilet_downstairs_temperature
+      - binary_sensor.toilet_upstairs_motion
+      - sensor.toilet_upstairs_temperature
       # - light.hue_desk
       # - light.hue_lightstrip
       # - light.hue_livingroom
