@@ -3,9 +3,9 @@ homeassistant:
     binary_sensor.hallway_motion:
       friendly_name: Hallway
     binary_sensor.toilet_downstairs_motion:
-      friendly_name: WC Downstairs
+      friendly_name: Toilet Downstairs
     binary_sensor.toilet_upstairs_motion:
-      friendly_name: WC Upstairs
+      friendly_name: Toilet Upstairs
 
 group:
   motion_sensors:
@@ -14,8 +14,8 @@ group:
     view: no
     entities:
       - binary_sensor.hallway_motion
-      - binary_sensor.wc_upstairs_motion
-      - binary_sensor.wc_downstairs_motion
+      - binary_sensor.toilet_upstairs_motion
+      - binary_sensor.toilet_downstairs_motion
 
 binary_sensor:
   - platform: mqtt
