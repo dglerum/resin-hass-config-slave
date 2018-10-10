@@ -167,6 +167,7 @@ system status:
     - group.rpi_resources
     - group.zwave
     - group.emergency
+    - group.flic
 
 shortcuts:
   name: Shortcuts
