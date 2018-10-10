@@ -16,7 +16,7 @@ group:
       - binary_sensor.hallway_motion
       - binary_sensor.wc_upstairs_motion
       - binary_sensor.wc_downstairs_motion
-      
+
 binary_sensor:
   - platform: mqtt
     name: Hallway Motion
@@ -46,6 +46,6 @@ automation:
       - service: notify.pushover
         data_template:
           message: >
-            '{{ trigger.entity_id.attributes.friendly_name }} motion detected!'
+            '{{ trigger.to_state.attributes.friendly_name }} motion detected!'
           data:
             url: https://dglerum.noip.me
