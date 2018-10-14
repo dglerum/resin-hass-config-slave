@@ -1,3 +1,60 @@
+- name: livingroom_night
+  entities:
+    switch.television_lights: on
+    light.hue_desk:
+      state: on
+      brightness: 80
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 110
+      xy_color: [0.4452,0.4068]
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 80
+      xy_color: [0.4914,0.415]
+      transition: 3
+
+- name: livingroom_daylight
+  entities:
+    switch.television_lights: off
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 150
+      xy_color: [0.4452,0.4068]
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 130
+      xy_color: [0.4914,0.415]
+      transition: 3
+
+- name: livingroom_evening
+  entities:
+    switch.television_lights: on
+    light.hue_desk:
+      state: on
+      brightness: 100
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 120
+      xy_color: [0.4452,0.4068]
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 100
+      xy_color: [0.4914,0.415]
+      transition: 3
+
 - name: downstairs_night
   entities:
     light.fibaro_kitchen_level:
@@ -6,7 +63,7 @@
     light.fibaro_table_level:
       state: on
       transition: 3
-    switch.wemo_livingroom: on
+    switch.television_lights: on
     light.hue_desk:
       state: on
       brightness: 80
@@ -31,7 +88,7 @@
     light.fibaro_table_level:
       state: on
       transition: 3
-    switch.wemo_livingroom: off
+    switch.television_lights: off
     light.hue_desk:
       state: on
       brightness: 130
@@ -56,7 +113,7 @@
     light.fibaro_table_level:
       state: on
       transition: 3
-    switch.wemo_livingroom: on
+    switch.television_lights: on
     light.hue_desk:
       state: on
       brightness: 100
@@ -88,7 +145,7 @@
 
 - name: Livingroom On
   entities:
-    switch.wemo_livingroom: on
+    switch.television_lights: on
     light.hue_desk:
       state: on
       brightness: 130
@@ -107,7 +164,7 @@
 
 - name: Livingroom Off
   entities:
-    switch.wemo_livingroom: off
+    switch.television_lights: off
     light.hue_livingroom:
       state: off
       transition: 3

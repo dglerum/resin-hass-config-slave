@@ -28,6 +28,7 @@ homeassistant:
       friendly_name: "Floorlamp"
     light.hue_desk:
       friendly_name: "Desk"
+      
 group:
   lights:
     name: Lights
@@ -37,76 +38,26 @@ group:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
-      - switch.wemo_livingroom
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
 
   lr_lights:
-    name: Livingroom Lights
     view: no
     control: hidden
     entities:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
+      - switch.television_lights
 
-switch:
-
-  - platform: template
-    switches:
-      dinner_lights:
-        friendly_name: Dinner Lights
-        value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') and is_state('light.fibaro_table_level', 'on') }}"
-        turn_on:
-          service: scene.turn_on
-          entity_id: scene.dinner_on
-        turn_off:
-          service: scene.turn_on
-          entity_id: scene.dinner_off
-
-      kitchen_lights:
-        friendly_name: Kitchen Lights
-        value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') }}"
-        turn_on:
-          service: script.kitchen_lighting
-          data_template:
-            desire: 'on'
-        turn_off:
-          service: script.kitchen_lighting
-          data_template:
-            desire: 'off'
-
-      table_lights:
-        friendly_name: Table Lights
-        value_template: "{{ is_state('light.fibaro_table_level', 'on') }}"
-        turn_on:
-          service: scene.turn_on
-          entity_id: scene.table_on
-        turn_off:
-          service: scene.turn_on
-          entity_id: scene.table_off
-
-      # desk_light:
-      #   friendly_name: Desk Light
-      #   value_template: "{{ is_state('light.hue_desk', 'on') }}"
-      #   turn_on:
-      #     service: scene.turn_on
-      #     entity_id: scene.desk_on
-      #   turn_off:
-      #     service: scene.turn_on
-      #     entity_id: scene.desk_off
-
-      tv_lights:
-        friendly_name: TV Lights
-        value_template: "{{ is_state('group.Livingroom', 'on') }}"
-        turn_on:
-          service: scene.turn_on
-          entity_id: scene.livingroom_on
-        turn_off:
-          service: scene.turn_on
-          entity_id: scene.livingroom_off
+  kitchen_lights:
+    view: no
+    control: hidden
+    entities:
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
 
 script:
   # Master script for ALL LIGHTS OFF
@@ -130,6 +81,19 @@ script:
         data_template:
           entity_id: >
             scene.downstairs_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  livingroom_lights_on:
+    alias: Livingroom Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.livingroom_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
             {% elif now().hour < 19 %}evening

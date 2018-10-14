@@ -31,6 +31,7 @@ logger:
     homeassistant.components.zwave: debug
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
+    homeassistant.components.script: debug
 
 updater:
 
@@ -80,27 +81,30 @@ homekit:
   filter:
     include_entities:
       ## Media Players
-      - media_player.kodi_player
+      # - media_player.kodi_player
       ## Lights
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
       ## Switches
-      - switch.wemo_livingroom
-      - switch.wemo_bedroom
+      - switch.livingroom_lights
+      - switch.dinner_lights
+      - switch.kitchen_lights
+      - switch.television
+      - switch.radio
       ## Sensors
       - sensor.fibaro_smoke_sensor_temperature
       ## Device Tracker
       # - device_tracker.davy_bayesian
-  entity_config:
-    media_player.kodi_player:
-      feature_list:
-        - feature: play_pause
-        - feature: play_stop
-        - feature: toggle_mute
-    switch.wemo_bedroom:
-      type: outlet
+  # entity_config:
+  #   media_player.kodi_player:
+  #     feature_list:
+  #       - feature: play_pause
+  #       - feature: play_stop
+  #       - feature: toggle_mute
+  #   switch.wemo_bedroom:
+  #     type: outlet
 
 weblink:
   entities:
@@ -123,6 +127,7 @@ weblink:
 #       - binary_sensor.flic_80e4da720d43
 #       - binary_sensor.flic_80e4da721754
 
+switch: !include includes/switches.yaml
 camera: !include includes/cameras.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml

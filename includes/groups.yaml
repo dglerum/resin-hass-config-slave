@@ -53,15 +53,12 @@ available_switches:
   view: no
   control: hidden
   entities:
-    - switch.desk_light
+    - switch.livingroom_lights
     - switch.dinner_lights
     - switch.goodnight
     - switch.kitchen_lights
-    - switch.tv_lights
     - switch.table_lights
     - switch.tv
-    - switch.shuffle_itunes
-    - switch.television_lights
 
 tv:
   name: TV Scenes

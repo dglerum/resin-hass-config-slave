@@ -9,7 +9,8 @@
 !/themes/
 !/includes/
 !/bin/
-!/www/
+!www/
+!www/*
 !packages/
 !packages/*
 secrets.yaml
