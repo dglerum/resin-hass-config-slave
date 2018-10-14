@@ -130,6 +130,40 @@
       xy_color: [0.4914,0.415]
       transition: 3
 
+- name: kitchen_night
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      brightness: 100
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      brightness: 100
+      transition: 3
+
+- name: kitchen_daylight
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      brightness: 170
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      brightness: 170
+      transition: 3
+
+- name: kitchen_evening
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      brightness: 150
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      brightness: 150
+      transition: 3
+
+
 - name: Desk On
   entities:
     light.hue_desk:
@@ -165,6 +199,9 @@
 - name: Livingroom Off
   entities:
     switch.television_lights: off
+    light.hue_desk:
+      state: off
+      transition: 3
     light.hue_livingroom:
       state: off
       transition: 3

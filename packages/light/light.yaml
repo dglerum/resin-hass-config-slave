@@ -28,7 +28,7 @@ homeassistant:
       friendly_name: "Floorlamp"
     light.hue_desk:
       friendly_name: "Desk"
-      
+
 group:
   lights:
     name: Lights
@@ -72,7 +72,7 @@ script:
     sequence:
       - service_template: >
           light.turn_{{ desire }}
-        entity_id: light.fibaro_kitchen_level
+        entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
 
   downstairs_lights_on:
     alias: Downstairs Lights On
@@ -81,6 +81,19 @@ script:
         data_template:
           entity_id: >
             scene.downstairs_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  kitchen_lights_on:
+    alias: Kitchen Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.kitchen_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
             {% elif now().hour < 19 %}evening

@@ -44,15 +44,13 @@
 
       kitchen_lights:
         friendly_name: Kitchen Lights
-        value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') }}"
+        value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') and is_state('light.fibaro_table_level', 'on') }}"
         turn_on:
-          service: script.kitchen_lighting
-          data_template:
-            desire: 'on'
+          service: script.turn_on
+          entity_id: script.kitchen_lights_on
         turn_off:
-          service: script.kitchen_lighting
-          data_template:
-            desire: 'off'
+          service: scene.turn_on
+          entity_id: scene.kitchen_off
 
       table_lights:
         friendly_name: Table Lights
