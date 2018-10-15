@@ -1,0 +1,86 @@
+title: My Awesome Home
+# Include external resources
+resources:
+  - url: /local/custom-lovelace/monster-card/monster-card.js?v=1
+    type: js
+
+# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
+background: center / cover no-repeat url("/background.png") fixed
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  - weblink.router
+views:
+    # Specify a tab icon if you want the view tab to be an icon.
+  - icon: mdi:home-assistant
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Second view
+    cards:
+      - type: picture-glance
+        title: Living room
+        aspect_ratio: 16x9
+        entities:
+          - entity: switch.wemo_livingroom
+            icon: mdi:lamp
+          - entity: light.hue_lightstrip
+            icon: mdi:led-strip
+          - entity: light.hue_livingroom
+            icon: mdi:floor-lamp
+        image: https://static-naija.akamaized.net/vllkyt3ro8mo7genvg.r900x586.255e5387.jpg
+        # Entities card will take a list of entities and show their state.
+      - type: picture-glance
+        title: Kitchen
+        aspect_ratio: 16x9
+        entities:
+          - entity: light.fibaro_kitchen_level
+            icon: mdi:ceiling-light
+          - entity: light.fibaro_table_level
+            icon: mdi:silverware
+        image: https://www.thecarlebachshul.org/wp-content/uploads/2016/07/dinner3.jpg
+        # Entities card will take a list of entities and show their state.
+
+      - type: picture-entity
+        image: https://www.ikea.com/gb/en/images/range-introduction/ikea-malm-desk__1364493552121-s3.jpg
+        aspect_ratio: 16x9
+        show_state: true
+        entity: light.hue_desk
+        tap_action: toggle
+
+      - type: entities
+        # Title of the entities card
+        title: ' '
+        show_header_toggle: false
+        # The entities here will be shown in the same order as specified.
+        # Each entry is an entity ID or a map with extra options.
+        entities:
+          - light.hue_livingroom
+          - light.hue_lightstrip
+          - light.hue_desk
+          - light.fibaro_table_level
+          - light.fibaro_kitchen_level
+          # - entity: light.hue_livingroom
+          #   # Override the name to use
+          #   name: LR Lights
+
+        # The markdown card will render markdown text.
+      # - type: markdown
+      #   title: Lovelace
+      #   content: >
+      #     Welcome to your **Lovelace UI**.
+    # View tab title.
+  - icon: mdi:chart-areaspline
+    title: Stats
+    # Optional unique id for direct access /lovelace/${id}
+    id: example
+    cards:
+        # The filter card will filter entities for their state
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=11&fullscreen&kiosk
+        aspect_ratio: 75%
+
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=8&fullscreen&kiosk
+        aspect_ratio: 75%
+
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=9&fullscreen&kiosk
+        aspect_ratio: 75%

@@ -12,7 +12,41 @@
 
 homeassistant:
   customize:
-
+    sensor.solar_angle:
+      unit_of_measurement: "°"
+      icon: mdi:triangle-outline
+    sensor.yr_symbol:
+      friendly_name: " "
+    sensor.yr_fog:
+      friendly_name: "Fog"
+    sensor.dark_sky_hourly_summary:
+      friendly_name: "Current:"
+    sensor.dark_sky_daily_summary:
+      friendly_name: "Forecast:"
+    sensor.pws_temp_c:
+      friendly_name: "Outdoor Temp"
+    sensor.cpu_temperature:
+      friendly_name: "CPU Temp"
+    sensor.dark_sky_daily_high_temperature:
+      friendly_name: "High"
+    sensor.dark_sky_daily_high_temperature_1:
+      friendly_name: "Forecast High"
+    sensor.dark_sky_daily_low_temperature:
+      friendly_name: "Low"
+    sensor.dark_sky_daily_low_temperature_1:
+      friendly_name: "Forecast Low"
+    sensor.dark_sky_precip_probability:
+      friendly_name: "Rain"
+    sensor.dark_sky_precip_probability_1:
+      friendly_name: "Forecast Rain"
+    sensor.dark_sky_cloud_coverage:
+      friendly_name: "Cloud"
+    sensor.dark_sky_wind_speed:
+      friendly_name: "Wind"
+    sensor.dark_sky_wind_bearing:
+      friendly_name: "Wind Bearing"
+    sensor.dark_sky_cloud_coverage_1:
+      friendly_name: "Forecast Cloud"
 
 #################################################################
 #                                                               #
@@ -109,5 +143,5 @@ weather:
       - temperature_high
       - temperature_low
       - apparent_temperature
-      
+
 sun:

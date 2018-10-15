@@ -3,17 +3,5 @@
   network_key: '0x62, 0x6c, 0x46, 0x70, 0x52, 0x55, 0x53, 0x6d, 0x44, 0x6c, 0x57, 0x0C, 0x0D, 0x0E, 0x0F, 0x10'
   # debug: true
   autoheal: true
-  polling_interval: 10000
+  # polling_interval: 30000
   device_config: !include zwave_device_config.yaml
-#  device_config:
-#    light.fibaro_kitchen_dimmer_level:
-#      ignored: false
-#      polling_intensity: 1
-#      refresh_value: True
-#      delay: 3
-#
-#    light.fibaro_table_dimmer_level:
-#      ignored: false
-#      polling_intensity: 1
-#      refresh_value: True
-#      delay: 3

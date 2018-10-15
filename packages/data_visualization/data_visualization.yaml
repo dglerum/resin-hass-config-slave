@@ -13,7 +13,7 @@
 panel_iframe:
   grafanaui:
     title: Grafana
-    icon: mdi:wrench
+    icon: mdi:chart-areaspline
     url: !secret grafana_url
 
 #################################################################
@@ -24,9 +24,10 @@ panel_iframe:
 
 influxdb:
   host: !secret influx_host
-  username: home-assistant
-  password: geronimo
-  database: hass_161
+  username: !secret influx_user
+  password: !secret influx_passsword
+  database: !secret influx_db
+  max_retries: 3
   default_measurement: state
   tags:
     instance: prod

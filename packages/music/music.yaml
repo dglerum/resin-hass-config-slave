@@ -35,11 +35,30 @@ homeassistant:
 group:
   iTunes:
     name: 'Music Player'
+    control: hidden
     entities:
       - input_select.itunes_playlist
       # - input_select.itunes_source
       - script.itunes_music
       - input_number.itunes_volume
+      - switch.radio
+
+#################################################################
+#                          Switch                               #
+#################################################################
+
+# switch:
+#   - platform: template
+#     switches:
+#       radio:
+#         friendly_name: Radio
+#         value_template: "{% if states.media_player.itunes.state == 'playing' and states.media_player.itunes.attributes.media_title == 'Studio Brussel' %}on{% else %}off{% endif %}"
+#         turn_on:
+#           service: script.turn_on
+#           entity_id: script.radio_music
+#         turn_off:
+#           service: script.turn_on
+#           entity_id: script.media_off
 
 #################################################################
 #                          Input Number                         #
@@ -97,6 +116,7 @@ switch:
       shuffle_itunes:
         command_on: "curl -X PUT http://192.168.1.152:8181/shuffle -d mode=songs"
         command_off: "curl -X PUT http://192.168.1.152:8181/shuffle -d mode=off"
+
 
 #################################################################
 #                          Script                               #

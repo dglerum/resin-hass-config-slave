@@ -9,6 +9,7 @@ homeassistant:
   packages: !include_dir_named packages
 
 frontend:
+  javascript_version: latest
 
 http:
   api_password: !secret http_password
@@ -18,35 +19,41 @@ http:
 
 config:
 
-panel_iframe:
-  nodered:
-    title: Node-Red
-    icon: mdi:shuffle-variant
-    url: !secret nodered_url
+# panel_iframe:
+#   nodered:
+#     title: Node-Red
+#     icon: mdi:shuffle-variant
+#     url: !secret nodered_url
 
 logger:
   default: warning
   logs:
+    homeassistant.components.zwave: debug
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
+    homeassistant.components.script: debug
 
 updater:
-
-# Discover some devices automatically
-discovery:
-  ignore:
-    - apple_tv
 
 ## Philips Hue bridge config
 hue:
   bridges:
-    - host: !secret philips_hub
+    - host: 192.168.1.2
+      # filename: phue.conf
       allow_unreachable: true
       allow_hue_groups: false
+
+# wemo:
+#   static:
+#     - 192.168.1.47
+#     - 192.168.1.48
+
+# Discover some devices automatically
+# discovery:
+#   ignore:
+#     - apple_tv
+#     - philips_hue
+#     - belkin_wemo
 
 remote:
   - platform: harmony
@@ -74,27 +81,42 @@ homekit:
   filter:
     include_entities:
       ## Media Players
-      - media_player.kodi_player
+      # - media_player.kodi_player
       ## Lights
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
       ## Switches
-      - switch.wemo_livingroom
-      - switch.wemo_bedroom
+      - switch.livingroom_lights
+      - switch.dinner_lights
+      - switch.kitchen_lights
+      - switch.television
+      - switch.radio
       ## Sensors
       - sensor.fibaro_smoke_sensor_temperature
       ## Device Tracker
       # - device_tracker.davy_bayesian
-  entity_config:
-    media_player.kodi_player:
-      feature_list:
-        - feature: play_pause
-        - feature: play_stop
-        - feature: toggle_mute
-    switch.wemo_bedroom:
-      type: outlet
+  # entity_config:
+  #   media_player.kodi_player:
+  #     feature_list:
+  #       - feature: play_pause
+  #       - feature: play_stop
+  #       - feature: toggle_mute
+  #   switch.wemo_bedroom:
+  #     type: outlet
+
+weblink:
+  entities:
+    - name: Router
+      icon: mdi:router-wireless
+      url: http://192.168.1.1/
+    - name: Node-Red
+      icon: mdi:nodejs
+      url: /red
+    - name: Grafana
+      icon: mdi:wrench
+      url: /grafana
 
 # mqtt_statestream:
 #   base_topic: homeassistant
@@ -105,6 +127,7 @@ homekit:
 #       - binary_sensor.flic_80e4da720d43
 #       - binary_sensor.flic_80e4da721754
 
+switch: !include includes/switches.yaml
 camera: !include includes/cameras.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml

@@ -22,10 +22,13 @@
       brightness: 175
       state: on
       transition: 2
-      
+
 - name: Kitchen Off
   entities:
-    light.fibaro_kitchen_dimmer_level:
+    light.fibaro_kitchen_level:
+      state: off
+      transition: 3
+    light.fibaro_table_level:
       state: off
       transition: 3
 

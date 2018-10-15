@@ -4,6 +4,7 @@
       - switch
       - media_player
       - device_tracker
+      - remote
     entities:
       - sensor.disk_use_
       - sensor.memory_use_percent
@@ -20,6 +21,14 @@
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping
+      - sensor.total_tv_time
+      - binary_sensor.ring_front_door_ding
+      - binary_sensor.ring_front_door_motion
+      - sensor.hallway_temperature
+      - binary_sensor.toilet_downstairs_motion
+      - sensor.toilet_downstairs_temperature
+      - binary_sensor.toilet_upstairs_motion
+      - sensor.toilet_upstairs_temperature
   # include:
   #   entities:
   #     - sensor.colorprinter_online

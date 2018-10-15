@@ -14,6 +14,20 @@ homeassistant:
       friendly_name: Stair
     switch.wemo_livingroom:
       friendly_name: TV Lights
+    sensor.fibaro_hallway_energy:
+      friendly_name: "Hallway Use"
+    sensor.fibaro_kitchen_energy:
+      friendly_name: "Kitchen Use"
+    sensor.fibaro_stair_energy:
+      friendly_name: "Stair Use"
+    sensor.fibaro_table_energy:
+      friendly_name: "Table Use"
+    light.hue_lightstrip:
+      friendly_name: "LED Strip"
+    light.hue_livingroom:
+      friendly_name: "Floorlamp"
+    light.hue_desk:
+      friendly_name: "Desk"
 
 group:
   lights:
@@ -24,11 +38,26 @@ group:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
-      - switch.wemo_livingroom
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
       - light.fibaro_hallway_level
       - light.fibaro_stair_level
+
+  lr_lights:
+    view: no
+    control: hidden
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - switch.television_lights
+
+  kitchen_lights:
+    view: no
+    control: hidden
+    entities:
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
 
 script:
   # Master script for ALL LIGHTS OFF
@@ -38,6 +67,52 @@ script:
   #    * turn off Alexa, bathroom fan, bandwidth throttling
   #  * roku = playing
   #    * turn off grow light, aquarium, bathroom_fan
+  kitchen_lighting:
+    alias: Kitchen Lighting
+    sequence:
+      - service_template: >
+          light.turn_{{ desire }}
+        entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
+
+  downstairs_lights_on:
+    alias: Downstairs Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.downstairs_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  kitchen_lights_on:
+    alias: Kitchen Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.kitchen_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  livingroom_lights_on:
+    alias: Livingroom Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.livingroom_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
   everything_off:
     alias: Good Night
     sequence:
@@ -47,18 +122,18 @@ script:
 
       - service: light.turn_off
         data:
-          entity_id: light.fibaro_table_dimmer_level, light.hue_livingroom, light.hue_lightstrip, light.hue_desk
+          entity_id: light.fibaro_table_level, light.hue_livingroom, light.hue_lightstrip, light.hue_desk
           transition: 4
 
       - delay: '00:00:02'
 
       - condition: state
-        entity_id: light.fibaro_kitchen_dimmer_level
+        entity_id: light.fibaro_kitchen_level
         state: 'on'
 
       - service: light.turn_on
         data:
-          entity_id: light.fibaro_kitchen_dimmer_level
+          entity_id: light.fibaro_kitchen_level
           brightness: 75
           transition: 5
 
@@ -66,7 +141,7 @@ script:
 
       - service: light.turn_off
         data:
-          entity_id: light.fibaro_kitchen_dimmer_level
+          entity_id: light.fibaro_kitchen_level
           transition: 4
   #
   #     # NOT HOME

@@ -2,11 +2,15 @@
 *
 !*.yaml
 !*.sh
+!*.json
 !.gitignore
+!/nodered-flows/
 !/scenes/
 !/themes/
 !/includes/
 !/bin/
+!www/
+!www/*
 !packages/
 !packages/*
 secrets.yaml

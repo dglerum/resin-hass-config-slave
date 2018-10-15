@@ -10,14 +10,13 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
-    - weather.dark_sky
     - group.people
     - group.date_and_time
     - group.weather_overview
     - group.daily_forecast
     - group.speech_engine
     - group.sun
-    # - group.battery_graph
+    # - group.ring_doorbell
 
 date and time:
   name: Date & Time
@@ -42,11 +41,29 @@ downstairs:
     - group.itunes
     - group.tv
     - group.lights
-    - media_player.itunes
+    # - media_player.itunes
+    - group.all_scenes
+    - group.available_switches
+    - group.hue_motion_sensors
+    - group.hue_temperature_sensors
+    - group.hue_lux_sensors
+
+available_switches:
+  name: Switches
+  view: no
+  control: hidden
+  entities:
+    - switch.livingroom_lights
+    - switch.dinner_lights
+    - switch.goodnight
+    - switch.kitchen_lights
+    - switch.table_lights
+    - switch.tv
 
 tv:
-  name: Scenes
+  name: TV Scenes
   view: no
+  control: hidden
   entities:
     - script.1521695976118
     - script.1521694771100
@@ -58,7 +75,33 @@ tv:
     - scene.livingroom_bright
     - light.hall_bulb
     - switch.goodnight
+
+
+all_scenes:
+  name: All Scenes
+  view: no
   control: hidden
+  entities:
+    - scene.all_lights_on
+    - scene.day_dim_lights
+    - scene.desk_off
+    - scene.desk_on
+    - scene.dinner_off
+    - scene.dinner_on
+    - scene.evening_bright_lights
+    - scene.kitchen_off
+    - scene.kitchen_on
+    - scene.livingroom_off
+    - scene.livingroom_on
+    - scene.movie_paused
+    - scene.movie_resumed
+    - scene.night_dim_lights
+    - scene.night_light
+    - scene.table_off
+    - scene.table_on
+    - scene.downstairs_night
+    - scene.downstairs_evening
+    - scene.downstairs_daylight
 
 ####################################################
 #                                                  #
@@ -68,7 +111,7 @@ tv:
 
 graphs:
   name: History Graphs
-  icon: mdi:chart-areaspline
+  icon: mdi:history
   view: yes
   entities:
     - group.internet_graph
@@ -112,6 +155,7 @@ system status:
   icon: mdi:settings
   view: yes
   entities:
+    - group.shortcuts
     - group.firmware
     - group.git
     - group.internet
@@ -122,9 +166,18 @@ system status:
     - group.rpi_resources
     - group.zwave
     - group.emergency
+    - group.flic
+
+shortcuts:
+  name: Shortcuts
+  view: no
+  entities:
+    - weblink.router
+    - weblink.grafana
+    - weblink.nodered
 
 emergency:
-  name: emergency
+  name: Emergency
   view: no
   control: hidden
   entities:

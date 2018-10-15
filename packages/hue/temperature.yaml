@@ -1,0 +1,47 @@
+homeassistant:
+  customize:
+    sensor.hallway_temperature:
+      friendly_name: Hallway
+      icon: mdi:thermometer
+    sensor.toilet_downstairs_temperature:
+      friendly_name: Toilet Downstairs
+      icon: mdi:thermometer
+    sensor.toilet_upstairs_temperature:
+      friendly_name: Toilet Upstairs
+      icon: mdi:thermometer
+
+group:
+  hue_temperature_sensors:
+    name: Temperature
+    view: no
+    entities:
+      - sensor.hallway_temperature
+      - sensor.toilet_upstairs_temperature
+      - sensor.toilet_downstairs_temperature
+
+sensor:
+  - platform: mqtt
+    name: Hallway Temperature
+    state_topic: "hass/sensor/hallway_temperature"
+
+  - platform: mqtt
+    name: Toilet Downstairs Temperature
+    state_topic: "hass/sensor/toilet_downstairs_temperature"
+
+  - platform: mqtt
+    name: Toilet Upstairs Temperature
+    state_topic: "hass/sensor/toilet_upstairs_temperature"
+
+# automation:
+#   - alias: Motion Detected
+#     trigger:
+#       platform: state
+#       entity_id: binary_sensor.hallway_motion, binary_sensor.wc_downstairs_motion, binary_sensor.wc_upstairs_motion
+#       to: 'on'
+#     action:
+#       - service: notify.pushover
+#         data_template:
+#           message: >
+#             '{{ trigger.to_state.attributes.friendly_name }} motion detected!'
+#           data:
+#             url: https://dglerum.noip.me

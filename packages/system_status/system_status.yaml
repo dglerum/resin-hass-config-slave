@@ -21,7 +21,14 @@ homeassistant:
     sensor.speedtest_upload:
       friendly_name: Upload
       icon: mdi:arrow-up-bold
-
+    sensor.memory_use_percent:
+      friendly_name: "Memory"
+    sensor.processor_use:
+      friendly_name: "Processor"
+    sensor.disk_use_percent_:
+      friendly_name: "Disk Used"
+    sensor.disk_free_:
+      friendly_name: "Disk Free"
 #################################################################
 #                           Group                               #
 #################################################################
