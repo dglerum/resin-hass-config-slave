@@ -14,7 +14,6 @@ default_view:
     - group.date_and_time
     - group.weather_overview
     - group.daily_forecast
-    - group.speech_engine
     - group.sun
     - group.light_groups
     # - group.ring_doorbell
@@ -168,6 +167,7 @@ system status:
     - group.zwave
     - group.emergency
     - group.flic
+    - group.speech_engine
 
 shortcuts:
   name: Shortcuts
