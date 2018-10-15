@@ -38,6 +38,15 @@
         turn_off:
           service: scene.turn_on
           entity_id: scene.livingroom_off
+      lr_lights:
+        friendly_name: LR Lights
+        value_template: "{{ is_state('light.hue_desk', 'on') and is_state('light.hue_lightstrip', 'on') and is_state('light.hue_livingroom', 'on') }}"
+        turn_on:
+          service: light.turn_on
+          entity_id: light.hue_desk, light.hue_lightstrip, light.hue_livingroom
+        turn_off:
+          service: light.turn_off
+          entity_id: light.hue_desk, light.hue_lightstrip, light.hue_livingroom
       dinner_lights:
         friendly_name: Dinner Lights
         value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') and is_state('light.fibaro_table_level', 'on') }}"

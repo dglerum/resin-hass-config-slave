@@ -21,10 +21,10 @@ views:
         title: Light Groups
         show_header_toggle: false
         entities:
-          - switch.livingroom_lights
+          - switch.lr_lights
           - entity: light.livingroom_lighting
             type: custom:light-slider
-            switchEntity: switch.livingroom_lights
+            switchEntity: switch.lr_lights
 
       - type: picture-glance
         title: Living room
