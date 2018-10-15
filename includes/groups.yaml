@@ -41,6 +41,7 @@ downstairs:
     - group.itunes
     - group.tv
     - group.lights
+    - group.light_groups
     # - media_player.itunes
     - group.all_scenes
     - group.available_switches

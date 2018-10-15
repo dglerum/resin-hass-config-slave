@@ -44,6 +44,14 @@ group:
       - light.kitchen_lighting
       - light.livingroom_lighting
 
+  light_groups:
+    name: Light Groups
+    view: no
+    control: hidden
+    entities:
+      - light.kitchen_lighting
+      - light.livingroom_lighting
+
   lr_lights:
     view: no
     control: hidden

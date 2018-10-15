@@ -28,11 +28,9 @@ config:
 logger:
   default: warning
   logs:
-    homeassistant.components.switch: debug
     # homeassistant.components.zwave: debug
-    # homeassistant.components.mqtt: debug
-    # homeassistant.components.automation: debug
-    homeassistant.components.script: debug
+    homeassistant.components.mqtt: debug
+    homeassistant.components.automation: debug
 
 updater:
 
