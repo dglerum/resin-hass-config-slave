@@ -91,7 +91,7 @@ homekit:
       - switch.livingroom_lights
       - switch.dinner_lights
       - switch.kitchen_lights
-      - switch.television
+      - switch.tv
       - switch.radio
       ## Sensors
       - sensor.fibaro_smoke_sensor_temperature
