@@ -84,6 +84,7 @@ homekit:
       ## Lights
       - light.kitchen_lighting
       - light.livingroom_lighting
+      - light.downstairs_lighting
       ## Switches
       - switch.livingroom_lights
       - switch.dinner_lights
