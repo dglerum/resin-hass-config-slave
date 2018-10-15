@@ -29,6 +29,10 @@ homeassistant:
     light.hue_desk:
       friendly_name: "Desk"
 
+#################################################################
+#                          Groups                               #
+#################################################################
+
 group:
   lights:
     name: Lights
@@ -51,6 +55,7 @@ group:
     entities:
       - light.kitchen_lighting
       - light.livingroom_lighting
+      - light.downstairs_lighting
 
   lr_lights:
     view: no
@@ -61,6 +66,9 @@ group:
       - light.hue_livingroom
       - switch.television_lights
 
+#################################################################
+#                          Light Groups                         #
+#################################################################
 
 light:
   - platform: group
@@ -75,6 +83,19 @@ light:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
+
+  - platform: group
+    name: Downstairs Lighting
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+
+#################################################################
+#                          Scripts                              #
+#################################################################
 
 script:
   # Master script for ALL LIGHTS OFF
