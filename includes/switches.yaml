@@ -1,3 +1,7 @@
+#################################################################
+#                          Media                                #
+#################################################################
+
   - platform: template
     switches:
       radio:
@@ -9,7 +13,6 @@
         turn_off:
           service: script.turn_on
           entity_id: script.media_off
-
       tv:
         friendly_name: Television
         value_template: "{% if states.remote.logitech_harmony.state == 'on' and states.remote.logitech_harmony.attributes.current_activity == 'Television' %}on{% else %}off{% endif %}"
@@ -22,42 +25,43 @@
           service: remote.turn_off
           entity_id: remote.logitech_harmony
 
+#################################################################
+#                          Lights                               #
+#################################################################
+
       livingroom_lights:
         friendly_name: Livingroom Lights
-        value_template: "{{ is_state('group.lr_lights', 'on') }}"
+        value_template: "{{ is_state('light.hue_desk', 'on') and is_state('light.hue_lightstrip', 'on') and is_state('light.hue_livingroom', 'on') }}"
         turn_on:
           service: script.turn_on
           entity_id: script.livingroom_lights_on
         turn_off:
           service: scene.turn_on
           entity_id: scene.livingroom_off
-
       dinner_lights:
         friendly_name: Dinner Lights
         value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') and is_state('light.fibaro_table_level', 'on') }}"
         turn_on:
-          service: scene.turn_on
-          entity_id: scene.dinner_on
+          service: script.turn_on
+          entity_id: script.dinner_lights_on
         turn_off:
           service: scene.turn_on
           entity_id: scene.dinner_off
-
       kitchen_lights:
         friendly_name: Kitchen Lights
-        value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') and is_state('light.fibaro_table_level', 'on') }}"
+        value_template: "{{ is_state('light.fibaro_kitchen_level', 'on') }}"
         turn_on:
           service: script.turn_on
           entity_id: script.kitchen_lights_on
         turn_off:
           service: scene.turn_on
           entity_id: scene.kitchen_off
-
       table_lights:
         friendly_name: Table Lights
         value_template: "{{ is_state('light.fibaro_table_level', 'on') }}"
         turn_on:
-          service: scene.turn_on
-          entity_id: scene.table_on
+          service: script.turn_on
+          entity_id: script.table_lights_on
         turn_off:
           service: scene.turn_on
           entity_id: scene.table_off

@@ -38,10 +38,11 @@ group:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
+      - switch.television_lights
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
-      - light.fibaro_hallway_level
-      - light.fibaro_stair_level
+      - light.kitchen_lighting
+      - light.livingroom_lighting
 
   lr_lights:
     view: no
@@ -52,12 +53,20 @@ group:
       - light.hue_livingroom
       - switch.television_lights
 
-  kitchen_lights:
-    view: no
-    control: hidden
+
+light:
+  - platform: group
+    name: Kitchen Lighting
     entities:
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
+
+  - platform: group
+    name: Livingroom Lighting
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
 
 script:
   # Master script for ALL LIGHTS OFF
@@ -67,12 +76,12 @@ script:
   #    * turn off Alexa, bathroom fan, bandwidth throttling
   #  * roku = playing
   #    * turn off grow light, aquarium, bathroom_fan
-  kitchen_lighting:
-    alias: Kitchen Lighting
-    sequence:
-      - service_template: >
-          light.turn_{{ desire }}
-        entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
+  # kitchen_lighting:
+  #   alias: Kitchen Lighting
+  #   sequence:
+  #     - service_template: >
+  #         light.turn_{{ desire }}
+  #       entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
 
   downstairs_lights_on:
     alias: Downstairs Lights On
@@ -94,6 +103,32 @@ script:
         data_template:
           entity_id: >
             scene.kitchen_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  table_lights_on:
+    alias: Table Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.table_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  dinner_lights_on:
+    alias: Dinner Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.dinner_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
             {% elif now().hour < 19 %}evening
