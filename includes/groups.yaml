@@ -16,6 +16,7 @@ default_view:
     - group.daily_forecast
     - group.speech_engine
     - group.sun
+    - group.light_groups
     # - group.ring_doorbell
 
 date and time:
@@ -41,7 +42,6 @@ downstairs:
     - group.itunes
     - group.tv
     - group.lights
-    - group.light_groups
     # - media_player.itunes
     - group.all_scenes
     - group.available_switches
