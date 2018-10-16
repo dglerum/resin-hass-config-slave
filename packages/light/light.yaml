@@ -55,7 +55,6 @@ group:
     entities:
       - light.kitchen_lighting
       - light.livingroom_lighting
-      - light.downstairs_lighting
 
   lr_lights:
     view: no
@@ -84,14 +83,34 @@ light:
       - light.hue_lightstrip
       - light.hue_livingroom
 
-  - platform: group
-    name: Downstairs Lighting
-    entities:
-      - light.hue_desk
-      - light.hue_lightstrip
-      - light.hue_livingroom
-      - light.fibaro_kitchen_level
-      - light.fibaro_table_level
+
+#################################################################
+#                          Automations                          #
+#################################################################
+
+automation:
+  - alias: Downstairs Sunlight
+    initial_state: 'off'
+    # Run hourly
+    trigger:
+      - platform: time
+        minutes: 00
+        seconds: 00
+    # Only do this if the lights are on.
+    # Test two lights, in case one is offline (which happens with LIFX sometimes)
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: 'light.hue_desk'
+          state: 'on'
+        - condition: state
+          entity_id: 'light.fibaro_kitchen_level'
+          state: 'on'
+
+    # Call the script to handle the rest
+    action:
+      - service: script.downstairs_lights_on
 
 #################################################################
 #                          Scripts                              #
@@ -111,6 +130,40 @@ script:
   #     - service_template: >
   #         light.turn_{{ desire }}
   #       entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
+  downstairs_sunrise:
+    alias: Downstairs Sunrise
+    sequence:
+
+      # Turn the lights to low brightness at a very warm temperature
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 60
+          brightness: 51
+          kelvin: 2700
+
+      # Wait 5 seconds
+      - delay: 00:00:05
+
+      # Over ten minutes, turn the lights a little brighter and to a
+      # cooler-than-soft-white color.
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 600
+          brightness: 63
+          kelvin: 3600
+
+      # Wait again
+      - delay: 00:00:05
+
+      # Finally, over fifteen minutes, shift the lights to a cool white at 90%.
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 900
+          brightness: 230
+          kelvin: 4200
 
   downstairs_lights_on:
     alias: Downstairs Lights On
