@@ -92,6 +92,7 @@
         ]
     },
     {
+<<<<<<< HEAD
         "id": "cb7855ec.361638",
         "type": "hue-motion",
         "z": "22eedb7.7211624",
@@ -105,6 +106,8 @@
         ]
     },
     {
+=======
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
         "id": "83b15757.08c968",
         "type": "hue-light",
         "z": "22eedb7.7211624",
@@ -119,6 +122,7 @@
         ]
     },
     {
+<<<<<<< HEAD
         "id": "cdf8aa39.1b80f8",
         "type": "hue-temperature",
         "z": "22eedb7.7211624",
@@ -162,6 +166,8 @@
         "wires": []
     },
     {
+=======
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
         "id": "d958f6e0.171178",
         "type": "template",
         "z": "22eedb7.7211624",
@@ -179,6 +185,7 @@
         ]
     },
     {
+<<<<<<< HEAD
         "id": "d9de2dca.e433",
         "type": "hue-temperature",
         "z": "22eedb7.7211624",
@@ -205,6 +212,8 @@
         ]
     },
     {
+=======
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
         "id": "ab8152ca.a9873",
         "type": "server",
         "z": "",
@@ -226,6 +235,7 @@
         "bridge": "192.168.1.2",
         "key": "dU3UVWW7FpMG-BxaSLxTJVsIBNerAkh0pVDMk3VA",
         "interval": "3000"
+<<<<<<< HEAD
     },
     {
         "id": "f0fc41f2.54276",
@@ -248,5 +258,7 @@
         "willTopic": "",
         "willQos": "0",
         "willPayload": ""
+=======
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
     }
 ]

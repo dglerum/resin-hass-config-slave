@@ -93,6 +93,10 @@ device_tracker:
       printer: !secret printer
       tv_kodi: !secret tv_kodi
       philips_hub: !secret philips_hub
+<<<<<<< HEAD
+=======
+      davy_ping: !secret davy_ping
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
 
   - platform: nmap_tracker
     hosts:

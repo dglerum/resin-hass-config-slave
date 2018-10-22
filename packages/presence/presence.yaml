@@ -19,6 +19,12 @@ homeassistant:
       friendly_name: "Battery iPhone X"
     sensor.iphone_van_isabel_battery_level:
       friendly_name: "Battery iPhone 6"
+<<<<<<< HEAD
+=======
+    device_tracker.davy_bayesian:
+      friendly_name: 'Davy Bayesian'
+
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
 #################################################################
 #                                                               #
 #                           Group                               #
@@ -31,6 +37,12 @@ group:
     view: no
     entities:
       - device_tracker.glerums_iphone
+<<<<<<< HEAD
+=======
+      - device_tracker.davy_bayesian
+      - device_tracker.davy_nodered
+      - device_tracker.davy_ping
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
       - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
       - sensor.iphone_van_isabel_battery_level
@@ -60,6 +72,40 @@ group:
 #       - sensor.ble_tina_downstairs
 #       - sensor.ble_tina_upstairs
 #       - sensor.ble_tina_patio
+<<<<<<< HEAD
+=======
+binary_sensor:
+  - platform: bayesian
+    prior: 0.5
+    name: 'Davy Presence'
+    probability_threshold: 0.9
+    observations:
+      - entity_id: 'device_tracker.davy_ping'
+        prob_given_true: 0.9
+        prob_given_false: 0.1
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.glerums_iphone'
+        prob_given_true: 0.9
+        prob_given_false: 0.2
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.davy_owntracks'
+        prob_given_true: 0.9
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.davy_nodered'
+        prob_given_true: 0.8
+        prob_given_false: 0.2
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.tile_glerums_iphone_x'
+        prob_given_true: 0.8
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
 
 #################################################################
 #                                                               #

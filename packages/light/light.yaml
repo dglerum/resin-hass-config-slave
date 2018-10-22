@@ -29,6 +29,10 @@ homeassistant:
     light.hue_desk:
       friendly_name: "Desk"
 
+#################################################################
+#                          Groups                               #
+#################################################################
+
 group:
   lights:
     name: Lights
@@ -38,10 +42,19 @@ group:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
+      - switch.television_lights
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
-      - light.fibaro_hallway_level
-      - light.fibaro_stair_level
+      - light.kitchen_lighting
+      - light.livingroom_lighting
+
+  light_groups:
+    name: Light Groups
+    view: no
+    control: hidden
+    entities:
+      - light.kitchen_lighting
+      - light.livingroom_lighting
 
   lr_lights:
     view: no
@@ -52,12 +65,56 @@ group:
       - light.hue_livingroom
       - switch.television_lights
 
-  kitchen_lights:
-    view: no
-    control: hidden
+#################################################################
+#                          Light Groups                         #
+#################################################################
+
+light:
+  - platform: group
+    name: Kitchen Lighting
     entities:
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
+
+  - platform: group
+    name: Livingroom Lighting
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+
+
+#################################################################
+#                          Automations                          #
+#################################################################
+
+automation:
+  - alias: Downstairs Sunlight
+    initial_state: 'off'
+    # Run hourly
+    trigger:
+      - platform: time
+        minutes: 00
+        seconds: 00
+    # Only do this if the lights are on.
+    # Test two lights, in case one is offline (which happens with LIFX sometimes)
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: 'light.hue_desk'
+          state: 'on'
+        - condition: state
+          entity_id: 'light.fibaro_kitchen_level'
+          state: 'on'
+
+    # Call the script to handle the rest
+    action:
+      - service: script.downstairs_lights_on
+
+#################################################################
+#                          Scripts                              #
+#################################################################
 
 script:
   # Master script for ALL LIGHTS OFF
@@ -67,12 +124,46 @@ script:
   #    * turn off Alexa, bathroom fan, bandwidth throttling
   #  * roku = playing
   #    * turn off grow light, aquarium, bathroom_fan
-  kitchen_lighting:
-    alias: Kitchen Lighting
+  # kitchen_lighting:
+  #   alias: Kitchen Lighting
+  #   sequence:
+  #     - service_template: >
+  #         light.turn_{{ desire }}
+  #       entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
+  downstairs_sunrise:
+    alias: Downstairs Sunrise
     sequence:
-      - service_template: >
-          light.turn_{{ desire }}
-        entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
+
+      # Turn the lights to low brightness at a very warm temperature
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 60
+          brightness: 51
+          kelvin: 2700
+
+      # Wait 5 seconds
+      - delay: 00:00:05
+
+      # Over ten minutes, turn the lights a little brighter and to a
+      # cooler-than-soft-white color.
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 600
+          brightness: 63
+          kelvin: 3600
+
+      # Wait again
+      - delay: 00:00:05
+
+      # Finally, over fifteen minutes, shift the lights to a cool white at 90%.
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 900
+          brightness: 230
+          kelvin: 4200
 
   downstairs_lights_on:
     alias: Downstairs Lights On
@@ -94,6 +185,32 @@ script:
         data_template:
           entity_id: >
             scene.kitchen_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  table_lights_on:
+    alias: Table Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.table_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  dinner_lights_on:
+    alias: Dinner Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.dinner_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
             {% elif now().hour < 19 %}evening

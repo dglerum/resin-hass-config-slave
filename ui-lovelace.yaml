@@ -3,6 +3,8 @@ title: My Awesome Home
 resources:
   - url: /local/custom-lovelace/monster-card/monster-card.js?v=1
     type: js
+  - url: /local/light-slider/light-slider.js
+    type: js
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
@@ -15,6 +17,15 @@ views:
     # Title of the view. Will be used as the tooltip for tab icon
     title: Second view
     cards:
+      - type: entities
+        title: Light Groups
+        show_header_toggle: false
+        entities:
+          - switch.lr_lights
+          - entity: light.livingroom_lighting
+            type: custom:light-slider
+            switchEntity: switch.lr_lights
+
       - type: picture-glance
         title: Living room
         aspect_ratio: 16x9

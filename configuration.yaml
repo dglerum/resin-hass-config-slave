@@ -28,10 +28,9 @@ config:
 logger:
   default: warning
   logs:
-    homeassistant.components.zwave: debug
+    # homeassistant.components.zwave: debug
     homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
-    homeassistant.components.script: debug
 
 updater:
 
@@ -83,14 +82,14 @@ homekit:
       ## Media Players
       # - media_player.kodi_player
       ## Lights
-      - light.fibaro_kitchen_level
-      - light.fibaro_table_level
-      - light.fibaro_hallway_level
-      - light.fibaro_stair_level
+      - light.kitchen_lighting
+      - light.livingroom_lighting
+      - light.downstairs_lighting
       ## Switches
       - switch.livingroom_lights
       - switch.dinner_lights
       - switch.kitchen_lights
+      - switch.table_lights
       - switch.tv
       - switch.radio
       ## Sensors
