@@ -19,12 +19,9 @@ homeassistant:
       friendly_name: "Battery iPhone X"
     sensor.iphone_van_isabel_battery_level:
       friendly_name: "Battery iPhone 6"
-<<<<<<< HEAD
-=======
     device_tracker.davy_bayesian:
       friendly_name: 'Davy Bayesian'
 
->>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
 #################################################################
 #                                                               #
 #                           Group                               #
