@@ -36,6 +36,16 @@
       xy_color: [0.4914,0.415]
       transition: 3
 
+- name: livingroom_television_on
+  entities:
+    switch.television_lights: on
+    light.fibaro_table_level:
+      state: off
+
+- name: livingroom_television_off
+  entities:
+    switch.television_lights: off
+
 - name: livingroom_evening
   entities:
     switch.television_lights: on
