@@ -36,6 +36,16 @@
       xy_color: [0.4914,0.415]
       transition: 3
 
+- name: livingroom_television_on
+  entities:
+    switch.television_lights: on
+    light.fibaro_table_level:
+      state: off
+
+- name: livingroom_television_off
+  entities:
+    switch.television_lights: off
+
 - name: livingroom_evening
   entities:
     switch.television_lights: on
@@ -136,10 +146,6 @@
       state: on
       brightness: 100
       transition: 2
-    light.fibaro_table_level:
-      state: on
-      brightness: 100
-      transition: 3
 
 - name: kitchen_daylight
   entities:
@@ -147,12 +153,58 @@
       state: on
       brightness: 170
       transition: 2
+
+- name: kitchen_evening
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      brightness: 150
+      transition: 2
+
+- name: table_night
+  entities:
+    light.fibaro_table_level:
+      state: on
+      brightness: 100
+      transition: 3
+
+- name: table_daylight
+  entities:
     light.fibaro_table_level:
       state: on
       brightness: 170
       transition: 3
 
-- name: kitchen_evening
+- name: table_evening
+  entities:
+    light.fibaro_table_level:
+      state: on
+      brightness: 150
+      transition: 3
+
+- name: dinner_night
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      brightness: 100
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      brightness: 100
+      transition: 3
+
+- name: dinner_daylight
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      brightness: 170
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      brightness: 170
+      transition: 3
+
+- name: dinner_evening
   entities:
     light.fibaro_kitchen_level:
       state: on
@@ -162,7 +214,6 @@
       state: on
       brightness: 150
       transition: 3
-
 
 - name: Desk On
   entities:

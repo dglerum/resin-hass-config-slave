@@ -153,20 +153,38 @@ automation:
   - alias: 'Dim Lights for Lounge Media'
     trigger:
     - platform: state
-      entity_id: media_player.media_4k_kodi
-      from: idle
-      to: playing
+      entity_id: switch.tv
+      from: "off"
+      to: "on"
     condition:
     - condition: state
       entity_id: sun.sun
       state: below_horizon
     - condition: time
-      after: '19:00'
+      after: '18:00'
       before: '04:00'
     action:
     - service: scene.turn_on
       data:
-        entity_id: scene.livingroom_dim
+        entity_id: scene.livingroom_television_on
+
+  - alias: 'Dim Lights for Lounge Media - Stopped'
+    trigger:
+    - platform: state
+      entity_id: switch.tv
+      from: "on"
+      to: "off"
+    condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: time
+      after: '18:00'
+      before: '04:00'
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_television_off
 
 ## Turn up lights after media finishes of an evening
   - alias: 'Light Normal After Media'

@@ -58,6 +58,14 @@ automation:
     - condition: time
       after: '04:00'
       before: '09:00'
+  # Condition: must be a weekday. This is more concise than setting 5 triggers.
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
     action:
     - service: tts.google_say
       data:
@@ -67,4 +75,3 @@ automation:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.morning_script_run
-    

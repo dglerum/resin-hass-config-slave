@@ -10,6 +10,14 @@
   - delay: 00:00:10
   - data:
       entity_id: light.fibaro_kitchen_dimmer_level
+      entity_id: switch.television_lights
+    service: switch.turn_off
+  - data:
+      entity_id: light.fibaro_table_level, light.hue_livingroom, light.hue_lightstrip, light.hue_desk
+    service: light.turn_off
+  - delay: 00:00:10
+  - data:
+      entity_id: light.fibaro_kitchen_level
       transition: 5
     service: light.turn_off
   - data:
