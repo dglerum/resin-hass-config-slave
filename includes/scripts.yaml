@@ -2,7 +2,6 @@
   alias: Goodnight
   sequence:
   - data:
-<<<<<<< HEAD
       entity_id: switch.wemo_livingroom
     service: switch.turn_off
   - data:
@@ -11,7 +10,6 @@
   - delay: 00:00:10
   - data:
       entity_id: light.fibaro_kitchen_dimmer_level
-=======
       entity_id: switch.television_lights
     service: switch.turn_off
   - data:
@@ -20,7 +18,6 @@
   - delay: 00:00:10
   - data:
       entity_id: light.fibaro_kitchen_level
->>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
       transition: 5
     service: light.turn_off
   - data:

@@ -34,12 +34,9 @@ group:
     view: no
     entities:
       - device_tracker.glerums_iphone
-<<<<<<< HEAD
-=======
       - device_tracker.davy_bayesian
       - device_tracker.davy_nodered
       - device_tracker.davy_ping
->>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
       - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
       - sensor.iphone_van_isabel_battery_level
@@ -69,8 +66,7 @@ group:
 #       - sensor.ble_tina_downstairs
 #       - sensor.ble_tina_upstairs
 #       - sensor.ble_tina_patio
-<<<<<<< HEAD
-=======
+
 binary_sensor:
   - platform: bayesian
     prior: 0.5
@@ -102,7 +98,6 @@ binary_sensor:
         prob_given_false: 0.4
         platform: 'state'
         to_state: 'home'
->>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
 
 #################################################################
 #                                                               #
