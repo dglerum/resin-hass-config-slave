@@ -1,6 +1,6 @@
 - name: livingroom_night
   entities:
-    switch.television_lights: on
+    switch.sion_lights: on
     light.hue_desk:
       state: on
       brightness: 80
@@ -38,13 +38,15 @@
 
 - name: livingroom_television_on
   entities:
-    switch.television_lights: on
+    light.tv_lights:
+      state: on
     light.fibaro_table_level:
       state: off
 
 - name: livingroom_television_off
   entities:
-    switch.television_lights: off
+    light.tv_lights:
+      state: off
 
 - name: livingroom_evening
   entities:
