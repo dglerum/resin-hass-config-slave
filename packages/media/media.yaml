@@ -1,0 +1,325 @@
+#################################################################
+#                                                               #
+#                        Packages/Media                         #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                          Customize                            #
+#                                                               #
+#################################################################
+
+homeassistant:
+  customize:
+    switch.spotify_kitchen:
+      friendly_name: "Spotify Kitchen"
+      assumed_state: false
+      icon: mdi:spotify
+
+#################################################################
+#                                                               #
+#                           Group                               #
+#                                                               #
+#################################################################
+
+group:
+  music:
+    name: Music
+    view: no
+    entities:
+      - switch.spotify_kitchen
+
+#################################################################
+#                                                               #
+#                         Input_Select                          #
+#                                                               #
+#################################################################
+
+input_select:
+  media_tv:
+    name: Media TV
+    options:
+      - TV Off
+      - Evening TV
+      - YouTube
+      - Apple TV
+    initial:  TV Off
+    icon: mdi:television
+
+#################################################################
+#                                                               #
+#                          Sensors                              #
+#                                                               #
+#################################################################
+
+sensor:
+  - platform: history_stats
+    name: Total TV Time
+    entity_id: remote.logitech_harmony
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+#################################################################
+#                                                               #
+#                        Rest Commands                          #
+#                                                               #
+#################################################################
+
+rest_command:
+  media_tv_app_netflix:
+    method: POST
+    url: 'http://10.0.2.1:8080/ws/app/Netflix'
+  media_tv_app_youtube:
+    method: POST
+    url: 'http://10.0.2.1:8080/ws/app/YouTube'
+  media_tv_app_foxtel:
+    method: POST
+    url: 'http://10.0.2.1:8080/ws/app/Foxtel'
+  media_tv_app_spotify:
+    method: POST
+    url: 'http://10.0.2.1:8080/ws/app/com.spotify.Spotify.TV'
+
+#################################################################
+#                                                               #
+#                          Scripts                              #
+#                                                               #
+#################################################################
+
+script:
+  media_tv_app_netflix:
+    sequence:
+      - service: rest_command.media_tv_app_netflix
+
+  media_tv_app_youtube:
+    sequence:
+      - service: rest_command.media_tv_app_youtube
+
+  media_tv_app_foxtel:
+    sequence:
+      - service: rest_command.media_tv_app_foxtel
+
+  media_tv_app_spotify:
+    sequence:
+      - service: rest_command.media_tv_app_spotify
+
+#################################################################
+#                                                               #
+#                         Automations                           #
+#                                                               #
+#################################################################
+
+automation:
+
+## Pause TV if door bell is pressed
+  - alias: 'Door Bell Pressed'
+    trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d000213108e
+        click_type: single
+    action:
+    - service: media_player.media_pause
+      data:
+        entity_id: media_player.media_4k_kodi
+    - service: switch.turn_on
+      data:
+        entity_id: switch.media_tv_pause
+
+## Doorbell pressed at night Flash Lights
+  - alias: 'Door Bell Pressed - Night'
+    trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d000213108e
+        click_type: single
+    condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_dim
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_normal
+
+## Dim lights whilst playing media of an evening
+  - alias: 'Dim Lights for Lounge Media'
+    trigger:
+    - platform: state
+      entity_id: switch.tv
+      from: "off"
+      to: "on"
+    condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: time
+      after: '18:00'
+      before: '04:00'
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_television_on
+
+  - alias: 'Dim Lights for Lounge Media - Stopped'
+    trigger:
+    - platform: state
+      entity_id: switch.tv
+      from: "on"
+      to: "off"
+    condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: time
+      after: '18:00'
+      before: '04:00'
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_television_off
+
+## Turn up lights after media finishes of an evening
+  - alias: 'Light Normal After Media'
+    trigger:
+    - platform: state
+      entity_id: media_player.media_4k_kodi
+      to: idle
+    condition:
+    - condition: state
+      entity_id: light.lounge_bulb
+      state: 'on'
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_normal
+
+## Dim lights when resuming playing media from pause of an evening
+  - alias: 'Dim Lights for Lounge Media - Paused'
+    trigger:
+    - platform: state
+      entity_id: media_player.media_4k_kodi
+      from: paused
+      to: playing
+    condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: time
+      after: '19:00'
+      before: '04:00'
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_dim
+
+## Turn up lights after media paused of an evening
+  - alias: 'Light Normal Media Paused'
+    trigger:
+    - platform: state
+      entity_id: media_player.media_4k_kodi
+      from: playing
+      to: paused
+    condition:
+    - condition: state
+      entity_id: light.lounge_bulb
+      state: 'on'
+    action:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.livingroom_normal
+
+## Input Select for Media TV Off
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: TV Off
+    action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.tvpower
+
+## Input Select for Media TV Morning Cartoons
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: Morning Cartoons
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.1521695976118
+
+## Input Select for Media TV Evening TV
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: Evening TV
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.1521694771100
+
+## Input Select for Media TV Super Rugby
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: Super Rugby
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.1521696758169
+
+## Input Select for Media TV Netflix
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: Netflix
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.media_tv_app_netflix
+
+## Input Select for Media TV YouTube
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: YouTube
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.media_tv_app_youtube
+
+## Input Select for Media TV Foxtel
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: Foxtel
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.media_tv_app_foxtel
+
+## Input Select for Media TV Spotify
+  - alias: Media TV Off
+    trigger:
+    - platform: state
+      entity_id: input_select.media_tv
+      to: Spotify
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.media_tv_app_spotify

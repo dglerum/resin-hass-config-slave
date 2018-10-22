@@ -1,0 +1,148 @@
+[
+    {
+        "id": "22eedb7.7211624",
+        "type": "tab",
+        "label": "test",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7c70fe36.a7fcf",
+        "type": "api-call-service",
+        "z": "22eedb7.7211624",
+        "name": "light desk",
+        "server": "ab8152ca.a9873",
+        "service_domain": "light",
+        "service": "turn_on",
+        "data": "{\"entity_id\":\"light.hue_desk\"}",
+        "mergecontext": "",
+        "x": 540,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b429086b.954d08",
+        "type": "inject",
+        "z": "22eedb7.7211624",
+        "name": "",
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "2747654a.00561a",
+                "7c70fe36.a7fcf"
+            ]
+        ]
+    },
+    {
+        "id": "2747654a.00561a",
+        "type": "wemo out",
+        "z": "22eedb7.7211624",
+        "name": "TV Lights",
+        "device": "b60618f2.47b348",
+        "label": "Wemo_Livingroom",
+        "x": 450,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "932e9723.0c2358",
+        "type": "inject",
+        "z": "22eedb7.7211624",
+        "name": "",
+        "topic": "",
+        "payload": "off",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "2747654a.00561a",
+                "944e3c42.c06b8"
+            ]
+        ]
+    },
+    {
+        "id": "944e3c42.c06b8",
+        "type": "api-call-service",
+        "z": "22eedb7.7211624",
+        "name": "light desk",
+        "server": "ab8152ca.a9873",
+        "service_domain": "light",
+        "service": "turn_off",
+        "data": "{\"entity_id\":\"light.hue_desk\"}",
+        "mergecontext": "",
+        "x": 540,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83b15757.08c968",
+        "type": "hue-light",
+        "z": "22eedb7.7211624",
+        "name": "Hue Desk",
+        "bridge": "882193f7.4dded",
+        "lightid": "3",
+        "colornamer": true,
+        "x": 380,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d958f6e0.171178",
+        "type": "template",
+        "z": "22eedb7.7211624",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{ \"data\": { \"entity_id\" : \"input_number.slider1\", \"value\" : {{payload}} } }",
+        "output": "json",
+        "x": 560,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab8152ca.a9873",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant",
+        "legacy": true
+    },
+    {
+        "id": "b60618f2.47b348",
+        "type": "wemo-dev",
+        "z": "",
+        "device": "221623K12008B0",
+        "name": "Wemo_Livingroom"
+    },
+    {
+        "id": "882193f7.4dded",
+        "type": "hue-bridge",
+        "z": "",
+        "name": "Philips hue",
+        "bridge": "192.168.1.2",
+        "key": "dU3UVWW7FpMG-BxaSLxTJVsIBNerAkh0pVDMk3VA",
+        "interval": "3000"
+    }
+]

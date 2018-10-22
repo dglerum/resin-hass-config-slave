@@ -1,0 +1,126 @@
+group:
+  speech_engine:
+    name: Speech Engine
+    control: hidden
+    entities:
+      - input_boolean.guest_mode
+      - input_boolean.alert_mode
+      - input_boolean.speech_notifications
+      - input_boolean.last_message
+      - input_boolean.home_stats
+      - script.voice_notify
+
+automation:
+######################################################################
+##  Some home facts when we get back home from being away.
+######################################################################
+  - alias: 'Home Stats'
+
+    trigger:
+      - platform: state
+        entity_id:
+          - group.family
+        from: 'not_home'
+        to: 'home'
+        for: '00:03:00'
+
+      - platform: state
+        entity_id: input_boolean.home_stats
+        to: 'on'
+        from: 'off'
+
+    action:
+
+      - wait_template: >-
+         {{ is_state('group.garage_doors', 'closed') }}
+        timeout: 00:05:30
+
+      - service: script.speech_engine
+        data:
+          call_inside_weather: 1
+          call_responsibilities: 1
+          call_outside_weather: 1
+          call_garage_check: 1
+          call_window_check: 1
+          call_light_check: 1
+
+script:
+  voice_notify:
+    sequence:
+    - condition: and
+      conditions:
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: group.awesome_people
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.guest_mode
+              state: 'on'
+        - condition: or
+          conditions:
+            - condition: time
+              after: '09:00:00'
+              before: '22:00:00'
+            - condition: state
+              entity_id: input_boolean.alert_mode
+              state: 'on'
+        - condition: or
+          conditions:
+            - condition: template
+              value_template: >
+                {% if is_state('media_player.apple_tv', 'playing') %}
+                false
+                {% else %}
+                true
+                {% endif %}
+            - condition: state
+              entity_id: input_boolean.alert_mode
+              state: 'on'
+        - condition: state
+          entity_id: input_boolean.speech_notifications
+          state: 'on'
+    # - service: switch.turn_on
+    #   entity_id: switch.living_room_amp
+    # - delay: '00:00:05'
+
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv
+
+    # - service: media_player.volume_set
+    #   entity_id:
+    #     - media_player.apple_tv
+    #   data_template:
+    #     volume_level: >
+    #       {% if now().strftime("%H")|int < 12 and now().strftime("%H")|int > 6%}
+    #       0.25
+    #       {% elif now().strftime("%H")|int > 12 and now().strftime("%H")|int < 20%}
+    #       0.45
+    #       {% else %}
+    #       0.20
+    #       {% endif %}
+
+    - service: mqtt.publish
+      data_template:
+        payload: '{{ value1 }}'
+        topic: 'polly/lastmsg'
+        retain: true
+
+    - service: tts.amazon_polly_say
+      entity_id: media_player.apple_tv
+      data_template:
+        message: >
+          {% if now().strftime("%H")|int < 12 and now().strftime("%H")|int > 6%}
+          "Good morning.
+          {% elif now().strftime("%H")|int > 12 and now().strftime("%H")|int < 17%}
+          "Good afternoon.
+          {% else %}
+          "Good evening.
+          {% endif %}
+          {{ value1 }}"
+        cache: true
+
+    - service: input_boolean.turn_off
+      entity_id:
+        - input_boolean.last_message
+        - input_boolean.alert_mode

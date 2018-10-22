@@ -1,0 +1,116 @@
+#################################################################
+#                                                               #
+#                       Packages/Presence                       #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                          Customize                            #
+#                                                               #
+#################################################################
+homeassistant:
+  customize:
+    device_tracker.glerums_iphone:
+      friendly_name: 'Davy'
+    device_tracker.iphone_van_isabel:
+      friendly_name: 'Isabel'
+    sensor.glerums_iphone_x_battery_level:
+      friendly_name: "Battery iPhone X"
+    sensor.iphone_van_isabel_battery_level:
+      friendly_name: "Battery iPhone 6"
+    device_tracker.davy_bayesian:
+      friendly_name: 'Davy Bayesian'
+
+#################################################################
+#                                                               #
+#                           Group                               #
+#                                                               #
+#################################################################
+
+group:
+  people:
+    name: People
+    view: no
+    entities:
+      - device_tracker.glerums_iphone
+      - device_tracker.davy_bayesian
+      - device_tracker.davy_nodered
+      - device_tracker.davy_ping
+      - device_tracker.iphone_van_isabel
+      - sensor.glerums_iphone_x_battery_level
+      - sensor.iphone_van_isabel_battery_level
+#       - sensor.commute_to_work
+#       - sensor.commute_from_work
+#       - sensor.james_to_home
+#
+#   family:
+#     name: Family
+#     view: no
+#     entities:
+#       - sensor.james
+#       - sensor.tina
+#
+#   ble_tracker_james:
+#     name: BLE Tracker James
+#     view: no
+#     entities:
+#       - sensor.ble_james_downstairs
+#       - sensor.ble_james_upstairs
+#       - sensor.ble_james_patio
+#
+#   ble_tracker_tina:
+#     name: BLE Tracker Tina
+#     view: no
+#     entities:
+#       - sensor.ble_tina_downstairs
+#       - sensor.ble_tina_upstairs
+#       - sensor.ble_tina_patio
+binary_sensor:
+  - platform: bayesian
+    prior: 0.5
+    name: 'Davy Presence'
+    probability_threshold: 0.9
+    observations:
+      - entity_id: 'device_tracker.davy_ping'
+        prob_given_true: 0.9
+        prob_given_false: 0.1
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.glerums_iphone'
+        prob_given_true: 0.9
+        prob_given_false: 0.2
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.davy_owntracks'
+        prob_given_true: 0.9
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.davy_nodered'
+        prob_given_true: 0.8
+        prob_given_false: 0.2
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.tile_glerums_iphone_x'
+        prob_given_true: 0.8
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+
+#################################################################
+#                                                               #
+#                      Device Trackers                          #
+#                                                               #
+#################################################################
+
+device_tracker:
+  - platform: ping
+    hosts:
+      glerums_iphone: 192.168.1.6
+      iphone_van_isabel: 192.168.1.8
+  # - platform: owntracks
+  #   max_gps_accuracy: 200
+
+  # - platform: bluetooth_tracker
+  #   request_rssi: true

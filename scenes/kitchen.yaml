@@ -1,0 +1,46 @@
+- name: Dinner On
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      transition: 3
+
+- name: Dinner Off
+  entities:
+    light.fibaro_kitchen_level:
+      state: off
+      transition: 3
+    light.fibaro_table_level:
+      state: off
+      transition: 3
+
+- name: Kitchen On
+  entities:
+    light.fibaro_kitchen_level:
+      brightness: 175
+      state: on
+      transition: 2
+
+- name: Kitchen Off
+  entities:
+    light.fibaro_kitchen_level:
+      state: off
+      transition: 3
+    light.fibaro_table_level:
+      state: off
+      transition: 3
+
+- name: Table On
+  entities:
+    light.fibaro_table_level:
+      brightness: 190
+      state: on
+      transition: 2
+
+- name: Table Off
+  entities:
+    light.fibaro_table_level:
+      state: off
+      transition: 3

@@ -1,0 +1,7 @@
+- name: CPEX
+  entities:
+    media_player.kitchen_airtunes_speaker: on
+    media_player.itunes:
+      state: playing
+      media_content_type: playlist
+      media_content_id: CPEX

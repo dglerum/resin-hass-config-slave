@@ -1,0 +1,24 @@
+  sensor.friendly_date:
+    icon: mdi:calendar
+  sensor.since_last_boot_templated:
+    friendly_name: "Since Last Boot"
+    icon: mdi:clock
+  sensor.davy_to_home:
+    friendly_name: "Davy to Home"
+  sensor.isabel_to_home:
+    friendly_name: "Isabel"
+  sensor.waze_travel_time:
+    friendly_name: "Metallo"
+  sensor.commute_isabel:
+    friendly_name: "Sibelco"
+  switch.wemo_livingroom:
+    friendly_name: "TV Lights"
+  switch.wemo_bedroom:
+    friendly_name: "Kill Switch"
+  sensor.fibaro_smoke_sensor_temperature:
+    friendly_name: "Indoor Temp"
+  script.itunes_music:
+    friendly_name: 'Play'
+    icon: mdi:play
+  script.restart_ha:
+    icon: mdi:power

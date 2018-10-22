@@ -1,0 +1,74 @@
+  include:
+    domains:
+      - light
+      - switch
+      - media_player
+      - device_tracker
+      - remote
+    entities:
+      - sensor.disk_use_
+      - sensor.memory_use_percent
+      - sensor.processor_use
+      - sensor.cpu_temperature
+      - sensor.total_tv_time
+      - sensor.glerums_iphone_x_battery_level
+      - sensor.fibaro_smoke_sensor_temperature
+      - sensor.pws_temp_c
+      - sensor.fibaro_hallway_energy
+      - sensor.fibaro_kitchen_energy
+      - sensor.fibaro_stair_energy
+      - sensor.fibaro_table_energy
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.total_tv_time
+      - binary_sensor.ring_front_door_ding
+      - binary_sensor.ring_front_door_motion
+      - sensor.hallway_temperature
+      - binary_sensor.toilet_downstairs_motion
+      - sensor.toilet_downstairs_temperature
+      - binary_sensor.toilet_upstairs_motion
+      - sensor.toilet_upstairs_temperature
+  # include:
+  #   entities:
+  #     - sensor.colorprinter_online
+  #     - sensor.router_online
+  #     - sensor.satelite_online
+  #     - sensor.glerums_iphone_x_battery_level
+  #     - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
+  #     - sensor.dark_sky_temperature
+  #     - sensor.wc_downstairs_temp
+  #     - sensor.wc_upstairs_temp
+  #     - sensor.memory_use_percent
+  #     - sensor.processor_use
+  #     - sensor.disk_use_percent_
+  #     - sensor.speedtest_download
+  #     - sensor.speedtest_upload
+  #     - sensor.speedtest_ping
+  #     - device_tracker.davy_bayesian
+  #     - device_tracker.glerums_iphone
+  #     - device_tracker.davy_iphone_owntracks
+  #     - device_tracker.davy_nodered
+  #     - light.hue_desk
+  #     - light.hue_lightstrip
+  #     - light.hue_livingroom
+  #     - light.fibaro_kitchen_dimmer_level
+  #     - light.fibaro_table_dimmer_level
+  #     - light.fibaro_hallway_dimmer_level
+  #     - light.fibaro_stair_dimmer_level
+  #     - switch.wemo_livingroom
+  #
+  #   domains:
+  #     - light
+  #     - sensor
+  #     - switch
+  #     - binary_sensor
+  #     - device_tracker
+  # exclude:
+  #   entities:
+  #    - sensor.time
+  #    - sensor.date
+  #    - sensor.date__time
+  #    - sensor.time__date
+  #    - sensor.internet_time
+  #    - sensor.time_utc

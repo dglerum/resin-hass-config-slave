@@ -1,0 +1,311 @@
+#################################################################
+#                          Script                               #
+#################################################################
+#
+homeassistant:
+  customize:
+    light.fibaro_kitchen_level:
+      friendly_name: Kitchen
+    light.fibaro_table_level:
+      friendly_name: Table
+    light.fibaro_hallway_level:
+      friendly_name: Hallway
+    light.fibaro_stair_level:
+      friendly_name: Stair
+    switch.wemo_livingroom:
+      friendly_name: TV Lights
+    sensor.fibaro_hallway_energy:
+      friendly_name: "Hallway Use"
+    sensor.fibaro_kitchen_energy:
+      friendly_name: "Kitchen Use"
+    sensor.fibaro_stair_energy:
+      friendly_name: "Stair Use"
+    sensor.fibaro_table_energy:
+      friendly_name: "Table Use"
+    light.hue_lightstrip:
+      friendly_name: "LED Strip"
+    light.hue_livingroom:
+      friendly_name: "Floorlamp"
+    light.hue_desk:
+      friendly_name: "Desk"
+
+#################################################################
+#                          Groups                               #
+#################################################################
+
+group:
+  lights:
+    name: Lights
+    view: no
+    control: hidden
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - switch.television_lights
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+      - light.kitchen_lighting
+      - light.livingroom_lighting
+
+  light_groups:
+    name: Light Groups
+    view: no
+    control: hidden
+    entities:
+      - light.kitchen_lighting
+      - light.livingroom_lighting
+
+  lr_lights:
+    view: no
+    control: hidden
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+      - switch.television_lights
+
+#################################################################
+#                          Light Groups                         #
+#################################################################
+
+light:
+  - platform: group
+    name: Kitchen Lighting
+    entities:
+      - light.fibaro_kitchen_level
+      - light.fibaro_table_level
+
+  - platform: group
+    name: Livingroom Lighting
+    entities:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+
+
+#################################################################
+#                          Automations                          #
+#################################################################
+
+automation:
+  - alias: Downstairs Sunlight
+    initial_state: 'off'
+    # Run hourly
+    trigger:
+      - platform: time
+        minutes: 00
+        seconds: 00
+    # Only do this if the lights are on.
+    # Test two lights, in case one is offline (which happens with LIFX sometimes)
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: 'light.hue_desk'
+          state: 'on'
+        - condition: state
+          entity_id: 'light.fibaro_kitchen_level'
+          state: 'on'
+
+    # Call the script to handle the rest
+    action:
+      - service: script.downstairs_lights_on
+
+#################################################################
+#                          Scripts                              #
+#################################################################
+
+script:
+  # Master script for ALL LIGHTS OFF
+  # Turns off all with clean up for milight
+  # Also turns off additional items via-sub scripts
+  #  * group.tracked_users = not_home
+  #    * turn off Alexa, bathroom fan, bandwidth throttling
+  #  * roku = playing
+  #    * turn off grow light, aquarium, bathroom_fan
+  # kitchen_lighting:
+  #   alias: Kitchen Lighting
+  #   sequence:
+  #     - service_template: >
+  #         light.turn_{{ desire }}
+  #       entity_id: light.fibaro_kitchen_level, light.fibaro_table_level
+  downstairs_sunrise:
+    alias: Downstairs Sunrise
+    sequence:
+
+      # Turn the lights to low brightness at a very warm temperature
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 60
+          brightness: 51
+          kelvin: 2700
+
+      # Wait 5 seconds
+      - delay: 00:00:05
+
+      # Over ten minutes, turn the lights a little brighter and to a
+      # cooler-than-soft-white color.
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 600
+          brightness: 63
+          kelvin: 3600
+
+      # Wait again
+      - delay: 00:00:05
+
+      # Finally, over fifteen minutes, shift the lights to a cool white at 90%.
+      - service: light.turn_on
+        data:
+          entity_id: group.lights_bedroom
+          transition: 900
+          brightness: 230
+          kelvin: 4200
+
+  downstairs_lights_on:
+    alias: Downstairs Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.downstairs_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  kitchen_lights_on:
+    alias: Kitchen Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.kitchen_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  table_lights_on:
+    alias: Table Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.table_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  dinner_lights_on:
+    alias: Dinner Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.dinner_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  livingroom_lights_on:
+    alias: Livingroom Lights On
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: >
+            scene.livingroom_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 19 %}evening
+            {% elif now().hour >= 21 %}night
+            {% endif %}
+
+  everything_off:
+    alias: Good Night
+    sequence:
+
+      - service: homeassistant.turn_off
+        entity_id: switch.wemo_livingroom
+
+      - service: light.turn_off
+        data:
+          entity_id: light.fibaro_table_level, light.hue_livingroom, light.hue_lightstrip, light.hue_desk
+          transition: 4
+
+      - delay: '00:00:02'
+
+      - condition: state
+        entity_id: light.fibaro_kitchen_level
+        state: 'on'
+
+      - service: light.turn_on
+        data:
+          entity_id: light.fibaro_kitchen_level
+          brightness: 75
+          transition: 5
+
+      - delay: '00:00:07'
+
+      - service: light.turn_off
+        data:
+          entity_id: light.fibaro_kitchen_level
+          transition: 4
+  #
+  #     # NOT HOME
+  #     # If I'm not home, TTS tell Alexa to shut up.
+  #     # Turn off bandwidth restrictions
+  #     - service: script.turn_on
+  #       entity_id: script.everything_off_not_home
+  #     # MEDIA PLAYING
+  #     # Turn off additional lights
+  #     - service: script.turn_on
+  #       entity_id: script.everything_off_movietime
+  #
+  #     # LAST STEP: CLEAN UP MILIGHTS
+  #     - delay: '00:00:07'
+  #     # HA does not see these state changes, they go direct to hub
+  #     - service: script.turn_on
+  #       entity_id: script.milight_front_off
+  #     - delay: '00:00:01'
+  #     - service: script.turn_on
+  #       entity_id: script.milight_back_off
+  #     - delay: '00:00:01'
+  #     - service: script.turn_on
+  #       entity_id: script.milight_front_off
+  #     - delay: '00:00:01'
+  #     - service: script.turn_on
+  #       entity_id: script.milight_back_off
+  # #
+  # # SUB SCRIPTS
+  # #
+  # everything_off_not_home:
+  #   alias: Not Home, Turn Off More Stuff
+  #   sequence:
+  #     - condition: state
+  #       entity_id: group.tracked_users
+  #       state: 'not_home'
+  #
+  #     - service: homeassistant.turn_off
+  #       entity_id: switch.bathroom_fan, switch.transmission_turtle_mode, input_boolean.sabnzbd_turtle_mode
+  #     - service: script.turn_on
+  #       entity_id: script.tts_alexa_shut_up
+  #
+  # everything_off_movietime:
+  #   alias: All Off, Movie Time
+  #   sequence:
+  #     - condition: state
+  #       entity_id: media_player.roku_3__4124cg078650
+  #       state: 'playing'
+  #
+  #     - service: homeassistant.turn_off
+  #       entity_id: switch.grow_light, switch.aquarium, switch.bathroom_fan

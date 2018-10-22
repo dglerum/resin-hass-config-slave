@@ -1,0 +1,145 @@
+homeassistant:
+  name: !secret name
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 17
+  unit_system: metric
+  time_zone: Europe/Brussels
+  customize: !include includes/customize.yaml
+  packages: !include_dir_named packages
+
+frontend:
+  javascript_version: latest
+
+http:
+  api_password: !secret http_password
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.1.0/24
+
+config:
+
+# panel_iframe:
+#   nodered:
+#     title: Node-Red
+#     icon: mdi:shuffle-variant
+#     url: !secret nodered_url
+
+logger:
+  default: warning
+  logs:
+    # homeassistant.components.zwave: debug
+    homeassistant.components.mqtt: debug
+    homeassistant.components.automation: debug
+
+updater:
+
+## Philips Hue bridge config
+hue:
+  bridges:
+    - host: 192.168.1.2
+      # filename: phue.conf
+      allow_unreachable: true
+      allow_hue_groups: false
+
+# wemo:
+#   static:
+#     - 192.168.1.47
+#     - 192.168.1.48
+
+# Discover some devices automatically
+# discovery:
+#   ignore:
+#     - apple_tv
+#     - philips_hue
+#     - belkin_wemo
+
+remote:
+  - platform: harmony
+    name: Logitech Harmony
+    host: !secret harmony_hub_ip
+
+logbook:
+  include:
+    domains:
+      - script
+      - sensor
+      - switch
+      - device_trackers
+
+map:
+sun:
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: 1883
+
+homekit:
+  auto_start: false
+  ip_address: !secret rPi
+  filter:
+    include_entities:
+      ## Media Players
+      # - media_player.kodi_player
+      ## Lights
+      - light.kitchen_lighting
+      - light.livingroom_lighting
+      - light.downstairs_lighting
+      ## Switches
+      - switch.livingroom_lights
+      - switch.dinner_lights
+      - switch.kitchen_lights
+      - switch.table_lights
+      - switch.tv
+      - switch.radio
+      ## Sensors
+      - sensor.fibaro_smoke_sensor_temperature
+      ## Device Tracker
+      # - device_tracker.davy_bayesian
+  # entity_config:
+  #   media_player.kodi_player:
+  #     feature_list:
+  #       - feature: play_pause
+  #       - feature: play_stop
+  #       - feature: toggle_mute
+  #   switch.wemo_bedroom:
+  #     type: outlet
+
+weblink:
+  entities:
+    - name: Router
+      icon: mdi:router-wireless
+      url: http://192.168.1.1/
+    - name: Node-Red
+      icon: mdi:nodejs
+      url: /red
+    - name: Grafana
+      icon: mdi:wrench
+      url: /grafana
+
+# mqtt_statestream:
+#   base_topic: homeassistant
+#   publish_attributes: true
+#   publish_timestamps: true
+#   include:
+#     entities:
+#       - binary_sensor.flic_80e4da720d43
+#       - binary_sensor.flic_80e4da721754
+
+switch: !include includes/switches.yaml
+camera: !include includes/cameras.yaml
+history: !include includes/history.yaml
+recorder: !include includes/recorder.yaml
+sensor: !include includes/sensors.yaml
+group: !include includes/groups.yaml
+automation: !include includes/automations.yaml
+script: !include includes/scripts.yaml
+shell_command: !include includes/shell_commands.yaml
+input_select: !include includes/input_selects.yaml
+input_boolean: !include includes/input_booleans.yaml
+device_tracker: !include includes/device_trackers.yaml
+ios: !include includes/ios.yaml
+scene: !include_dir_merge_list scenes
+media_player: !include includes/media_players.yaml
+zwave: !include zwave.yaml
+zone: !include includes/zones.yaml

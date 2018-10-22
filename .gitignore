@@ -1,0 +1,17 @@
+# .gitignore file for the config dir
+*
+!*.yaml
+!*.sh
+!.gitignore
+!/scenes/
+!/themes/
+!/includes/
+!/bin/
+!www/
+!www/*
+!www/*/*
+!packages/
+!packages/*
+secrets.yaml
+known_devices.yaml
+entity_registry.yaml
