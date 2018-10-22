@@ -187,7 +187,7 @@ script:
             scene.kitchen_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
-            {% elif now().hour < 19 %}evening
+            {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
 
@@ -200,7 +200,7 @@ script:
             scene.table_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
-            {% elif now().hour < 19 %}evening
+            {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
 
@@ -213,7 +213,7 @@ script:
             scene.dinner_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
-            {% elif now().hour < 19 %}evening
+            {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
 
@@ -226,7 +226,7 @@ script:
             scene.livingroom_
             {%- if now().hour < 7 %}night
             {% elif now().hour < 17 %}daylight
-            {% elif now().hour < 19 %}evening
+            {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
 

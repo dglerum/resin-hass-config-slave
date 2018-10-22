@@ -171,6 +171,7 @@ system status:
     - group.emergency
     - group.flic
     - group.speech_engine
+    - input_select.log_level
 
 shortcuts:
   name: Shortcuts
