@@ -22,5 +22,8 @@
     icon: mdi:play
   script.restart_ha:
     icon: mdi:power
+<<<<<<< HEAD
   device_tracker.davy_bayesian:
     friendly_name: 'Davy'
+=======
+>>>>>>> 9b73d0b1106fa59af2c9d7d42654e8acbeed5b7f
