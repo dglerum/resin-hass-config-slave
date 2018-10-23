@@ -1,11 +1,5 @@
-- name: downstairs_night
+- name: livingroom_night
   entities:
-    light.fibaro_kitchen_level:
-      state: on
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      transition: 3
     light.hue_desk:
       state: on
       brightness: 80
@@ -22,14 +16,8 @@
       xy_color: [0.4914,0.415]
       transition: 3
 
-- name: downstairs_daylight
+- name: livingroom_daylight
   entities:
-    light.fibaro_kitchen_level:
-      state: on
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      transition: 3
     light.hue_desk:
       state: on
       brightness: 130
@@ -46,14 +34,20 @@
       xy_color: [0.4914,0.415]
       transition: 3
 
-- name: downstairs_evening
+- name: livingroom_television_on
   entities:
-    light.fibaro_kitchen_level:
+    light.tv_lights:
       state: on
-      transition: 2
     light.fibaro_table_level:
-      state: on
-      transition: 3
+      state: off
+
+- name: livingroom_television_off
+  entities:
+    light.tv_lights:
+      state: off
+
+- name: livingroom_evening
+  entities:
     light.hue_desk:
       state: on
       brightness: 100
@@ -68,4 +62,48 @@
       state: on
       brightness: 100
       xy_color: [0.4914,0.415]
+      transition: 3
+
+- name: Desk On
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+
+- name: Desk Off
+  entities:
+    light.hue_desk:
+      state: off
+
+- name: Livingroom On
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 150
+      xy_color: [0.4452,0.4068]
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 130
+      xy_color: [0.4914,0.415]
+      transition: 3
+
+- name: Livingroom Off
+  entities:
+    switch.television_lights: off
+    light.hue_desk:
+      state: off
+      transition: 3
+    light.hue_livingroom:
+      state: off
+      transition: 3
+    light.hue_lightstrip:
+      state: off
       transition: 3
