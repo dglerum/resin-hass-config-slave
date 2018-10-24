@@ -34,8 +34,8 @@ homeassistant:
 input_boolean:
   light_automation:
     initial: on
-    name: Davy HomeKit
-    icon: mdi:account
+    name: Light Automation
+    icon: mdi:light
 
 #################################################################
 #                          Groups                               #
