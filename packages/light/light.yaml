@@ -5,13 +5,13 @@
 homeassistant:
   customize:
     light.fibaro_kitchen_level:
-      friendly_name: Kitchen
+      friendly_name: "Kitchen"
     light.fibaro_table_level:
-      friendly_name: Table
+      friendly_name: "Table"
     light.fibaro_hallway_level:
-      friendly_name: Hallway
+      friendly_name: "Hallway"
     light.fibaro_stair_level:
-      friendly_name: Stair
+      friendly_name: "Stair"
     sensor.fibaro_hallway_energy:
       friendly_name: "Hallway Use"
     sensor.fibaro_kitchen_energy:
