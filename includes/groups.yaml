@@ -59,6 +59,7 @@ available_switches:
     - switch.kitchen_lights
     - switch.table_lights
     - switch.tv
+    - automation.downstairs_lights_dim
 
 tv:
   name: TV Scenes
@@ -82,29 +83,29 @@ all_scenes:
   view: no
   control: hidden
   entities:
-    - scene.all_lights_on
-    - scene.day_dim_lights
-    - scene.desk_off
-    - scene.desk_on
-    - scene.dinner_off
-    - scene.dinner_on
-    - scene.evening_bright_lights
-    - scene.kitchen_off
-    - scene.kitchen_on
-    - scene.livingroom_off
-    - scene.livingroom_on
-    - scene.movie_paused
-    - scene.movie_resumed
-    - scene.night_dim_lights
-    - scene.night_light
-    - scene.table_off
-    - scene.table_on
+    # - scene.all_lights_on
+    # - scene.desk_off
+    # - scene.desk_on
+    # - scene.dinner_off
+    # - scene.dinner_on
+    # - scene.kitchen_off
+    # - scene.kitchen_on
+    # - scene.livingroom_off
+    # - scene.livingroom_on
+    # - scene.movie_paused
+    # - scene.movie_resumed
+    # - scene.night_light
+    # - scene.table_off
+    # - scene.table_on
     - scene.downstairs_night
     - scene.downstairs_evening
     - scene.downstairs_daylight
     - scene.table_evening
     - scene.table_daylight
     - scene.table_night
+    - scene.livingroom_evening
+    - scene.livingroom_daylight
+    - scene.livingroom_night
 
 ####################################################
 #                                                  #

@@ -8,18 +8,18 @@
       transition: 3
     light.hue_desk:
       state: on
-      brightness: 80
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 110
-      xy_color: [0.4452,0.4068]
+      brightness: 128
+      color_temp: 377
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 80
-      xy_color: [0.4914,0.415]
+      brightness: 87
+      color_temp: 377
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 104
+      color_temp: 377
       transition: 3
 
 - name: downstairs_daylight
@@ -32,18 +32,18 @@
       transition: 3
     light.hue_desk:
       state: on
-      brightness: 130
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 150
-      xy_color: [0.4452,0.4068]
+      brightness: 128
+      color_temp: 334
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 130
-      xy_color: [0.4914,0.415]
+      brightness: 123
+      color_temp: 334
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 183
+      color_temp: 334
       transition: 3
 
 - name: downstairs_evening
@@ -56,16 +56,16 @@
       transition: 3
     light.hue_desk:
       state: on
-      brightness: 100
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 120
-      xy_color: [0.4452,0.4068]
+      brightness: 116
+      color_temp: 334
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 100
-      xy_color: [0.4914,0.415]
+      brightness: 116
+      color_temp: 334
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 116
+      color_temp: 334
       transition: 3

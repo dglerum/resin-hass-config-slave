@@ -108,7 +108,7 @@ automation:
     # Run hourly
     trigger:
       - platform: time
-        minutes: 00
+        minutes: 15
         seconds: 00
     # Only do this if the lights are on.
     # Test two lights, in case one is offline (which happens with LIFX sometimes)
@@ -116,15 +116,15 @@ automation:
       condition: or
       conditions:
         - condition: state
-          entity_id: 'light.hue_desk'
+          entity_id: 'switch.livingroom_lights'
           state: 'on'
         - condition: state
-          entity_id: 'light.fibaro_kitchen_level'
+          entity_id: 'switch.kitchen_lights'
           state: 'on'
 
     # Call the script to handle the rest
     action:
-      - service: script.downstairs_lights_on
+      - service: script.downstairs_lights_dim
 
 #################################################################
 #                          Scripts                              #
@@ -191,6 +191,39 @@ script:
             {% elif now().hour < 19 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
+
+  downstairs_lights_dim:
+    alias: Downstairs Lights Dim
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: "{% if is_state('switch.livingroom_lights', 'on') %}
+
+            - scene.livingroom_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 22 %}evening
+            {% elif now().hour >= 22 %}night
+            {% endif %}
+          {% endif %}
+          {% if is_state('switch.kitchen_lights', 'on') %}
+
+            - scene.kitchen_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 22 %}evening
+            {% elif now().hour >= 22 %}night
+            {% endif %}
+          {% endif %}
+          {% if is_state('switch.table_lights', 'on') %}
+
+            - scene.table_
+            {%- if now().hour < 7 %}night
+            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 22 %}evening
+            {% elif now().hour >= 22 %}night
+            {% endif %}
+          {% endif %}"
 
   kitchen_lights_on:
     alias: Kitchen Lights On
