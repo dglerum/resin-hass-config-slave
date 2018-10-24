@@ -1,4 +1,4 @@
-- name: downstairs_night
+- name: Downstairs Night
   entities:
     light.fibaro_kitchen_level:
       state: on
@@ -22,7 +22,7 @@
       color_temp: 377
       transition: 3
 
-- name: downstairs_daylight
+- name: Downstairs Daylight
   entities:
     light.fibaro_kitchen_level:
       state: on
@@ -46,7 +46,7 @@
       color_temp: 334
       transition: 3
 
-- name: downstairs_evening
+- name: Downstairs Evening
   entities:
     light.fibaro_kitchen_level:
       state: on

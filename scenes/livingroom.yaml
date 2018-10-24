@@ -1,4 +1,4 @@
-- name: livingroom_night
+- name: Livingroom Night
   entities:
     light.hue_desk:
       state: on
@@ -16,7 +16,7 @@
       color_temp: 377
       transition: 3
 
-- name: livingroom_daylight
+- name: Livingroom Daylight
   entities:
     light.hue_desk:
       state: on
@@ -34,7 +34,7 @@
       color_temp: 334
       transition: 3
 
-- name: livingroom_evening
+- name: Livingroom Evening
   entities:
     light.hue_desk:
       state: on
@@ -52,14 +52,14 @@
       color_temp: 334
       transition: 3
 
-- name: livingroom_television_on
+- name: Livingroom Television On
   entities:
     switch.radio: off
     light.tv_lights:
       state: on
 
 
-- name: livingroom_television_off
+- name: Livingroom Television Off
   entities:
     light.tv_lights:
       state: off

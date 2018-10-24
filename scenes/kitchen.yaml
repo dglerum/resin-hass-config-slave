@@ -1,46 +1,46 @@
-- name: kitchen_night
+- name: Kitchen Night
   entities:
     light.fibaro_kitchen_level:
       state: on
       brightness: 100
       transition: 2
 
-- name: kitchen_daylight
+- name: Kitchen Daylight
   entities:
     light.fibaro_kitchen_level:
       state: on
       brightness: 170
       transition: 2
 
-- name: kitchen_evening
+- name: Kitchen Evening
   entities:
     light.fibaro_kitchen_level:
       state: on
       brightness: 150
       transition: 2
 
-- name: table_night
+- name: Table Night
   entities:
     light.fibaro_table_level:
       state: on
       brightness: 100
       transition: 3
 
-- name: table_daylight
+- name: Table Daylight
   entities:
     light.fibaro_table_level:
       state: on
       brightness: 170
       transition: 3
 
-- name: table_evening
+- name: Table Evening
   entities:
     light.fibaro_table_level:
       state: on
       brightness: 150
       transition: 3
 
-- name: dinner_night
+- name: Dinner Night
   entities:
     light.fibaro_kitchen_level:
       state: on
@@ -51,7 +51,7 @@
       brightness: 100
       transition: 3
 
-- name: dinner_daylight
+- name: Dinner Daylight
   entities:
     light.fibaro_kitchen_level:
       state: on
@@ -62,7 +62,7 @@
       brightness: 170
       transition: 3
 
-- name: dinner_evening
+- name: Dinner Evening
   entities:
     light.fibaro_kitchen_level:
       state: on
