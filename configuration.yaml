@@ -79,6 +79,8 @@ homekit:
   ip_address: !secret rPi
   filter:
     include_entities:
+      - input_boolean.davy_homekit_present
+      - input_boolean.isabel_homekit_present
       ## Media Players
       # - media_player.kodi_player
       ## Lights

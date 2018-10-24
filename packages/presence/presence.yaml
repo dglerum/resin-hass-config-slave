@@ -25,6 +25,8 @@ homeassistant:
       friendly_name: "Davy Owntracks"
     device_tracker.davy_nodered:
       friendly_name: "Davy Node Red"
+    device_tracker.davy_homekit:
+      friendly_name: "Davy Homekit"
     device_tracker.davy_ping:
       friendly_name: "Davy Ping"
 
@@ -42,6 +44,7 @@ group:
       - device_tracker.glerums_iphone
       - device_tracker.davy_bayesian
       - device_tracker.davy_nodered
+      - device_tracker.davy_homekit
       - device_tracker.davy_ping
       - device_tracker.davy_owntracks
       # - device_tracker.iphone_van_isabel
@@ -74,6 +77,14 @@ group:
 #       - sensor.ble_tina_upstairs
 #       - sensor.ble_tina_patio
 
+input_boolean:
+  davy_homekit_present:
+    name: Davy HomeKit
+    icon: mdi:account
+  isabel_homekit_present:
+    name: Isabel Homekit
+    icon: mdi:account
+
 binary_sensor:
   - platform: bayesian
     prior: 0.5
@@ -93,6 +104,11 @@ binary_sensor:
       - entity_id: 'device_tracker.davy_owntracks'
         prob_given_true: 0.9
         prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.davy_homekit'
+        prob_given_true: 0.9
+        prob_given_false: 0.2
         platform: 'state'
         to_state: 'home'
       - entity_id: 'device_tracker.davy_nodered'
