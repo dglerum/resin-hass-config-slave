@@ -116,8 +116,7 @@ automation:
   - alias: Downstairs Sunlight
     initial_state: 'on'
     condition:
-      # Prefix the first line of each condition configuration
-      # with a '-'' to enter multiple
+    # Run only when light automation boolean is active
       - condition: state
         entity_id: input_boolean.light_automation
         state: 'on'
@@ -195,7 +194,7 @@ script:
           entity_id: >
             scene.kitchen_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
@@ -211,7 +210,7 @@ script:
           entity_id: >
             scene.table_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
@@ -227,7 +226,7 @@ script:
           entity_id: >
             scene.livingroom_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
@@ -240,7 +239,7 @@ script:
           entity_id: >
             scene.kitchen_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
@@ -253,7 +252,7 @@ script:
           entity_id: >
             scene.table_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
@@ -266,7 +265,7 @@ script:
           entity_id: >
             scene.dinner_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
@@ -279,7 +278,7 @@ script:
           entity_id: >
             scene.livingroom_
             {%- if now().hour < 7 %}night
-            {% elif now().hour < 17 %}daylight
+            {% elif now().hour < 18 %}daylight
             {% elif now().hour < 21 %}evening
             {% elif now().hour >= 21 %}night
             {% endif %}
