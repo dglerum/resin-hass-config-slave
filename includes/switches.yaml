@@ -17,13 +17,17 @@
         friendly_name: Television
         value_template: "{% if states.remote.logitech_harmony.state == 'on' and states.remote.logitech_harmony.attributes.current_activity == 'Television' %}on{% else %}off{% endif %}"
         turn_on:
-          service: remote.turn_on
-          entity_id: remote.logitech_harmony
-          data:
-            activity: 25367510
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.light_automation
+          - service: remote.turn_on
+            entity_id: remote.logitech_harmony
+            data:
+              activity: 25367510
         turn_off:
-          service: remote.turn_off
-          entity_id: remote.logitech_harmony
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.light_automation
+          - service: remote.turn_off
+            entity_id: remote.logitech_harmony
 
 #################################################################
 #                          Lights                               #

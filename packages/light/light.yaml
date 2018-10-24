@@ -11,7 +11,7 @@ homeassistant:
     light.fibaro_hallway_level:
       friendly_name: Hallway
     light.fibaro_stair_level:
-      friendly_name: StairÒ
+      friendly_name: Stair
     sensor.fibaro_hallway_energy:
       friendly_name: "Hallway Use"
     sensor.fibaro_kitchen_energy:
@@ -27,6 +27,11 @@ homeassistant:
     light.hue_desk:
       friendly_name: "Desk"
 
+input_boolean:
+  light_automation:
+    initial: on
+    name: Davy HomeKit
+    icon: mdi:account
 #################################################################
 #                          Groups                               #
 #################################################################
@@ -92,11 +97,11 @@ light:
               off
             {% endif %}
         turn_on:
-          service: switch.turn_on
-          entity_id: switch.television_lights
+          - service: switch.turn_on
+            entity_id: switch.television_lights
         turn_off:
-          service: switch.turn_off
-          entity_id: switch.television_lights
+          - service: switch.turn_off
+            entity_id: switch.television_lights
 
 #################################################################
 #                          Automations                          #
@@ -105,6 +110,12 @@ light:
 automation:
   - alias: Downstairs Sunlight
     initial_state: 'on'
+    condition:
+      # Prefix the first line of each condition configuration
+      # with a '-'' to enter multiple
+      - condition: state
+        entity_id: input_boolean.light_automation
+        state: 'on'
     # Run hourly
     trigger:
       - platform: time
