@@ -94,6 +94,10 @@ homekit:
       - switch.table_lights
       - switch.tv
       - switch.radio
+      - switch.music_stubru
+      - switch.music_greatest_blues
+      - switch.music_ibiza_chill
+      - switch.music_album_500
       ## Sensors
       - sensor.fibaro_smoke_sensor_temperature
       ## Device Tracker

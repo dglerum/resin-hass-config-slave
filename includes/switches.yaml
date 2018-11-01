@@ -1,5 +1,5 @@
 #################################################################
-#                          Media                                #
+#  Media
 #################################################################
 
   - platform: template
@@ -30,7 +30,7 @@
             entity_id: remote.logitech_harmony
 
 #################################################################
-#                          Lights                               #
+#  Lights
 #################################################################
 
       livingroom_lights:
@@ -78,3 +78,63 @@
         turn_off:
           service: scene.turn_on
           entity_id: scene.table_off
+
+#################################################################
+# iTunes Playlists
+#################################################################
+
+      music_stubru:
+        friendly_name: StuBru
+        value_template: "{{ is_state('media_player.itunes', 'playing') and is_state('media_player.itunes.attributes.media_title', 'Studio Brussel') }}"
+        turn_on:
+          - service: input_select.select_option
+            entity_id : input_select.itunes_playlist
+            data:
+              option: Studio Brussel
+          - service: script.turn_on
+            entity_id: script.itunes_music
+        turn_off:
+          service: script.turn_on
+          entity_id: script.media_off
+
+      music_album_500:
+        friendly_name: Album 500
+        value_template: "{{ is_state('media_player.itunes', 'playing') and is_state('media_player.itunes.attributes.media_title', 'Studio Brussel 500') }}"
+        turn_on:
+          - service: input_select.select_option
+            entity_id : input_select.itunes_playlist
+            data:
+              option: Album 500
+          - service: script.turn_on
+            entity_id: script.itunes_music
+        turn_off:
+          service: script.turn_on
+          entity_id: script.media_off
+
+      music_ibiza_chill:
+        friendly_name: Ibiza Chill
+        value_template: "{{ is_state('media_player.itunes', 'playing') and is_state('media_player.itunes.attributes.media_title', 'Ibiza 2018') }}"
+        turn_on:
+          - service: input_select.select_option
+            entity_id : input_select.itunes_playlist
+            data:
+              option: Ibiza Chill
+          - service: script.turn_on
+            entity_id: script.itunes_music
+        turn_off:
+          service: script.turn_on
+          entity_id: script.media_off
+
+      music_greatest_blues:
+        friendly_name: Greatest Blues
+        value_template: "{{ is_state('media_player.itunes', 'playing') and is_state('media_player.itunes.attributes.media_title', '50 Greatest Blues') }}"
+        turn_on:
+          - service: input_select.select_option
+            entity_id : input_select.itunes_playlist
+            data:
+              option: Greatest Blues
+          - service: script.turn_on
+            entity_id: script.itunes_music
+        turn_off:
+          service: script.turn_on
+          entity_id: script.media_off
