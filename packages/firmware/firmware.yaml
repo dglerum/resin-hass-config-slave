@@ -1,11 +1,9 @@
 #################################################################
-#                                                               #
-#                      Packages/Firmware                        #
-#                                                               #
+## Packages/Firmware
 #################################################################
 
 #################################################################
-#                          Customize                            #
+## Customize
 #################################################################
 
 homeassistant:
@@ -18,7 +16,7 @@ homeassistant:
       icon: mdi:home-assistant
 
 #################################################################
-#                           Group                               #
+## Group
 #################################################################
 
 group:
@@ -32,7 +30,7 @@ group:
       - sensor.ssl_certificate_expiry
 
 #################################################################
-#                            HA Update                          #
+## HA Update
 #################################################################
 
 sensor:
@@ -48,6 +46,10 @@ sensor:
     name: 'HA Installed Version'
     command: "cat /data/config/.HA_VERSION"
 
+#################################################################
+## Binary Sensor
+#################################################################
+
 binary_sensor:
   - platform: template
     sensors:
@@ -55,6 +57,10 @@ binary_sensor:
         value_template: >-
           {{ states.sensor.latest_ha_version.state != states.sensor.ha_installed_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
         friendly_name: HA Update Available
+
+#################################################################
+## Automation
+#################################################################
 
 automation:
 ## Notify of New HA Update Available

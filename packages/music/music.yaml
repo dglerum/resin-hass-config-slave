@@ -79,12 +79,17 @@ input_select:
   itunes_playlist:
     options:
       - "StuBru"
-      - "Album 500"
+      - "Ibiza Chill"
+      - "Beach Tunes"
       - "Rock Gods"
-      - "Tijdloze"
+      - "Album 500"
+      - "De Afrekening"
+      - "100 Van De Eeuw"
       - "New Music"
       - "Greatest Blues"
-      - "Rumours"
+      - "Fleetwood Mac"
+      - "Tracy Chapman"
+      - "Nicolas Jaar"
 
   itunes_source:
     options:
@@ -173,12 +178,19 @@ script:
           media_content_type: playlist
           media_content_id: >
             {% if is_state("input_select.itunes_playlist", "StuBru") %} studio-brussel
-            {% elif is_state("input_select.itunes_playlist", "Album 500") %} album-500
+            {% elif is_state("input_select.itunes_playlist", "Ibiza Chill") %} ibiza-2018
+            {% elif is_state("input_select.itunes_playlist", "Beach Tunes") %} ibiza-chill-beach-tunes
             {% elif is_state("input_select.itunes_playlist", "Rock Gods") %} rock-gods
-            {% elif is_state("input_select.itunes_playlist", "Tijdloze") %} stubru-de-tijdloze-2013
-            {% elif is_state("input_select.itunes_playlist", "New Music") %} new-music-mix
+            {% elif is_state("input_select.itunes_playlist", "Album 500") %} studio-brussel-500
+            {% elif is_state("input_select.itunes_playlist", "De Afrekening") %} studio-brussel-de-afrekening
+            {% elif is_state("input_select.itunes_playlist", "100 Van De Eeuw") %} stubru-de-100-van-de-eeuw
+            {% elif is_state("input_select.itunes_playlist", "New Music") %} studio-brussel-de-beste-nieuwe-muziek
             {% elif is_state("input_select.itunes_playlist", "Greatest Blues") %} 50-greatest-blues
-            {% elif is_state("input_select.itunes_playlist", "Rumours") %} fleetwood-mac-rumours
+            {% elif is_state("input_select.itunes_playlist", "Fleetwood Mac") %} fleetwood-mac-rumours
+            {% elif is_state("input_select.itunes_playlist", "Tracy Chapman") %} tracy-Chapman
+            {% elif is_state("input_select.itunes_playlist", "Nicolas Jaar") %} this-is-nicolas-jaar
+
+
             {% endif %}
 
 
