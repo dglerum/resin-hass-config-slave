@@ -9,6 +9,8 @@
 !/bin/
 !www/
 !www/*
+!extraconfig/
+!extraconfig/*
 !packages/
 !packages/*
 secrets.yaml
