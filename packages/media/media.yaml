@@ -248,7 +248,7 @@ automation:
         entity_id: switch.tvpower
 
 ## Input Select for Media TV Morning Cartoons
-  - alias: Media TV Off
+  - alias: Media TV Morning Cartoons
     trigger:
     - platform: state
       entity_id: input_select.media_tv
@@ -259,7 +259,7 @@ automation:
         entity_id: script.1521695976118
 
 ## Input Select for Media TV Evening TV
-  - alias: Media TV Off
+  - alias: Media TV Evening TV
     trigger:
     - platform: state
       entity_id: input_select.media_tv
@@ -270,7 +270,7 @@ automation:
         entity_id: script.1521694771100
 
 ## Input Select for Media TV Super Rugby
-  - alias: Media TV Off
+  - alias: Media TV Super Rugby
     trigger:
     - platform: state
       entity_id: input_select.media_tv
@@ -281,7 +281,7 @@ automation:
         entity_id: script.1521696758169
 
 ## Input Select for Media TV Netflix
-  - alias: Media TV Off
+  - alias: Media TV Netflix
     trigger:
     - platform: state
       entity_id: input_select.media_tv
@@ -292,7 +292,7 @@ automation:
         entity_id: script.media_tv_app_netflix
 
 ## Input Select for Media TV YouTube
-  - alias: Media TV Off
+  - alias: Media TV YouTube
     trigger:
     - platform: state
       entity_id: input_select.media_tv
@@ -303,7 +303,7 @@ automation:
         entity_id: script.media_tv_app_youtube
 
 ## Input Select for Media TV Foxtel
-  - alias: Media TV Off
+  - alias: Media TV Foxtel
     trigger:
     - platform: state
       entity_id: input_select.media_tv
@@ -314,7 +314,7 @@ automation:
         entity_id: script.media_tv_app_foxtel
 
 ## Input Select for Media TV Spotify
-  - alias: Media TV Off
+  - alias: Media TV Spotify
     trigger:
     - platform: state
       entity_id: input_select.media_tv
