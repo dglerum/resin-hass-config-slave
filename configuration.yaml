@@ -80,6 +80,7 @@ homekit:
     include_entities:
       - input_boolean.davy_homekit_present
       - input_boolean.isabel_homekit_present
+      - binary_sensor.hue_motion
       ## Media Players
       # - media_player.kodi_player
       ## Lights
