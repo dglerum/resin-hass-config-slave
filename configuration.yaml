@@ -68,7 +68,6 @@ logbook:
       - device_trackers
 
 map:
-sun:
 
 mqtt:
   broker: !secret mqtt_broker

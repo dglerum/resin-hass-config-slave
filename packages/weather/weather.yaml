@@ -93,6 +93,7 @@ sensor:
   - platform: wunderground
     api_key: !secret wunderground_api
     pwd_id: !secret wunderground_pws_id
+    scan_interval: 180
     monitored_conditions:
       - relative_humidity
       - pressure_mb
@@ -123,6 +124,7 @@ sensor:
 weather:
   - platform: darksky
     api_key: !secret darksky_api_key
+    scan_interval: 180
     forecast:
       - 1
     monitored_conditions:

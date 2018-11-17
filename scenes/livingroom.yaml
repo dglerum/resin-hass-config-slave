@@ -21,17 +21,17 @@
     light.hue_desk:
       state: on
       brightness: 128
-      color_temp: 334
+      color_temp: 360
       transition: 3
     light.hue_lightstrip:
       state: on
       brightness: 123
-      color_temp: 334
+      color_temp: 360
       transition: 3
     light.hue_livingroom:
       state: on
       brightness: 183
-      color_temp: 334
+      color_temp: 360
       transition: 3
 
 - name: Livingroom Evening
@@ -39,17 +39,17 @@
     light.hue_desk:
       state: on
       brightness: 116
-      color_temp: 334
+      color_temp: 370
       transition: 3
     light.hue_lightstrip:
       state: on
       brightness: 116
-      color_temp: 334
+      color_temp: 370
       transition: 3
     light.hue_livingroom:
       state: on
       brightness: 116
-      color_temp: 334
+      color_temp: 370
       transition: 3
 
 - name: Livingroom Television On

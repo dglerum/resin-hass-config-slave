@@ -6,6 +6,10 @@ homeassistant:
       friendly_name: Toilet Downstairs
     binary_sensor.toilet_upstairs_motion:
       friendly_name: Toilet Upstairs
+    binary_sensor.kitchen_motion:
+      friendly_name: Kitchen
+    binary_sensor.hue_motion:
+      friendly_name: Philips HUE
 
 group:
   hue_motion_sensors:
@@ -16,6 +20,8 @@ group:
       - binary_sensor.hallway_motion
       - binary_sensor.toilet_upstairs_motion
       - binary_sensor.toilet_downstairs_motion
+      - binary_sensor.kitchen_motion
+      - binary_sensor.hue_motion
 
 binary_sensor:
   - platform: mqtt
@@ -33,6 +39,18 @@ binary_sensor:
   - platform: mqtt
     name: Toilet Upstairs Motion
     state_topic: "hass/binary_sensor/toilet_upstairs_motion"
+    payload_on: "true"
+    payload_off: "false"
+
+  - platform: mqtt
+    name: Kitchen Motion
+    state_topic: "hass/binary_sensor/kitchen_motion"
+    payload_on: "true"
+    payload_off: "false"
+
+  - platform: mqtt
+    name: HUE Motion
+    state_topic: "hass/binary_sensor/hue_motion"
     payload_on: "true"
     payload_off: "false"
 

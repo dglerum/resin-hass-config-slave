@@ -9,7 +9,13 @@ homeassistant:
     sensor.toilet_upstairs_temperature:
       friendly_name: Toilet Upstairs
       icon: mdi:thermometer
-
+    sensor.kitchen_temperature:
+      friendly_name: Kitchen
+      icon: mdi:thermometer
+    sensor.hue_temperature:
+      friendly_name: Philips HUE
+      icon: mdi:thermometer
+      
 group:
   hue_temperature_sensors:
     name: Temperature
@@ -18,6 +24,8 @@ group:
       - sensor.hallway_temperature
       - sensor.toilet_upstairs_temperature
       - sensor.toilet_downstairs_temperature
+      - sensor.kitchen_temperature
+      - sensor.hue_temperature
 
 sensor:
   - platform: mqtt
@@ -31,6 +39,14 @@ sensor:
   - platform: mqtt
     name: Toilet Upstairs Temperature
     state_topic: "hass/sensor/toilet_upstairs_temperature"
+
+  - platform: mqtt
+    name: Kitchen Temperature
+    state_topic: "hass/sensor/kitchen_temperature"
+
+  - platform: mqtt
+    name: HUE Temperature
+    state_topic: "hass/sensor/hue_temperature"
 
 # automation:
 #   - alias: Motion Detected
