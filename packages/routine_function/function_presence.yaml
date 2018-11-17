@@ -64,6 +64,10 @@ binary_sensor:
         prob_given_false: 0.1
         platform: 'state'
         to_state: 'on'
+
+  - platform: workday
+    country: BE
+    workdays: [mon, tue, wed, thu, fri]
 ################################################################################
 
 input_boolean:
