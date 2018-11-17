@@ -12,6 +12,7 @@ homeassistant:
       friendly_name: Philips HUE
     input_boolean.homekit_motion:
       friendly_name: Homekit Motion
+      
 group:
   hue_motion_sensors:
     name: Motion
