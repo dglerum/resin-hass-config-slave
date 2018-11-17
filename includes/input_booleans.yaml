@@ -17,3 +17,7 @@
   home_stats:
     name: Homestats
     initial: off
+
+  homekit_motion:
+    name: Homekit Motion
+    initial: off
