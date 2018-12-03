@@ -36,7 +36,8 @@ history_graph:
     name: Temperature Graph
     entities:
       - sensor.fibaro_smoke_sensor_temperature
-      - sensor.pws_temp_c
+      - sensor.kitchen_temperature
+      - sensor.hallway_temperature
       - sensor.cpu_temperature
     hours_to_show: 240
     refresh: 300
