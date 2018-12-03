@@ -111,10 +111,10 @@ history_graph:
   power_consumption:
     name: Power Consumption Graph
     entities:
-      - sensor.fibaro_hallway_energy
-      - sensor.fibaro_kitchen_energy
-      - sensor.fibaro_stair_energy
-      - sensor.fibaro_table_energy
+      - sensor.fibaro_hallway_power
+      - sensor.fibaro_kitchen_power
+      - sensor.fibaro_stair_power
+      - sensor.fibaro_table_power
     hours_to_show: 240
     refresh: 300
 

@@ -49,7 +49,7 @@
       ignored: true
       polling_intensity: 0
     sensor.fibaro_kitchen_power:
-      ignored: true
+      ignored: false
       polling_intensity: 0
     sensor.fibaro_kitchen_power_management:
       ignored: true
@@ -79,7 +79,7 @@
       ignored: true
       polling_intensity: 0
     sensor.fibaro_table_power:
-      ignored: true
+      ignored: false
       polling_intensity: 0
     sensor.fibaro_table_power_management:
       ignored: true
@@ -109,7 +109,7 @@
       ignored: true
       polling_intensity: 0
     sensor.fibaro_hallway_power:
-      ignored: true
+      ignored: false
       polling_intensity: 0
     sensor.fibaro_hallway_power_management:
       ignored: true
@@ -139,7 +139,7 @@
       ignored: true
       polling_intensity: 0
     sensor.fibaro_stair_power:
-      ignored: true
+      ignored: false
       polling_intensity: 0
     sensor.fibaro_stair_power_management:
       ignored: true

@@ -14,10 +14,10 @@
       - sensor.glerums_iphone_x_battery_level
       - sensor.fibaro_smoke_sensor_temperature
       - sensor.pws_temp_c
-      - sensor.fibaro_hallway_energy
-      - sensor.fibaro_kitchen_energy
-      - sensor.fibaro_stair_energy
-      - sensor.fibaro_table_energy
+      - sensor.fibaro_hallway_power
+      - sensor.fibaro_kitchen_power
+      - sensor.fibaro_stair_power
+      - sensor.fibaro_table_power
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping

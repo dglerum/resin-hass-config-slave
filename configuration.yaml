@@ -29,7 +29,7 @@ logger:
   default: warning
   logs:
     homeassistant.components.script: debug
-    homeassistant.components.mqtt: debug
+    # homeassistant.components.mqtt: debug
     homeassistant.components.automation: debug
 
 updater:
@@ -63,7 +63,7 @@ logbook:
   include:
     domains:
       - script
-      - sensor
+      # - sensor
       - switch
       - device_trackers
 

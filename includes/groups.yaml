@@ -12,11 +12,13 @@ default_view:
   entities:
     - group.people
     - group.date_and_time
-    - group.weather_overview
-    - group.daily_forecast
+    - group.lights
+    # - group.weather_overview
+    # - group.daily_forecast
     - group.sun
     - group.light_groups
     # - group.ring_doorbell
+    - group.shortcuts
 
 date and time:
   name: Date & Time
@@ -40,7 +42,6 @@ downstairs:
   entities:
     - group.itunes
     - group.tv
-    - group.lights
     # - media_player.itunes
     - group.all_scenes
     - group.available_switches
@@ -159,7 +160,6 @@ system status:
   icon: mdi:settings
   view: yes
   entities:
-    - group.shortcuts
     - group.firmware
     - group.git
     - group.internet
