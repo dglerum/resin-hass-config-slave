@@ -7,6 +7,9 @@ homeassistant:
   time_zone: Europe/Brussels
   customize: !include includes/customize.yaml
   packages: !include_dir_named packages
+  auth_providers:
+   - type: homeassistant
+   - type: legacy_api_password
 
 frontend:
   javascript_version: latest
@@ -48,7 +51,9 @@ hue:
 #     - 192.168.1.48
 
 # Discover some devices automatically
-# discovery:
+discovery:
+  enable:
+    - homekit
 #   ignore:
 #     - apple_tv
 #     - philips_hue

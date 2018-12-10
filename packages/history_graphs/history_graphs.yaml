@@ -116,7 +116,7 @@ history_graph:
       - sensor.fibaro_kitchen_power
       - sensor.fibaro_stair_power
       - sensor.fibaro_table_power
-    hours_to_show: 240
+    hours_to_show: 48
     refresh: 300
 
   # bougainvillea:
