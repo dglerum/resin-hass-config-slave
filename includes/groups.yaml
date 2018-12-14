@@ -10,6 +10,7 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
+    - media_player.livingroom
     - group.people
     - group.date_and_time
     - group.lights
