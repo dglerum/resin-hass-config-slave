@@ -33,6 +33,9 @@
       - sensor.toilet_downstairs_temperature
       - binary_sensor.toilet_upstairs_motion
       - sensor.toilet_upstairs_temperature
+      - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
+      - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor
+      - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
       # - light.hue_desk
       # - light.hue_lightstrip
       # - light.hue_livingroom

@@ -46,7 +46,7 @@ homeassistant:
 tesla:
   username: !secret tesla_user
   password: !secret tesla_password
-  scan_interval: 1800
+  scan_interval: 900
 
 #################################################################
 ## Group
@@ -60,13 +60,13 @@ group:
     entities:
       - climate.tesla_model_s_5yjsa7e20jf287352_hvac_climate_system
       - binary_sensor.tesla_model_s_5yjsa7e20jf287352_charger_sensor
-      - binary_sensor.tesla_model_s_5yjsa7e20jf287352_parking_brake_sensor
-      - device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker
+      # - binary_sensor.tesla_model_s_5yjsa7e20jf287352_parking_brake_sensor
+      # - device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker
       - lock.tesla_model_s_5yjsa7e20jf287352_door_lock
       - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
       - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor
       - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
-      - sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_inside
-      - sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_outside
-      - switch.tesla_model_s_5yjsa7e20jf287352_charger_switch
-      - switch.tesla_model_s_5yjsa7e20jf287352_maxrange_switch
+      # - sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_inside
+      # - sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_outside
+      # - switch.tesla_model_s_5yjsa7e20jf287352_charger_switch
+      # - switch.tesla_model_s_5yjsa7e20jf287352_maxrange_switch

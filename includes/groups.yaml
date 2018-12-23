@@ -124,6 +124,7 @@ graphs:
     - group.power_graph
     - group.lights_graph
     - group.temperature_graph
+    - group.model_s_graph
 
 battery_graph:
   view: no
@@ -150,6 +151,10 @@ temperature_graph:
   entities:
     - history_graph.temperature_graph
 
+model_s_graph:
+  view: no
+  entities:
+    - history_graph.model_s
 ####################################################
 #                                                  #
 #                  System Status                   #
