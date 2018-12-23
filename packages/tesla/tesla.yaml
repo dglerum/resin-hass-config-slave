@@ -1,0 +1,72 @@
+#################################################################
+## Packages / Git
+#################################################################
+
+#################################################################
+## Customize
+#################################################################
+
+homeassistant:
+  customize:
+    binary_sensor.tesla_model_s_5yjsa7e20jf287352_charger_sensor:
+      friendly_name: Charging
+      icon: mdi:flash-circle
+    binary_sensor.tesla_model_s_5yjsa7e20jf287352_parking_brake_sensor:
+      friendly_name: Parking Brake
+      icon: mdi:parking
+    climate.tesla_model_s_5yjsa7e20jf287352_hvac_climate_system:
+      friendly_name: Climate System
+    device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker:
+      friendly_name: Car Location
+      icon: mdi:map-marker
+    lock.tesla_model_s_5yjsa7e20jf287352_door_lock:
+      friendly_name: Door Lock
+    sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor:
+      friendly_name: Battery
+      icon: mdi:battery
+    sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor:
+      friendly_name: Mileage
+      icon: mdi:speedometer
+    sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor:
+      friendly_name: Range
+      icon: mdi:speedometer
+    sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_inside:
+      friendly_name: Temp Indoor
+    sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_outside:
+      friendly_name: Temp Outdoor
+    switch.tesla_model_s_5yjsa7e20jf287352_charger_switch:
+      friendly_name: Charge
+    switch.tesla_model_s_5yjsa7e20jf287352_maxrange_switch:
+      friendly_name: Max Range
+
+#################################################################
+## Component
+#################################################################
+
+tesla:
+  username: !secret tesla_user
+  password: !secret tesla_password
+  scan_interval: 1800
+
+#################################################################
+## Group
+#################################################################
+group:
+
+  tesla:
+    name: Tesla Model S
+    control: hidden
+    view: no
+    entities:
+      - climate.tesla_model_s_5yjsa7e20jf287352_hvac_climate_system
+      - binary_sensor.tesla_model_s_5yjsa7e20jf287352_charger_sensor
+      - binary_sensor.tesla_model_s_5yjsa7e20jf287352_parking_brake_sensor
+      - device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker
+      - lock.tesla_model_s_5yjsa7e20jf287352_door_lock
+      - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
+      - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor
+      - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
+      - sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_inside
+      - sensor.tesla_model_s_5yjsa7e20jf287352_temperature_sensor_outside
+      - switch.tesla_model_s_5yjsa7e20jf287352_charger_switch
+      - switch.tesla_model_s_5yjsa7e20jf287352_maxrange_switch

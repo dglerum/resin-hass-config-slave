@@ -16,7 +16,7 @@ default_view:
     - group.lights
     # - group.weather_overview
     # - group.daily_forecast
-    - group.sun
+    - group.tesla
     - group.light_groups
     # - group.ring_doorbell
     - group.shortcuts

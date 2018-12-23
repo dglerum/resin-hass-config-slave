@@ -10,16 +10,16 @@
 
 homeassistant:
   customize:
-    device_tracker.tile_glerums_iphone_x:
+    device_tracker.tile_pe5a33af6aed78690191414301c2946ef:
       friendly_name: iPhone X
       icon: mdi:radar
-    device_tracker.tile_laptop_bag:
+    device_tracker.tile_1da6142fd8f65ae3:
       friendly_name: Laptop Bag
       icon: mdi:radar
-    device_tracker.tile_volvo_xc60:
-      friendly_name: Volvo XC60
+    device_tracker.tile_1e2b8c38e30fbb4d:
+      friendly_name: Tesla Model S
       icon: mdi:radar
-    device_tracker.tile_work_keys:
+    device_tracker.tile_92ed8033933bc67b:
       friendly_name: Work Keys
       icon: mdi:radar
 
@@ -33,7 +33,7 @@ group:
     view: no
     control: hidden
     entities:
-      - device_tracker.tile_glerums_iphone_x
-      - device_tracker.tile_laptop_bag
-      - device_tracker.tile_volvo_xc60
-      - device_tracker.tile_work_keys
+      - device_tracker.tile_pe5a33af6aed78690191414301c2946ef
+      - device_tracker.tile_1da6142fd8f65ae3
+      - device_tracker.tile_1e2b8c38e30fbb4d
+      - device_tracker.tile_92ed8033933bc67b
