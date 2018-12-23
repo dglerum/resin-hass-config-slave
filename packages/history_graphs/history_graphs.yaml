@@ -58,7 +58,6 @@ history_graph:
     name: Car Stats
     entities:
       - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
-      - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor
       - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
     hours_to_show: 240
     refresh: 300

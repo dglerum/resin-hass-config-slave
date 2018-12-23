@@ -154,7 +154,7 @@ temperature_graph:
 model_s_graph:
   view: no
   entities:
-    - history_graph.model_s
+    - history_graph.car_stats
 ####################################################
 #                                                  #
 #                  System Status                   #
