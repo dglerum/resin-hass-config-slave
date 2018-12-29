@@ -66,6 +66,7 @@ group:
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
       - light.kitchen_lighting
+      - light.fibaro_hallway_level
       - light.livingroom_lighting
       - input_boolean.light_automation
 

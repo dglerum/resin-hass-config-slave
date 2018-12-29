@@ -11,6 +11,8 @@
 #################################################################
 homeassistant:
   customize:
+    device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker:
+      friendly_name: "Tesla Model S"
     device_tracker.glerums_iphone:
       friendly_name: 'Davy iOS'
     device_tracker.iphone_van_isabel:
@@ -49,6 +51,7 @@ group:
       - device_tracker.davy_owntracks
       # - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
+      - device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker
       # - sensor.iphone_van_isabel_battery_level
 #       - sensor.commute_to_work
 #       - sensor.commute_from_work

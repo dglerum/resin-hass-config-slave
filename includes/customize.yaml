@@ -12,7 +12,7 @@
   sensor.commute_isabel:
     friendly_name: "Sibelco"
   switch.wemo_livingroom:
-    friendly_name: "TV Lights"
+    friendly_name: "Tree Lights"
   switch.wemo_bedroom:
     friendly_name: "Kill Switch"
   sensor.fibaro_smoke_sensor_temperature:

@@ -101,6 +101,7 @@ homekit:
       - light.livingroom_lighting
       - light.downstairs_lighting
       ## Switches
+      - switch.wemo_livingroom
       - switch.livingroom_lights
       - switch.dinner_lights
       - switch.kitchen_lights
