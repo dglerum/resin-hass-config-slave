@@ -14,12 +14,20 @@ default_view:
     - group.people
     - group.date_and_time
     - group.lights
+    - group.automation
     # - group.weather_overview
     # - group.daily_forecast
     - group.sun
     - group.light_groups
     # - group.ring_doorbell
     - group.shortcuts
+
+automation:
+  name: Automation
+  control: hidden
+  entities:
+    - input_boolean.light_automation
+    - switch.flux_update
 
 date and time:
   name: Date & Time

@@ -6,6 +6,7 @@ homeassistant:
   customize:
     input_boolean.light_automation:
       friendly_name: Sunlight Automation
+      icon: mdi:youtube-subscription
     light.fibaro_kitchen_level:
       friendly_name: "Kitchen"
     light.fibaro_table_level:
@@ -47,7 +48,6 @@ input_boolean:
   light_automation:
     initial: on
     name: Light Automation
-    icon: mdi:light
 
 #################################################################
 #                          Groups                               #
@@ -68,7 +68,6 @@ group:
       - light.kitchen_lighting
       - light.fibaro_hallway_level
       - light.livingroom_lighting
-      - input_boolean.light_automation
 
   light_groups:
     name: Light Groups
