@@ -11,18 +11,16 @@
 #################################################################
 homeassistant:
   customize:
-    device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker:
-      friendly_name: "Tesla Model S"
     device_tracker.glerums_iphone:
       friendly_name: 'Davy iOS'
     device_tracker.iphone_van_isabel:
-      friendly_name: 'Isabel iOS'
+      friendly_name: 'Isabel'
     sensor.glerums_iphone_x_battery_level:
       friendly_name: "Battery iPhone X"
     sensor.iphone_van_isabel_battery_level:
       friendly_name: "Battery iPhone 6"
     device_tracker.davy_bayesian:
-      friendly_name: 'Davy Bayesian'
+      friendly_name: 'Davy'
     device_tracker.davy_owntracks:
       friendly_name: "Davy Owntracks"
     device_tracker.davy_nodered:
@@ -48,10 +46,9 @@ group:
       - device_tracker.davy_nodered
       - device_tracker.davy_homekit
       - device_tracker.davy_ping
-      - device_tracker.davy_owntracks
+      # - device_tracker.davy_owntracks
       # - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
-      - device_tracker.tesla_model_s_5yjsa7e20jf287352_location_tracker
       # - sensor.iphone_van_isabel_battery_level
 #       - sensor.commute_to_work
 #       - sensor.commute_from_work

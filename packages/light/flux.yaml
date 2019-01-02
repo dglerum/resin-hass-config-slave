@@ -8,14 +8,13 @@ automation:
     - service: switch.turn_on
       entity_id: switch.flux_update
 
-
 switch:
   - platform: flux
     lights:
       - light.hue_desk
       - light.hue_lightstrip
       - light.hue_livingroom
-    name: Flux Update
+    name: Auto Fluxer
     start_time: '7:00'
     stop_time: '23:00'
     start_colortemp: 4000

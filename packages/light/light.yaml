@@ -4,9 +4,6 @@
 
 homeassistant:
   customize:
-    input_boolean.light_automation:
-      friendly_name: Sunlight Automation
-      icon: mdi:youtube-subscription
     light.fibaro_kitchen_level:
       friendly_name: "Kitchen"
     light.fibaro_table_level:
@@ -65,17 +62,15 @@ group:
       - light.tv_lights
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
-      - light.kitchen_lighting
       - light.fibaro_hallway_level
-      - light.livingroom_lighting
 
   light_groups:
     name: Light Groups
     view: no
     control: hidden
     entities:
-      - light.kitchen_lighting
-      - light.livingroom_lighting
+      - light.kitchen
+      - light.livingroom
 
   lr_lights:
     view: no
@@ -92,13 +87,13 @@ group:
 
 light:
   - platform: group
-    name: Kitchen Lighting
+    name: Kitchen
     entities:
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
 
   - platform: group
-    name: Livingroom Lighting
+    name: Livingroom
     entities:
       - light.hue_desk
       - light.hue_lightstrip

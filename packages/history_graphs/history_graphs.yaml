@@ -54,13 +54,14 @@ history_graph:
       - switch.wemo
     hours_to_show: 240
     refresh: 300
-  model_s:
-    name: Car Stats
-    entities:
-      - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
-      - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
-    hours_to_show: 240
-    refresh: 300
+
+  # model_s:
+  #   name: Car Stats
+  #   entities:
+  #     - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
+  #     - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
+  #   hours_to_show: 240
+  #   refresh: 300
   # playroom_temperature:
   #   name: Play Room Climate Graph
   #   entities:

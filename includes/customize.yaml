@@ -15,6 +15,10 @@
     friendly_name: "Tree Lights"
   switch.wemo_bedroom:
     friendly_name: "Kill Switch"
+  switch.sunlight_scening:
+    icon: mdi:brightness-auto
+  switch.auto_fluxer:
+    icon: mdi:white-balance-sunny
   sensor.fibaro_smoke_sensor_temperature:
     friendly_name: "Indoor Temp"
   script.itunes_music:
