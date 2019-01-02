@@ -1,8 +1,6 @@
 
 ####################################################
-#                                                  #
 #                      Home                        #
-#                                                  #
 ####################################################
 
 #home:
@@ -10,14 +8,16 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
+    - sensor.kitchen_temperature
+    - sensor.hallway_temperature
     # - media_player.livingroom
-    - device_tracker.iphone_van_isabel
-    - device_tracker.davy_bayesian
-    - group.date_and_time
+    # - device_tracker.iphone_van_isabel
+    # - device_tracker.davy_bayesian
+    - group.itunes
+    - group.light_groups
     - group.automation
     # - group.weather_overview
     # - group.daily_forecast
-    - group.light_groups
     # - group.ring_doorbell
     - group.shortcuts
 
@@ -38,9 +38,7 @@ date and time:
     - sensor.mum_time
 
 ####################################################
-#                                                  #
 #                   Downstairs                     #
-#                                                  #
 ####################################################
 
 downstairs:
@@ -48,7 +46,6 @@ downstairs:
   icon: mdi:sofa
   view: yes
   entities:
-    - group.itunes
     - group.tv
     - group.lights
     # - media_player.itunes
@@ -118,9 +115,7 @@ all_scenes:
     - scene.livingroom_night
 
 ####################################################
-#                                                  #
 #                    History Graphs                #
-#                                                  #
 ####################################################
 
 graphs:
@@ -163,10 +158,9 @@ temperature_graph:
 #   view: no
 #   entities:
 #     - history_graph.car_stats
+
 ####################################################
-#                                                  #
 #                  System Status                   #
-#                                                  #
 ####################################################
 
 system status:
@@ -174,6 +168,7 @@ system status:
   icon: mdi:settings
   view: yes
   entities:
+    - group.date_and_time
     - group.firmware
     - group.git
     - group.internet

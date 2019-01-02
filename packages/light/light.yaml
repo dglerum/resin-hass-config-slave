@@ -65,12 +65,14 @@ group:
       - light.fibaro_hallway_level
 
   light_groups:
-    name: Light Groups
+    name: Downstairs
     view: no
     control: hidden
     entities:
       - light.kitchen
       - light.livingroom
+      - light.fibaro_hallway_level
+      - light.tv_lights
 
   lr_lights:
     view: no

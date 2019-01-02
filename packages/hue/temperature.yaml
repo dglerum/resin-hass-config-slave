@@ -15,7 +15,7 @@ homeassistant:
     sensor.hue_temperature:
       friendly_name: Philips HUE
       icon: mdi:thermometer
-      
+
 group:
   hue_temperature_sensors:
     name: Temperature
@@ -31,23 +31,28 @@ sensor:
   - platform: mqtt
     name: Hallway Temperature
     state_topic: "hass/sensor/hallway_temperature"
+    unit_of_measurement: '°C'
 
   - platform: mqtt
     name: Toilet Downstairs Temperature
     state_topic: "hass/sensor/toilet_downstairs_temperature"
+    unit_of_measurement: '°C'
 
   - platform: mqtt
     name: Toilet Upstairs Temperature
     state_topic: "hass/sensor/toilet_upstairs_temperature"
+    unit_of_measurement: '°C'
 
   - platform: mqtt
     name: Kitchen Temperature
     state_topic: "hass/sensor/kitchen_temperature"
+    unit_of_measurement: '°C'
 
   - platform: mqtt
     name: HUE Temperature
     state_topic: "hass/sensor/hue_temperature"
-
+    unit_of_measurement: '°C'
+    
 # automation:
 #   - alias: Motion Detected
 #     trigger:

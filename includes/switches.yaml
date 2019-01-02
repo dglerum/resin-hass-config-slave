@@ -33,7 +33,7 @@
 #  Lights
 #################################################################
 
-      sunlight_automation:
+      sunlight_scening:
         value_template: "{{ states.input_boolean.light_automation.state }}"
         friendly_name: 'Sunlight Scening'
         turn_on:

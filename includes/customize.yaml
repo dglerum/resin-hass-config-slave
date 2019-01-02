@@ -11,14 +11,14 @@
     friendly_name: "Metallo"
   sensor.commute_isabel:
     friendly_name: "Sibelco"
-  switch.wemo_livingroom:
-    friendly_name: "Tree Lights"
+  light.tv_lights:
+    friendly_name: "X-mas Tree"
   switch.wemo_bedroom:
     friendly_name: "Kill Switch"
   switch.sunlight_scening:
-    icon: mdi:brightness-auto
-  switch.auto_fluxer:
     icon: mdi:white-balance-sunny
+  switch.auto_fluxer:
+    icon: mdi:brightness-auto
   sensor.fibaro_smoke_sensor_temperature:
     friendly_name: "Indoor Temp"
   script.itunes_music:
