@@ -1,0 +1,109 @@
+- name: Livingroom Night
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 128
+      # color_temp: 377
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 87
+      # color_temp: 377
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 104
+      # color_temp: 377
+      transition: 3
+
+- name: Livingroom Daylight
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 128
+      # color_temp: 360
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 123
+      # color_temp: 360
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 183
+      # color_temp: 360
+      transition: 3
+
+- name: Livingroom Evening
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 116
+      # color_temp: 370
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 116
+      # color_temp: 370
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 116
+      # color_temp: 370
+      transition: 3
+
+- name: Livingroom Television On
+  entities:
+    switch.radio: off
+    light.tv_lightsxx:
+      state: on
+
+
+- name: Livingroom Television Off
+  entities:
+    light.tv_lightsxx:
+      state: off
+
+- name: Desk On
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+
+- name: Desk Off
+  entities:
+    light.hue_desk:
+      state: off
+
+- name: Livingroom On
+  entities:
+    light.hue_desk:
+      state: on
+      brightness: 130
+      xy_color: [0.4909, 0.4149]
+      transition: 3
+    light.hue_livingroom:
+      state: on
+      brightness: 150
+      xy_color: [0.4452,0.4068]
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 130
+      xy_color: [0.4914,0.415]
+      transition: 3
+
+- name: Livingroom Off
+  entities:
+    switch.television_lights: off
+    light.hue_desk:
+      state: off
+      transition: 3
+    light.hue_livingroom:
+      state: off
+      transition: 3
+    light.hue_lightstrip:
+      state: off
+      transition: 3

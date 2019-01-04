@@ -12,7 +12,7 @@
 homeassistant:
   customize:
     device_tracker.glerums_iphone:
-      friendly_name: 'Davy'
+      friendly_name: 'Davy iOS'
     device_tracker.iphone_van_isabel:
       friendly_name: 'Isabel'
     sensor.glerums_iphone_x_battery_level:
@@ -20,7 +20,15 @@ homeassistant:
     sensor.iphone_van_isabel_battery_level:
       friendly_name: "Battery iPhone 6"
     device_tracker.davy_bayesian:
-      friendly_name: 'Davy Bayesian'
+      friendly_name: 'Davy'
+    device_tracker.davy_owntracks:
+      friendly_name: "Davy Owntracks"
+    device_tracker.davy_nodered:
+      friendly_name: "Davy Node Red"
+    device_tracker.davy_homekit:
+      friendly_name: "Davy Homekit"
+    device_tracker.davy_ping:
+      friendly_name: "Davy Ping"
 
 #################################################################
 #                                                               #
@@ -36,10 +44,12 @@ group:
       - device_tracker.glerums_iphone
       - device_tracker.davy_bayesian
       - device_tracker.davy_nodered
+      - device_tracker.davy_homekit
       - device_tracker.davy_ping
-      - device_tracker.iphone_van_isabel
+      # - device_tracker.davy_owntracks
+      # - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
-      - sensor.iphone_van_isabel_battery_level
+      # - sensor.iphone_van_isabel_battery_level
 #       - sensor.commute_to_work
 #       - sensor.commute_from_work
 #       - sensor.james_to_home
@@ -67,6 +77,14 @@ group:
 #       - sensor.ble_tina_upstairs
 #       - sensor.ble_tina_patio
 
+input_boolean:
+  davy_homekit_present:
+    name: Davy HomeKit
+    icon: mdi:account
+  isabel_homekit_present:
+    name: Isabel Homekit
+    icon: mdi:account
+
 binary_sensor:
   - platform: bayesian
     prior: 0.5
@@ -86,6 +104,11 @@ binary_sensor:
       - entity_id: 'device_tracker.davy_owntracks'
         prob_given_true: 0.9
         prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.davy_homekit'
+        prob_given_true: 0.9
+        prob_given_false: 0.2
         platform: 'state'
         to_state: 'home'
       - entity_id: 'device_tracker.davy_nodered'
@@ -108,8 +131,8 @@ binary_sensor:
 device_tracker:
   - platform: ping
     hosts:
-      glerums_iphone: 192.168.1.6
-      iphone_van_isabel: 192.168.1.8
+      davy_ping: !secret davy_ping
+      isabel_ping: 192.168.1.8
   # - platform: owntracks
   #   max_gps_accuracy: 200
 

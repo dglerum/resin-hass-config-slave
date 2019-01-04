@@ -1,0 +1,27 @@
+automation:
+  - alias: Enable Fluxer
+    trigger:
+      platform: homeassistant
+      event: start
+    hide_entity: True
+    action:
+    - service: switch.turn_on
+      entity_id: switch.auto_fluxer
+
+switch:
+  - platform: flux
+    lights:
+      - light.hue_desk
+      - light.hue_lightstrip
+      - light.hue_livingroom
+    name: Auto Fluxer
+    start_time: '7:00'
+    stop_time: '23:00'
+    start_colortemp: 4000
+    sunset_colortemp: 3000
+    stop_colortemp: 1900
+    brightness: 200
+    disable_brightness_adjust: True
+    mode: mired
+    transition: 30
+    interval: 60

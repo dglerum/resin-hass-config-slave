@@ -9,6 +9,12 @@ homeassistant:
     sensor.toilet_upstairs_lux:
       friendly_name: Toilet Upstairs
       icon: mdi:white-balance-sunny
+    sensor.kitchen_lux:
+      friendly_name: Kitchen
+      icon: mdi:white-balance-sunny
+    sensor.hue_lux:
+      friendly_name: Philips HUE
+      icon: mdi:white-balance-sunny
 
 group:
   hue_lux_sensors:
@@ -18,6 +24,8 @@ group:
       - sensor.hallway_lux
       - sensor.toilet_upstairs_lux
       - sensor.toilet_downstairs_lux
+      - sensor.kitchen_lux
+      - sensor.hue_lux
 
 sensor:
   - platform: mqtt
@@ -31,6 +39,14 @@ sensor:
   - platform: mqtt
     name: Toilet Upstairs Lux
     state_topic: "hass/sensor/toilet_upstairs_lux"
+
+  - platform: mqtt
+    name: Kitchen Lux
+    state_topic: "hass/sensor/kitchen_lux"
+
+  - platform: mqtt
+    name: HUE Lux
+    state_topic: "hass/sensor/hue_lux"
 
 # automation:
 #   - alias: Motion Detected

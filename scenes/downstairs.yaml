@@ -1,71 +1,52 @@
-- name: livingroom_night
+- name: Downstairs Night
   entities:
-    switch.television_lights: on
+    light.fibaro_kitchen_level:
+      state: on
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      transition: 3
     light.hue_desk:
       state: on
-      brightness: 80
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 110
-      xy_color: [0.4452,0.4068]
+      brightness: 128
+      # color_temp: 377
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 80
-      xy_color: [0.4914,0.415]
-      transition: 3
-
-- name: livingroom_daylight
-  entities:
-    switch.television_lights: off
-    light.hue_desk:
-      state: on
-      brightness: 130
-      xy_color: [0.4909, 0.4149]
+      brightness: 87
+      # color_temp: 377
       transition: 3
     light.hue_livingroom:
       state: on
-      brightness: 150
-      xy_color: [0.4452,0.4068]
+      brightness: 104
+      # color_temp: 377
+      transition: 3
+
+- name: Downstairs Daylight
+  entities:
+    light.fibaro_kitchen_level:
+      state: on
+      transition: 2
+    light.fibaro_table_level:
+      state: on
+      transition: 3
+    light.hue_desk:
+      state: on
+      brightness: 128
+      # color_temp: 334
       transition: 3
     light.hue_lightstrip:
       state: on
-      brightness: 130
-      xy_color: [0.4914,0.415]
-      transition: 3
-
-- name: livingroom_television_on
-  entities:
-    switch.television_lights: on
-    light.fibaro_table_level:
-      state: off
-
-- name: livingroom_television_off
-  entities:
-    switch.television_lights: off
-
-- name: livingroom_evening
-  entities:
-    switch.television_lights: on
-    light.hue_desk:
-      state: on
-      brightness: 100
-      xy_color: [0.4909, 0.4149]
+      brightness: 123
+      # color_temp: 334
       transition: 3
     light.hue_livingroom:
       state: on
-      brightness: 120
-      xy_color: [0.4452,0.4068]
-      transition: 3
-    light.hue_lightstrip:
-      state: on
-      brightness: 100
-      xy_color: [0.4914,0.415]
+      brightness: 183
+      # color_temp: 334
       transition: 3
 
-- name: downstairs_night
+- name: Downstairs Evening
   entities:
     light.fibaro_kitchen_level:
       state: on
@@ -73,189 +54,18 @@
     light.fibaro_table_level:
       state: on
       transition: 3
-    switch.television_lights: on
     light.hue_desk:
       state: on
-      brightness: 80
-      xy_color: [0.4909, 0.4149]
+      brightness: 116
+      # color_temp: 334
+      transition: 3
+    light.hue_lightstrip:
+      state: on
+      brightness: 116
+      # color_temp: 334
       transition: 3
     light.hue_livingroom:
       state: on
-      brightness: 110
-      xy_color: [0.4452,0.4068]
-      transition: 3
-    light.hue_lightstrip:
-      state: on
-      brightness: 80
-      xy_color: [0.4914,0.415]
-      transition: 3
-
-- name: downstairs_daylight
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      transition: 3
-    switch.television_lights: off
-    light.hue_desk:
-      state: on
-      brightness: 130
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 150
-      xy_color: [0.4452,0.4068]
-      transition: 3
-    light.hue_lightstrip:
-      state: on
-      brightness: 130
-      xy_color: [0.4914,0.415]
-      transition: 3
-
-- name: downstairs_evening
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      transition: 3
-    switch.television_lights: on
-    light.hue_desk:
-      state: on
-      brightness: 100
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 120
-      xy_color: [0.4452,0.4068]
-      transition: 3
-    light.hue_lightstrip:
-      state: on
-      brightness: 100
-      xy_color: [0.4914,0.415]
-      transition: 3
-
-- name: kitchen_night
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      brightness: 100
-      transition: 2
-
-- name: kitchen_daylight
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      brightness: 170
-      transition: 2
-
-- name: kitchen_evening
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      brightness: 150
-      transition: 2
-
-- name: table_night
-  entities:
-    light.fibaro_table_level:
-      state: on
-      brightness: 100
-      transition: 3
-
-- name: table_daylight
-  entities:
-    light.fibaro_table_level:
-      state: on
-      brightness: 170
-      transition: 3
-
-- name: table_evening
-  entities:
-    light.fibaro_table_level:
-      state: on
-      brightness: 150
-      transition: 3
-
-- name: dinner_night
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      brightness: 100
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      brightness: 100
-      transition: 3
-
-- name: dinner_daylight
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      brightness: 170
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      brightness: 170
-      transition: 3
-
-- name: dinner_evening
-  entities:
-    light.fibaro_kitchen_level:
-      state: on
-      brightness: 150
-      transition: 2
-    light.fibaro_table_level:
-      state: on
-      brightness: 150
-      transition: 3
-
-- name: Desk On
-  entities:
-    light.hue_desk:
-      state: on
-      brightness: 130
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-
-- name: Desk Off
-  entities:
-    light.hue_desk:
-      state: off
-
-- name: Livingroom On
-  entities:
-    switch.television_lights: on
-    light.hue_desk:
-      state: on
-      brightness: 130
-      xy_color: [0.4909, 0.4149]
-      transition: 3
-    light.hue_livingroom:
-      state: on
-      brightness: 150
-      xy_color: [0.4452,0.4068]
-      transition: 3
-    light.hue_lightstrip:
-      state: on
-      brightness: 130
-      xy_color: [0.4914,0.415]
-      transition: 3
-
-- name: Livingroom Off
-  entities:
-    switch.television_lights: off
-    light.hue_desk:
-      state: off
-      transition: 3
-    light.hue_livingroom:
-      state: off
-      transition: 3
-    light.hue_lightstrip:
-      state: off
+      brightness: 116
+      # color_temp: 334
       transition: 3

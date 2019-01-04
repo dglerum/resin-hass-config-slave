@@ -1,8 +1,6 @@
 
 ####################################################
-#                                                  #
 #                      Home                        #
-#                                                  #
 ####################################################
 
 #home:
@@ -10,13 +8,25 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
-    - group.people
-    - group.date_and_time
-    - group.weather_overview
-    - group.daily_forecast
-    - group.sun
+    - sensor.kitchen_temperature
+    - sensor.hallway_temperature
+    # - media_player.livingroom
+    # - device_tracker.iphone_van_isabel
+    # - device_tracker.davy_bayesian
+    - group.itunes
     - group.light_groups
+    - group.automation
+    # - group.weather_overview
+    # - group.daily_forecast
     # - group.ring_doorbell
+    - group.shortcuts
+
+automation:
+  name: Automation
+  control: hidden
+  entities:
+    - switch.sunlight_scening
+    - switch.auto_fluxer
 
 date and time:
   name: Date & Time
@@ -28,9 +38,7 @@ date and time:
     - sensor.mum_time
 
 ####################################################
-#                                                  #
 #                   Downstairs                     #
-#                                                  #
 ####################################################
 
 downstairs:
@@ -38,7 +46,6 @@ downstairs:
   icon: mdi:sofa
   view: yes
   entities:
-    - group.itunes
     - group.tv
     - group.lights
     # - media_player.itunes
@@ -59,6 +66,7 @@ available_switches:
     - switch.kitchen_lights
     - switch.table_lights
     - switch.tv
+    - automation.downstairs_lights_dim
 
 tv:
   name: TV Scenes
@@ -82,34 +90,32 @@ all_scenes:
   view: no
   control: hidden
   entities:
-    - scene.all_lights_on
-    - scene.day_dim_lights
-    - scene.desk_off
-    - scene.desk_on
-    - scene.dinner_off
-    - scene.dinner_on
-    - scene.evening_bright_lights
-    - scene.kitchen_off
-    - scene.kitchen_on
-    - scene.livingroom_off
-    - scene.livingroom_on
-    - scene.movie_paused
-    - scene.movie_resumed
-    - scene.night_dim_lights
-    - scene.night_light
-    - scene.table_off
-    - scene.table_on
+    # - scene.all_lights_on
+    # - scene.desk_off
+    # - scene.desk_on
+    # - scene.dinner_off
+    # - scene.dinner_on
+    # - scene.kitchen_off
+    # - scene.kitchen_on
+    # - scene.livingroom_off
+    # - scene.livingroom_on
+    # - scene.movie_paused
+    # - scene.movie_resumed
+    # - scene.night_light
+    # - scene.table_off
+    # - scene.table_on
     - scene.downstairs_night
     - scene.downstairs_evening
     - scene.downstairs_daylight
     - scene.table_evening
     - scene.table_daylight
     - scene.table_night
+    - scene.livingroom_evening
+    - scene.livingroom_daylight
+    - scene.livingroom_night
 
 ####################################################
-#                                                  #
 #                    History Graphs                #
-#                                                  #
 ####################################################
 
 graphs:
@@ -121,6 +127,7 @@ graphs:
     - group.power_graph
     - group.lights_graph
     - group.temperature_graph
+    # - group.model_s_graph
 
 battery_graph:
   view: no
@@ -147,10 +154,13 @@ temperature_graph:
   entities:
     - history_graph.temperature_graph
 
+# model_s_graph:
+#   view: no
+#   entities:
+#     - history_graph.car_stats
+
 ####################################################
-#                                                  #
 #                  System Status                   #
-#                                                  #
 ####################################################
 
 system status:
@@ -158,7 +168,7 @@ system status:
   icon: mdi:settings
   view: yes
   entities:
-    - group.shortcuts
+    - group.date_and_time
     - group.firmware
     - group.git
     - group.internet
@@ -171,6 +181,9 @@ system status:
     - group.emergency
     - group.flic
     - group.speech_engine
+    - input_select.log_level
+    - group.people
+    - group.sun
 
 shortcuts:
   name: Shortcuts

@@ -2,4 +2,4 @@
     username: dglerum@gmail.com
     password: !secret tile_password
 
-  - platform: owntracks_http
+  # - platform: owntracks_http

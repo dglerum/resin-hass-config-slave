@@ -14,3 +14,7 @@
   action:
     - delay: 00:05  # Waits 5 minutes
     - service: homekit.start
+    - service: logbook.log
+      data_template:
+        name: HomeKit
+        message: has started

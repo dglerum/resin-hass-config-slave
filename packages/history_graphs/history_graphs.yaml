@@ -36,7 +36,8 @@ history_graph:
     name: Temperature Graph
     entities:
       - sensor.fibaro_smoke_sensor_temperature
-      - sensor.pws_temp_c
+      - sensor.kitchen_temperature
+      - sensor.hallway_temperature
       - sensor.cpu_temperature
     hours_to_show: 240
     refresh: 300
@@ -53,6 +54,14 @@ history_graph:
       - switch.wemo
     hours_to_show: 240
     refresh: 300
+
+  # model_s:
+  #   name: Car Stats
+  #   entities:
+  #     - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
+  #     - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
+  #   hours_to_show: 240
+  #   refresh: 300
   # playroom_temperature:
   #   name: Play Room Climate Graph
   #   entities:
@@ -111,11 +120,11 @@ history_graph:
   power_consumption:
     name: Power Consumption Graph
     entities:
-      - sensor.fibaro_hallway_energy
-      - sensor.fibaro_kitchen_energy
-      - sensor.fibaro_stair_energy
-      - sensor.fibaro_table_energy
-    hours_to_show: 240
+      - sensor.fibaro_hallway_power
+      - sensor.fibaro_kitchen_power
+      - sensor.fibaro_stair_power
+      - sensor.fibaro_table_power
+    hours_to_show: 48
     refresh: 300
 
   # bougainvillea:

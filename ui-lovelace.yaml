@@ -13,18 +13,19 @@ excluded_entities:
   - weblink.router
 views:
     # Specify a tab icon if you want the view tab to be an icon.
-  - icon: mdi:home-assistant
+  - id: 0  # Automatically created id
+    icon: mdi:home-assistant
     # Title of the view. Will be used as the tooltip for tab icon
     title: Second view
     cards:
-      - type: entities
-        title: Light Groups
-        show_header_toggle: false
-        entities:
-          - switch.lr_lights
-          - entity: light.livingroom_lighting
-            type: custom:light-slider
-            switchEntity: switch.lr_lights
+      # - type: entities
+      #   title: Light Groups
+      #   show_header_toggle: false
+      #   entities:
+      #     - switch.lr_lights
+      #     - entity: light.livingroom_lighting
+      #       type: custom:light-slider
+      #       switchEntity: switch.lr_lights
 
       - type: picture-glance
         title: Living room
@@ -54,7 +55,8 @@ views:
         aspect_ratio: 16x9
         show_state: true
         entity: light.hue_desk
-        tap_action: toggle
+        tap_action:
+          "action": toggle
 
       - type: entities
         # Title of the entities card
