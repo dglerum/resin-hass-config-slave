@@ -1,3 +1,11 @@
+#################################################################
+## Packages / Hue Temperature
+#################################################################
+
+################################################
+## Customize
+################################################
+
 homeassistant:
   customize:
     sensor.hallway_temperature:
@@ -16,6 +24,10 @@ homeassistant:
       friendly_name: Philips HUE
       icon: mdi:thermometer
 
+################################################
+## Group
+################################################
+
 group:
   hue_temperature_sensors:
     name: Temperature
@@ -26,6 +38,10 @@ group:
       - sensor.toilet_downstairs_temperature
       - sensor.kitchen_temperature
       - sensor.hue_temperature
+
+################################################
+## Sensor
+################################################
 
 sensor:
   - platform: mqtt
@@ -52,7 +68,11 @@ sensor:
     name: HUE Temperature
     state_topic: "hass/sensor/hue_temperature"
     unit_of_measurement: '°C'
-    
+
+################################################
+## Automation
+################################################
+
 # automation:
 #   - alias: Motion Detected
 #     trigger:

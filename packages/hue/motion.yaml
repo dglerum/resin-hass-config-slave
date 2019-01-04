@@ -1,3 +1,11 @@
+#################################################################
+## Packages / Hue Motion
+#################################################################
+
+################################################
+## Customize
+################################################
+
 homeassistant:
   customize:
     binary_sensor.hallway_motion:
@@ -12,7 +20,11 @@ homeassistant:
       friendly_name: Philips HUE
     input_boolean.homekit_motion:
       friendly_name: Homekit Motion
-      
+
+################################################
+## Group
+################################################
+
 group:
   hue_motion_sensors:
     name: Motion
@@ -25,6 +37,10 @@ group:
       - binary_sensor.kitchen_motion
       - binary_sensor.hue_motion
       - input_boolean.homekit_motion
+
+################################################
+## Binary Sensor
+################################################
 
 binary_sensor:
   - platform: mqtt
@@ -56,6 +72,10 @@ binary_sensor:
     state_topic: "hass/binary_sensor/hue_motion"
     payload_on: "true"
     payload_off: "false"
+
+################################################
+## Automation
+################################################
 
 # automation:
 #   - alias: Motion Detected

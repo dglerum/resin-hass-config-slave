@@ -1,3 +1,11 @@
+#################################################################
+## Packages / Hue Lightlevel
+#################################################################
+
+################################################
+## Customize
+################################################
+
 homeassistant:
   customize:
     sensor.hallway_lux:
@@ -16,6 +24,10 @@ homeassistant:
       friendly_name: Philips HUE
       icon: mdi:white-balance-sunny
 
+################################################
+## Group
+################################################
+
 group:
   hue_lux_sensors:
     name: Lightlevel
@@ -26,6 +38,10 @@ group:
       - sensor.toilet_downstairs_lux
       - sensor.kitchen_lux
       - sensor.hue_lux
+
+################################################
+## Sensor
+################################################
 
 sensor:
   - platform: mqtt
@@ -47,6 +63,10 @@ sensor:
   - platform: mqtt
     name: HUE Lux
     state_topic: "hass/sensor/hue_lux"
+
+################################################
+## Automation
+################################################
 
 # automation:
 #   - alias: Motion Detected

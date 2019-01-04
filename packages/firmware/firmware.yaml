@@ -2,65 +2,80 @@
 ## Packages/Firmware
 #################################################################
 
-#################################################################
+################################################
 ## Customize
-#################################################################
+################################################
 
 homeassistant:
   customize:
-    # binary_sensor.ha_update_available:
-    #   icon: mdi:cloud-download
-    # sensor.latest_ha_version:
-    #   icon: mdi:home-assistant
+    binary_sensor.ha_update_available:
+      icon: mdi:cloud-download
+    sensor.latest_ha_version:
+      icon: mdi:home-assistant
     sensor.ha_installed_version:
       icon: mdi:home-assistant
 
-#################################################################
+################################################
 ## Group
-#################################################################
+################################################
 
 group:
   firmware:
     name: Firmware Status
     view: no
     entities:
-      # - sensor.latest_ha_version
+      - sensor.latest_ha_version
       - sensor.ha_installed_version
-      # - binary_sensor.ha_update_available
+      - binary_sensor.ha_update_available
       - sensor.ssl_certificate_expiry
 
-#################################################################
+################################################
+## Input Boolean
+################################################
+
+input_boolean:
+  ha_update_available:
+    name: HA Update Avaiable
+    initial: off
+    icon: mdi:cloud-download
+
+  new_podcast_available:
+    name: New Podcast Avaiable
+    initial: off
+    icon: mdi:podcast
+
+################################################
 ## HA Update
-#################################################################
+################################################
 
 sensor:
 ## Check Latest HA Version
-  # - platform: scrape
-  #   resource: https://www.home-assistant.io
-  #   name: Latest HA Version
-  #   select: ".current-version h1"
-  #   value_template: '{{ value.split(":")[1] }}'
+  - platform: rest
+    resource: https://s3.amazonaws.com/hassio-version/stable.json
+    name: Latest HA Version
+    value_template: "{{ value_json.homeassistant.default }}"
+    scan_interval: 3600
 
 ## Check HA Version Installed
   - platform: command_line
     name: 'HA Installed Version'
     command: "cat /data/config/.HA_VERSION"
 
-#################################################################
+################################################
 ## Binary Sensor
-#################################################################
+################################################
 
-# binary_sensor:
-#   - platform: template
-#     sensors:
-#       ha_update_available:
-#         value_template: >-
-#           {{ states.sensor.latest_ha_version.state != states.sensor.ha_installed_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
-#         friendly_name: HA Update Available
+binary_sensor:
+  - platform: template
+    sensors:
+      ha_update_available:
+        value_template: >-
+          {{ states.sensor.latest_ha_version.state != states.sensor.ha_installed_version.state and states.sensor.latest_ha_version.state != 'unavailable' }}
+        friendly_name: HA Update Available
 
-#################################################################
+################################################
 ## Automation
-#################################################################
+################################################
 
 # automation:
 # ## Notify of New HA Update Available

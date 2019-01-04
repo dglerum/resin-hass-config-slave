@@ -1,16 +1,17 @@
 #################################################################
-## Packages / Wemo
+## Packages/Date Time
 #################################################################
 
 ################################################
-## Switch
+## Sensor
 ################################################
 
-switch:
-  - platform: mqtt
-    name: Television Lights
-    command_topic: "hass/binary_sensor/wemo_livingroom"
-    retain: true
-    optimistic: true
-    payload_on: "on"
-    payload_off: "off"
+sensor:
+  - platform: time_date
+    display_options:
+      - time
+      - date
+      - date_time
+      - time_date
+      - time_utc
+      - beat
