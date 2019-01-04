@@ -22,6 +22,9 @@ http:
 
 config:
 
+lovelace:
+  mode: yaml
+  
 # panel_iframe:
 #   nodered:
 #     title: Node-Red

@@ -18,18 +18,16 @@ views:
     # Title of the view. Will be used as the tooltip for tab icon
     title: Second view
     cards:
-      - id: dc0912a79c574507a5eaa251eeb73ec2  # Automatically created id
-        type: entities
-        title: Light Groups
-        show_header_toggle: false
-        entities:
-          - switch.lr_lights
-          - entity: light.livingroom_lighting
-            type: custom:light-slider
-            switchEntity: switch.lr_lights
+      # - type: entities
+      #   title: Light Groups
+      #   show_header_toggle: false
+      #   entities:
+      #     - switch.lr_lights
+      #     - entity: light.livingroom_lighting
+      #       type: custom:light-slider
+      #       switchEntity: switch.lr_lights
 
-      - id: 877c96eadb304c128ce06ae8d3b8db4f  # Automatically created id
-        type: picture-glance
+      - type: picture-glance
         title: Living room
         aspect_ratio: 16x9
         entities:
@@ -41,8 +39,7 @@ views:
             icon: mdi:floor-lamp
         image: https://static-naija.akamaized.net/vllkyt3ro8mo7genvg.r900x586.255e5387.jpg
         # Entities card will take a list of entities and show their state.
-      - id: 479fcdf059cd4f9fa56c4c33e328874a  # Automatically created id
-        type: picture-glance
+      - type: picture-glance
         title: Kitchen
         aspect_ratio: 16x9
         entities:
@@ -53,16 +50,15 @@ views:
         image: https://www.thecarlebachshul.org/wp-content/uploads/2016/07/dinner3.jpg
         # Entities card will take a list of entities and show their state.
 
-      - id: ac19d80b664a4f71bb8b33506c077d04  # Automatically created id
-        type: picture-entity
+      - type: picture-entity
         image: https://www.ikea.com/gb/en/images/range-introduction/ikea-malm-desk__1364493552121-s3.jpg
         aspect_ratio: 16x9
         show_state: true
         entity: light.hue_desk
-        tap_action: toggle
+        tap_action:
+          "action": toggle
 
-      - id: 451732ca62ff4450abd346629dcd196f  # Automatically created id
-        type: entities
+      - type: entities
         # Title of the entities card
         title: ' '
         show_header_toggle: false
@@ -90,17 +86,14 @@ views:
     id: example
     cards:
         # The filter card will filter entities for their state
-      - id: 46e68c93b8e54ae5a19401365ce64558  # Automatically created id
-        type: iframe
+      - type: iframe
         url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=11&fullscreen&kiosk
         aspect_ratio: 75%
 
-      - id: f73f892b5d494d57a6600f77effcd648  # Automatically created id
-        type: iframe
+      - type: iframe
         url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=8&fullscreen&kiosk
         aspect_ratio: 75%
 
-      - id: b45b37b0476e4ea4849b6c82a70781e7  # Automatically created id
-        type: iframe
+      - type: iframe
         url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=9&fullscreen&kiosk
         aspect_ratio: 75%

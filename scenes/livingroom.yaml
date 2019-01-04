@@ -55,13 +55,13 @@
 - name: Livingroom Television On
   entities:
     switch.radio: off
-    light.tv_lights:
+    light.tv_lightsxx:
       state: on
 
 
 - name: Livingroom Television Off
   entities:
-    light.tv_lights:
+    light.tv_lightsxx:
       state: off
 
 - name: Desk On
