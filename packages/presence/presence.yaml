@@ -42,9 +42,9 @@ group:
       - device_tracker.davy_homekit
       - device_tracker.davy_ping
       # - device_tracker.davy_owntracks
-      # - device_tracker.iphone_van_isabel
+      - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
-      # - sensor.iphone_van_isabel_battery_level
+      - sensor.iphone_van_isabel_battery_level
 #       - sensor.commute_to_work
 #       - sensor.commute_from_work
 #       - sensor.james_to_home
