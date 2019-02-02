@@ -8,7 +8,7 @@
       - device_tracker
       - remote
     entities:
-      - sensor.disk_use_
+      - sensor.disk_use
       - sensor.memory_use_percent
       - sensor.processor_use
       - sensor.cpu_temperature

@@ -6,7 +6,7 @@
       - device_tracker
       - remote
     entities:
-      - sensor.disk_use_
+      - sensor.disk_use
       - sensor.memory_use_percent
       - sensor.processor_use
       - sensor.cpu_temperature
@@ -32,7 +32,7 @@
       - sensor.toilet_upstairs_temperature
       - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
       - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor
-      - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor      
+      - sensor.tesla_model_s_5yjsa7e20jf287352_range_sensor
   # include:
   #   entities:
   #     - sensor.colorprinter_online
@@ -45,7 +45,7 @@
   #     - sensor.wc_upstairs_temp
   #     - sensor.memory_use_percent
   #     - sensor.processor_use
-  #     - sensor.disk_use_percent_
+  #     - sensor.disk_use_percent
   #     - sensor.speedtest_download
   #     - sensor.speedtest_upload
   #     - sensor.speedtest_ping
@@ -72,7 +72,7 @@
   #   entities:
   #    - sensor.time
   #    - sensor.date
-  #    - sensor.date__time
-  #    - sensor.time__date
+  #    - sensor.date_time
+  #    - sensor.time_date
   #    - sensor.internet_time
   #    - sensor.time_utc

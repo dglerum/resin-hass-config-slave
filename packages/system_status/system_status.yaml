@@ -8,7 +8,7 @@
 
 homeassistant:
   customize:
-    sensor.disk_use_:
+    sensor.disk_use:
       friendly_name: Disk Use
     sensor.speedtest_ping:
       friendly_name: Ping
@@ -23,7 +23,7 @@ homeassistant:
       friendly_name: "Memory"
     sensor.processor_use:
       friendly_name: "Processor"
-    sensor.disk_use_percent_:
+    sensor.disk_use_percent:
       friendly_name: "Disk Used"
     sensor.disk_free_:
       friendly_name: "Disk Free"
@@ -72,7 +72,7 @@ group:
     name: RPi Resources
     view: no
     entities:
-      - sensor.disk_use_
+      - sensor.disk_use
       - sensor.memory_use_percent
       - sensor.processor_use
       - sensor.cpu_temperature
@@ -219,7 +219,7 @@ automation:
   - alias: Disk Use Alarm
     trigger:
       platform: numeric_state
-      entity_id: sensor.disk_use_
+      entity_id: sensor.disk_use
       above: 12
     action:
       - service: notify.pushbullet
