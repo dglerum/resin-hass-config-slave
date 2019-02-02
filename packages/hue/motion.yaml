@@ -8,16 +8,16 @@
 
 homeassistant:
   customize:
-    binary_sensor.hallway_motion:
+    binary_sensor.motion_hallway:
       friendly_name: Hallway
-    inary_sensor.motion_wc2:
+    binary_sensor.motion_wc2:
       friendly_name: Toilet Downstairs
-    inary_sensor.motion_wc1:
+    binary_sensor.motion_wc1:
       friendly_name: Toilet Upstairs
-    binary_sensor.kitchen_motion:
+    binary_sensor.motion_kitchen:
       friendly_name: Kitchen
-    binary_sensor.hue_motion:
-      friendly_name: Philips HUE
+    binary_sensor.motion_tester:
+      friendly_name: Motion Tester
     input_boolean.homekit_motion:
       friendly_name: Homekit Motion
 
@@ -32,8 +32,8 @@ group:
     view: no
     entities:
       - binary_sensor.motion_hallway
-      - inary_sensor.motion_wc1
-      - inary_sensor.motion_wc2
+      - binary_sensor.motion_wc1
+      - binary_sensor.motion_wc2
       - binary_sensor.motion_kitchen
       - binary_sensor.motion_tester
       - input_boolean.homekit_motion

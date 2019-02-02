@@ -72,7 +72,7 @@ discovery:
   ignore:
     - igd
 #     - apple_tv
-#     - philips_hue
+    - philips_hue
 #     - belkin_wemo
 
 apple_tv:
@@ -102,6 +102,29 @@ mqtt:
   port: 1883
   discovery: true
   discovery_prefix: homeassistant
+
+weblink:
+  entities:
+    - name: Router
+      icon: mdi:router-wireless
+      url: http://192.168.1.1/
+    - name: NodeRed
+      icon: mdi:nodejs
+      url: /red
+    - name: Grafana
+      icon: mdi:wrench
+      url: /grafana
+    - name: HMC
+      icon: mdi:wrench
+      url: /hmc
+
+## Philips Hue bridge config
+# hue:
+#   bridges:
+#     - host: 192.168.1.2
+#       # filename: phue.conf
+#       allow_unreachable: true
+#       allow_hue_groups: false
 
 homekit:
   auto_start: false
@@ -135,8 +158,8 @@ homekit:
       - binary_sensor.motion_hallway
       - binary_sensor.motion_kitchen
       - binary_sensor.motion_tester
-      - inary_sensor.motion_wc1
-      - inary_sensor.motion_wc2
+      - binary_sensor.motion_wc1
+      - binary_sensor.motion_wc2
       ## Device Tracker
       # - device_tracker.davy_bayesian
   # entity_config:
@@ -148,28 +171,6 @@ homekit:
   #   switch.wemo_bedroom:
   #     type: outlet
 
-weblink:
-  entities:
-    - name: Router
-      icon: mdi:router-wireless
-      url: http://192.168.1.1/
-    - name: NodeRed
-      icon: mdi:nodejs
-      url: /red
-    - name: Grafana
-      icon: mdi:wrench
-      url: /grafana
-    - name: HMC
-      icon: mdi:wrench
-      url: /hmc
-
-## Philips Hue bridge config
-hue:
-  bridges:
-    - host: 192.168.1.2
-      # filename: phue.conf
-      allow_unreachable: true
-      allow_hue_groups: false
 
 # mqtt_statestream:
 #   base_topic: homeassistant

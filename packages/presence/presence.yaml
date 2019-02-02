@@ -88,7 +88,7 @@ sensor:
   options: street_number, street, city
   display_zone: hide
   gravatar: dglerum@gmail.com
-  api_key: AIzaSyBv6JC3eBQ9nk6oQ05N2KRBOxPQwwRGgno
+  api_key: !secret geocode_api
 
 ################################################
 ## Input Boolean
