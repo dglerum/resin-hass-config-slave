@@ -71,9 +71,9 @@ discovery:
     - homekit
   ignore:
     - igd
-#     - apple_tv
-    - philips_hue
-#     - belkin_wemo
+#    - apple_tv
+#    - philips_hue
+    - belkin_wemo
 
 apple_tv:
   - host: 192.168.1.3

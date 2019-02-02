@@ -6,8 +6,8 @@
 ## Customize
 ################################################
 
-homeassistant:
-  customize:
+# homeassistant:
+#   customize:
 
 ################################################
 ## History Graph

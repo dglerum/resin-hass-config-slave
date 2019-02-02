@@ -80,15 +80,14 @@ group:
 ################################################
 
 sensor:
-
-- platform: google_geocode
-  scan_interval: 3600
-  name: Davy Google
-  origin: device_tracker.glerums_iphone
-  options: street_number, street, city
-  display_zone: hide
-  gravatar: dglerum@gmail.com
-  api_key: !secret geocode_api
+  - platform: google_geocode
+    scan_interval: 3600
+    name: Davy Google
+    origin: device_tracker.glerums_iphone
+    options: street_number, street, city
+    display_zone: hide
+    gravatar: dglerum@gmail.com
+    api_key: !secret geocode_api
 
 ################################################
 ## Input Boolean
