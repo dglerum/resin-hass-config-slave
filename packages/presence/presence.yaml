@@ -82,7 +82,7 @@ group:
 sensor:
 
 - platform: google_geocode
-  scan_interval: 60
+  scan_interval: 3600
   name: Davy Google
   origin: device_tracker.glerums_iphone
   options: street_number, street, city
