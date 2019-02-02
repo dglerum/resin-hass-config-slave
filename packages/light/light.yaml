@@ -131,7 +131,7 @@ light:
 
 automation:
   - alias: Downstairs Sunlight
-    initial_state: 'on'
+    initial_state: 'off'
     condition:
     # Run only when light automation boolean is active
       - condition: state

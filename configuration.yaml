@@ -18,20 +18,20 @@ frontend:
     - /local/custom_ui/fontawesome/hass-fontawesome-regular.html
     - /local/custom_ui/fontawesome/hass-fontawesome-brands.html
 
-# custom_updater:
-#   show_installable: false
-#   hide_sensor: false
-#   track:
-#     - components
-#     - cards
-#     - python_scripts
-#   component_urls:
-#     #- https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
-#   card_urls:
-#     - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-#     - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
-#     - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
-#     - https://raw.githubusercontent.com/ljmerza/waze-card/master/updater.json
+custom_updater:
+  show_installable: false
+  hide_sensor: false
+  track:
+    - components
+    - cards
+    - python_scripts
+  component_urls:
+    #- https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
+    - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
+    - https://raw.githubusercontent.com/ljmerza/waze-card/master/updater.json
 
 http:
   api_password: !secret http_password
@@ -76,7 +76,8 @@ hue:
 discovery:
   enable:
     - homekit
-#   ignore:
+  ignore:
+    - igd
 #     - apple_tv
 #     - philips_hue
 #     - belkin_wemo
@@ -106,6 +107,8 @@ map:
 mqtt:
   broker: !secret mqtt_broker
   port: 1883
+  discovery: true
+  discovery_prefix: homeassistant
 
 homekit:
   auto_start: false
@@ -152,12 +155,15 @@ weblink:
     - name: Router
       icon: mdi:router-wireless
       url: http://192.168.1.1/
-    - name: Node-Red
+    - name: NodeRed
       icon: mdi:nodejs
       url: /red
     - name: Grafana
       icon: mdi:wrench
       url: /grafana
+    - name: HMC
+      icon: mdi:wrench
+      url: /hmc
 
 # mqtt_statestream:
 #   base_topic: homeassistant

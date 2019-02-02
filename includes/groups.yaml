@@ -10,6 +10,7 @@ default_view:
   entities:
     - sensor.kitchen_temperature
     - sensor.hallway_temperature
+    - weather.dark_sky
     # - media_player.livingroom
     # - device_tracker.iphone_van_isabel
     # - device_tracker.davy_bayesian

@@ -1,343 +1,142 @@
-{
-    "data": {
-        "config": {
-            "title": "Our House",
-            "views": [
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                "device_tracker.glerums_iphone",
-                                "device_tracker.davy_bayesian",
-                                "device_tracker.davy_nodered",
-                                "device_tracker.davy_homekit",
-                                "device_tracker.davy_ping",
-                                "device_tracker.davy_owntracks",
-                                "sensor.glerums_iphone_x_battery_level"
-                            ],
-                            "title": "People",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.date",
-                                "sensor.time",
-                                "sensor.claire_time",
-                                "sensor.mum_time"
-                            ],
-                            "title": "Date & Time",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "light.hue_desk",
-                                "light.hue_lightstrip",
-                                "light.hue_livingroom",
-                                "light.tv_lights",
-                                "light.fibaro_kitchen_level",
-                                "light.fibaro_table_level",
-                                "light.kitchen_lighting",
-                                "light.livingroom_lighting",
-                                "input_boolean.light_automation"
-                            ],
-                            "title": "Lights",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sun.sun",
-                                "sensor.moon"
-                            ],
-                            "title": "Sun",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "light.kitchen_lighting",
-                                "light.livingroom_lighting"
-                            ],
-                            "title": "Light Groups",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "weblink.router",
-                                "weblink.grafana",
-                                "weblink.nodered"
-                            ],
-                            "title": "Shortcuts",
-                            "type": "entities"
-                        },
-                        {
-                            "entity": "media_player.livingroom",
-                            "type": "media-control"
-                        }
-                    ],
-                    "icon": "mdi:castle",
-                    "path": "default_view",
-                    "title": "default_view"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                "input_select.itunes_playlist",
-                                "script.itunes_music",
-                                "input_number.itunes_volume",
-                                "switch.radio"
-                            ],
-                            "title": "Music Player",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "script.1521695976118",
-                                "script.1521694771100",
-                                "script.1521696758169",
-                                "switch.tvpower",
-                                "light.gateway_light_7811dcfd812f",
-                                "light.gateway_light_7811dce13ad6",
-                                "scene.story_time",
-                                "scene.livingroom_bright",
-                                "light.hall_bulb",
-                                "switch.goodnight"
-                            ],
-                            "title": "TV Scenes",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "scene.downstairs_night",
-                                "scene.downstairs_evening",
-                                "scene.downstairs_daylight",
-                                "scene.table_evening",
-                                "scene.table_daylight",
-                                "scene.table_night",
-                                "scene.livingroom_evening",
-                                "scene.livingroom_daylight",
-                                "scene.livingroom_night"
-                            ],
-                            "title": "All Scenes",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "switch.livingroom_lights",
-                                "switch.dinner_lights",
-                                "switch.goodnight",
-                                "switch.kitchen_lights",
-                                "switch.table_lights",
-                                "switch.tv",
-                                "automation.downstairs_lights_dim"
-                            ],
-                            "title": "Switches",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.hallway_motion",
-                                "binary_sensor.toilet_upstairs_motion",
-                                "binary_sensor.toilet_downstairs_motion",
-                                "binary_sensor.kitchen_motion",
-                                "binary_sensor.hue_motion",
-                                "input_boolean.homekit_motion"
-                            ],
-                            "title": "Motion",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.hallway_temperature",
-                                "sensor.toilet_upstairs_temperature",
-                                "sensor.toilet_downstairs_temperature",
-                                "sensor.kitchen_temperature",
-                                "sensor.hue_temperature"
-                            ],
-                            "title": "Temperature",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.hallway_lux",
-                                "sensor.toilet_upstairs_lux",
-                                "sensor.toilet_downstairs_lux",
-                                "sensor.kitchen_lux",
-                                "sensor.hue_lux"
-                            ],
-                            "title": "Lightlevel",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:sofa",
-                    "path": "downstairs",
-                    "title": "Downstairs"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                "history_graph.internet_graph"
-                            ],
-                            "title": "internet_graph",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "history_graph.power_consumption_graph"
-                            ],
-                            "title": "power_graph",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "history_graph.lights_usage_graph"
-                            ],
-                            "title": "lights_graph",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "history_graph.temperature_graph"
-                            ],
-                            "title": "temperature_graph",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:history",
-                    "path": "graphs",
-                    "title": "History Graphs"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                "sensor.ha_installed_version",
-                                "sensor.ssl_certificate_expiry"
-                            ],
-                            "title": "Firmware Status",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "input_select.git_branch",
-                                "sensor.current_branch",
-                                "sensor.new_prd_commits",
-                                "sensor.new_dev_commits",
-                                "script.get_latest_dev_config",
-                                "script.get_latest_prd_config"
-                            ],
-                            "title": "Git Repository",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.speedtest_ping",
-                                "sensor.speedtest_download",
-                                "sensor.speedtest_upload"
-                            ],
-                            "title": "Internet",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.core_router",
-                                "binary_sensor.orbi_router",
-                                "binary_sensor.orbi_sattelite"
-                            ],
-                            "title": "Core Network",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.philips_hub",
-                                "binary_sensor.printer"
-                            ],
-                            "title": "Core Devices",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.rpi"
-                            ],
-                            "title": "HA Devices",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.tv_kodi"
-                            ],
-                            "title": "Media Devices",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.disk_use_",
-                                "sensor.memory_use_percent",
-                                "sensor.processor_use",
-                                "sensor.cpu_temperature",
-                                "sensor.last_boot"
-                            ],
-                            "title": "RPi Resources",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "zwave.aeotec_zw090_zstick_gen5_eu",
-                                "zwave.fibaro_hallway",
-                                "zwave.fibaro_kitchen",
-                                "zwave.fibaro_stair",
-                                "zwave.fibaro_table",
-                                "zwave.fibaro_smoke_sensor"
-                            ],
-                            "title": "Z-Wave",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "switch.wemo_bedroom"
-                            ],
-                            "title": "Emergency",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.flic_80e4da720d43",
-                                "binary_sensor.flic_80e4da721754"
-                            ],
-                            "title": "Flic Buttons",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "input_boolean.guest_mode",
-                                "input_boolean.alert_mode",
-                                "input_boolean.speech_notifications",
-                                "input_boolean.last_message",
-                                "input_boolean.home_stats",
-                                "script.voice_notify"
-                            ],
-                            "title": "Speech Engine",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "input_select.log_level"
-                            ],
-                            "title": "Input select",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:settings",
-                    "path": "system_status",
-                    "title": "System Status"
-                }
-            ]
-        }
-    },
-    "key": "lovelace",
-    "version": 1
-}
+title: My Awesome Home
+# Include external resources
+resources:
+  - type: js
+    url: /local/flex-table-card.js
+  - url: /local/custom-lovelace/monster-card/monster-card.js?v=1
+    type: js
+  - url: /local/light-slider/light-slider.js
+    type: js
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=4
+    type: js
+  - url: /local/custom_ui/mini-media-player-bundle.js?v=0.9.8
+    type: module
+  - url: /local/custom_ui/tracker-card.js?v=0.1.5
+    type: js
+  - url: /local/custom_ui/surveillance-card.js?v=0.0.1
+    type: module
+  - url: /local/custom_ui/mini-graph-card-bundle.js?v=0.1.0
+    type: module
+  - url: /local/custom_ui/card-modder.js?v=35eb37
+    type: module
+  - url: /local/custom_ui/slider-entity-row.js?v=d6da75
+    type: js
+  - url: /local/custom_ui/card-tools.js?v=0a97d3
+    type: js
+  - url: /local/custom_ui/compact-custom-header/compact-custom-header.js?v=0.2.4
+    type: js
+  - url: /local/custom_ui/waze-card.js?v=1.1.1
+    type: js
+# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
+background: center / cover no-repeat url("/background.png") fixed
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  - weblink.router
+views:
+    # Specify a tab icon if you want the view tab to be an icon.
+  - id: 0  # Automatically created id
+    icon: mdi:home-assistant
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Second view
+    cards:
+      # - type: entities
+      #   title: Light Groups
+      #   show_header_toggle: false
+      #   entities:
+      #     - switch.lr_lights
+      #     - entity: light.livingroom_lighting
+      #       type: custom:light-slider
+      #       switchEntity: switch.lr_lights
+
+      - type: custom:flex-table-card
+        #title: may be omitted, to be hidden
+
+        # 1st the **canidate** entities will be selected
+        entities:
+          include: sensor.task*
+          # exclude: zwave.unknown_node*
+
+        # 2nd, the *column contents* are defined, there are
+        # different ways to match contents:
+        columns:
+          # example: match entity's attribute(s)
+          - name: Name
+            attr: friendly_name
+          - name: Description
+            attr: descr
+            # extract only date from string
+            # modify: x.split("T")[0]
+          - name: Completed
+            attr: enddate
+          # example: match and show the given entity-property
+          #          e.g., the state (incl. any non-attr members)
+      - type: picture-glance
+        title: Living room
+        aspect_ratio: 16x9
+        entities:
+          - entity: switch.wemo_livingroom
+            icon: mdi:lamp
+          - entity: light.hue_lightstrip
+            icon: mdi:led-strip
+          - entity: light.hue_livingroom
+            icon: mdi:floor-lamp
+        image: https://static-naija.akamaized.net/vllkyt3ro8mo7genvg.r900x586.255e5387.jpg
+        # Entities card will take a list of entities and show their state.
+      - type: picture-glance
+        title: Kitchen
+        aspect_ratio: 16x9
+        entities:
+          - entity: light.fibaro_kitchen_level
+            icon: mdi:ceiling-light
+          - entity: light.fibaro_table_level
+            icon: mdi:silverware
+        image: https://www.thecarlebachshul.org/wp-content/uploads/2016/07/dinner3.jpg
+        # Entities card will take a list of entities and show their state.
+
+      - type: picture-entity
+        image: https://www.ikea.com/gb/en/images/range-introduction/ikea-malm-desk__1364493552121-s3.jpg
+        aspect_ratio: 16x9
+        show_state: true
+        entity: light.hue_desk
+        tap_action:
+          "action": toggle
+
+      - type: entities
+        # Title of the entities card
+        title: ' '
+        show_header_toggle: false
+        # The entities here will be shown in the same order as specified.
+        # Each entry is an entity ID or a map with extra options.
+        entities:
+          - light.hue_livingroom
+          - light.hue_lightstrip
+          - light.hue_desk
+          - light.fibaro_table_level
+          - light.fibaro_kitchen_level
+          # - entity: light.hue_livingroom
+          #   # Override the name to use
+          #   name: LR Lights
+
+        # The markdown card will render markdown text.
+      # - type: markdown
+      #   title: Lovelace
+      #   content: >
+      #     Welcome to your **Lovelace UI**.
+    # View tab title.
+  - icon: mdi:chart-areaspline
+    title: Stats
+    # Optional unique id for direct access /lovelace/${id}
+    id: example
+    cards:
+        # The filter card will filter entities for their state
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=11&fullscreen&kiosk
+        aspect_ratio: 75%
+
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=8&fullscreen&kiosk
+        aspect_ratio: 75%
+
+      - type: iframe
+        url: https://dglerum.noip.me/grafana/d/lxB8GikRk/our-home?orgId=1&panelId=9&fullscreen&kiosk
+        aspect_ratio: 75%

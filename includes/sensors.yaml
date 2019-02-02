@@ -15,3 +15,24 @@
 
 - platform: uptime
   unit_of_measurement: days
+
+# - platform: haveibeenpwned
+#   email:
+#     - davy@glerums.be
+#     - dglerum@gmail.com
+#     - idebeule@hotmail.com
+#     - isabel@ifocus-coaching.be
+
+# - platform: feedparser
+#   name: Engineering Feed
+#   feed_url: 'https://www.sciencedaily.com/rss/matter_energy/engineering.xml'
+#   date_format: '%a, %b %d %I:%M %p'
+#   inclusions:
+#     - title
+#     - link
+#     - description
+#     - image
+#     - language
+#     - pubDate
+#   exclusions:
+#     - language
