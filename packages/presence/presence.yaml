@@ -26,6 +26,8 @@ homeassistant:
       friendly_name: "Davy Homekit"
     device_tracker.davy_ping:
       friendly_name: "Davy Ping"
+    sensor.davy_google:
+      friendly_name: "Davy Geocode"
 
 ################################################
 ## Group
@@ -36,6 +38,7 @@ group:
     name: People
     view: no
     entities:
+      - sensor.davy_google
       - device_tracker.glerums_iphone
       - device_tracker.davy_bayesian
       - device_tracker.davy_nodered
@@ -71,6 +74,21 @@ group:
 #       - sensor.ble_tina_downstairs
 #       - sensor.ble_tina_upstairs
 #       - sensor.ble_tina_patio
+
+################################################
+## Sensor
+################################################
+
+sensor:
+
+- platform: google_geocode
+  scan_interval: 60
+  name: Davy Google
+  origin: device_tracker.glerums_iphone
+  options: street_number, street, city
+  display_zone: hide
+  gravatar: dglerum@gmail.com
+  api_key: AIzaSyBv6JC3eBQ9nk6oQ05N2KRBOxPQwwRGgno
 
 ################################################
 ## Input Boolean

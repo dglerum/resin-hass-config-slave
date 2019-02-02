@@ -26,6 +26,7 @@ custom_updater:
     - cards
     - python_scripts
   component_urls:
+    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
     #- https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
   card_urls:
     - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
@@ -58,14 +59,6 @@ logger:
     homeassistant.components.automation: debug
 
 updater:
-
-## Philips Hue bridge config
-hue:
-  bridges:
-    - host: 192.168.1.2
-      # filename: phue.conf
-      allow_unreachable: true
-      allow_hue_groups: false
 
 # wemo:
 #   static:
@@ -139,6 +132,11 @@ homekit:
       - switch.music_album_500
       ## Sensors
       - sensor.fibaro_smoke_sensor_temperature
+      - binary_sensor.motion_hallway
+      - binary_sensor.motion_kitchen
+      - binary_sensor.motion_tester
+      - inary_sensor.motion_wc1
+      - inary_sensor.motion_wc2
       ## Device Tracker
       # - device_tracker.davy_bayesian
   # entity_config:
@@ -164,6 +162,14 @@ weblink:
     - name: HMC
       icon: mdi:wrench
       url: /hmc
+
+## Philips Hue bridge config
+hue:
+  bridges:
+    - host: 192.168.1.2
+      # filename: phue.conf
+      allow_unreachable: true
+      allow_hue_groups: false
 
 # mqtt_statestream:
 #   base_topic: homeassistant
