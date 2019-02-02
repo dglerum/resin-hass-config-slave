@@ -25,7 +25,7 @@ homeassistant:
       friendly_name: "Processor"
     sensor.disk_use_percent:
       friendly_name: "Disk Used"
-    sensor.disk_free_:
+    sensor.disk_free:
       friendly_name: "Disk Free"
 
 ################################################
