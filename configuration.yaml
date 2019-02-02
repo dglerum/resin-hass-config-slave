@@ -42,8 +42,8 @@ http:
 
 config:
 
-lovelace:
-  mode: yaml
+# lovelace:
+#   mode: yaml
 
 # panel_iframe:
 #   nodered:
