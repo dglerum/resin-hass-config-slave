@@ -114,7 +114,6 @@ sensor:
 ################################################
 
 ## Weather Dark Sky
-weather:
   - platform: darksky
     api_key: !secret darksky_api_key
     forecast:

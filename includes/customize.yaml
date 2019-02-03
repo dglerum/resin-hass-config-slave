@@ -7,8 +7,8 @@
     friendly_name: "Davy to Home"
   sensor.isabel_to_home:
     friendly_name: "Isabel"
-  sensor.waze_travel_time:
-    friendly_name: "Metallo"
+  # sensor.waze_travel_time:
+  #   friendly_name: "Metallo"
   sensor.commute_isabel:
     friendly_name: "Sibelco"
   light.tv_lights:

@@ -28,6 +28,8 @@ automation:
   entities:
     - switch.sunlight_scening
     - switch.auto_fluxer
+    - input_select.destination
+    - sensor.me_to_destination
 
 date and time:
   name: Date & Time
@@ -35,8 +37,8 @@ date and time:
   entities:
     - sensor.date
     - sensor.time
-    - sensor.claire_time
-    - sensor.mum_time
+    # - sensor.claire_time
+    # - sensor.mum_time
 
 ####################################################
 #                   Downstairs                     #
@@ -53,8 +55,8 @@ downstairs:
     - group.all_scenes
     - group.available_switches
     - group.hue_motion_sensors
-    - group.hue_temperature_sensors
-    - group.hue_lux_sensors
+    # - group.hue_temperature_sensors
+    # - group.hue_lux_sensors
 
 available_switches:
   name: Switches
@@ -67,22 +69,22 @@ available_switches:
     - switch.kitchen_lights
     - switch.table_lights
     - switch.tv
-    - automation.downstairs_lights_dim
+    # - automation.downstairs_lights_dim
 
 tv:
   name: TV Scenes
   view: no
   control: hidden
   entities:
-    - script.1521695976118
-    - script.1521694771100
-    - script.1521696758169
-    - switch.tvpower
-    - light.gateway_light_7811dcfd812f
-    - light.gateway_light_7811dce13ad6
-    - scene.story_time
-    - scene.livingroom_bright
-    - light.hall_bulb
+    # - script.1521695976118
+    # - script.1521694771100
+    # - script.1521696758169
+    # - switch.tvpower
+    # - light.gateway_light_7811dcfd812f
+    # - light.gateway_light_7811dce13ad6
+    # - scene.story_time
+    # - scene.livingroom_bright
+    # - light.hall_bulb
     - switch.goodnight
 
 
@@ -179,7 +181,7 @@ system status:
     - group.media_devices
     - group.rpi_resources
     - group.zwave
-    - group.emergency
+    # - group.emergency
     - group.flic
     - group.speech_engine
     - input_select.log_level

@@ -1,6 +1,13 @@
-  name: Home
-  latitude: !secret latitude
-  longitude: !secret longitude
-  radius: 300
-  icon: mdi:home
-  track_ios: true
+  - name: Home
+    latitude: !secret latitude
+    longitude: !secret longitude
+    radius: 300
+    icon: mdi:home
+    track_ios: true
+
+  - name: Metallo
+    latitude: !secret metallo_lat
+    longitude: !secret metallo_lon
+    radius: 300
+    icon: mdi:work
+    track_ios: true

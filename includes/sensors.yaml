@@ -16,6 +16,10 @@
 - platform: uptime
   unit_of_measurement: days
 
+# - platform: waze_travel_time
+#   origin: Bornem, Belgium
+#   destination: Beerse, Belgium
+#   region: 'EU'
 # - platform: haveibeenpwned
 #   email:
 #     - davy@glerums.be

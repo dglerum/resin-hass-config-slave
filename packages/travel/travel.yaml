@@ -1,0 +1,68 @@
+# sensor:
+#   - platform: waze_travel_time
+#     origin: Bornem, Belgium
+#     destination: Beerse, Belgium
+#     region: 'EU'
+  # - platform: waze_travel_time
+  #   name: 'Davy to home'
+  #   origin: device_tracker.glerums_iphone
+  #   destination: Bornem, BE
+  #   region: 'EU'
+
+  # - platform: waze_travel_time
+  #   name: 'Isabel to home'
+  #   origin: device_tracker.iphone_van_isabel
+  #   destination: Bornem, BE
+  #   region: 'EU'
+  #
+  # - platform: waze_travel_time
+  #   name: 'Commute to work'
+  #   origin: Bornem, BE
+  #   destination: Beerse, BE
+  #   region: 'EU'
+input_select:
+  destination:
+    name: destination
+    options:
+      - Home
+      - Work
+      - Parents
+
+sensor:
+  - platform: template
+    sensors:
+       dest_address:
+         value_template: >-
+            {%- if is_state("input_select.destination", "Home")  -%}
+              Bornem, BE
+            {%- elif is_state("input_select.destination", "Work")  -%}
+              Beerse, BE
+            {%- elif is_state("input_select.destination", "Parents")  -%}
+              Ninove, BE
+            {%- else -%}
+              Unknown
+            {%- endif %}
+
+  - platform: waze_travel_time
+    name: "Me to destination"
+    origin: device_tracker.glerums_iphone
+    destination: sensor.dest_address
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: "Davy to home"
+    origin: device_tracker.glerums_iphone
+    destination: Bornem, BE
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: "Davy to work"
+    origin: device_tracker.glerums_iphone
+    destination: Beerse, BE
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: 'Isabel to home'
+    origin: device_tracker.iphone_van_isabel
+    destination: Bornem, BE
+    region: 'EU'
