@@ -52,7 +52,7 @@ sensor:
   - platform: waze_travel_time
     name: "Davy to home"
     origin: device_tracker.glerums_iphone
-    destination: Bornem, BE
+    destination: !secret home_address
     region: 'EU'
 
   - platform: waze_travel_time
@@ -64,5 +64,5 @@ sensor:
   - platform: waze_travel_time
     name: 'Isabel to home'
     origin: device_tracker.iphone_van_isabel
-    destination: Bornem, BE
+    destination: !secret home_address
     region: 'EU'

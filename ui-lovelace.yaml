@@ -30,7 +30,7 @@ resources:
 #                                                                                                                                           #
 #############################################################################################################################################
 
-name: Kingia Castle
+name: Wintam Castle
 views:
   - id: 0
     icon: mdi:castle
@@ -52,11 +52,11 @@ views:
               - type: custom:card-modder
                 card:
                   type: picture-elements
-                  image: /local/lovelace/home/james_10.jpg
+                  image: /local/lovelace/home/davy1.jpg
                   elements:
                     - type: state-label
                       entity: sensor.james
-                      prefix: 'James -- '
+                      prefix: 'Davy -- '
                       style: {color: white, left: 30%, top: 90%}
                     - type: state-icon
                       entity: sensor.battery_james
@@ -89,11 +89,11 @@ views:
               - type: custom:card-modder
                 card:
                   type: picture-elements
-                  image: /local/lovelace/home/tina_4.jpg
+                  image: /local/lovelace/home/isabel1.jpg
                   elements:
                     - type: state-label
                       entity: sensor.tina
-                      prefix: 'Tina -- '
+                      prefix: 'Isabel -- '
                       style: {color: white, left: 27%, top: 89%}
                     - type: state-icon
                       entity: sensor.battery_tina
@@ -188,94 +188,94 @@ views:
 #                       Home - Github Card                      #
 #                                                               #
 #################################################################
-
-          - type: custom:card-modder
-            card:
-              type: picture-elements
-              image: /local/lovelace/home/git.png
-              elements:
-                - type: service-button
-                  title: Stargazers
-                  service: python_script.github_scaper
-                  style: {color: white, left: 13%, top: 10%, font-size: 120%}
-                - type: state-label
-                  entity: sensor.stars
-                  style: {color: white, left: 28%, top: 10%, font-size: 120%}
-                - type: service-button
-                  title: Subscribers
-                  service: python_script.github_scaper
-                  style: {color: white, left: 45%, top: 10%, font-size: 120%}
-                - type: state-label
-                  entity: sensor.subscribers
-                  style: {color: white, left: 59%, top: 10%, font-size: 120%}
-                - type: service-button
-                  title: Forks
-                  service: python_script.github_scaper
-                  style: {color: white, left: 69%, top: 10%, font-size: 120%}
-                - type: state-label
-                  entity: sensor.forks
-                  style: {color: white, left: 78%, top: 10%, font-size: 120%}
-                - type: service-button
-                  title: Issues
-                  service: python_script.github_scaper
-                  style: {color: white, left: 88%, top: 10%, font-size: 120%}
-                - type: state-label
-                  entity: sensor.issues
-                  style: {color: white, left: 97%, top: 10%, font-size: 120%}
-                - type: service-button
-                  title: Next Target
-                  service: python_script.github_scaper
-                  style: {color: white, left: 12%, top: 25%}
-                - type: state-label
-                  entity: sensor.git_stars_next_dif
-                  style: {color: white, left: 25%, top: 25%}
-                - type: service-button
-                  title: Last Target
-                  service: python_script.github_scaper
-                  style: {color: white, left: 12%, top: 35%}
-                - type: state-label
-                  entity: sensor.git_stars_last_dif
-                  style: {color: white, left: 25%, top: 35%}
-                - type: service-button
-                  title: Trending
-                  service: python_script.github_scaper
-                  style: {color: white, left: 10%, top: 45%}
-                - type: state-label
-                  entity: sensor.git_stars_trend_dif
-                  style: {color: white, left: 25%, top: 45%}
-                - type: service-button
-                  title: This Month
-                  service: python_script.github_scaper
-                  style: {color: white, left: 82%, top: 25%}
-                - type: state-label
-                  entity: sensor.stars_this_month
-                  style: {color: white, left: 95%, top: 25%}
-                - type: service-button
-                  title: Last Month
-                  service: python_script.github_scaper
-                  style: {color: white, left: 82%, top: 35%}
-                - type: state-label
-                  entity: sensor.stars_last_month
-                  style: {color: white, left: 95%, top: 35%}
-                - type: service-button
-                  title: This Week
-                  service: python_script.github_scaper
-                  style: {color: white, left: 83%, top: 45%}
-                - type: state-label
-                  entity: sensor.stars_this_week
-                  style: {color: white, left: 95%, top: 45%}
-                - type: service-button
-                  title: Last Week
-                  service: python_script.github_scaper
-                  style: {color: white, left: 83%, top: 55%}
-                - type: state-label
-                  entity: sensor.stars_last_week
-                  style: {color: white, left: 95%, top: 55%}
-            style:
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
-              overflow: hidden
+          #
+          # - type: custom:card-modder
+          #   card:
+          #     type: picture-elements
+          #     image: /local/lovelace/home/git.png
+          #     elements:
+          #       - type: service-button
+          #         title: Stargazers
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 13%, top: 10%, font-size: 120%}
+          #       - type: state-label
+          #         entity: sensor.stars
+          #         style: {color: white, left: 28%, top: 10%, font-size: 120%}
+          #       - type: service-button
+          #         title: Subscribers
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 45%, top: 10%, font-size: 120%}
+          #       - type: state-label
+          #         entity: sensor.subscribers
+          #         style: {color: white, left: 59%, top: 10%, font-size: 120%}
+          #       - type: service-button
+          #         title: Forks
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 69%, top: 10%, font-size: 120%}
+          #       - type: state-label
+          #         entity: sensor.forks
+          #         style: {color: white, left: 78%, top: 10%, font-size: 120%}
+          #       - type: service-button
+          #         title: Issues
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 88%, top: 10%, font-size: 120%}
+          #       - type: state-label
+          #         entity: sensor.issues
+          #         style: {color: white, left: 97%, top: 10%, font-size: 120%}
+          #       - type: service-button
+          #         title: Next Target
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 12%, top: 25%}
+          #       - type: state-label
+          #         entity: sensor.git_stars_next_dif
+          #         style: {color: white, left: 25%, top: 25%}
+          #       - type: service-button
+          #         title: Last Target
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 12%, top: 35%}
+          #       - type: state-label
+          #         entity: sensor.git_stars_last_dif
+          #         style: {color: white, left: 25%, top: 35%}
+          #       - type: service-button
+          #         title: Trending
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 10%, top: 45%}
+          #       - type: state-label
+          #         entity: sensor.git_stars_trend_dif
+          #         style: {color: white, left: 25%, top: 45%}
+          #       - type: service-button
+          #         title: This Month
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 82%, top: 25%}
+          #       - type: state-label
+          #         entity: sensor.stars_this_month
+          #         style: {color: white, left: 95%, top: 25%}
+          #       - type: service-button
+          #         title: Last Month
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 82%, top: 35%}
+          #       - type: state-label
+          #         entity: sensor.stars_last_month
+          #         style: {color: white, left: 95%, top: 35%}
+          #       - type: service-button
+          #         title: This Week
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 83%, top: 45%}
+          #       - type: state-label
+          #         entity: sensor.stars_this_week
+          #         style: {color: white, left: 95%, top: 45%}
+          #       - type: service-button
+          #         title: Last Week
+          #         service: python_script.github_scaper
+          #         style: {color: white, left: 83%, top: 55%}
+          #       - type: state-label
+          #         entity: sensor.stars_last_week
+          #         style: {color: white, left: 95%, top: 55%}
+          #   style:
+          #     border-radius: 20px
+          #     border: solid 1px rgba(100,100,100,0.3)
+          #     box-shadow: 3px 3px rgba(0,0,0,0.4)
+          #     overflow: hidden
 
 #################################################################
 #                                                               #
@@ -359,23 +359,23 @@ views:
 #                                                               #
 #################################################################
 
-          - type: custom:card-modder
-            card:
-              type: picture-elements
-              image: /local/lovelace/home/bus_10.jpg
-            #title: Next Bus
-              elements:
-                - type: state-icon
-                  entity: sensor.next_bus
-                  style: {color: white, left: 23px, top: 16px}
-                - type: state-label
-                  entity: sensor.next_bus
-                  style: {color: white, left: 59px, top: 22px}
-            style:
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
-              overflow: hidden
+          # - type: custom:card-modder
+          #   card:
+          #     type: picture-elements
+          #     image: /local/lovelace/home/bus_10.jpg
+          #   #title: Next Bus
+          #     elements:
+          #       - type: state-icon
+          #         entity: sensor.next_bus
+          #         style: {color: white, left: 23px, top: 16px}
+          #       - type: state-label
+          #         entity: sensor.next_bus
+          #         style: {color: white, left: 59px, top: 22px}
+          #   style:
+          #     border-radius: 20px
+          #     border: solid 1px rgba(100,100,100,0.3)
+          #     box-shadow: 3px 3px rgba(0,0,0,0.4)
+          #     overflow: hidden
 
 #################################################################
 #                                                               #
@@ -383,34 +383,34 @@ views:
 #                                                               #
 #################################################################
 
-      - id: cb489d24f3c64db1a6a96cdc70a4cc26  # Automatically created id
-        type: vertical-stack
-        cards:
-          - type: custom:card-modder
-            card:
-              type: picture-entity
-              entity: camera.bom_radar
-            style:
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              color: "#999999"
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
-          - type: custom:card-modder
-            card:
-              type: custom:tracker-card
-              title:
-              trackers:
-                - sensor.custom_card_tracker
-                - sensor.custom_component_tracker
-            style:
-              background-image: url("/local/lovelace/cardbackK.png")
-              background-repeat: no-repeat
-              background-color: rgba(50,50,50,0.3)
-              background-size: 100% 525px
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              color: "#999999"
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
+      # - id: cb489d24f3c64db1a6a96cdc70a4cc26  # Automatically created id
+      #   type: vertical-stack
+      #   cards:
+      #     - type: custom:card-modder
+      #       card:
+      #         type: picture-entity
+      #         entity: camera.bom_radar
+      #       style:
+      #         border-radius: 20px
+      #         border: solid 1px rgba(100,100,100,0.3)
+      #         color: "#999999"
+      #         box-shadow: 3px 3px rgba(0,0,0,0.4)
+      #     - type: custom:card-modder
+      #       card:
+      #         type: custom:tracker-card
+      #         title:
+      #         trackers:
+      #           - sensor.custom_card_tracker
+      #           - sensor.custom_component_tracker
+      #       style:
+      #         background-image: url("/local/lovelace/cardbackK.png")
+      #         background-repeat: no-repeat
+      #         background-color: rgba(50,50,50,0.3)
+      #         background-size: 100% 525px
+      #         border-radius: 20px
+      #         border: solid 1px rgba(100,100,100,0.3)
+      #         color: "#999999"
+      #         box-shadow: 3px 3px rgba(0,0,0,0.4)
 
 #############################################################################################################################################
 #                                                                                                                                           #
