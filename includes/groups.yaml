@@ -58,6 +58,19 @@ downstairs:
     # - group.hue_temperature_sensors
     # - group.hue_lux_sensors
 
+downstairs_lights:
+  name: Downstairs Lights
+  view: no
+  control: hidden
+  entities:
+    - light.hue_desk
+    - light.hue_lightstrip
+    - light.hue_livingroom
+    - light.tv_lights
+    - light.fibaro_kitchen_level
+    - light.fibaro_table_level
+    - light.fibaro_hallway_level
+
 available_switches:
   name: Switches
   view: no
