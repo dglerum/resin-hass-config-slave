@@ -30,7 +30,7 @@ resources:
 #                                                                                                                                           #
 #############################################################################################################################################
 
-name: Wintam Castle
+title: Awesome Home
 views:
   - id: 0
     icon: mdi:castle
@@ -469,10 +469,10 @@ views:
               image: /local/lovelace/security/smoke_4.jpg
               elements:
                 - type: state-icon
-                  entity: binary_sensor.smoke_sensor_158d0001b8ddc7
+                  entity: binary_sensor.fibaro_smoke_sensor_sensor
                   style: {color: white, left: 15%, top: 88%}
                 - type: state-label
-                  entity: binary_sensor.smoke_sensor_158d0001b8ddc7
+                  entity: binary_sensor.fibaro_smoke_sensor_sensor
                   prefix: 'Downstairs: '
                   style: {color: white, left: 32%, top: 89%}
                 - type: state-icon
@@ -660,68 +660,68 @@ views:
               #title: Motion Sensors
               image: /local/lovelace/security/motion_3.jpg
               elements:
+                # - type: state-icon
+                #   entity: binary_sensor.motion_wc1
+                #   style: {color: white, left: 25%, top: 82%}
+                # - type: state-label
+                #   entity: binary_sensor.motion_wc1
+                #   prefix: 'Toilet Upstairs: '
+                #   style: {color: white, left: 25%, top: 92%}
+                # - type: state-icon
+                #   entity: binary_sensor.motion_wc1
+                #   style: {color: white, left: 50%, top: 82%}
+                # - type: state-label
+                #   entity: binary_sensor.motion_wc1
+                #   prefix: 'Toilet Downstairs: '
+                #   style: {color: white, left: 50%, top: 92%}
                 - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d0001e5d118
-                  style: {color: white, left: 25%, top: 82%}
-                - type: state-label
-                  entity: binary_sensor.motion_sensor_158d0001e5d118
-                  prefix: 'Living: '
-                  style: {color: white, left: 25%, top: 92%}
-                - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d0001e5cf11
-                  style: {color: white, left: 50%, top: 82%}
-                - type: state-label
-                  entity: binary_sensor.motion_sensor_158d0001e5cf11
-                  prefix: 'Playroom: '
-                  style: {color: white, left: 50%, top: 92%}
-                - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d0001e5d147
+                  entity: binary_sensor.motion_hallway
                   style: {color: white, left: 25%, top: 45%}
                 - type: state-label
-                  entity: binary_sensor.motion_sensor_158d0001e5d147
-                  prefix: 'Entrance: '
+                  entity: binary_sensor.motion_hallway
+                  prefix: 'Hallway: '
                   style: {color: white, left: 25%, top: 55%}
+                # - type: state-icon
+                #   entity: binary_sensor.motion_wc1
+                #   style: {color: white, left: 50%, top: 45%}
+                # - type: state-label
+                #   entity: binary_sensor.motion_wc1
+                #   prefix: 'Toilet Downstairs: '
+                #   style: {color: white, left: 50%, top: 55%}
                 - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d000200ea5b
-                  style: {color: white, left: 50%, top: 45%}
-                - type: state-label
-                  entity: binary_sensor.motion_sensor_158d000200ea5b
-                  prefix: 'Patio: '
-                  style: {color: white, left: 50%, top: 55%}
-                - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d000201351c
+                  entity: binary_sensor.motion_kitchen
                   style: {color: white, left: 25%, top: 8%}
                 - type: state-label
-                  entity: binary_sensor.motion_sensor_158d000201351c
-                  prefix: 'Jackson: '
+                  entity: binary_sensor.motion_kitchen
+                  prefix: 'Kitchen: '
                   style: {color: white, left: 25%, top: 18%}
+                # - type: state-icon
+                #   entity: binary_sensor.motion_tester
+                #   style: {color: white, left: 50%, top: 8%}
+                # - type: state-label
+                #   entity: binary_sensor.motion_tester
+                #   prefix: 'Tester: '
+                #   style: {color: white, left: 50%, top: 18%}
                 - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d0002006d46
-                  style: {color: white, left: 50%, top: 8%}
-                - type: state-label
-                  entity: binary_sensor.motion_sensor_158d0002006d46
-                  prefix: 'Hudson: '
-                  style: {color: white, left: 50%, top: 18%}
-                - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d0001e63803
+                  entity: binary_sensor.motion_wc1
                   style: {color: white, left: 75%, top: 8%}
                 - type: state-label
-                  entity: binary_sensor.motion_sensor_158d0001e63803
-                  prefix: 'Bedroom: '
+                  entity: binary_sensor.motion_wc1
+                  prefix: 'Toilet Downstairs: '
                   style: {color: white, left: 75%, top: 18%}
                 - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d000200e4ab
+                  entity: binary_sensor.motion_tester
                   style: {color: white, left: 75%, top: 82%}
                 - type: state-label
-                  entity: binary_sensor.motion_sensor_158d000200e4ab
-                  prefix: 'Bathroom: '
+                  entity: binary_sensor.motion_tester
+                  prefix: 'Tester: '
                   style: {color: white, left: 75%, top: 92%}
                 - type: state-icon
-                  entity: binary_sensor.motion_sensor_158d00022c2f21
+                  entity: binary_sensor.motion_wc2
                   style: {color: white, left: 75%, top: 45%}
                 - type: state-label
-                  entity: binary_sensor.motion_sensor_158d00022c2f21
-                  prefix: 'Staircase: '
+                  entity: binary_sensor.motion_wc2
+                  prefix: 'Toilet Upstairs: '
                   style: {color: white, left: 75%, top: 55%}
             style:
               background-image: url("/local/lovelace/cardbackK.png")
@@ -3023,16 +3023,16 @@ views:
               image: /local/lovelace/settings/rpi.png
               elements:
                 - type: state-label
-                  entity: sensor.time_online
+                  entity: sensor.uptime
                   prefix: 'System Uptime ----- '
                   style: {color: white, left: 50%, top: 8%, font-size: 115%, font-weight: bold}
 
                 - type: state-icon
-                  entity: sensor.disk_use_percent_
+                  entity: sensor.disk_use
                   style: {color: white, left: 29%, top: 84%}
                 - type: state-label
-                  entity: sensor.disk_use_percent_
-                  prefix: 'HASSIO ----- '
+                  entity: sensor.disk_use
+                  prefix: 'HASS ----- '
                   style: {color: white, left: 20%, top: 93%, font-size: 115%, font-weight: bold}
 
                 - type: state-icon
@@ -3126,14 +3126,17 @@ views:
               type: entity-filter
               entities:
                 - binary_sensor.core_router
-                - binary_sensor.core_switch
-                - binary_sensor.upstairs_switch
-                - binary_sensor.wifi_bridge
-                - binary_sensor.downstairs_ap
-                - binary_sensor.upstairs_ap
-                - binary_sensor.5g_ac_main
-                - binary_sensor.5g_ac_media_tv
-                - binary_sensor.5g_ac_upstairs
+                - binary_sensor.orbi_router
+                - binary_sensor.orbi_sattelite
+                # - binary_sensor.core_router
+                # - binary_sensor.core_switch
+                # - binary_sensor.upstairs_switch
+                # - binary_sensor.wifi_bridge
+                # - binary_sensor.downstairs_ap
+                # - binary_sensor.upstairs_ap
+                # - binary_sensor.5g_ac_main
+                # - binary_sensor.5g_ac_media_tv
+                # - binary_sensor.5g_ac_upstairs
               state_filter:
                 - 'off'
               card:
@@ -3156,15 +3159,17 @@ views:
             card:
               type: entity-filter
               entities:
-                - binary_sensor.nas_movies
-                - binary_sensor.nas_tv
-                - binary_sensor.smart_things_hub
-                - binary_sensor.xiaomi_gateway
-                - binary_sensor.xiaomi_gateway_2
-                - binary_sensor.alexa_main
-                - binary_sensor.alexa_bedroom
-                - binary_sensor.main_pc
+                - binary_sensor.philips_hub
                 - binary_sensor.printer
+                # - binary_sensor.nas_movies
+                # - binary_sensor.nas_tv
+                # - binary_sensor.smart_things_hub
+                # - binary_sensor.xiaomi_gateway
+                # - binary_sensor.xiaomi_gateway_2
+                # - binary_sensor.alexa_main
+                # - binary_sensor.alexa_bedroom
+                # - binary_sensor.main_pc
+                # - binary_sensor.printer
               state_filter:
                 - 'off'
               card:
@@ -3182,7 +3187,7 @@ views:
 #               System Status - Space Filler Card               #
 #                                                               #
 #################################################################
-          # 
+          #
           # - type: custom:card-modder
           #   card:
           #     type: picture-elements
@@ -3291,13 +3296,14 @@ views:
             card:
               type: entity-filter
               entities:
-                - binary_sensor.hdhomerun
-                - binary_sensor.media_tv
-                - binary_sensor.media_kodi_4k
-                - binary_sensor.appletv
-                - binary_sensor.bedroom_tv
-                - binary_sensor.bedroom_kodi
-                - binary_sensor.patio_kodi
+                  - binary_sensor.tv_kodi
+                # - binary_sensor.hdhomerun
+                # - binary_sensor.media_tv
+                # - binary_sensor.media_kodi_4k
+                # - binary_sensor.appletv
+                # - binary_sensor.bedroom_tv
+                # - binary_sensor.bedroom_kodi
+                # - binary_sensor.patio_kodi
               state_filter:
                 - 'off'
               card:
