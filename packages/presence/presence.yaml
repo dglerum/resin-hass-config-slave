@@ -159,6 +159,20 @@ binary_sensor:
           {% else %}
             mdi:alert
           {% endif %}
+
+      davy_keys_status:
+        friendly_name: Davy Keys
+        device_class: connectivity
+        entity_id: device_tracker.davy_keys
+        value_template: "{{ is_state('device_tracker.tile_work_keys', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_work_keys', 'home') %}
+            mdi:key
+          {% elif is_state('device_tracker.tile_work_keys', 'not_home') %}
+            mdi:key
+          {% else %}
+            mdi:alert
+          {% endif %}
 ################################################
 ## Device Tracker
 ################################################

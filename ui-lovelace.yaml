@@ -66,13 +66,13 @@ views:
                       entity: sensor.glerums_iphone_x_battery_level
                       style: {color: white, left: 87%, top: 91%}
                     - type: state-icon
-                      entity: binary_sensor.james_gps_status
+                      entity: binary_sensor.davy_gps_status
                       style: {color: white, left: 92%, top: 10%}
                     - type: state-icon
                       entity: binary_sensor.james_ble_status
                       style: {color: white, left: 92%, top: 25%}
                     - type: state-icon
-                      entity: binary_sensor.james_keys_status
+                      entity: binary_sensor.davy_keys_status
                       style: {color: white, left: 92%, top: 40%}
                     - type: state-icon
                       entity: binary_sensor.james_bag_status
