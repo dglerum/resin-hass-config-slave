@@ -168,6 +168,8 @@ binary_sensor:
         icon_template: >-
           {% if is_state('device_tracker.tile_92ed8033933bc67b', 'home') %}
             mdi:key
+          {% elif is_state('device_tracker.tile_92ed8033933bc67b', 'Metallo') %}
+            mdi:key
           {% elif is_state('device_tracker.tile_92ed8033933bc67b', 'not_home') %}
             mdi:key
           {% else %}
@@ -182,6 +184,8 @@ binary_sensor:
         icon_template: >-
           {% if is_state('device_tracker.tile_1d0c1caa79e2a272', 'home') %}
             mdi:car-side
+          {% elif is_state('device_tracker.tile_1d0c1caa79e2a272', 'Metallo') %}
+            mdi:car-side
           {% elif is_state('device_tracker.tile_1d0c1caa79e2a272', 'not_home') %}
             mdi:car-side
           {% else %}
@@ -195,6 +199,8 @@ binary_sensor:
         value_template: "{{ is_state('device_tracker.tile_1da6142fd8f65ae3', 'home') }}"
         icon_template: >-
           {% if is_state('device_tracker.tile_1da6142fd8f65ae3', 'home') %}
+            mdi:briefcase
+          {% elif is_state('device_tracker.tile_1da6142fd8f65ae3', 'Metallo') %}
             mdi:briefcase
           {% elif is_state('device_tracker.tile_1da6142fd8f65ae3', 'not_home') %}
             mdi:briefcase
