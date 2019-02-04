@@ -75,10 +75,10 @@ views:
                       entity: binary_sensor.davy_keys_status
                       style: {color: white, left: 92%, top: 40%}
                     - type: state-icon
-                      entity: binary_sensor.james_bag_status
+                      entity: binary_sensor.davy_bag_status
                       style: {color: white, left: 92%, top: 55%}
                     - type: state-icon
-                      entity: binary_sensor.james_car_status
+                      entity: binary_sensor.davy_car_status
                       style: {color: white, left: 92%, top: 70%}
                 style:
                   border-radius: 20px

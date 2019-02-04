@@ -163,16 +163,45 @@ binary_sensor:
       davy_keys_status:
         friendly_name: Davy Keys
         device_class: connectivity
-        entity_id: device_tracker.davy_keys
-        value_template: "{{ is_state('device_tracker.tile_work_keys', 'home') }}"
+        entity_id: device_tracker.tile_92ed8033933bc67b
+        value_template: "{{ is_state('device_tracker.tile_92ed8033933bc67b', 'home') }}"
         icon_template: >-
-          {% if is_state('device_tracker.tile_work_keys', 'home') %}
+          {% if is_state('device_tracker.tile_92ed8033933bc67b', 'home') %}
             mdi:key
-          {% elif is_state('device_tracker.tile_work_keys', 'not_home') %}
+          {% elif is_state('device_tracker.tile_92ed8033933bc67b', 'not_home') %}
             mdi:key
           {% else %}
             mdi:alert
           {% endif %}
+
+      davy_car_status:
+        friendly_name: Davy Car
+        device_class: connectivity
+        entity_id: device_tracker.tile_1d0c1caa79e2a272
+        value_template: "{{ is_state('device_tracker.tile_1d0c1caa79e2a272', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_1d0c1caa79e2a272', 'home') %}
+            mdi:car-side
+          {% elif is_state('device_tracker.tile_1d0c1caa79e2a272', 'not_home') %}
+            mdi:car-side
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+      davy_bag_status:
+        friendly_name: Davy Bag
+        device_class: connectivity
+        entity_id: device_tracker.tile_1da6142fd8f65ae3
+        value_template: "{{ is_state('device_tracker.tile_1da6142fd8f65ae3', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_1da6142fd8f65ae3', 'home') %}
+            mdi:briefcase
+          {% elif is_state('device_tracker.tile_1da6142fd8f65ae3', 'not_home') %}
+            mdi:briefcase
+          {% else %}
+            mdi:alert
+          {% endif %}
+
 ################################################
 ## Device Tracker
 ################################################
