@@ -336,10 +336,10 @@ views:
               entities:
                 - entity: sensor.davy_to_home
                   zone: zone.home
-                  name: Davy
-                - entity: sensor.isabel_to_home
-                  zone: zone.home
-                  name: Isabel
+                  name: Home
+                # - entity: sensor.isabel_to_home
+                #   zone: zone.home
+                #   name: Isabel
                 - entity: sensor.davy_to_work
                   zone: zone.metallo
                   name: Work
@@ -3519,33 +3519,33 @@ views:
       - id: 266679a3ea68406da4e7493b8e39e487  # Automatically created id
         type: vertical-stack
         cards:
-          - type: custom:card-modder
-            card:
-              type: picture-glance
-              title: Wall Switches
-              tap_action:
-                action: toggle
-              entities:
-                - binary_sensor.bedroom_light_switch
-                - binary_sensor.kitchen_light_switch
-                - binary_sensor.dining_light_switch
-                - binary_sensor.patio_light_switch
-                - binary_sensor.lounge_light_switch
-                - binary_sensor.playroom_light_switch
-                - binary_sensor.bedroom_light_switch
-                - binary_sensor.walkin_light_switch
-                - binary_sensor.laundry_light_switch
-                - binary_sensor.playroom_light_switch
-                - binary_sensor.jackson_light_switch
-                - binary_sensor.upstairs_toilet_switch
-                - binary_sensor.bathroom_light_switch
-                - binary_sensor.bathroom_heat_switch
-                - binary_sensor.bathroom_fan_switch
-              image: /local/lovelace/things/switch_2.jpg
-            style:
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
+          # - type: custom:card-modder
+          #   card:
+          #     type: picture-glance
+          #     title: Wall Switches
+          #     tap_action:
+          #       action: toggle
+          #     entities:
+          #       - binary_sensor.bedroom_light_switch
+          #       - binary_sensor.kitchen_light_switch
+          #       - binary_sensor.dining_light_switch
+          #       - binary_sensor.patio_light_switch
+          #       - binary_sensor.lounge_light_switch
+          #       - binary_sensor.playroom_light_switch
+          #       - binary_sensor.bedroom_light_switch
+          #       - binary_sensor.walkin_light_switch
+          #       - binary_sensor.laundry_light_switch
+          #       - binary_sensor.playroom_light_switch
+          #       - binary_sensor.jackson_light_switch
+          #       - binary_sensor.upstairs_toilet_switch
+          #       - binary_sensor.bathroom_light_switch
+          #       - binary_sensor.bathroom_heat_switch
+          #       - binary_sensor.bathroom_fan_switch
+          #     image: /local/lovelace/things/switch_2.jpg
+          #   style:
+          #     border-radius: 20px
+          #     border: solid 1px rgba(100,100,100,0.3)
+          #     box-shadow: 3px 3px rgba(0,0,0,0.4)
 
 #################################################################
 #                                                               #
@@ -3553,23 +3553,34 @@ views:
 #                                                               #
 #################################################################
 
-          - type: custom:card-modder
-            card:
-              type: picture-glance
-              title: Light Bulbs
-              tap_action: toggle
-              entities:
-                - binary_sensor.hall_light_bulb
-                - binary_sensor.lounge_light_bulb
-                - binary_sensor.dining_light_bulb
-                - binary_sensor.entry_light_bulb
-                - binary_sensor.bedroom_light_bulb
-                - binary_sensor.patio_light_bulb
-              image: /local/lovelace/things/lights_2.png
-            style:
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
+          # - type: custom:card-modder
+          #   card:
+          #     type: picture-glance
+          #     title: Light Bulbs
+          #     tap_action: toggle
+          #     entities:
+          #       - binary_sensor.hall_light_bulb
+          #       - binary_sensor.lounge_light_bulb
+          #       - binary_sensor.dining_light_bulb
+          #       - binary_sensor.entry_light_bulb
+          #       - binary_sensor.bedroom_light_bulb
+          #       - binary_sensor.patio_light_bulb
+          #     image: /local/lovelace/things/lights_2.png
+          #   style:
+          #     border-radius: 20px
+          #     border: solid 1px rgba(100,100,100,0.3)
+          #     box-shadow: 3px 3px rgba(0,0,0,0.4)
+
+#################################################################
+#                                                               #
+#                       Home - Component updates                #
+#                                                               #
+#################################################################
+          - type: custom:tracker-card
+            title:
+            trackers:
+              - sensor.custom_card_tracker
+              - sensor.custom_component_tracker
 
 #################################################################
 #                                                               #
