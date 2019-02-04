@@ -27,6 +27,7 @@ input_select:
       - Home
       - Work
       - Parents
+    initial: Home
 
 sensor:
   - platform: template
