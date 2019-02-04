@@ -142,6 +142,23 @@ binary_sensor:
         platform: 'state'
         to_state: 'home'
 
+  - platform: template
+    sensors:
+      davy_gps_status:
+        friendly_name: Davy GPS
+        device_class: connectivity
+        entity_id: device_tracker.tile_glerums_iphone_x
+        value_template: "{{ is_state('device_tracker.tile_glerums_iphone_x', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_glerums_iphone_x', 'home') %}
+            mdi:crosshairs-gps
+          {% elif is_state('device_tracker.tile_glerums_iphone_x', 'Metallo') %}
+            mdi:crosshairs-gps
+          {% elif is_state('device_tracker.tile_glerums_iphone_x', 'not_home') %}
+            mdi:crosshairs-gps
+          {% else %}
+            mdi:alert
+          {% endif %}
 ################################################
 ## Device Tracker
 ################################################
