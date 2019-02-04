@@ -3063,6 +3063,35 @@ views:
 
 #################################################################
 #                                                               #
+#               System Status - Media Devices Card              #
+#                                                               #
+#################################################################
+
+          - type: custom:card-modder
+            card:
+              type: entity-filter
+              entities:
+                  - binary_sensor.tv_kodi
+                # - binary_sensor.hdhomerun
+                # - binary_sensor.media_tv
+                # - binary_sensor.media_kodi_4k
+                # - binary_sensor.appletv
+                # - binary_sensor.bedroom_tv
+                # - binary_sensor.bedroom_kodi
+                # - binary_sensor.patio_kodi
+              state_filter:
+                - 'off'
+              card:
+                type: picture-glance
+                title: Media Devices
+                image: /local/lovelace/settings/media.jpg
+            style:
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+              overflow: hidden
+#################################################################
+#                                                               #
 #               System Status - UPS Resources Card              #
 #                                                               #
 #################################################################
@@ -3280,36 +3309,6 @@ views:
                 type: picture-glance
                 title: HA Devices
                 image: /local/lovelace/settings/hass.jpg
-            style:
-              border-radius: 20px
-              border: solid 1px rgba(100,100,100,0.3)
-              box-shadow: 3px 3px rgba(0,0,0,0.4)
-              overflow: hidden
-
-#################################################################
-#                                                               #
-#               System Status - Media Devices Card              #
-#                                                               #
-#################################################################
-
-          - type: custom:card-modder
-            card:
-              type: entity-filter
-              entities:
-                  - binary_sensor.tv_kodi
-                # - binary_sensor.hdhomerun
-                # - binary_sensor.media_tv
-                # - binary_sensor.media_kodi_4k
-                # - binary_sensor.appletv
-                # - binary_sensor.bedroom_tv
-                # - binary_sensor.bedroom_kodi
-                # - binary_sensor.patio_kodi
-              state_filter:
-                - 'off'
-              card:
-                type: picture-glance
-                title: Media Devices
-                image: /local/lovelace/settings/media.jpg
             style:
               border-radius: 20px
               border: solid 1px rgba(100,100,100,0.3)
