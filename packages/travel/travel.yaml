@@ -58,7 +58,7 @@ sensor:
   - platform: waze_travel_time
     name: "Davy to work"
     origin: device_tracker.glerums_iphone
-    destination: Beerse, BE
+    destination: Vaartstraat 58, Beerse, BE
     region: 'EU'
 
   - platform: waze_travel_time
