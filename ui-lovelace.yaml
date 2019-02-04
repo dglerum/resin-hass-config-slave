@@ -55,7 +55,7 @@ views:
                   image: /local/lovelace/home/davy1.jpg
                   elements:
                     - type: state-label
-                      entity: device_tracker.davy_bayesian
+                      entity: device_tracker.glerums_iphone
                       prefix: 'Davy -- '
                       style: {color: white, left: 30%, top: 90%}
                     - type: state-icon
