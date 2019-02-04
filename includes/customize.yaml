@@ -21,6 +21,7 @@
     icon: mdi:brightness-auto
   sensor.fibaro_smoke_sensor_temperature:
     friendly_name: "Indoor Temp"
+    icon: mdi:sofa
   script.itunes_music:
     friendly_name: 'Play'
     icon: mdi:play

@@ -27,7 +27,7 @@ automation:
 ##  Some home facts when we get back home from being away.
 ######################################################################
   - alias: 'Home Stats'
-
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id:

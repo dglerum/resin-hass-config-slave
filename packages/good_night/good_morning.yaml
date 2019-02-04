@@ -34,6 +34,7 @@
 automation:
 ## Runs a script to turn on morning cartoons when staircase motion is triggered after 4am
   - alias: 'Good Morning'
+    initial_state: 'on'
     trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d00022c2f21

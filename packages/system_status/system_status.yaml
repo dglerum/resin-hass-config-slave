@@ -217,6 +217,7 @@ binary_sensor:
 automation:
 ## Notify of High Disk Use
   - alias: Disk Use Alarm
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.disk_use
@@ -228,6 +229,7 @@ automation:
 
 ## Notify of High CPU Usage
   - alias: CPU Use Alarm
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.processor_use
@@ -239,6 +241,7 @@ automation:
 
 ## Notify if CPU Temperature is High
   - alias: CPU Temp Alarm
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.cpu_temperature
@@ -250,6 +253,7 @@ automation:
 
 ## Notify if ISP Download Speed has dropped
   - alias: Internet Download Speed Drop
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.speedtest_download

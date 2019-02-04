@@ -37,15 +37,16 @@ binary_sensor:
 ################################################
 
 automation:
-  - action:
-    - service: mqtt.publish
-      data_template:
-        topic: "flic/{{ trigger.event.data.button_name }}"
-        payload: "{{ trigger.event.data.click_type }}"
-    alias: Flic button event
-    trigger:
-    - platform: event
-      event_type: flic_click
+  initial_state: 'on'
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: "flic/{{ trigger.event.data.button_name }}"
+      payload: "{{ trigger.event.data.click_type }}"
+  alias: Flic button event
+  trigger:
+  - platform: event
+    event_type: flic_click
 
   # - action:
   #   - service: persistent_notification.create

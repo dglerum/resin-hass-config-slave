@@ -8,6 +8,7 @@
         homeassistant.components: "{{ trigger.to_state.state }}"
 
 - alias: 'Start HomeKit'
+  initial_state: 'on'
   trigger:
     - platform: homeassistant
       event: start
