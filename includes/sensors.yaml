@@ -1,12 +1,4 @@
 ####################################################
-#               Philips Hue (custom)               #
-####################################################
-
-# - platform: hue
-#   ip_address: 192.168.1.2
-#   token: 8VM3ATZhZME37TuvWiMjxMP5wHrRkKikX78w25SF
-
-####################################################
 #               Certificate Expiry                 #
 ####################################################
 
@@ -15,28 +7,3 @@
 
 - platform: uptime
   unit_of_measurement: days
-
-# - platform: waze_travel_time
-#   origin: Bornem, Belgium
-#   destination: Beerse, Belgium
-#   region: 'EU'
-# - platform: haveibeenpwned
-#   email:
-#     - davy@glerums.be
-#     - dglerum@gmail.com
-#     - idebeule@hotmail.com
-#     - isabel@ifocus-coaching.be
-
-# - platform: feedparser
-#   name: Engineering Feed
-#   feed_url: 'https://www.sciencedaily.com/rss/matter_energy/engineering.xml'
-#   date_format: '%a, %b %d %I:%M %p'
-#   inclusions:
-#     - title
-#     - link
-#     - description
-#     - image
-#     - language
-#     - pubDate
-#   exclusions:
-#     - language

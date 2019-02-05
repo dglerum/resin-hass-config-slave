@@ -11,3 +11,10 @@
     radius: 300
     icon: mdi:work
     track_ios: true
+
+  - name: Sibelco
+    latitude: 51.210605
+    longitude: 4.418550
+    radius: 300
+    icon: mdi:work
+    track_ios: true
