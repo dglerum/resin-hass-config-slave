@@ -52,12 +52,12 @@ group:
 #       - sensor.commute_from_work
 #       - sensor.james_to_home
 #
-#   family:
-#     name: Family
-#     view: no
-#     entities:
-#       - sensor.james
-#       - sensor.tina
+  family:
+    name: Family
+    view: no
+    entities:
+      - sensor.davy
+      - sensor.isabel
 #
 #   ble_tracker_james:
 #     name: BLE Tracker James
@@ -89,6 +89,84 @@ sensor:
     gravatar: dglerum@gmail.com
     api_key: !secret geocode_api
 
+  - platform: template
+      davy:
+        friendly_name: "Davy"
+        value_template: >-
+          {% if is_state('device_tracker.davy_bayesian', 'home') %}
+            Home
+          {% elif is_state('device_tracker.glerums_iphone', 'Metallo') %}
+            Metallo
+          {% else %}
+            Away
+          {% endif %}
+        entity_picture_template: >-
+          {% if is_state('device_tracker.davy_bayesian', 'home') %}
+            /local/lovelace/home/davy1.jpg
+          {% endif %}
+        icon_template: >-
+          {% if is_state('device_tracker.glerums_iphone', 'Metallo') %}
+            mdi:briefcase
+          {% elif is_state('device_tracker.glerums_iphone', 'Kindy') %}
+            mdi:school
+          {% elif is_state('device_tracker.glerums_iphone', 'Stocklands') %}
+            mdi:cart
+          {% elif is_state('device_tracker.glerums_iphone', 'Parlour') %}
+            mdi:coffee
+          {% elif is_state('device_tracker.glerums_iphone', 'Work Home Beacon 25mins') %}
+            mdi:car
+          {% elif is_state('device_tracker.glerums_iphone', 'Work Home Beacon 15mins') %}
+            mdi:car
+          {% elif is_state('device_tracker.glerums_iphone', 'Work Home Beacon 5mins') %}
+            mdi:car
+          {% elif is_state('device_tracker.glerums_iphone', 'Darwin') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Brisbane') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Sydney') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Melbourne') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Perth') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Adelaide') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Tasmania') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'UK') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'France') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Netherlands') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Switzerland') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Italy') %}
+            mdi:airplane
+          {% else %}
+            mdi:walk
+          {% endif %}
+
+      isabel:
+        friendly_name: "Isabel"
+        value_template: >-
+          {% if is_state('device_tracker.iphone_van_isabel', 'home') %}
+            Home
+          {% elif is_state('device_tracker.iphone_van_isabel', 'Sibelco') %}
+            Sibelco
+          {% else %}
+            Away
+          {% endif %}
+        entity_picture_template: >-
+          {% if is_state('device_tracker.davy_bayesian', 'home') %}
+            /local/lovelace/home/isabel1.jpg
+          {% endif %}
+        icon_template: >-
+          {% if is_state('device_tracker.iphone_van_isabel', 'Sibelco') %}
+            mdi:briefcase
+          {% else %}
+            mdi:walk
+          {% endif %}
 ################################################
 ## Input Boolean
 ################################################

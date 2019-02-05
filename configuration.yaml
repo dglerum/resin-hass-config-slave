@@ -131,6 +131,7 @@ homekit:
   ip_address: !secret rPi
   filter:
     include_entities:
+      ## Input Booleans
       - input_boolean.davy_homekit_present
       - input_boolean.isabel_homekit_present
       - input_boolean.homekit_motion
@@ -153,7 +154,7 @@ homekit:
       - switch.music_greatest_blues
       - switch.music_ibiza_chill
       - switch.music_album_500
-      ## Sensors
+      ## Binary Sensors
       - sensor.fibaro_smoke_sensor_temperature
       - binary_sensor.motion_hallway
       - binary_sensor.motion_kitchen
