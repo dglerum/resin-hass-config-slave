@@ -90,6 +90,7 @@ sensor:
     api_key: !secret geocode_api
 
   - platform: template
+    sensors:
       davy:
         friendly_name: "Davy"
         value_template: >-
