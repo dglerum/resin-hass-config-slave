@@ -82,6 +82,9 @@ group:
 sensor:
   - platform: moon
 
+binary_sensor:
+  - platform: iss
+  
 ## Weather Sensors Weatherunderground
   # - platform: wunderground
   #   api_key: !secret wunderground_api
