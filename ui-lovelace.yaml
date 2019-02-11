@@ -419,7 +419,7 @@ views:
 #############################################################################################################################################
 
   - id: 1
-    icon: mdi:security-home
+    icon: mdi:shield-home
     background: center / cover no-repeat url("/local/lovelace/background-15.gif") fixed
     name: Security
     cards:
