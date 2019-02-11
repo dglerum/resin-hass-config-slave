@@ -17,7 +17,7 @@ group:
       - input_boolean.last_message
       - input_boolean.home_stats
       - script.voice_notify
-      - script.speech_processing
+      - script.speech_engine
 
 ################################################
 ## Automation
