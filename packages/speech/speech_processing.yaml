@@ -23,7 +23,7 @@ script:
 
       - condition: template
         value_template: >
-          {% if is_state('media_player.kodi_player', 'playing') %}
+          {% if is_state('media_player.livingroom', 'playing') %}
             false
           {% else %}
             true
