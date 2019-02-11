@@ -39,8 +39,8 @@ automation:
 
       - platform: state
         entity_id: input_boolean.home_stats
-        to: 'off'
-        from: 'on'
+        to: 'on'
+        from: 'off'
 
     action:
 
