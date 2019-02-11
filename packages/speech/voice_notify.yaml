@@ -64,24 +64,24 @@ automation:
 script:
   voice_notify:
     sequence:
-    # - condition: and
-    #   conditions:
-    #     - condition: or
-    #       conditions:
-    #         - condition: state
-    #           entity_id: group.family
-    #           state: 'on'
-    #         - condition: state
-    #           entity_id: input_boolean.guest_mode
-    #           state: 'on'
-    #     - condition: or
-    #       conditions:
-    #         - condition: time
-    #           after: '09:00:00'
-    #           before: '22:00:00'
-    #         - condition: state
-    #           entity_id: input_boolean.alert_mode
-    #           state: 'on'
+    - condition: and
+      conditions:
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: group.family
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.guest_mode
+              state: 'on'
+        - condition: or
+          conditions:
+            - condition: time
+              after: '09:00:00'
+              before: '22:00:00'
+            - condition: state
+              entity_id: input_boolean.alert_mode
+              state: 'on'
     #     - condition: or
     #       conditions:
     #         - condition: template
