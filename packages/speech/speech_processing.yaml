@@ -31,7 +31,7 @@ script:
 
       - service: tts.amazon_polly_say
         data_template:
-          entity_id: media_player.kodi_player
+          entity_id: media_player.livingroom
           message: >
             <speak>
             {{speech_message}}
