@@ -29,14 +29,14 @@ script:
       #       true
       #     {% endif %}
 
-      # - service: tts.amazon_polly_say
-      #   data_template:
-      #     entity_id: media_player.livingroom
-      #     message: >
-      #       <speak>
-      #       {{speech_message}}
-      #       </speak>
-      #     cache: true
+      - service: tts.amazon_polly_say
+        data_template:
+          entity_id: media_player.livingroom
+          message: >
+            <speak>
+            {{speech_message}}
+            </speak>
+          cache: true
 
       - service: mqtt.publish
         data_template:
