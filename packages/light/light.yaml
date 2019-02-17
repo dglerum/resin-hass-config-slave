@@ -12,6 +12,12 @@ homeassistant:
       friendly_name: "Kitchen"
     light.fibaro_table_level:
       friendly_name: "Table"
+    light.fibaro_table2_level:
+      friendly_name: "Table2"
+    light.fibaro_table3_level:
+      friendly_name: "Table3"
+
+
     light.fibaro_hallway_level:
       friendly_name: "Hallway"
     light.fibaro_stair_level:
@@ -24,6 +30,12 @@ homeassistant:
       friendly_name: "Stair Use"
     sensor.fibaro_table_power:
       friendly_name: "Table Use"
+    sensor.fibaro_table2_power:
+      friendly_name: "Table2 Use"
+    sensor.fibaro_table3_power:
+      friendly_name: "Table3 Use"
+
+
     light.hue_lightstrip:
       friendly_name: "LED Strip"
     light.hue_livingroom:
@@ -91,6 +103,8 @@ group:
       - light.tv_lights
       - light.fibaro_kitchen_level
       - light.fibaro_table_level
+      - light.fibaro_table2_level
+      - light.fibaro_table3_level
       - light.fibaro_hallway_level
 
   light_groups:
@@ -98,7 +112,8 @@ group:
     view: no
     control: hidden
     entities:
-      - light.kitchen
+      - light.kitchen_lights
+      - light.table_lights
       - light.livingroom
       - light.fibaro_hallway_level
       - light.tv_lights
@@ -118,10 +133,18 @@ group:
 
 light:
   - platform: group
-    name: Kitchen
+    name: Kitchen Lights
     entities:
       - light.fibaro_kitchen_level
+
+
+  - platform: group
+    name: Table Lights
+    entities:
       - light.fibaro_table_level
+      - light.fibaro_table2_level
+      - light.fibaro_table3_level
+
 
   - platform: group
     name: Livingroom

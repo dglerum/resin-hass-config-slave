@@ -30,12 +30,12 @@ automation:
   - alias: 'Home Stats'
     initial_state: 'on'
     trigger:
-      - platform: state
-        entity_id:
-          - group.family
-        from: 'not_home'
-        to: 'home'
-        for: '00:03:00'
+      # - platform: state
+      #   entity_id:
+      #     - group.family
+      #   from: 'not_home'
+      #   to: 'home'
+      #   for: '00:03:00'
 
       - platform: state
         entity_id: input_boolean.home_stats
@@ -123,19 +123,19 @@ script:
         topic: 'polly/lastmsg'
         retain: true
 
-    - service: tts.amazon_polly_say
-      entity_id: media_player.livingroom
-      data_template:
-        message: >
-          {% if now().strftime("%H")|int < 12 and now().strftime("%H")|int > 6%}
-          "Good morning.
-          {% elif now().strftime("%H")|int > 12 and now().strftime("%H")|int < 17%}
-          "Good afternoon.
-          {% else %}
-          "Good evening.
-          {% endif %}
-          {{ value1 }}"
-        cache: true
+    # - service: tts.amazon_polly_say
+    #   entity_id: media_player.livingroom
+    #   data_template:
+    #     message: >
+    #       {% if now().strftime("%H")|int < 12 and now().strftime("%H")|int > 6%}
+    #       "Good morning.
+    #       {% elif now().strftime("%H")|int > 12 and now().strftime("%H")|int < 17%}
+    #       "Good afternoon.
+    #       {% else %}
+    #       "Good evening.
+    #       {% endif %}
+    #       {{ value1 }}"
+    #     cache: true
 
     - service: input_boolean.turn_off
       entity_id:

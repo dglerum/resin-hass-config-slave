@@ -78,12 +78,11 @@ group:
 ################################################
 ## Sensor
 ################################################
+binary_sensor:
+  - platform: iss
 
 sensor:
   - platform: moon
-
-binary_sensor:
-  - platform: iss
 
 ## Weather Sensors Weatherunderground
   # - platform: wunderground

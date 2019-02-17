@@ -47,11 +47,11 @@ script:
             {%- endmacro -%}
 
             {% macro inside_weather() -%}
-              Inside the house, it is {{ states('sensor.fibaro_system_fgsd002_smoke_sensor_temperature') | round(0) }} degrees with around {{states('sensor.humidity_office_isabel') | round(0) }} percent humidity.
+              Inside the house, it is {{ states('sensor.fibaro_smoke_sensor_temperature') | round(0) }} degrees with around {{states('sensor.humidity_office_isabel') | round(0) }} percent humidity.
             {%- endmacro -%}
 
             {% macro outside_weather() -%}
-              Outside, it is {{ states('sensor.dark_sky_temperature') }} degrees, the weather is going to be {{states('sensor.pws_weather')}}.
+              Outside, it is {{ states('sensor.dark_sky_apparent_temperature') }} degrees, {{states('sensor.dark_sky_daily_summary')}}.
             {%- endmacro -%}
 
             {% macro lights_status() -%}

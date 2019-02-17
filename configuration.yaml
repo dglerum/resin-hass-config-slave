@@ -146,15 +146,14 @@ homekit:
       ## Media Players
       # - media_player.kodi_player
       ## Lights
-      - light.kitchen_lighting
+      - light.kitchen_lights
+      - light.table_lights
       - light.livingroom_lighting
       - light.downstairs_lighting
       ## Switches
       - switch.wemo_livingroom
       - switch.livingroom_lights
       - switch.dinner_lights
-      - switch.kitchen_lights
-      - switch.table_lights
       - switch.tv
       - switch.radio
       - switch.music_stubru
