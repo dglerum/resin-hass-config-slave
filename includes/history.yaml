@@ -13,8 +13,10 @@
       - sensor.total_tv_time
       - sensor.glerums_iphone_x_battery_level
       - sensor.fibaro_smoke_sensor_temperature
-      - sensor.kitchen_temperature
-      - sensor.hallway_temperature
+      - sensor.hue_kitchen_temperature
+      - sensor.hue_hallway_temperature
+      - sensor.hue_kitchen_lightlevel
+      - sensor.hue_hallway_lightlevel
       - sensor.fibaro_hallway_power
       - sensor.fibaro_kitchen_power
       - sensor.fibaro_stair_power
@@ -28,7 +30,7 @@
       - sensor.hallway_temperature
       - inary_sensor.motion_wc1
       - sensor.toilet_downstairs_temperature
-      - inary_sensor.motion_wc2
+      - binary_sensor.motion_wc2
       - sensor.toilet_upstairs_temperature
       - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
       - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor

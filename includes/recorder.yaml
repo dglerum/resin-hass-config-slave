@@ -15,8 +15,10 @@
       - sensor.total_tv_time
       - sensor.glerums_iphone_x_battery_level
       - sensor.fibaro_smoke_sensor_temperature
-      - sensor.kitchen_temperature
-      - sensor.hallway_temperature
+      - sensor.hue_kitchen_temperature
+      - sensor.hue_hallway_temperature
+      - sensor.hue_kitchen_lightlevel
+      - sensor.hue_hallway_lightlevel
       - sensor.fibaro_hallway_power
       - sensor.fibaro_kitchen_power
       - sensor.fibaro_stair_power

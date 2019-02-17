@@ -69,6 +69,8 @@ downstairs_lights:
     - light.tv_lights
     - light.fibaro_kitchen_level
     - light.fibaro_table_level
+    - light.fibaro_table2_level
+    - light.fibaro_table3_level
     - light.fibaro_hallway_level
 
 available_switches:

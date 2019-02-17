@@ -226,3 +226,9 @@ sensor.fibaro_smoke_sensor_system:
 light.fibaro_table3_level2:
   ignored: false
   polling_intensity: 0
+sensor.fibaro_system_fgd212_dimmer_2_system:
+  ignored: false
+  polling_intensity: 0
+sensor.fibaro_system_fgd212_dimmer_2_system_2:
+  ignored: false
+  polling_intensity: 0

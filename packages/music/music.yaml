@@ -40,6 +40,7 @@ group:
       - script.itunes_music
       - input_number.itunes_volume
       - switch.radio
+      - script.radio_music_appletv
 
 ################################################
 ## Switch
@@ -191,6 +192,16 @@ script:
 
             {% endif %}
 
+  radio_music_appletv:
+    alias: Play StuBru on Apple Homepod via AppleTV
+    sequence:
+
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.livingroom
+          media_content_type: MUSIC
+          media_content_id: http://icecast.vrtcdn.be/stubru-high.mp3
+
 
   radio_music:
     alias: Play StuBru on Apple Homepod
@@ -229,6 +240,7 @@ script:
         entity_id: input_select.itunes_playlist
         data:
           option: 'StuBru'
+
 
   media_off:
     alias: Stop Radio Player

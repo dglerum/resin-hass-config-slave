@@ -73,7 +73,7 @@ discovery:
     - homekit
   ignore:
     - igd
-    - apple_tv
+    # - apple_tv
 #    - philips_hue
     - belkin_wemo
 
