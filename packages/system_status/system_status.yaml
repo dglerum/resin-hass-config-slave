@@ -103,13 +103,20 @@ device_tracker:
 ################################################
 ## Sensor
 ################################################
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
 
 sensor:
-  - platform: speedtest
-    monitored_conditions:
-      - ping
-      - download
-      - upload
+  # - platform: speedtest
+  #   monitored_conditions:
+  #     - ping
+  #     - download
+  #     - upload
 
   - platform: systemmonitor
     resources:
