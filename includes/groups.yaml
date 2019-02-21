@@ -12,6 +12,8 @@ default_view:
     - sensor.hallway_temperature
     - weather.dark_sky
     - media_player.livingroom
+    - media_player.davys_echo_dot
+    - media_player.davys_echo
     # - device_tracker.iphone_van_isabel
     # - device_tracker.davy_bayesian
     - group.itunes

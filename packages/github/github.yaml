@@ -39,6 +39,17 @@ sensor:
       - stargazers_count
 
   - platform: command_line
+    command: 'curl https://api.github.com/repos/dglerum/resin-hass-config-slave'
+    name: github
+    scan_interval: 3600
+    value_template: '{{ value_json.name }}'
+    json_attributes:
+      - open_issues
+      - subscribers_count
+      - forks
+      - stargazers_count
+
+  - platform: command_line
     command: 'curl https://api.github.com/repos/bruhautomation/BRUH3-Home-Assistant-Configuration'
     name: Github Next
     scan_interval: 3600

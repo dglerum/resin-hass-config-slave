@@ -73,6 +73,7 @@ discovery:
     - homekit
   ignore:
     - igd
+    - harmony
     # - apple_tv
 #    - philips_hue
     - belkin_wemo
@@ -84,10 +85,10 @@ apple_tv:
     start_off: false
     credentials: !secret apple_tv_creds
 
-remote:
-  - platform: harmony
-    name: Logitech Harmony
-    host: !secret harmony_hub_ip
+# remote:
+#   - platform: harmony
+#     name: Logitech Harmony
+#     host: !secret harmony_hub_ip
 
 logbook:
   include:
