@@ -21,3 +21,7 @@
   homekit_motion:
     name: Homekit Motion
     initial: off
+
+  goodnight:
+    name: Good Night
+    initial: off

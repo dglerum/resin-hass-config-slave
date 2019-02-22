@@ -1,3 +1,11 @@
+#################################################################
+## Packages / Light Flux
+#################################################################
+
+################################################
+## Automation
+################################################
+
 automation:
   - alias: Enable Fluxer
     trigger:
@@ -7,6 +15,10 @@ automation:
     action:
     - service: switch.turn_on
       entity_id: switch.auto_fluxer
+
+################################################
+## Switch
+################################################
 
 switch:
   - platform: flux
@@ -19,7 +31,7 @@ switch:
     stop_time: '23:00'
     start_colortemp: 4000
     sunset_colortemp: 3000
-    stop_colortemp: 1900
+    stop_colortemp: 2500
     brightness: 200
     disable_brightness_adjust: True
     mode: mired

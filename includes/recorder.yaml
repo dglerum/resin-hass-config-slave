@@ -8,15 +8,17 @@
       - device_tracker
       - remote
     entities:
-      - sensor.disk_use_
+      - sensor.disk_use
       - sensor.memory_use_percent
       - sensor.processor_use
       - sensor.cpu_temperature
       - sensor.total_tv_time
       - sensor.glerums_iphone_x_battery_level
       - sensor.fibaro_smoke_sensor_temperature
-      - sensor.kitchen_temperature
-      - sensor.hallway_temperature
+      - sensor.hue_kitchen_temperature
+      - sensor.hue_hallway_temperature
+      - sensor.hue_kitchen_lightlevel
+      - sensor.hue_hallway_lightlevel
       - sensor.fibaro_hallway_power
       - sensor.fibaro_kitchen_power
       - sensor.fibaro_stair_power
@@ -29,9 +31,9 @@
       - binary_sensor.ring_front_door_motion
       - binary_sensor.hallway_motion
       - sensor.hallway_temperature
-      - binary_sensor.toilet_downstairs_motion
+      - inary_sensor.motion_wc1
       - sensor.toilet_downstairs_temperature
-      - binary_sensor.toilet_upstairs_motion
+      - inary_sensor.motion_wc2
       - sensor.toilet_upstairs_temperature
       - sensor.tesla_model_s_5yjsa7e20jf287352_battery_sensor
       - sensor.tesla_model_s_5yjsa7e20jf287352_mileage_sensor

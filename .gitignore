@@ -13,6 +13,8 @@
 !extraconfig/*
 !packages/
 !packages/*
+!custom_components/
+!custom_components/*
 secrets.yaml
 known_devices.yaml
 entity_registry.yaml

@@ -1,0 +1,230 @@
+#################################################################
+#                                                               #
+#                    Packages/Alarm System                      #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                          Customize                            #
+#                                                               #
+#################################################################
+
+homeassistant:
+  customize:
+    alarm_control_panel.ha_alarm:
+      icon: mdi:shield-home
+    binary_sensor.door_window_sensor_158d00022016b2:
+      friendly_name: Front Door Sensor
+      device_class: door
+    binary_sensor.door_window_sensor_158d000225432d:
+      friendly_name: Patio Door Sensor
+      device_class: door
+    binary_sensor.door_window_sensor_158d0001e73c09:
+      friendly_name: Back Door Sensor
+      device_class: door
+    binary_sensor.door_window_sensor_158d0001e73af4:
+      friendly_name: Kitchen Window
+      device_class: window
+    binary_sensor.door_window_sensor_158d0001e73a73:
+      friendly_name: Jackson Window
+      device_class: window
+    binary_sensor.door_window_sensor_158d0001e73aad:
+      friendly_name: Hudson Window
+      device_class: window
+    binary_sensor.door_window_sensor_158d0001e74875:
+      friendly_name: Bathroom Window
+      device_class: window
+    binary_sensor.door_window_sensor_158d0001f36741:
+      friendly_name: Bedroom Window
+      device_class: window
+    binary_sensor.motion_sensor_158d0001e5d147:
+      friendly_name: Entrance Motion Sensor
+    binary_sensor.motion_sensor_158d0001e5d118:
+      friendly_name: Living Motion Sensor
+    binary_sensor.motion_sensor_158d000200ea5b:
+      friendly_name: Patio Motion Sensor
+    binary_sensor.motion_sensor_158d0001e5cf11:
+      friendly_name: Playroom Motion Sensor
+    binary_sensor.motion_sensor_158d00022c2f21:
+      friendly_name: Staircase Motion Sensor
+    binary_sensor.motion_sensor_158d000201351c:
+      friendly_name: Jackson Room Motion Sensor
+    binary_sensor.motion_sensor_158d0002006d46:
+      friendly_name: Hudson Room Motion Sensor
+    binary_sensor.motion_sensor_158d000200e4ab:
+      friendly_name: Bathroom Motion Sensor
+    binary_sensor.motion_sensor_158d0001e63803:
+      friendly_name: Bedroom Motion Densor
+    binary_sensor.smoke_sensor_158d0001b8ddc7:
+      friendly_name: Downstairs Smoke Detector
+      device_class: smoke
+    binary_sensor.smoke_sensor_158d0001b8deba:
+     friendly_name: Upstairs Smoke Detector
+     device_class: smoke
+
+#################################################################
+#                                                               #
+#                           Group                               #
+#                                                               #
+#################################################################
+
+group:
+  security:
+    name: Security
+    icon: mdi:shield-home
+    view: yes
+    entities:
+      - group.alarms
+      - group.doors
+      - group.windows
+      - group.motion
+
+  alarms:
+    name: Alarms
+    icon: mdi:security
+    view: no
+    entities:
+      - alarm_control_panel.ha_alarm
+      - binary_sensor.fibaro_smoke_sensor_sensor
+
+  motion:
+    name: Motion
+    icon: mdi:walk
+    view: no
+    entities:
+      - binary_sensor.motion_hallway
+      - binary_sensor.motion_wc1
+      - binary_sensor.motion_wc2
+      - binary_sensor.motion_kitchen
+
+  doors:
+    name: Doors
+    icon: mdi:door
+    view: no
+    entities:
+      - binary_sensor.door_window_sensor_158d00022016b2
+      - binary_sensor.door_window_sensor_158d000225432d
+      - binary_sensor.door_window_sensor_158d0001e73c09
+      - sensor.garage
+
+  windows:
+    name: Windows
+    icon: mdi:window
+    view: no
+    entities:
+      - binary_sensor.door_window_sensor_158d0001e73af4
+      - binary_sensor.door_window_sensor_158d0001e73a73
+      - binary_sensor.door_window_sensor_158d0001e73aad
+      - binary_sensor.door_window_sensor_158d0001e74875
+      - binary_sensor.door_window_sensor_158d0001f36741
+
+#################################################################
+#                                                               #
+#                     MQTT Control Panel                        #
+#                                                               #
+#################################################################
+
+alarm_control_panel:
+  - platform: manual_mqtt
+    #code: !secret alarm_code
+    state_topic: home/alarm
+    command_topic: home/alarm/set
+
+#################################################################
+#                                                               #
+#                      Template Sensors                         #
+#                                                               #
+#################################################################
+
+sensor:
+  - platform: template
+    sensors:
+      door_count:
+        value_template: >-
+           {{ states.binary_sensor | selectattr('state', 'eq', 'on') | selectattr('attributes.device_class', 'eq', 'door') | list | count | int }}
+      window_count:
+        value_template: >-
+           {{ states.binary_sensor | selectattr('state', 'eq', 'on') | selectattr('attributes.device_class', 'eq', 'window') | list | count | int }}
+
+#################################################################
+#                                                               #
+#                       Binary Sensors                          #
+#                                                               #
+#################################################################
+
+### For Lovelace UI ###
+
+####################################################
+#                                                  #
+#             Binary Sensor - Template             #
+#                                                  #
+####################################################
+
+binary_sensor:
+  - platform: template
+    sensors:
+## Door Sensors
+      doors:
+        friendly_name: Doors
+        device_class: door
+        entity_id: group.doors
+        value_template: "{{ is_state('group.doors', 'on') }}"
+        icon_template: >-
+          {% if is_state('group.doors', 'on') %}
+            fas:door-open
+          {% elif is_state('group.doors', 'off') %}
+            fas:door-closed
+          {% else %}
+            mdi:alert
+          {% endif %}
+      windows:
+        friendly_name: Windows
+        device_class: window
+        entity_id: group.windows
+        value_template: "{{ is_state('group.windows', 'on') }}"
+        icon_template: >-
+          {% if is_state('group.windows', 'on') %}
+            mdi:window-open
+          {% elif is_state('group.windows', 'off') %}
+            mdi:window-closed
+          {% else %}
+            mdi:alert
+          {% endif %}
+      alarm:
+        friendly_name: Alarm
+        entity_id: alarm_control_panel.ha_alarm
+        value_template: >-
+          {% if is_state('alarm_control_panel.ha_alarm', 'armed_home') %}
+            on
+          {% elif is_state('alarm_control_panel.ha_alarm', 'armed_away') %}
+            on
+          {% elif is_state('alarm_control_panel.ha_alarm', 'pending') %}
+            on
+          {% elif is_state('alarm_control_panel.ha_alarm', 'triggered') %}
+            on
+          {% else %}
+            off
+          {% endif %}
+        icon_template: >-
+          {% if is_state('alarm_control_panel.ha_alarm', 'armed_home') %}
+            mdi:shield-home
+          {% elif is_state('alarm_control_panel.ha_alarm', 'armed_away') %}
+            mdi:shield-lock
+          {% elif is_state('alarm_control_panel.ha_alarm', 'pending') %}
+            mdi:security
+          {% elif is_state('alarm_control_panel.ha_alarm', 'triggered') %}
+            mdi:shield-close
+          {% elif is_state('alarm_control_panel.ha_alarm', 'disarmed') %}
+            mdi:shield-home
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+#################################################################
+#                                                               #
+#                          Automations                          #
+#                                                               #
+#################################################################
+
+## All automations for this package have now been moved to Node-RED please see Node-Red Flows folder within this package for more infomation! ##

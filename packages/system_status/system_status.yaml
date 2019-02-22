@@ -1,16 +1,14 @@
 #################################################################
-#                                                               #
-#                    Packages/Core Network                      #
-#                                                               #
+## Packages / System Status
 #################################################################
 
-#################################################################
-#                          Customize                            #
-#################################################################
+################################################
+## Customize
+################################################
 
 homeassistant:
   customize:
-    sensor.disk_use_:
+    sensor.disk_use:
       friendly_name: Disk Use
     sensor.speedtest_ping:
       friendly_name: Ping
@@ -25,13 +23,14 @@ homeassistant:
       friendly_name: "Memory"
     sensor.processor_use:
       friendly_name: "Processor"
-    sensor.disk_use_percent_:
+    sensor.disk_use_percent:
       friendly_name: "Disk Used"
-    sensor.disk_free_:
+    sensor.disk_free:
       friendly_name: "Disk Free"
-#################################################################
-#                           Group                               #
-#################################################################
+
+################################################
+## Group
+################################################
 
 group:
   core network:
@@ -73,15 +72,15 @@ group:
     name: RPi Resources
     view: no
     entities:
-      - sensor.disk_use_
+      - sensor.disk_use
       - sensor.memory_use_percent
       - sensor.processor_use
       - sensor.cpu_temperature
       - sensor.last_boot
 
-#################################################################
-#                       Device Tracker                          #
-#################################################################
+################################################
+## Device Tracker
+################################################
 
 device_tracker:
   - platform: ping
@@ -101,16 +100,23 @@ device_tracker:
       - 10.0.20.2
       - 10.0.20.4
 
-#################################################################
-#                           Sensors                             #
-#################################################################
+################################################
+## Sensor
+################################################
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
 
 sensor:
-  - platform: speedtest
-    monitored_conditions:
-      - ping
-      - download
-      - upload
+  # - platform: speedtest
+  #   monitored_conditions:
+  #     - ping
+  #     - download
+  #     - upload
 
   - platform: systemmonitor
     resources:
@@ -126,9 +132,9 @@ sensor:
     unit_of_measurement: "°C"
     value_template: '{{ (value | multiply(0.001)) | round(1) }}'
 
-#################################################################
-#                       Binary Sensors                          #
-#################################################################
+################################################
+## Binary Sensor
+################################################
 
 binary_sensor:
   - platform: template
@@ -211,16 +217,17 @@ binary_sensor:
             mdi:alert
           {% endif %}
 
-#################################################################
-#                          Automations                          #
-#################################################################
+################################################
+## Automation
+################################################
 
 automation:
 ## Notify of High Disk Use
   - alias: Disk Use Alarm
+    initial_state: 'on'
     trigger:
       platform: numeric_state
-      entity_id: sensor.disk_use_
+      entity_id: sensor.disk_use
       above: 12
     action:
       - service: notify.pushbullet
@@ -229,6 +236,7 @@ automation:
 
 ## Notify of High CPU Usage
   - alias: CPU Use Alarm
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.processor_use
@@ -240,6 +248,7 @@ automation:
 
 ## Notify if CPU Temperature is High
   - alias: CPU Temp Alarm
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.cpu_temperature
@@ -251,6 +260,7 @@ automation:
 
 ## Notify if ISP Download Speed has dropped
   - alias: Internet Download Speed Drop
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sensor.speedtest_download

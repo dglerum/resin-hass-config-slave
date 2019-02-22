@@ -1,12 +1,11 @@
-
-  ######################################################################################################
-  ###Script to actually send notifications to the Apple TV during normal hours and only when we are home! Call like this:
-    # action:
-      # service: script.speech_engine
-      # message:
-  # # @CCOSTAN
-  # Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
-  ######################################################################################################
+######################################################################################################
+###Script to actually send notifications to the Apple TV during normal hours and only when we are home! Call like this:
+  # action:
+    # service: script.speech_engine
+    # message:
+# # @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+######################################################################################################
 script:
   speech_processing:
     sequence:
@@ -22,23 +21,6 @@ script:
         entity_id: input_boolean.speech_notifications
         state: 'on'
 
-      - condition: template
-        value_template: >
-          {% if is_state('media_player.kodi_player', 'playing') %}
-            false
-          {% else %}
-            true
-          {% endif %}
-
-      - service: tts.amazon_polly_say
-        data_template:
-          entity_id: media_player.kodi_player
-          message: >
-            <speak>
-            {{speech_message}}
-            </speak>
-          cache: true
-
       - service: mqtt.publish
         data_template:
           topic: 'polly/lastmsg'
@@ -47,5 +29,5 @@ script:
 
       - service: input_boolean.turn_off
         entity_id:
-          - input_boolean.alert_mode
+          # - input_boolean.alert_mode
           - input_boolean.lastmsg

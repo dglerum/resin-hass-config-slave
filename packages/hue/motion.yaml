@@ -1,61 +1,81 @@
+#################################################################
+## Packages / Hue Motion
+#################################################################
+
+################################################
+## Customize
+################################################
+
 homeassistant:
   customize:
-    binary_sensor.hallway_motion:
+    binary_sensor.motion_hallway:
       friendly_name: Hallway
-    binary_sensor.toilet_downstairs_motion:
+    binary_sensor.motion_wc2:
       friendly_name: Toilet Downstairs
-    binary_sensor.toilet_upstairs_motion:
+    binary_sensor.motion_wc1:
       friendly_name: Toilet Upstairs
-    binary_sensor.kitchen_motion:
+    binary_sensor.motion_kitchen:
       friendly_name: Kitchen
-    binary_sensor.hue_motion:
-      friendly_name: Philips HUE
+    binary_sensor.motion_tester:
+      friendly_name: Motion Tester
     input_boolean.homekit_motion:
       friendly_name: Homekit Motion
-      
+
+################################################
+## Group
+################################################
+
 group:
   hue_motion_sensors:
     name: Motion
     icon: mdi:motion
     view: no
     entities:
-      - binary_sensor.hallway_motion
-      - binary_sensor.toilet_upstairs_motion
-      - binary_sensor.toilet_downstairs_motion
-      - binary_sensor.kitchen_motion
-      - binary_sensor.hue_motion
+      - binary_sensor.motion_hallway
+      - binary_sensor.motion_wc1
+      - binary_sensor.motion_wc2
+      - binary_sensor.motion_kitchen
+      - binary_sensor.motion_tester
       - input_boolean.homekit_motion
 
-binary_sensor:
-  - platform: mqtt
-    name: Hallway Motion
-    state_topic: "hass/binary_sensor/hallway_motion"
-    payload_on: "true"
-    payload_off: "false"
+################################################
+## Binary Sensor
+################################################
 
-  - platform: mqtt
-    name: Toilet Downstairs Motion
-    state_topic: "hass/binary_sensor/toilet_downstairs_motion"
-    payload_on: "true"
-    payload_off: "false"
+# binary_sensor:
+#   - platform: mqtt
+#     name: Hallway Motion
+#     state_topic: "hass/binary_sensor/hallway_motion"
+#     payload_on: "true"
+#     payload_off: "false"
+#
+#   - platform: mqtt
+#     name: Toilet Downstairs Motion
+#     state_topic: "hass/binary_sensor/toilet_downstairs_motion"
+#     payload_on: "true"
+#     payload_off: "false"
+#
+#   - platform: mqtt
+#     name: Toilet Upstairs Motion
+#     state_topic: "hass/binary_sensor/toilet_upstairs_motion"
+#     payload_on: "true"
+#     payload_off: "false"
+#
+#   - platform: mqtt
+#     name: Kitchen Motion
+#     state_topic: "hass/binary_sensor/kitchen_motion"
+#     payload_on: "true"
+#     payload_off: "false"
+#
+#   - platform: mqtt
+#     name: HUE Motion
+#     state_topic: "hass/binary_sensor/hue_motion"
+#     payload_on: "true"
+#     payload_off: "false"
 
-  - platform: mqtt
-    name: Toilet Upstairs Motion
-    state_topic: "hass/binary_sensor/toilet_upstairs_motion"
-    payload_on: "true"
-    payload_off: "false"
-
-  - platform: mqtt
-    name: Kitchen Motion
-    state_topic: "hass/binary_sensor/kitchen_motion"
-    payload_on: "true"
-    payload_off: "false"
-
-  - platform: mqtt
-    name: HUE Motion
-    state_topic: "hass/binary_sensor/hue_motion"
-    payload_on: "true"
-    payload_off: "false"
+################################################
+## Automation
+################################################
 
 # automation:
 #   - alias: Motion Detected

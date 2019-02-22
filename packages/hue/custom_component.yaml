@@ -1,0 +1,31 @@
+binary_sensor:
+  - platform: hue
+device_tracker:
+  - platform: hue
+sensor:
+  - platform: hue
+
+  - platform: template
+    sensors:
+      hue_kitchen_temperature:
+        friendly_name: "Kitchen Temperature"
+        entity_id: binary_sensor.motion_kitchen
+        unit_of_measurement: '°C'
+        value_template: "{{ states.binary_sensor.motion_kitchen.attributes.temperature }}"
+      hue_kitchen_lightlevel:
+        friendly_name: "Kitchen Light Level"
+        entity_id: binary_sensor.motion_kitchen
+        unit_of_measurement: 'Lux'
+        value_template: "{{ states.binary_sensor.motion_kitchen.attributes.light_level }}"
+
+
+      hue_hallway_temperature:
+        friendly_name: "Hallway Temperature"
+        entity_id: binary_sensor.motion_hallway
+        unit_of_measurement: '°C'
+        value_template: "{{ states.binary_sensor.motion_hallway.attributes.temperature }}"
+      hue_hallway_lightlevel:
+        friendly_name: "Hallway Light Level"
+        entity_id: binary_sensor.motion_hallway
+        unit_of_measurement: 'Lux'
+        value_template: "{{ states.binary_sensor.motion_hallway.attributes.light_level }}"

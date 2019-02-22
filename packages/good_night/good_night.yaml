@@ -1,32 +1,24 @@
 #################################################################
-#                                                               #
-#                      Packages/Good Night                      #
-#                                                               #
+## Packages / Good Night
 #################################################################
 
-#################################################################
-#                                                               #
-#                          Customize                            #
-#                                                               #
-#################################################################
+################################################
+## Customize
+################################################
 
-homeassistant:
-  customize:
+# homeassistant:
+#   customize:
 
 
-#################################################################
-#                                                               #
-#                           Group                               #
-#                                                               #
-#################################################################
+################################################
+## Group
+################################################
 
-group:
+# group:
 
-#################################################################
-#                                                               #
-#                           Switches                            #
-#                                                               #
-#################################################################
+################################################
+## Switch
+################################################
 
 switch:
   - platform: command_line
@@ -35,11 +27,9 @@ switch:
         friendly_name: "Goodnight"
         command_on: python3 /config/python_scripts/goodnight.py
 
-#################################################################
-#                                                               #
-#                        Input Boolean                          #
-#                                                               #
-#################################################################
+################################################
+## Input Boolean
+################################################
 
 input_boolean:
   morning_script_run:
@@ -47,15 +37,14 @@ input_boolean:
     initial: off
     icon: mdi:delete-variant
 
-#################################################################
-#                                                               #
-#                         Automations                           #
-#                                                               #
-#################################################################
+################################################
+## Automation
+################################################
 
 automation:
 ## Runs a script to turn everything off when I head upstairs to bed
   - alias: 'Goodnight'
+    initial_state: 'on'
     trigger:
     - platform: state
       entity_id: switch.goodnight
@@ -76,6 +65,7 @@ automation:
 
 ## Notify if there are any open doors before setting the alarm from good night script
   - alias: 'Open Doors Notification on Goodnight'
+    initial_state: 'on'
     trigger:
     - platform: state
       entity_id: switch.goodnight
@@ -92,6 +82,7 @@ automation:
 
 ## Notify if there are any open windows before setting the alarm from good night script
   - alias: 'Open Doors Notification on Goodnight'
+    initial_state: 'on'
     trigger:
     - platform: state
       entity_id: switch.goodnight

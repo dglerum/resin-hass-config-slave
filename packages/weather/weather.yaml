@@ -1,14 +1,10 @@
 #################################################################
-#                                                               #
-#                      Packages/Weather                         #
-#                                                               #
+## Packages / Weather
 #################################################################
 
-#################################################################
-#                                                               #
-#                          Customize                            #
-#                                                               #
-#################################################################
+################################################
+## Customize
+################################################
 
 homeassistant:
   customize:
@@ -48,11 +44,9 @@ homeassistant:
     sensor.dark_sky_cloud_coverage_1:
       friendly_name: "Forecast Cloud"
 
-#################################################################
-#                                                               #
-#                           Group                               #
-#                                                               #
-#################################################################
+################################################
+## Group
+################################################
 
 group:
   sun:
@@ -81,14 +75,15 @@ group:
   #     - sensor.pws_temp_high_3d_c
   #     - sensor.pws_temp_high_4d_c
 
-#################################################################
-#                                                               #
-#                            Sensors                            #
-#                                                               #
-#################################################################
+################################################
+## Sensor
+################################################
+binary_sensor:
+  - platform: iss
 
 sensor:
   - platform: moon
+
 ## Weather Sensors Weatherunderground
   # - platform: wunderground
   #   api_key: !secret wunderground_api
@@ -116,34 +111,47 @@ sensor:
   #     - weather_3d_metric
   #     - weather_4d_metric
 
-####################################################
-#                                                  #
-#                     Weather                      #
-#                                                  #
-####################################################
-# weather:
-#   - platform: darksky
-#     api_key: !secret darksky_api_key
-#     scan_interval: 180
-#     forecast:
-#       - 1
-#     monitored_conditions:
-#       - icon
-#       - summary
-#       - hourly_summary
-#       - daily_summary
-#       - wind_speed
-#       - pressure
-#       - wind_bearing
-#       - precip_type
-#       - precip_intensity
-#       - precip_intensity_max
-#       - precip_probability
-#       - temperature
-#       - cloud_cover
-#       - humidity
-#       - temperature_high
-#       - temperature_low
-#       - apparent_temperature
+################################################
+## Weather
+################################################
+
+## Weather Dark Sky
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    forecast:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility
+    scan_interval:
+      minutes: 5
+
+################################################
+## Sun
+################################################
 
 sun:

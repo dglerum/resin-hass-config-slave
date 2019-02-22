@@ -1,14 +1,11 @@
 #################################################################
-#                                                               #
-#                       Packages/Presence                       #
-#                                                               #
+## Packages / Presence
 #################################################################
 
-#################################################################
-#                                                               #
-#                          Customize                            #
-#                                                               #
-#################################################################
+################################################
+## Customize
+################################################
+
 homeassistant:
   customize:
     device_tracker.glerums_iphone:
@@ -29,37 +26,38 @@ homeassistant:
       friendly_name: "Davy Homekit"
     device_tracker.davy_ping:
       friendly_name: "Davy Ping"
+    sensor.davy_google:
+      friendly_name: "Davy Geocode"
 
-#################################################################
-#                                                               #
-#                           Group                               #
-#                                                               #
-#################################################################
+################################################
+## Group
+################################################
 
 group:
   people:
     name: People
     view: no
     entities:
+      - sensor.davy_google
       - device_tracker.glerums_iphone
       - device_tracker.davy_bayesian
       - device_tracker.davy_nodered
       - device_tracker.davy_homekit
       - device_tracker.davy_ping
       # - device_tracker.davy_owntracks
-      # - device_tracker.iphone_van_isabel
+      - device_tracker.iphone_van_isabel
       - sensor.glerums_iphone_x_battery_level
-      # - sensor.iphone_van_isabel_battery_level
+      - sensor.iphone_van_isabel_battery_level
 #       - sensor.commute_to_work
 #       - sensor.commute_from_work
 #       - sensor.james_to_home
 #
-#   family:
-#     name: Family
-#     view: no
-#     entities:
-#       - sensor.james
-#       - sensor.tina
+  family:
+    name: Family
+    view: no
+    entities:
+      - sensor.davy
+      - sensor.isabel
 #
 #   ble_tracker_james:
 #     name: BLE Tracker James
@@ -77,6 +75,103 @@ group:
 #       - sensor.ble_tina_upstairs
 #       - sensor.ble_tina_patio
 
+################################################
+## Sensor
+################################################
+
+sensor:
+  - platform: google_geocode
+    scan_interval: 3600
+    name: Davy Google
+    origin: device_tracker.glerums_iphone
+    options: street_number, street, city
+    display_zone: hide
+    gravatar: dglerum@gmail.com
+    api_key: !secret geocode_api
+
+  - platform: template
+    sensors:
+      davy:
+        friendly_name: "Davy"
+        value_template: >-
+          {% if is_state('device_tracker.davy_bayesian', 'home') %}
+            Home
+          {% elif is_state('device_tracker.glerums_iphone', 'Metallo') %}
+            Metallo
+          {% else %}
+            Away
+          {% endif %}
+        entity_picture_template: >-
+          {% if is_state('device_tracker.davy_bayesian', 'home') %}
+            /local/lovelace/home/davy1.jpg
+          {% endif %}
+        icon_template: >-
+          {% if is_state('device_tracker.glerums_iphone', 'Metallo') %}
+            mdi:briefcase
+          {% elif is_state('device_tracker.glerums_iphone', 'Kindy') %}
+            mdi:school
+          {% elif is_state('device_tracker.glerums_iphone', 'Stocklands') %}
+            mdi:cart
+          {% elif is_state('device_tracker.glerums_iphone', 'Parlour') %}
+            mdi:coffee
+          {% elif is_state('device_tracker.glerums_iphone', 'Work Home Beacon 25mins') %}
+            mdi:car
+          {% elif is_state('device_tracker.glerums_iphone', 'Work Home Beacon 15mins') %}
+            mdi:car
+          {% elif is_state('device_tracker.glerums_iphone', 'Work Home Beacon 5mins') %}
+            mdi:car
+          {% elif is_state('device_tracker.glerums_iphone', 'Darwin') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Brisbane') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Sydney') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Melbourne') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Perth') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Adelaide') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Tasmania') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'UK') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'France') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Netherlands') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Switzerland') %}
+            mdi:airplane
+          {% elif is_state('device_tracker.glerums_iphone', 'Italy') %}
+            mdi:airplane
+          {% else %}
+            mdi:walk
+          {% endif %}
+
+      isabel:
+        friendly_name: "Isabel"
+        value_template: >-
+          {% if is_state('device_tracker.iphone_van_isabel', 'home') %}
+            Home
+          {% elif is_state('device_tracker.iphone_van_isabel', 'Sibelco') %}
+            Sibelco
+          {% else %}
+            Away
+          {% endif %}
+        entity_picture_template: >-
+          {% if is_state('device_tracker.davy_bayesian', 'home') %}
+            /local/lovelace/home/isabel1.jpg
+          {% endif %}
+        icon_template: >-
+          {% if is_state('device_tracker.iphone_van_isabel', 'Sibelco') %}
+            mdi:briefcase
+          {% else %}
+            mdi:walk
+          {% endif %}
+################################################
+## Input Boolean
+################################################
+
 input_boolean:
   davy_homekit_present:
     name: Davy HomeKit
@@ -84,6 +179,10 @@ input_boolean:
   isabel_homekit_present:
     name: Isabel Homekit
     icon: mdi:account
+
+################################################
+## Binary Sensor
+################################################
 
 binary_sensor:
   - platform: bayesian
@@ -122,11 +221,75 @@ binary_sensor:
         platform: 'state'
         to_state: 'home'
 
-#################################################################
-#                                                               #
-#                      Device Trackers                          #
-#                                                               #
-#################################################################
+  - platform: template
+    sensors:
+      davy_gps_status:
+        friendly_name: Davy GPS
+        device_class: connectivity
+        entity_id: device_tracker.tile_glerums_iphone_x
+        value_template: "{{ is_state('device_tracker.tile_glerums_iphone_x', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_glerums_iphone_x', 'home') %}
+            mdi:crosshairs-gps
+          {% elif is_state('device_tracker.tile_glerums_iphone_x', 'Metallo') %}
+            mdi:crosshairs-gps
+          {% elif is_state('device_tracker.tile_glerums_iphone_x', 'not_home') %}
+            mdi:crosshairs-gps
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+      davy_keys_status:
+        friendly_name: Davy Keys
+        device_class: connectivity
+        entity_id: device_tracker.tile_92ed8033933bc67b
+        value_template: "{{ is_state('device_tracker.tile_92ed8033933bc67b', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_92ed8033933bc67b', 'home') %}
+            mdi:key
+          {% elif is_state('device_tracker.tile_92ed8033933bc67b', 'Metallo') %}
+            mdi:key
+          {% elif is_state('device_tracker.tile_92ed8033933bc67b', 'not_home') %}
+            mdi:key
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+      davy_car_status:
+        friendly_name: Davy Car
+        device_class: connectivity
+        entity_id: device_tracker.tile_1d0c1caa79e2a272
+        value_template: "{{ is_state('device_tracker.tile_1d0c1caa79e2a272', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_1d0c1caa79e2a272', 'home') %}
+            mdi:car-side
+          {% elif is_state('device_tracker.tile_1d0c1caa79e2a272', 'Metallo') %}
+            mdi:car-side
+          {% elif is_state('device_tracker.tile_1d0c1caa79e2a272', 'not_home') %}
+            mdi:car-side
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+      davy_bag_status:
+        friendly_name: Davy Bag
+        device_class: connectivity
+        entity_id: device_tracker.tile_1da6142fd8f65ae3
+        value_template: "{{ is_state('device_tracker.tile_1da6142fd8f65ae3', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.tile_1da6142fd8f65ae3', 'home') %}
+            mdi:briefcase
+          {% elif is_state('device_tracker.tile_1da6142fd8f65ae3', 'Metallo') %}
+            mdi:briefcase
+          {% elif is_state('device_tracker.tile_1da6142fd8f65ae3', 'not_home') %}
+            mdi:briefcase
+          {% else %}
+            mdi:alert
+          {% endif %}
+
+################################################
+## Device Tracker
+################################################
 
 device_tracker:
   - platform: ping

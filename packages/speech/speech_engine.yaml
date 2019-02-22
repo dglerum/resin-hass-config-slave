@@ -19,14 +19,14 @@ script:
       - condition: or
         conditions:
           - condition: state
-            entity_id: group.awesome_people
+            entity_id: group.people
             state: 'home'
           - condition: state
             entity_id: input_boolean.guest_mode
             state: 'on'
       - service: script.speech_processing
         data_template:
-          speech_message: >
+          speech_message: >-
 
             {%- macro responsibilities() -%}
               {%if now().strftime("%a") == 'Sun'%}
@@ -36,39 +36,20 @@ script:
             {{responsibilities()}}
 
             {%- macro dark_outside() -%}
-              {%- set responses = [
-              "It is pretty dark outside.  I will turn on the lights now.",
-              "The sun is setting. Time to turn on the lights.",
-              "I will switch on the lights.  It is getting dark.",
-              "Time to turn on the lights. I will take care of it."
-              ] %}
-              {% set rindex =  (range(0, (responses | length - 1) )|random) -%}
-              {{responses[rindex]}}
+              {{ [
+                'It is pretty dark outside. I will turn on the lights.',
+                'It is a little past Sunset. Time to turn on the lights.',
+                'I will switch on the lights. It is getting dark.',
+                'Time to turn on the lights. I will take care.'
+              ]|random }}
             {%- endmacro -%}
 
             {% macro inside_weather() -%}
-              Inside the house, it is {{ states('sensor.fibaro_system_fgsd002_smoke_sensor_temperature') | round(0) }} degrees with around {{states('sensor.humidity_office_isabel') | round(0) }} percent humidity.
+              Inside the house, it is {{ states('sensor.fibaro_smoke_sensor_temperature') | round(0) }} degrees with around {{states('sensor.fibaro_smoke_sensor_temperature') | round(0) }} percent humidity.
             {%- endmacro -%}
 
             {% macro outside_weather() -%}
-              Outside, it is {{ states('sensor.dark_sky_temperature') }} degrees, the weather is going to be {{states('sensor.pws_weather')}}.
-            {%- endmacro -%}
-
-            {% macro lights_status() -%}
-            {% if states.input_boolean.are_any_lights_on.attributes['lights_on'] != 0 %}
-              There are {% for state in states.light if state.state == 'on' %}
-              {%- if loop.last -%}
-                {{ loop.index }}
-              {%- endif -%}
-            {%- endfor %} lights on right now.
-            {% set comma = joiner(', ') %}  {{'The '}}
-            {%- for group in states.group|groupby('state') -%}
-              {%- for entity in group.list if entity.state == 'on' and entity.name.split(' ')[1]|lower == 'lights' and entity.name.split(' ')[0]|lower != 'all' and entity.name.split(' ')[0]|lower != 'interior' -%}
-              {{- ' and ' if loop.last and not loop.first else comma() -}}
-              {{ entity.name }}.
-              {%- endfor -%}
-            {%- endfor %}
-            {% endif %}
+              Outside, it is {{ states('sensor.dark_sky_apparent_temperature') }} degrees, {{states('sensor.dark_sky_daily_summary')}}.
             {%- endmacro -%}
 
             {%- macro moon() -%}
@@ -82,16 +63,6 @@ script:
                 Here is something interesting. The international space station is above us now. There are {{ states.binary_sensor.iss.attributes['number_of_people_in_space'] }} people in space right now.
                 {{ outside_weather() }}
               {% endif -%}
-            {%- endmacro -%}
-
-            {%- macro uv() -%}
-              {% if states.sensor.pws_uv.state|int >= 6 and states.sensor.sensor.pws_uv.state|int <= 7.9 %}
-                Today's UV index is {{ states.sensor.pws_uv.state }}.  You should wear sunscreen if going outside.
-              {% elif states.sensor.pws_uv.state|int >= 8 and states.sensor.pws_uv.state|int <=10.9 %}
-                Today's UV index is {{ states.sensor.pws_uv.state }}.  This is VERY HIGH. Be sure wear sunscreen and re-apply.
-              {% elif states.sensor.pws_uv.state|int >= 11 %}
-                Today's UV index is {{ states.sensor.pws_uv.state }}.  This is EXTREME. You should be very cautious going outside.
-              {% endif %}
             {%- endmacro -%}
 
             {#  ********************************************* #}
@@ -128,16 +99,12 @@ script:
               {{ outside_weather() }}
             {% endif %}
 
-            {% if call_lights_status == 1 %}
-              {{ lights_status() }}
-            {% endif %}
-
             {% if value1 is not none %}
               {{ value1 }}
             {% endif %}
 
             {# call a Random fact about the house #}
-            {{ ([iss, moon, uv]|random)() }}
+            {{ ([iss, moon]|random)() }}
 
       - service: input_boolean.turn_off
         entity_id:

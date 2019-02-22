@@ -13,6 +13,26 @@ homeassistant:
 
 frontend:
   javascript_version: latest
+  extra_html_url:
+    - /local/custom_ui/fontawesome/hass-fontawesome-solid.html
+    - /local/custom_ui/fontawesome/hass-fontawesome-regular.html
+    - /local/custom_ui/fontawesome/hass-fontawesome-brands.html
+
+custom_updater:
+  show_installable: false
+  hide_sensor: false
+  track:
+    - components
+    - cards
+    - python_scripts
+  component_urls:
+    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
+    - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
+    - https://raw.githubusercontent.com/ljmerza/waze-card/master/updater.json
 
 http:
   api_password: !secret http_password
@@ -22,9 +42,11 @@ http:
 
 config:
 
+system_health:
+
 lovelace:
   mode: yaml
-  
+
 # panel_iframe:
 #   nodered:
 #     title: Node-Red
@@ -40,14 +62,6 @@ logger:
 
 updater:
 
-## Philips Hue bridge config
-hue:
-  bridges:
-    - host: 192.168.1.2
-      # filename: phue.conf
-      allow_unreachable: true
-      allow_hue_groups: false
-
 # wemo:
 #   static:
 #     - 192.168.1.47
@@ -57,17 +71,19 @@ hue:
 discovery:
   enable:
     - homekit
-#   ignore:
-#     - apple_tv
-#     - philips_hue
-#     - belkin_wemo
+  ignore:
+    - igd
+    # - harmony
+    # - apple_tv
+#    - philips_hue
+    - belkin_wemo
 
 apple_tv:
   - host: 192.168.1.3
-    login_id: 00000000-0bb2-01aa-38f0-982da7c149f9
+    login_id: !secret apple_tv_login
     name: Apple TV
     start_off: false
-    credentials: 2741038A740ECCAE:1026D5D11DBDE8F8D1CC0EAE0C268189D47425ADA3F9A61AE16C7789AB8726EA
+    credentials: !secret apple_tv_creds
 
 remote:
   - platform: harmony
@@ -87,12 +103,43 @@ map:
 mqtt:
   broker: !secret mqtt_broker
   port: 1883
+  discovery: true
+  discovery_prefix: homeassistant
+
+weblink:
+  entities:
+    - name: Router
+      icon: mdi:router-wireless
+      url: http://192.168.1.1/
+    - name: NodeRed
+      icon: mdi:nodejs
+      url: /red
+    - name: Grafana
+      icon: mdi:wrench
+      url: /grafana
+    - name: HMC
+      icon: mdi:wrench
+      url: /hmc
+
+tts:
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+
+## Philips Hue bridge config
+# hue:
+#   bridges:
+#     - host: 192.168.1.2
+#       # filename: phue.conf
+#       allow_unreachable: true
+#       allow_hue_groups: false
 
 homekit:
   auto_start: false
   ip_address: !secret rPi
   filter:
     include_entities:
+      ## Input Booleans
       - input_boolean.davy_homekit_present
       - input_boolean.isabel_homekit_present
       - input_boolean.homekit_motion
@@ -100,23 +147,27 @@ homekit:
       ## Media Players
       # - media_player.kodi_player
       ## Lights
-      - light.kitchen_lighting
+      - light.kitchen_lights
+      - light.table_lights
       - light.livingroom_lighting
       - light.downstairs_lighting
       ## Switches
       - switch.wemo_livingroom
       - switch.livingroom_lights
       - switch.dinner_lights
-      - switch.kitchen_lights
-      - switch.table_lights
       - switch.tv
       - switch.radio
       - switch.music_stubru
       - switch.music_greatest_blues
       - switch.music_ibiza_chill
       - switch.music_album_500
-      ## Sensors
+      ## Binary Sensors
       - sensor.fibaro_smoke_sensor_temperature
+      - binary_sensor.motion_hallway
+      - binary_sensor.motion_kitchen
+      - binary_sensor.motion_tester
+      - binary_sensor.motion_wc1
+      - binary_sensor.motion_wc2
       ## Device Tracker
       # - device_tracker.davy_bayesian
   # entity_config:
@@ -128,17 +179,6 @@ homekit:
   #   switch.wemo_bedroom:
   #     type: outlet
 
-weblink:
-  entities:
-    - name: Router
-      icon: mdi:router-wireless
-      url: http://192.168.1.1/
-    - name: Node-Red
-      icon: mdi:nodejs
-      url: /red
-    - name: Grafana
-      icon: mdi:wrench
-      url: /grafana
 
 # mqtt_statestream:
 #   base_topic: homeassistant

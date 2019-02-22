@@ -1,3 +1,11 @@
+#################################################################
+## Packages / Hue Lightlevel
+#################################################################
+
+################################################
+## Customize
+################################################
+
 homeassistant:
   customize:
     sensor.hallway_lux:
@@ -16,6 +24,10 @@ homeassistant:
       friendly_name: Philips HUE
       icon: mdi:white-balance-sunny
 
+################################################
+## Group
+################################################
+
 group:
   hue_lux_sensors:
     name: Lightlevel
@@ -27,26 +39,34 @@ group:
       - sensor.kitchen_lux
       - sensor.hue_lux
 
-sensor:
-  - platform: mqtt
-    name: Hallway Lux
-    state_topic: "hass/sensor/hallway_lux"
+################################################
+## Sensor
+################################################
 
-  - platform: mqtt
-    name: Toilet Downstairs Lux
-    state_topic: "hass/sensor/toilet_downstairs_lux"
+# sensor:
+#   - platform: mqtt
+#     name: Hallway Lux
+#     state_topic: "hass/sensor/hallway_lux"
+#
+#   - platform: mqtt
+#     name: Toilet Downstairs Lux
+#     state_topic: "hass/sensor/toilet_downstairs_lux"
+#
+#   - platform: mqtt
+#     name: Toilet Upstairs Lux
+#     state_topic: "hass/sensor/toilet_upstairs_lux"
+#
+#   - platform: mqtt
+#     name: Kitchen Lux
+#     state_topic: "hass/sensor/kitchen_lux"
+#
+#   - platform: mqtt
+#     name: HUE Lux
+#     state_topic: "hass/sensor/hue_lux"
 
-  - platform: mqtt
-    name: Toilet Upstairs Lux
-    state_topic: "hass/sensor/toilet_upstairs_lux"
-
-  - platform: mqtt
-    name: Kitchen Lux
-    state_topic: "hass/sensor/kitchen_lux"
-
-  - platform: mqtt
-    name: HUE Lux
-    state_topic: "hass/sensor/hue_lux"
+################################################
+## Automation
+################################################
 
 # automation:
 #   - alias: Motion Detected
