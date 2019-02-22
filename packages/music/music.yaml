@@ -40,7 +40,7 @@ group:
       - script.itunes_music
       - input_number.itunes_volume
       - switch.radio
-      - script.radio_music_appletv
+      # - script.radio_music_appletv
 
 ################################################
 ## Switch
