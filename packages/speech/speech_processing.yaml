@@ -29,5 +29,5 @@ script:
 
       - service: input_boolean.turn_off
         entity_id:
-          - input_boolean.alert_mode
+          # - input_boolean.alert_mode
           - input_boolean.lastmsg

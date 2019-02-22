@@ -1,23 +1,23 @@
 resources:
   - url: /local/custom_ui/dark-sky-weather-card.js?v=4
     type: js
-  - url: /local/custom_ui/mini-media-player-bundle.js?v=1.0.0
+  - url: /local/custom_ui/mini-media-player-bundle.js?v=1.0.2
     type: module
-  - url: /local/custom_ui/tracker-card.js?v=0.3.0
+  - url: /local/custom_ui/tracker-card.js?v=1.2.3
     type: js
   - url: /local/custom_ui/surveillance-card.js?v=0.0.1
     type: module
-  - url: /local/custom_ui/mini-graph-card-bundle.js?v=0.2.1
+  - url: /local/custom_ui/mini-graph-card-bundle.js?v=0.3.0
     type: module
-  - url: /local/custom_ui/card-modder.js?v=785dd6
+  - url: /local/custom_ui/card-modder.js?v=f3d96f
     type: module
-  - url: /local/custom_ui/slider-entity-row.js?v=ba8f50
+  - url: /local/custom_ui/slider-entity-row.js?v=be80ff
     type: js
-  - url: /local/custom_ui/card-tools.js?v=297fcc
+  - url: /local/custom_ui/card-tools.js?v=deb8e3
     type: js
-  - url: /local/custom_ui/compact-custom-header/compact-custom-header.js?v=0.2.9
-    type: js
-  - url: /local/custom_ui/waze-card.js?v=1.1.1
+  - url: /local/custom_ui/compact-custom-header/compact-custom-header.js?v=1.0.1b0
+    type: module
+  - url: /local/custom_ui/waze-card.js?v=1.2.1
     type: js
   - url: /local/custom_ui/circle-sensor-card.js?v=1.2.0
     type: module
@@ -827,7 +827,8 @@ views:
           - type: custom:card-modder
             card:
               type: custom:mini-graph-card
-              entity: sensor.hue_kitchen_temperature
+              entities: 
+                - sensor.hue_kitchen_temperature
               height: 65
               line_width: 2
               font_size: 70
@@ -1083,7 +1084,8 @@ views:
           - type: custom:card-modder
             card:
               type: custom:mini-graph-card
-              entity: sensor.hue_kitchen_lightlevel
+              entities: 
+                - sensor.hue_kitchen_lightlevel
               height: 65
               line_width: 2
               font_size: 70
