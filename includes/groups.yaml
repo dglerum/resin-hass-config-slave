@@ -8,6 +8,8 @@ default_view:
   view: yes
   icon: mdi:castle
   entities:
+    - camera.front_door
+    - camera.storagecam
     - sensor.kitchen_temperature
     - sensor.hallway_temperature
     - weather.dark_sky

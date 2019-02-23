@@ -775,32 +775,54 @@ views:
 #                                                                                                                                           #
 #############################################################################################################################################
 
-  # - id: 2
-  #   title: Surveillance
-  #   icon: mdi:cctv
-  #   background: center / cover no-repeat url("/local/lovelace/background-15.gif") fixed
-  #   panel: true
-  #   cards:
-
+  - id: 2
+    title: Surveillance
+    icon: mdi:cctv
+    background: center / cover no-repeat url("/local/lovelace/background-15.gif") fixed
+    panel: true
+    cards:
+      - id: 30cb280dfea9438ca580e1ec4c50ac9a  # Automatically created id
+        type: vertical-stack
+        cards:
 #################################################################
 #                                                               #
 #                             CCTV                              #
 #                                                               #
 #################################################################
 
-      # - id: f7445f719d25463788d385ee2ad55d93  # Automatically created id
-      #   type: picture-entity
-      #   entity: camera.living
-      #- type: custom:surveillance-card
-      #  thumb_interval: 15
-      #  update_interval: 2
-      #  cameras:
-      #    - entity: camera.dining
-      #      motion_entity: binary_sensor.motion_sensor_158d0001e5d118
-      #    - entity: camera.living
-      #      motion_entity: binary_sensor.motion_sensor_158d0001e5d118
-      #    - entity: camera.baby_monitor
-      #      motion_entity: binary_sensor.motion_sensor_158d0001e63803
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              entity: camera.front_door
+              # name: Livingroom
+              # tap_action:
+              #   action: toggle
+              # image: /local/lovelace/downstairs/lounge-light_2.png
+            style:
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              entity: camera.storagecam
+              # name: Livingroom
+              # tap_action:
+              #   action: toggle
+              # image: /local/lovelace/downstairs/lounge-light_2.png
+            style:
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+          # - type: custom:surveillance-card
+          #   thumb_interval: 15
+          #   update_interval: 2
+          #   cameras:
+          #     - entity: camera.front_door
+          #       motion_entity: binary_sensor.ring_front_door_motion
+          #     - entity: camera.storagecam
+          #       motion_entity: binary_sensor.motion_sensor_158d0001e5d118
 
 #############################################################################################################################################
 #                                                                                                                                           #
@@ -827,7 +849,7 @@ views:
           - type: custom:card-modder
             card:
               type: custom:mini-graph-card
-              entities: 
+              entities:
                 - sensor.hue_kitchen_temperature
               height: 65
               line_width: 2
@@ -1084,7 +1106,7 @@ views:
           - type: custom:card-modder
             card:
               type: custom:mini-graph-card
-              entities: 
+              entities:
                 - sensor.hue_kitchen_lightlevel
               height: 65
               line_width: 2
@@ -1099,7 +1121,7 @@ views:
               border-radius: 20px
               border: solid 1px rgba(100,100,100,0.3)
               box-shadow: 3px 3px rgba(0,0,0,0.4)
-              
+
 ################################################################
 #                                                               #
 #            Downstairs - Lounge Media Player Card              #

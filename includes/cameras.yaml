@@ -14,13 +14,13 @@
 #   mjpeg_url: http://192.168.1.26:8080/?action=stream
 
 
-# - platform: ring
-  # ffmpeg_arguments: -pred 1 -q:v 2
+- platform: ring
+  # ffmpeg_arguments: -pred 1 -q:v 2 
 
-# - platform: mjpeg
-#   name: Storage
-#   mjpeg_url: !secret camera_url
-#
-# - platform: mjpeg
-#   name: StorageCam
-#   mjpeg_url: http://dglerum.noip.me/api/camera_proxy/camera.storagecam?token=613c6c7bdb87b4fea2a6b0effa57010e5db62867dafdf3b7e84d29ece85f8369
+- platform: mjpeg
+  name: Storage
+  mjpeg_url: !secret camera_url
+
+- platform: mjpeg
+  name: StorageCam
+  mjpeg_url: https://dglerum.noip.me/api/camera_proxy/camera.storage?token=265149ff1cad716ff72bf2e4dc12460dd91e50f117222909c8267a9c0d438d3d
