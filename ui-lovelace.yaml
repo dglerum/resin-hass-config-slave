@@ -779,7 +779,7 @@ views:
     title: Surveillance
     icon: mdi:cctv
     background: center / cover no-repeat url("/local/lovelace/background-15.gif") fixed
-    panel: true
+    # panel: true
     cards:
       - id: 30cb280dfea9438ca580e1ec4c50ac9a  # Automatically created id
         type: vertical-stack
@@ -794,7 +794,8 @@ views:
             card:
               type: picture-entity
               entity: camera.front_door
-              # name: Livingroom
+              name: Front Door
+              show_state: false
               # tap_action:
               #   action: toggle
               # image: /local/lovelace/downstairs/lounge-light_2.png
@@ -807,7 +808,8 @@ views:
             card:
               type: picture-entity
               entity: camera.storagecam
-              # name: Livingroom
+              name: Storage
+              show_state: false
               # tap_action:
               #   action: toggle
               # image: /local/lovelace/downstairs/lounge-light_2.png
