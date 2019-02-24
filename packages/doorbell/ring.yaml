@@ -3,13 +3,14 @@
 #   password: !secret ring_password
 automation:
   - alias: 'Doorbell Motion'
-    initial_state: 'on'
+    initial_state: 'off'
     trigger:
       - platform: state
         entity_id: binary_sensor.ring_front_door_motion
         from: 'off'
         to: 'on'
     action:
+      - delay: '00:05:00'
       - service: downloader.download_file
         data_template:
           url: "{{ states.camera.front_door.attributes.video_url }}"
