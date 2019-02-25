@@ -78,11 +78,11 @@ discovery:
 #    - philips_hue
     - belkin_wemo
 
-ffmpeg:
+# ffmpeg:
 
-ring:
-  username: !secret ring_username
-  password: !secret ring_password
+# ring:
+#   username: !secret ring_username
+#   password: !secret ring_password
 
 apple_tv:
   - host: 192.168.1.3
@@ -95,9 +95,9 @@ remote:
   - platform: harmony
     name: Logitech Harmony
     host: !secret harmony_hub_ip
-
-downloader:
-  download_dir: downloads
+# 
+# downloader:
+#   download_dir: downloads
 
 logbook:
   include:

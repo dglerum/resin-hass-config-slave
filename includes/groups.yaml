@@ -16,6 +16,7 @@ default_view:
     - media_player.livingroom
     - media_player.davys_echo_dot
     - media_player.davys_echo
+    - media_player.davy_s_reverb_ai
     # - device_tracker.iphone_van_isabel
     # - device_tracker.davy_bayesian
     - group.itunes

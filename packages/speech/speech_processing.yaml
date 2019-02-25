@@ -9,6 +9,11 @@
 script:
   speech_processing:
     sequence:
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: 'polly/lastmsg'
+      #     payload: "This message is from {{ now().strftime('%-I') }}:{{ now().strftime('%M') }} {{ now().strftime('%p') }}. {{ speech_message | truncate(220)}}"
+      #     retain: true
       - condition: or
         conditions:
           - condition: time
@@ -21,10 +26,17 @@ script:
         entity_id: input_boolean.speech_notifications
         state: 'on'
 
+      # - service: media_player.alexa_tts
+      #   data_template:
+      #     entity_id: media_player.davys_echo_dot
+      #     message: >-
+      #       '{{ speech_message }}'
+
       - service: mqtt.publish
         data_template:
           topic: 'polly/lastmsg'
-          payload: '{{speech_message}}'
+          payload: >-
+            {{speech_message}}
           retain: true
 
       - service: input_boolean.turn_off

@@ -33,7 +33,6 @@ script:
                 Today is Sunday and tomorrow is garbage day.
               {% endif %}
             {%- endmacro -%}
-            {{responsibilities()}}
 
             {%- macro dark_outside() -%}
               {{ [
@@ -44,12 +43,37 @@ script:
               ]|random }}
             {%- endmacro -%}
 
-            {% macro inside_weather() -%}
+            {%- macro inside_weather() -%}
               Inside the house, it is {{ states('sensor.fibaro_smoke_sensor_temperature') | round(0) }} degrees with around {{states('sensor.fibaro_smoke_sensor_temperature') | round(0) }} percent humidity.
             {%- endmacro -%}
 
-            {% macro outside_weather() -%}
+            {%- macro outside_weather() -%}
               Outside, it is {{ states('sensor.dark_sky_apparent_temperature') }} degrees, {{states('sensor.dark_sky_daily_summary')}}.
+            {%- endmacro -%}
+
+            {%- macro light_check() -%}
+              {% if states.group.all_lights.state != 'off' -%}
+                There are
+              {% for state in states.light if state.state == 'on' -%}
+                {%- if loop.last -%}
+                  {{ loop.index }}
+                {%- endif -%}
+              {%- endfor %}
+              lights on right now.
+              {% set comma = joiner(', ') %}
+              The
+              {% for group in states.group|groupby('state') -%}
+                {%- for entity in group.list if entity.state == 'on'
+                and entity.name.split(' ')[1]|lower == 'lights'
+                and entity.name.split(' ')[0]|lower != 'all'
+                and entity.name.split(' ')[0]|lower != 'interior'
+                -%}
+                  {{ 'and' if loop.last and not loop.first else comma() }}
+                  {{ entity.name|replace('Lights','')}}
+                {%- endfor -%}
+              {%- endfor -%}
+              lights are on.
+              {%- endif -%}
             {%- endmacro -%}
 
             {%- macro moon() -%}
@@ -63,6 +87,22 @@ script:
                 Here is something interesting. The international space station is above us now. There are {{ states.binary_sensor.iss.attributes['number_of_people_in_space'] }} people in space right now.
                 {{ outside_weather() }}
               {% endif -%}
+            {%- endmacro -%}
+
+            {%- macro uv() -%}
+              {% if states.sensor.dark_sky_uv_index.state|int >= 6 and states.sensor.dark_sky_uv_index.state|int <= 7.9 %}
+                Today's UV index is {{ states.sensor.dark_sky_uv_index.state }}.  You should wear sunscreen if going outside.
+              {% elif states.sensor.dark_sky_uv_index.state|int >= 8 and states.sensor.dark_sky_uv_index.state|int <=10.9 %}
+                Today's UV index is {{ states.sensor.dark_sky_uv_index.state }}.  This is VERY HIGH. Be sure wear sunscreen and re-apply.
+              {% elif states.sensor.dark_sky_uv_index.state|int >= 11 %}
+                Today's UV index is {{ states.sensor.dark_sky_uv_index.state }}.  This is EXTREME. You should be very cautious going outside.
+              {% endif %}
+            {%- endmacro -%}
+
+            {%- macro holiday() -%}
+              {% if states.sensor.holiday.state != '' %}
+                Today is {{ states.sensor.holiday.state }}.
+              {% endif %}
             {%- endmacro -%}
 
             {#  ********************************************* #}
@@ -88,7 +128,7 @@ script:
             {% endif %}
 
             {% if call_dark_outside == 1 %}
-              {{dark_outside()}}
+              {{ dark_outside() }}
             {%endif%}
 
             {% if call_inside_weather == 1 %}
@@ -99,12 +139,16 @@ script:
               {{ outside_weather() }}
             {% endif %}
 
+            {% if call_light_check == 1 %}
+              {{ light_check() }}
+            {% endif %}
+
             {% if value1 is not none %}
               {{ value1 }}
             {% endif %}
 
             {# call a Random fact about the house #}
-            {{ ([iss, moon]|random)() }}
+            {{ ([iss, moon, uv, holiday, outside_weather]|random)() }}
 
       - service: input_boolean.turn_off
         entity_id:

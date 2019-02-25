@@ -10,6 +10,10 @@
     name: Speech Notifications
     initial: off
 
+  greeting_davy:
+    name: Greeting
+    initial: off
+
   last_message:
     name: Last Message
     initial: off
